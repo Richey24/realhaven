@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import logo from '../img/logo.svg'
-import bg from '../img/Frame 1.png'
+import bg from '../img/register.png'
 import eye from '../img/Show.svg'
 import google from '../img/flat-color-icons_google.svg'
-import './Login.css'
+import "./Register.css"
+import countryTelData from 'country-telephone-data'
+import down from '../img/Stroke-1.svg'
 
-const LoginComp = () => {
+console.log(countryTelData.allCountries[160]);
+
+const RegisterComp = () => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -55,51 +59,80 @@ const LoginComp = () => {
         }
     }
 
+    const showList = () => {
+        const myList = document.getElementById("countryList")
+        myList.classList.toggle("showList")
+    }
+
     return (
         <div className="myContainer">
-            <div className='side-1'>
-                <img src={bg} alt="bacKground" />
-            </div>
-            <div className="logo">
-                <img src={logo} alt="logo" />
-                Haven
-            </div>
-            <div className="side-2">
-                <h1>Login</h1>
+            <div className='side-2'>
+                <h1>Register</h1>
                 <form onSubmit={validateForm}>
+                    <label htmlFor="firstName">Your Name</label>
+                    <div className="myName">
+                        <input type="text" placeholder="First Name" id="firstName" />
+                        <input type="text" placeholder="Last Name" id="lastName" />
+                    </div>
+                    <div className="fullName">
+                        <input type="text" placeholder="Full Name" id="fullName" />
+                    </div>
                     <div className="label">
                         <label htmlFor="email">Email address</label>
                         <br />
-                        <input type="text" value={email} placeholder="name@example.com" onChange={validateEmail} id="email" />
+                        <input type="email" value={email} placeholder="name@example.com" onChange={validateEmail} id="email" />
                         <p id="emailError" style={{ visibility: "hidden" }}>Email is required</p>
+                    </div>
+
+                    <div className="label">
+                        <label htmlFor="firstName">Phone Number</label>
+                        <br />
+                        <div className='phoneNumDiv'>
+                            <p onClick={showList} className='mainCountry'>+{countryTelData.allCountries[160].dialCode} <img src={down} alt="down" /></p>
+                            <input style={{ border: 'none' }} type="tel" placeholder="phone number" id="phoneNumber" />
+                        </div>
+                        <ul id='countryList' className='countryList'>
+                            {
+                                countryTelData.allCountries.map((code) => (
+                                    <li>+{code.dialCode}</li>
+                                ))
+                            }
+                        </ul>
                     </div>
 
                     <div className="label">
                         <label htmlFor="password">Password</label>
                         <br />
-                        <input id='password' type='password' value={password} onChange={validatePassword} />  <img className='passordEye' src={eye} alt="" />
+                        <input placeholder='********' id='password' type='password' value={password} onChange={validatePassword} />  <img className='passwordEye' src={eye} alt="" />
                         <p id="passwordError" style={{ visibility: "hidden" }}>Password is required</p>
                     </div>
 
                     <div className="myBtn">
-                        <button type='submit'>Login</button>
+                        <button type='submit'>Sign up</button>
                         <p id="submitError" style={{ visibility: "hidden" }}>Fill in the required field</p>
                     </div>
 
                     <div className="signup">
-                        New user?<a href="/">Sign up</a> <br />
+                        Already have an account?<a href="/">Login</a> <br />
                     </div>
                     <div className="opt">
                         <p>Or</p>
                     </div>
                     <div className="google-opt">
-                        <img src={google} alt="google" /> <span>login with Google instead</span>
+                        <img src={google} alt="google" /> <span>Sign up with Google instead</span>
                     </div>
 
                 </form>
+            </div>
+            <div className="logo">
+                <img src={logo} alt="logo" />
+                Haven
+            </div>
+            <div className="side-1">
+                <img src={bg} alt="background" />
             </div>
         </div>
     )
 }
 
-export default LoginComp
+export default RegisterComp

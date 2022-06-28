@@ -1,11 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,200&family=Sora:wght@700&display=swap');
 
-/* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Sora', sans-serif;
-} */
+.countryList {
+    height: 200px;
+    overflow: scroll;
+    width: fit-content;
+    display: none;
+}
+
+.countryList li {
+    list-style-type: none;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #6B7280;
+    margin-left: -1rem;
+}
+
+.mainCountry {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #6B7280 !important;
+    height: 60px;
+    width: 80px;
+    margin-bottom: -8%;
+}
+
+.phoneNumDiv {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    border: 1px solid #b7bac0;
+    border-radius: 8px;
+    padding-left: 1rem;
+    width: 95%;
+}
 
 .myContainer {
     display: flex;
@@ -21,7 +53,7 @@ body {
 
 .side-1 {
     width: 50%;
-    height: 100%;
+    min-height: 100%;
 }
 
 .side-1 img {
@@ -31,6 +63,18 @@ body {
 
 .side-2 {
     padding-top: 5rem;
+    width: 50%;
+}
+
+.myName {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 84%;
+}
+
+.myName input {
+    width: 48%;
 }
 
 
@@ -64,6 +108,12 @@ label {
     color: #374151;
 }
 
+.passwordEye {
+    position: absolute;
+    left: 40%;
+    top: 79%;
+}
+
 input {
     border: 1px solid #b7bac0;
     border-radius: 8px;
@@ -73,6 +123,7 @@ input {
     font-weight: 400;
     font-size: 14px;
     color: #6B7280;
+    outline: none;
 }
 
 button {
@@ -90,13 +141,7 @@ button {
 }
 
 .label {
-    margin: 4em 0;
-}
-
-.label img {
-    position: absolute;
-    right: 8%;
-    top: 63.2%;
+    margin: 1em 0;
 }
 
 .signup {
@@ -110,17 +155,7 @@ button {
 }
 
 .logo {
-    position: absolute;
-    left: 2%;
-    top: 5%;
-    font-family: 'Sora';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 18px;
-    color: #FFFFFF;
-    display: flex;
-    align-items: baseline;
+    display: none;
 }
 
 .signup a {
@@ -132,7 +167,7 @@ button {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 3rem;
+    margin-top: 1rem;
 }
 
 .opt p {
@@ -145,7 +180,7 @@ button {
 }
 
 .google-opt {
-    margin-top: 3rem;
+    margin-top: 1rem;
     font-size: 16px;
     padding-top: 6px;
     padding-bottom: 6px;
@@ -184,13 +219,31 @@ button {
     line-height: 18px;
 }
 
+.showList {
+    display: block;
+}
+
 @media screen and (max-width:640px) {
     .side-1 {
         display: none;
     }
 
+    .myName {
+        display: none;
+    }
+
     .logo {
+        position: absolute;
         left: 5%;
+        top: 2%;
+        font-family: 'Sora';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 18px;
+        color: #FFFFFF;
+        display: flex;
+        align-items: baseline;
     }
 
     .label {
@@ -232,10 +285,10 @@ button {
         color: #FFFFFF;
     }
 
-    .label img {
+    .passwordEye {
         position: absolute;
         right: 10%;
-        top: 88.2%;
+        top: 540px;
     }
 
     .logo {
@@ -247,9 +300,13 @@ button {
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width:640px) {
     .side-1 {
         display: block;
+    }
+
+    .fullName {
+        display: none;
     }
 
     .side-2 {
