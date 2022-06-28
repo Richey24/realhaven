@@ -1,10 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,200&family=Sora:wght@700&display=swap');
 
+.myContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    position: absolute;
+    z-index: 2;
+}
+
+body {
+    scrollbar-width: none;
+}
+
 .countryList {
     height: 200px;
     overflow: scroll;
     width: fit-content;
     display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: #2E7DD7;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    margin-left: 10px;
+    padding-right: 10px;
 }
 
 .countryList li {
@@ -13,9 +34,16 @@
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    color: #6B7280;
-    margin-left: -1rem;
+    color: white;
+    cursor: pointer;
+    margin-left: -1.4rem;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+
 
 .mainCountry {
     font-family: 'Sora';
@@ -27,6 +55,7 @@
     height: 60px;
     width: 80px;
     margin-bottom: -8%;
+    cursor: pointer;
 }
 
 .phoneNumDiv {
@@ -36,15 +65,7 @@
     border: 1px solid #b7bac0;
     border-radius: 8px;
     padding-left: 1rem;
-    width: 95%;
-}
-
-.myContainer {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-    margin: 0;
+    width: 83%;
 }
 
 body {
@@ -70,7 +91,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 84%;
+    width: 83%;
 }
 
 .myName input {
@@ -228,6 +249,10 @@ button {
         display: none;
     }
 
+    .phoneNumDiv {
+        width: 95%;
+    }
+
     .myName {
         display: none;
     }
@@ -287,8 +312,8 @@ button {
 
     .passwordEye {
         position: absolute;
-        right: 10%;
-        top: 540px;
+        left: 84%;
+        top: 542px;
     }
 
     .logo {

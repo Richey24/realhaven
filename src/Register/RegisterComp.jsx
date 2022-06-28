@@ -15,6 +15,7 @@ const RegisterComp = () => {
     const [password, setPassword] = useState("")
     const [passError, setPassError] = useState(true)
     const [emailError, setEmailError] = useState(true)
+    const [code, setCode] = useState(countryTelData.allCountries[80].dialCode)
 
     const validatePassword = (event) => {
         setPassword(event.target.value)
@@ -64,6 +65,12 @@ const RegisterComp = () => {
         myList.classList.toggle("showList")
     }
 
+    const getCode = (codeNum) => {
+        setCode(codeNum)
+        const myList = document.getElementById("countryList")
+        myList.classList.toggle("showList")
+    }
+
     return (
         <div className="myContainer">
             <div className='side-2'>
@@ -88,13 +95,13 @@ const RegisterComp = () => {
                         <label htmlFor="firstName">Phone Number</label>
                         <br />
                         <div className='phoneNumDiv'>
-                            <p onClick={showList} className='mainCountry'>+{countryTelData.allCountries[160].dialCode} <img src={down} alt="down" /></p>
+                            <p onClick={showList} className='mainCountry'>+{code} <img src={down} alt="down" /></p>
                             <input style={{ border: 'none' }} type="tel" placeholder="phone number" id="phoneNumber" />
                         </div>
                         <ul id='countryList' className='countryList'>
                             {
-                                countryTelData.allCountries.map((code) => (
-                                    <li>+{code.dialCode}</li>
+                                countryTelData.allCountries.sort((a, b) => parseInt(a.dialCode) - parseInt(b.dialCode)).map((code) => (
+                                    <li onClick={() => getCode(code.dialCode)}>+{code.dialCode}</li>
                                 ))
                             }
                         </ul>
