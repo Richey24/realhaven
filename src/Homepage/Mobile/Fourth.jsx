@@ -32,7 +32,7 @@ const Fourth = () => {
                     ))
                 }
             </div>
-            <div className='navigateButton'>
+            <div style={{ paddingBottom: '6rem' }} className='navigateButton'>
                 <p>See all <img src={arrow} alt="" /></p>
                 <div>
                     <img className='leftArrow' src={arrow} alt="" />

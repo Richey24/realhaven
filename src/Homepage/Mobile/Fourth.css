@@ -36,10 +36,12 @@
     border-radius: 12px;
     padding-top: 20px;
     flex-shrink: 0;
+    padding-bottom: 2rem;
 }
 
 .insideMainDiv img {
     width: 90%;
+    height: 168.75px;
 }
 
 .insideMainDiv h4 {

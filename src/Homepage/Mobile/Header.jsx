@@ -141,7 +141,7 @@ const Header = () => {
                 </div>
             </div>
             <Offcanvas className="topCanvas" show={showTop} onHide={handleTopClose} placement="top">
-                <Offcanvas.Header style={{ height: '12%', margin: '0', paddingBottom: '0' }} closeButton>
+                <Offcanvas.Header style={{ height: '64px', margin: '0', paddingBottom: '0' }} closeButton>
                     <Offcanvas.Title><p className='fixedTopPara'><img src={logo} alt="" />Haven</p></Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body style={{ padding: '0' }}>
