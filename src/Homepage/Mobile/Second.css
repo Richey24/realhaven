@@ -1,0 +1,68 @@
+.secondMain {
+    width: 100%;
+    height: 100%;
+    padding-top: 3rem;
+    background-color: #EAF2FB;
+    padding-bottom: 50px;
+}
+
+.whatWeDo {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    color: #374151;
+    margin-bottom: 50px;
+}
+
+.buyProps {
+    background: #F9FAFB;
+    border: 1px solid #2E7DD7;
+    border-radius: 12px;
+    width: 90%;
+    padding-top: 10px;
+    text-align: left;
+    padding-left: 12px;
+    padding-bottom: 20px;
+    margin-left: 5%;
+    margin-top: 30px;
+}
+
+.buyProps img {
+    width: 95%;
+}
+
+.buyProps h4 {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    color: #374151;
+    margin-top: 1rem;
+}
+
+.buyProps p {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #6B7280;
+    width: 95%;
+}
+
+.buyProps span {
+    color: #2E7DD7;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.buyProps span img {
+    width: 20px;
+    margin-left: 10px;
+}

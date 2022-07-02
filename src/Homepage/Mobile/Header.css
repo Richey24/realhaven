@@ -11,6 +11,7 @@
     height: 14%;
     left: 5%;
     top: 2%;
+    z-index: 2;
     background: #FFFFFF;
     border: 1px solid #2E7DD7;
     box-shadow: 0px 32px 64px rgba(17, 17, 17, 0.06);
@@ -329,6 +330,7 @@
     font-size: 12px;
     color: #4B5563;
     font-weight: 400;
+    display: none;
 }
 
 .propertyList2 {
@@ -338,6 +340,11 @@
     font-size: 12px;
     color: #4B5563;
     font-weight: 400;
+    display: none;
+}
+
+.propertyList2 label {
+    margin-top: 0.5rem;
 }
 
 .propertyList li {
@@ -354,4 +361,28 @@
 
 ::-webkit-scrollbar {
     display: none;
+}
+
+.showDrop {
+    display: block;
+}
+
+.listOfProp {
+    font-size: 10px;
+    font-weight: normal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    flex-wrap: wrap;
+    margin-right: 1.5rem;
+}
+
+.listOfProp li {
+    list-style-type: none;
+    flex-shrink: 0;
+    background-color: #2E7DD7;
+    border-radius: 10px;
+    padding: 0px 5px;
+    color: white;
 }

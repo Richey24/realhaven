@@ -33,6 +33,10 @@ const Header = () => {
     const [showRight, setShowRight] = useState(false)
     const [search, setSearch] = useState("")
     const [value2, setValue2] = useState([5, 37]);
+    const [property, setProperty] = useState([])
+    const [mode, setMode] = useState("Rent")
+    const [curr, setCurr] = useState("Nigerian Naira (₦)")
+    const [loc, setLoc] = useState("Lagos")
 
     const handleTopClose = () => {
         setShowTop(false)
@@ -72,6 +76,34 @@ const Header = () => {
         }
     };
 
+    const showMode = (id) => {
+        document.getElementById(id).classList.toggle("showDrop")
+    }
+
+    const getProperty = (value) => {
+        if (property.includes(value)) {
+            let newProp = property.filter((val) => val !== value)
+            setProperty(newProp)
+        }
+        else {
+            setProperty([...property, value])
+        }
+    }
+
+    const getCurr = (value) => {
+        setCurr(value)
+        showMode('currency')
+    }
+
+    const getLoc = (value) => {
+        setLoc(value)
+        showMode("location")
+    }
+
+    const getMode = (value) => {
+        setMode(value)
+        showMode("mode")
+    }
 
     return (
         <div>
@@ -136,37 +168,66 @@ const Header = () => {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <p className='needHelp'>What do you need help with?</p>
-                    <div className='myProperty'>
-                        <p>Property</p>
-                        <span>clear</span>
-                    </div>
-                    <div className="housing">
-                        <span>Duplex</span>
-                        <img src={down} alt="" />
-                    </div>
-                    <ul className='propertyList2'>
-                        <li><input type="checkbox" />Apartments</li>
-                        <li><input type="checkbox" />Detached Bungalow</li>
-                        <li><input type="checkbox" />Office Space</li>
-                        <li><input type="checkbox" />Penthouse</li>
-                        <li><input type="checkbox" />Shop</li>
-                    </ul>
+                    <form>
+                        <div className='myProperty'>
+                            <p>Property</p>
+                            <label htmlFor='myReset' onClick={() => setProperty([])}>clear</label>
+                            <input type="reset" id='myReset' hidden />
+                        </div>
+                        <ul className='listOfProp'>
+                            {
+                                property.map((pro) => (
+                                    <li>{pro}</li>
+                                ))
+                            }
+                        </ul>
+                        <div style={{ paddingTop: '10px', paddingBottom: '10px' }} onClick={() => showMode('property')} className="housing">
+                            <span>Duplex</span>
+                            <img src={down} alt="" />
+                        </div>
+                        <ul id='property' className='propertyList2'>
+                            <label htmlFor='duplex'><input onClick={() => getProperty('Duplex')} type="checkbox" id='duplex' value='Duplex' />Duplex</label>
+                            <br />
+                            <label htmlFor='apartment'><input onClick={() => getProperty('Apartment')} type="checkbox" id='apartment' value='Apartment' />Apartments</label>
+                            <br />
+                            <label htmlFor='bungalow'><input onClick={() => getProperty('Detached Bungalow')} type="checkbox" id='bungalow' value='Detached Bungalow' />Detached Bungalow</label>
+                            <br />
+                            <label htmlFor='office'><input onClick={() => getProperty('Office Space')} type="checkbox" id='office' value='Office Space' />Office Space</label>
+                            <br />
+                            <label htmlFor='penthouse'><input onClick={() => getProperty('Penthouse')} type="checkbox" id='penthouse' value='Penthouse' />Penthouse</label>
+                            <br />
+                            <label htmlFor='shop'><input onClick={() => getProperty('Shop')} type="checkbox" id='shop' value='Shop' />Shop</label>
+                        </ul>
+                    </form>
                     <div className='myProperty'>
                         <p>Type</p>
-                        <span>clear</span>
+                        <span onClick={() => setMode("Rent")}>clear</span>
                     </div>
-                    <div className="housing">
-                        <span>Rent</span>
+                    <div onClick={() => showMode("mode")} className="housing">
+                        <span>{mode}</span>
                         <img src={down} alt="" />
                     </div>
+                    <ul id='mode' style={{ height: '70px' }} className='propertyList'>
+                        <li onClick={() => getMode("Rent")}>Rent</li>
+                        <li onClick={() => getMode("Buy")}>Buy</li>
+                        <li onClick={() => getMode("Sell")}>Sell</li>
+                    </ul>
                     <div className='myProperty'>
                         <p>Price Range</p>
-                        <span>clear</span>
+                        <span onClick={() => setCurr('Nigerian Naira (₦)')}>clear</span>
                     </div>
-                    <div className="housing">
-                        <span>Nigerian Naira (₦)</span>
+                    <div onClick={() => showMode("currency")} className="housing">
+                        <span>{curr}</span>
                         <img src={down} alt="" />
                     </div>
+                    <ul id='currency' style={{ height: '70px' }} className='propertyList'>
+                        <li onClick={() => getCurr("Nigerian Naira (₦)")}>Nigerian Naira (₦)</li>
+                        <li onClick={() => getCurr("US Dollar ($)")}>US Dollar ($)</li>
+                        <li onClick={() => getCurr("Canadian Dollar ($)")}>Canadian Dollar ($)</li>
+                        <li onClick={() => getCurr("Australian Dollar ($)")}>Australian Dollar ($)</li>
+                        <li onClick={() => getCurr("Euro (€)")}>Euro (€)</li>
+                        <li onClick={() => getCurr("Pound (£)")}>Pound (£)</li>
+                    </ul>
                     <div className="priceRange">
                         <p>{value2[0] === 0 ? "₦100K" : `₦${value2[0]}M`}</p>
                         <p>₦{value2[1]}M</p>
@@ -186,16 +247,16 @@ const Header = () => {
                     />
                     <div className='myProperty'>
                         <p>Location</p>
-                        <span>clear</span>
+                        <span onClick={() => setLoc("Lagos")}>clear</span>
                     </div>
-                    <div className="housing">
-                        <span>Lagos</span>
+                    <div onClick={() => showMode("location")} className="housing">
+                        <span>{loc}</span>
                         <img src={down} alt="" />
                     </div>
-                    <ul className='propertyList'>
+                    <ul id='location' className='propertyList'>
                         {
                             NaijaStates.states().map((state) => (
-                                <li>{state}</li>
+                                <li onClick={() => getLoc(state)}>{state}</li>
                             ))
                         }
                     </ul>
