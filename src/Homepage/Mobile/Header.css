@@ -47,7 +47,8 @@
 }
 
 .mobileHeading p {
-    width: 70%;
+    width: 200px;
+    margin-left: 2rem;
 }
 
 .mobileHeading p span {
@@ -372,7 +373,7 @@
     font-size: 10px;
     font-weight: normal;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     width: 90%;
     flex-wrap: wrap;
