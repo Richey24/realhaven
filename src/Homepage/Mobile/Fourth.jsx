@@ -14,13 +14,22 @@ import arrow from '../../img/arrowgrey.svg'
 const images = [one, two, three, four, five, six, seven, eight, nine]
 
 const Fourth = () => {
+    const increment = () => {
+        const img = document.getElementById("fourthTrend")
+        img.scrollLeft += 310
+    }
+
+    const decrement = () => {
+        const img = document.getElementById("fourthTrend")
+        img.scrollLeft -= 310
+    }
     return (
         <div>
             <div className='fourthMain'>
                 <h4 className='recommend'>Recommended</h4>
                 <p className='ownLux'>Own a luxury home anywhere in Nigeria at unbelievable rates</p>
             </div>
-            <div className='insideMain'>
+            <div id='fourthTrend' className='insideMain'>
                 {
                     images.map((image) => (
                         <div className='insideMainDiv'>
@@ -35,8 +44,8 @@ const Fourth = () => {
             <div style={{ paddingBottom: '6rem' }} className='navigateButton'>
                 <p>See all <img src={arrow} alt="" /></p>
                 <div>
-                    <img className='leftArrow' src={arrow} alt="" />
-                    <img src={arrow} alt="" />
+                    <img onClick={decrement} className='leftArrow' src={arrow} alt="" />
+                    <img onClick={increment} src={arrow} alt="" />
                 </div>
             </div>
         </div>

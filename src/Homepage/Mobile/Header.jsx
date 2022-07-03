@@ -105,6 +105,10 @@ const Header = () => {
         showMode("mode")
     }
 
+    const getMode1 = (value) => {
+        setMode(value)
+    }
+
     return (
         <div>
             <div className="myMobileHero">
@@ -118,9 +122,9 @@ const Header = () => {
                 </div>
                 <p className='headDesc'>Haven is Nigeria's leading online real estate platform which eases the stress of finding properties online </p>
                 <div className='rentSelect'>
-                    <p className='activeSelect'>Buy</p>
-                    <p>Sell</p>
-                    <p>Rent</p>
+                    <p onClick={() => getMode1("Buy")} className={mode === "Buy" ? 'activeSelect' : "notActive1"}>Buy</p>
+                    <p onClick={() => getMode1("Sell")} className={mode === "Sell" ? 'activeSelectMid' : "notActive"}>Sell</p>
+                    <p onClick={() => getMode1("Rent")} className={mode === "Rent" ? 'activeSelectLast' : "notActive"}>Rent</p>
                 </div>
                 <div className='filterToggle'>
                     <img onClick={handleRightShow} src={filterToggle} alt="" />
