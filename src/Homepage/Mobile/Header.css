@@ -393,6 +393,7 @@
     padding: 15px 15px;
     border-radius: 8px 0px 0px 0px;
     margin-bottom: -1px;
+    margin-left: -1px;
     color: white;
 }
 
@@ -401,6 +402,7 @@
     padding: 15px 15px;
     border-radius: 0px 8px 0px 0px;
     margin-bottom: -1px;
+    margin-right: -1px;
     color: white;
 }
 

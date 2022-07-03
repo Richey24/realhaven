@@ -16,12 +16,12 @@ const images = [one, two, three, four, five, six, seven, eight, nine]
 const Fourth = () => {
     const increment = () => {
         const img = document.getElementById("fourthTrend")
-        img.scrollLeft += 310
+        img.scrollLeft += 320
     }
 
     const decrement = () => {
         const img = document.getElementById("fourthTrend")
-        img.scrollLeft -= 310
+        img.scrollLeft -= 320
     }
     return (
         <div>

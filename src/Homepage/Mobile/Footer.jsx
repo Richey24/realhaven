@@ -28,7 +28,9 @@ const Footer = () => {
                 <p className='naviP'>Privacy policy</p>
                 <p className='naviP'>Cookie information</p>
                 <p className='naviP'>Socials</p>
-                <p className='logo2'><img src={logo} alt="" />Haven</p>
+                <center>
+                    <p className='logo2'><img src={logo} alt="" />Haven</p>
+                </center>
                 <p className='copyRight'>Copyright © 2022 FullStack_Dev Rejoice . All rights reserved.</p>
                 <div className='footerSocial'>
                     <img src={twitter} alt="" />
