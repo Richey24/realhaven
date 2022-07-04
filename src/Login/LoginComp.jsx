@@ -4,6 +4,7 @@ import bg from '../img/Frame 1.png'
 import eye from '../img/Show.svg'
 import google from '../img/flat-color-icons_google.svg'
 import './Login.css'
+import { useNavigate } from 'react-router-dom'
 
 const LoginComp = () => {
 
@@ -11,6 +12,7 @@ const LoginComp = () => {
     const [password, setPassword] = useState("")
     const [passError, setPassError] = useState(true)
     const [emailError, setEmailError] = useState(true)
+    const navigate = useNavigate()
 
     const validatePassword = (event) => {
         setPassword(event.target.value)
@@ -60,7 +62,7 @@ const LoginComp = () => {
             <div className='side-1'>
                 <img src={bg} alt="bacKground" />
             </div>
-            <div className="logo">
+            <div onClick={() => navigate('/')} className="logo">
                 <img src={logo} alt="logo" />
                 Haven
             </div>

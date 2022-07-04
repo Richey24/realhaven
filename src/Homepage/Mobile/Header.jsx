@@ -20,6 +20,7 @@ import closeIcon from '../../img/Call-Missed.svg'
 import down from '../../img/Icon.svg'
 import { Slider } from '@mui/material'
 import NaijaStates from 'naija-state-local-government';
+import { useNavigate } from 'react-router-dom'
 
 
 function valuetext(value) {
@@ -37,6 +38,7 @@ const Header = () => {
     const [mode, setMode] = useState("Rent")
     const [curr, setCurr] = useState("Nigerian Naira (₦)")
     const [loc, setLoc] = useState("Lagos")
+    const navigate = useNavigate()
 
     const handleTopClose = () => {
         setShowTop(false)
@@ -159,8 +161,8 @@ const Header = () => {
                         <li>Short let</li>
                     </ul>
                     <ul className='myAuth'>
-                        <li>Sign up</li>
-                        <li>Sign in</li>
+                        <li onClick={() => navigate('/register')}>Sign up</li>
+                        <li onClick={() => navigate('/login')}>Sign in</li>
                     </ul>
                     <p className='postProps'>Post a property</p>
                 </Offcanvas.Body>

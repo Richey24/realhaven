@@ -6,6 +6,7 @@ import google from '../img/flat-color-icons_google.svg'
 import "./Register.css"
 import countryTelData from 'country-telephone-data'
 import down from '../img/Stroke-1.svg'
+import { useNavigate } from 'react-router-dom'
 
 console.log(countryTelData.allCountries[160]);
 
@@ -16,6 +17,7 @@ const RegisterComp = () => {
     const [passError, setPassError] = useState(true)
     const [emailError, setEmailError] = useState(true)
     const [code, setCode] = useState(countryTelData.allCountries[80].dialCode)
+    const navigate = useNavigate()
 
     const validatePassword = (event) => {
         setPassword(event.target.value)
@@ -131,7 +133,7 @@ const RegisterComp = () => {
 
                 </form>
             </div>
-            <div className="logo">
+            <div onClick={() => navigate('/')} className="logo">
                 <img src={logo} alt="logo" />
                 Haven
             </div>
