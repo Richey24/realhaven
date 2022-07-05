@@ -31,8 +31,8 @@ const Fourth = () => {
             </div>
             <div id='fourthTrend' className='insideMain'>
                 {
-                    images.map((image) => (
-                        <div className='insideMainDiv'>
+                    images.map((image, i) => (
+                        <div key={i} className='insideMainDiv'>
                             <img src={image} alt="" />
                             <h4>5 Bedroom Duplex</h4>
                             <p>Orchid Lagos</p>

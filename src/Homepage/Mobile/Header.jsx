@@ -182,8 +182,8 @@ const Header = () => {
                         </div>
                         <ul className='listOfProp'>
                             {
-                                property.map((pro) => (
-                                    <li>{pro}</li>
+                                property.map((pro, i) => (
+                                    <li key={i}>{pro}</li>
                                 ))
                             }
                         </ul>
@@ -261,8 +261,8 @@ const Header = () => {
                     </div>
                     <ul id='location' className='propertyList'>
                         {
-                            NaijaStates.states().map((state) => (
-                                <li onClick={() => getLoc(state)}>{state}</li>
+                            NaijaStates.states().map((state, i) => (
+                                <li key={i} onClick={() => getLoc(state)}>{state}</li>
                             ))
                         }
                     </ul>

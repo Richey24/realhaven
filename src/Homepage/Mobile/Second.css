@@ -16,16 +16,24 @@
     margin-bottom: 50px;
 }
 
+.propsCon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 50px;
+}
+
 .buyProps {
     background: #F9FAFB;
     border: 1px solid #2E7DD7;
     border-radius: 12px;
-    width: 90%;
+    width: 348px;
+    height: 477px;
     padding-top: 10px;
     text-align: left;
     padding-left: 12px;
     padding-bottom: 20px;
-    margin-left: 5%;
     margin-top: 30px;
 }
 

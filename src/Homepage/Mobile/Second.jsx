@@ -12,24 +12,28 @@ const Second = () => {
         <div>
             <div className='secondMain'>
                 <h4 className='whatWeDo'>What we do</h4>
-                <div className='buyProps'>
-                    <img src={first} alt="" />
-                    <h4>Buy Properties</h4>
-                    <p>Find real estate properties for sale with Haven. Browse the website’s database to choose a property that best fit your taste</p>
-                    <span>Discover properties <img src={blueArrow} alt="" /></span>
-                </div>
-                <div className='buyProps'>
-                    <img src={second} alt="" />
-                    <h4>Sell Properties</h4>
-                    <p>Place your real estate properties for sale here and we will connect with thousands of customers looking for properties</p>
-                    <span>Sell properties now<img src={blueArrow} alt="" /></span>
-                </div>
-                <div style={{ borderColor: "#BF5E65" }} className='buyProps'>
-                    <img src={third} alt="" />
-                    <h4>Become an agent</h4>
-                    <p>Place your real estate properties for sale here and we will connect with thousands of customers looking for properties</p>
-                    <span style={{ color: '#BF5E65' }}>Join us now<img src={redArrow} alt="" /></span>
-                </div>
+                <center>
+                    <div className='propsCon'>
+                        <div className='buyProps'>
+                            <img src={first} alt="" />
+                            <h4>Buy Properties</h4>
+                            <p>Find real estate properties for sale with Haven. Browse the website’s database to choose a property that best fit your taste</p>
+                            <span>Discover properties <img src={blueArrow} alt="" /></span>
+                        </div>
+                        <div className='buyProps'>
+                            <img src={second} alt="" />
+                            <h4>Sell Properties</h4>
+                            <p>Put your properties in front of millions of Nigerians and get the best deal in days not months.</p>
+                            <span>Sell properties now<img src={blueArrow} alt="" /></span>
+                        </div>
+                        <div style={{ borderColor: "#BF5E65" }} className='buyProps'>
+                            <img src={third} alt="" />
+                            <h4>Become an agent</h4>
+                            <p>Create an account and join us to become an agent. You get your personal website and everything all set up for you to become a real estate agent.</p>
+                            <span style={{ color: '#BF5E65' }}>Join us now<img src={redArrow} alt="" /></span>
+                        </div>
+                    </div>
+                </center>
             </div>
         </div>
     )
