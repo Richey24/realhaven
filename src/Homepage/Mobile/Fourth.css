@@ -44,6 +44,37 @@
     height: 168.75px;
 }
 
+@media only screen and (max-width: 768px) {
+    .insideMain {
+        padding-left: 30px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .insideMainDiv {
+        width: 388px;
+    }
+
+    .recommend {
+        font-size: 32px;
+        margin-left: 7%;
+    }
+
+    .ownLux {
+        font-size: 24px;
+        margin-bottom: 3rem;
+        margin-left: 7%;
+    }
+
+    .fourthMain {
+        border: none;
+    }
+
+    .insideMain {
+        padding-left: 90px;
+    }
+}
+
 .insideMainDiv h4 {
     font-family: 'Sora';
     font-style: normal;
@@ -87,7 +118,6 @@
     overflow: scroll;
     scrollbar-width: none;
     gap: 20px;
-    padding-left: 30px;
 }
 
 ::-webkit-scrollbar {

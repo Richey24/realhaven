@@ -9,9 +9,13 @@ const Eight = () => {
             <div className='eightMain'>
                 <h4 className='browseProp'>Browse Properties on the go!</h4>
                 <p className='downloadApp'>Download our mobile app and get the best experience when searching for your next properties.</p>
-                <img src={iPhone} alt="" />
-                <img src={android} alt="" />
-                <img style={{ width: '80%' }} src={woman} alt="" />
+                <div className='womanDiv'>
+                    <div>
+                        <img src={iPhone} alt="" />
+                        <img src={android} alt="" />
+                    </div>
+                    <img className='woman' src={woman} alt="" />
+                </div>
             </div>
         </div>
     )

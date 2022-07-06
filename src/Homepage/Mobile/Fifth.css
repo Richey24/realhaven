@@ -34,6 +34,44 @@
     height: 202.5px;
 }
 
+@media only screen and (min-width: 768px) {
+    .fifthMain img {
+        height: 540px;
+        width: 800px;
+        margin-top: 2rem;
+    }
+
+    .weRank {
+        font-size: 32px;
+        margin-top: 1rem;
+    }
+
+    .bestInterest {
+        font-size: 24px;
+    }
+
+    .exploreMore {
+        width: 240px;
+        height: 80px;
+    }
+
+    .exploreMore img {
+        width: 32px;
+        padding-bottom: 2rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .exploreMore {
+        width: 224px;
+        height: 64px;
+    }
+
+    .exploreMore img {
+        width: 25px;
+    }
+}
+
 .exploreMore {
     display: flex;
     flex-direction: row;
@@ -41,8 +79,6 @@
     align-items: center;
     padding: 16px 24px;
     gap: 10px;
-    width: 224px;
-    height: 64px;
     background: #2E7DD7;
     border: 1px solid #2E7DD7;
     border-radius: 12px;
@@ -52,10 +88,5 @@
     font-size: 20px;
     line-height: 25px;
     color: #FFFFFF;
-    margin-left: 20%;
     margin-top: 4rem;
-}
-
-.exploreMore img {
-    width: 25px;
 }

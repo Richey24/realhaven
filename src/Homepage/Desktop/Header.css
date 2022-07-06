@@ -49,6 +49,7 @@
     position: fixed;
     top: 15px;
     left: 5%;
+    z-index: 2;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -184,6 +185,7 @@
     position: absolute;
     top: 70%;
     left: 8%;
+    z-index: 1;
 }
 
 .activeSelectDesk {

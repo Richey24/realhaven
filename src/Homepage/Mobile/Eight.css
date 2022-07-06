@@ -29,3 +29,39 @@
 .eightMain img {
     margin-bottom: 2rem;
 }
+
+@media only screen and (max-width: 768px) {
+    .woman {
+        width: 375px;
+        height: 392.05px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+    .browseProp {
+        font-size: 40px;
+        margin-bottom: 16px;
+    }
+
+    .downloadApp {
+        font-size: 20px;
+    }
+
+    .woman {
+        width: 650px;
+        height: 684.09px;
+    }
+
+    .womanDiv {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-left: 18rem;
+    }
+
+    .womanDiv div {
+        display: flex;
+        flex-direction: column;
+    }
+}

@@ -35,7 +35,9 @@ const Fifth = () => {
                         />
                     </Carousel.Item>
                 </Carousel>
-                <p className='exploreMore'>Explore more <img src={arrow} alt="" /></p>
+                <center>
+                    <p className='exploreMore'>Explore more <img src={arrow} alt="" /></p>
+                </center>
             </div>
         </div>
     )
