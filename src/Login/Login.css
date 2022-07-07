@@ -109,7 +109,7 @@ button {
     color: #374151;
 }
 
-.logo {
+.reLogo {
     position: absolute;
     left: 2%;
     top: 5%;
@@ -123,9 +123,9 @@ button {
     align-items: baseline;
 }
 
-.signup a {
+.signup span {
     color: blue;
-    text-decoration: none;
+    cursor: pointer;
 }
 
 .opt {
@@ -184,12 +184,22 @@ button {
     line-height: 18px;
 }
 
+.eyeDivLog {
+    position: relative;
+}
+
 @media screen and (max-width:640px) {
+    .showPassLog {
+        position: absolute;
+        left: 85%;
+        margin-top: -0.5rem;
+    }
+
     .side-1 {
         display: none;
     }
 
-    .logo {
+    .reLogo {
         left: 5%;
     }
 
@@ -238,11 +248,11 @@ button {
         top: 52%;
     }
 
-    .logo {
+    .reLogo {
         color: #2E7DD7;
     }
 
-    .logo img {
+    .reLogo img {
         filter: invert(47%) sepia(47%) saturate(4635%) hue-rotate(195deg) brightness(91%) contrast(83%);
     }
 }
@@ -256,5 +266,12 @@ button {
         box-sizing: border-box;
         justify-content: center;
         margin: 0 5em;
+    }
+
+    .showPassLog {
+        position: absolute;
+        left: 92%;
+        margin-top: -0.8rem;
+        cursor: pointer;
     }
 }

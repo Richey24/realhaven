@@ -10,10 +10,6 @@
     z-index: 2;
 }
 
-body {
-    scrollbar-width: none;
-}
-
 .countryList {
     height: 200px;
     overflow: scroll;
@@ -25,6 +21,7 @@ body {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     margin-left: 10px;
+    scrollbar-width: none;
     padding-right: 10px;
 }
 
@@ -39,7 +36,7 @@ body {
     margin-left: -1.4rem;
 }
 
-::-webkit-scrollbar {
+.countryList::-webkit-scrollbar {
     display: none;
 }
 
@@ -129,12 +126,6 @@ label {
     color: #374151;
 }
 
-.passwordEye {
-    position: absolute;
-    left: 40%;
-    top: 79%;
-}
-
 input {
     border: 1px solid #b7bac0;
     border-radius: 8px;
@@ -175,13 +166,9 @@ button {
     color: #374151;
 }
 
-.logo {
-    display: none;
-}
-
-.signup a {
+.signup span {
     color: blue;
-    text-decoration: none;
+    cursor: pointer;
 }
 
 .opt {
@@ -244,7 +231,18 @@ button {
     display: block;
 }
 
-@media screen and (max-width:640px) {
+.eyeDiv {
+    position: relative;
+}
+
+
+@media screen and (max-width:768px) {
+    .showPass {
+        position: absolute;
+        top: 35%;
+        right: 10%;
+    }
+
     .side-1 {
         display: none;
     }
@@ -257,7 +255,7 @@ button {
         display: none;
     }
 
-    .logo {
+    .reLogo {
         position: absolute;
         left: 5%;
         top: 2%;
@@ -266,14 +264,12 @@ button {
         font-weight: 700;
         font-size: 18px;
         line-height: 18px;
-        color: #FFFFFF;
+        color: #2E7DD7;
         display: flex;
         align-items: baseline;
     }
 
-    .label {
-        margin: 2em 0;
-    }
+
 
     .side-2 {
         width: 100%;
@@ -310,22 +306,19 @@ button {
         color: #FFFFFF;
     }
 
-    .passwordEye {
-        position: absolute;
-        left: 84%;
-        top: 542px;
-    }
-
-    .logo {
-        color: #2E7DD7;
-    }
-
-    .logo img {
+    .reLogo img {
         filter: invert(47%) sepia(47%) saturate(4635%) hue-rotate(195deg) brightness(91%) contrast(83%);
     }
 }
 
-@media screen and (min-width:640px) {
+@media screen and (min-width:768px) {
+    .showPass {
+        position: absolute;
+        top: 35%;
+        right: 20%;
+        cursor: pointer;
+    }
+
     .side-1 {
         display: block;
     }
@@ -338,5 +331,9 @@ button {
         box-sizing: border-box;
         justify-content: center;
         margin: 0 5em;
+    }
+
+    .reLogo {
+        display: none;
     }
 }

@@ -40,8 +40,8 @@ const Footer = () => {
                 </div>
                 <center>
                     <p className='logo2'><img src={logo} alt="" />Haven</p>
+                    <p className='copyRight'>Copyright © 2022 FullStack_Dev Rejoice . All rights reserved.</p>
                 </center>
-                <p className='copyRight'>Copyright © 2022 FullStack_Dev Rejoice . All rights reserved.</p>
                 <div className='footerSocial'>
                     <img src={twitter} alt="" />
                     <img src={facebook} alt="" />

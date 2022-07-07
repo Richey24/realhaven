@@ -359,7 +359,11 @@
 
 }
 
-::-webkit-scrollbar {
+.propertyList2 li::-webkit-scrollbar {
+    display: none;
+}
+
+.propertyList li::-webkit-scrollbar {
     display: none;
 }
 

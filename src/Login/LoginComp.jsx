@@ -57,12 +57,21 @@ const LoginComp = () => {
         }
     }
 
+    const showPass = () => {
+        const password = document.getElementById('password');
+        if (password.type === "password") {
+            password.type = "text"
+        } else {
+            password.type = "password"
+        }
+    }
+
     return (
         <div className="myContainer">
             <div className='side-1'>
                 <img src={bg} alt="bacKground" />
             </div>
-            <div onClick={() => navigate('/')} className="logo">
+            <div onClick={() => navigate('/')} className="reLogo">
                 <img src={logo} alt="logo" />
                 Haven
             </div>
@@ -79,7 +88,10 @@ const LoginComp = () => {
                     <div className="label">
                         <label htmlFor="password">Password</label>
                         <br />
-                        <input id='password' type='password' value={password} onChange={validatePassword} />  <img className='passordEye' src={eye} alt="" />
+                        <div className='eyeDivLog'>
+                            <input id='password' type='password' value={password} onChange={validatePassword} />
+                            <img className='showPassLog' onClick={showPass} src={eye} alt="" />
+                        </div>
                         <p id="passwordError" style={{ visibility: "hidden" }}>Password is required</p>
                     </div>
 
@@ -89,7 +101,7 @@ const LoginComp = () => {
                     </div>
 
                     <div className="signup">
-                        New user?<a href="/">Sign up</a> <br />
+                        New user?<span onClick={() => navigate("/register")}>Sign up</span> <br />
                     </div>
                     <div className="opt">
                         <p>Or</p>

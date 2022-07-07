@@ -14,6 +14,26 @@
     .inFootDiv {
         margin-top: 1.5rem;
     }
+
+    .copyRight {
+        font-family: 'Sora';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 140%;
+        color: #6B7280;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .copyRight {
+        font-family: 'Sora';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 140%;
+        color: #6B7280;
+    }
 }
 
 .logo {
@@ -64,15 +84,6 @@
     align-items: baseline;
     justify-content: space-between;
     width: 114px;
-}
-
-.copyRight {
-    font-family: 'Sora';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 140%;
-    text-align: center;
 }
 
 .footerSocial {

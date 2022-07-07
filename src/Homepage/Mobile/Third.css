@@ -12,7 +12,7 @@
     z-index: 1;
 }
 
-::-webkit-scrollbar {
+.thirdMain::-webkit-scrollbar {
     display: none;
 }
 

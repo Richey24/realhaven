@@ -8,8 +8,6 @@ import countryTelData from 'country-telephone-data'
 import down from '../img/Stroke-1.svg'
 import { useNavigate } from 'react-router-dom'
 
-console.log(countryTelData.allCountries[160]);
-
 const RegisterComp = () => {
 
     const [email, setEmail] = useState("")
@@ -73,6 +71,15 @@ const RegisterComp = () => {
         myList.classList.toggle("showList")
     }
 
+    const showPass = () => {
+        const password = document.getElementById('password');
+        if (password.type === "password") {
+            password.type = "text"
+        } else {
+            password.type = "password"
+        }
+    }
+
     return (
         <div className="myContainer">
             <div className='side-2'>
@@ -112,7 +119,10 @@ const RegisterComp = () => {
                     <div className="label">
                         <label htmlFor="password">Password</label>
                         <br />
-                        <input placeholder='********' id='password' type='password' value={password} onChange={validatePassword} />  <img className='passwordEye' src={eye} alt="" />
+                        <div className='eyeDiv'>
+                            <input placeholder='********' id='password' type='password' value={password} onChange={validatePassword} />
+                            <img className='showPass' onClick={showPass} src={eye} alt="" />
+                        </div>
                         <p id="passwordError" style={{ visibility: "hidden" }}>Password is required</p>
                     </div>
 
@@ -122,7 +132,7 @@ const RegisterComp = () => {
                     </div>
 
                     <div className="signup">
-                        Already have an account?<a href="/">Login</a> <br />
+                        Already have an account?<span onClick={() => navigate("/login")}>Login</span> <br />
                     </div>
                     <div className="opt">
                         <p>Or</p>
@@ -133,7 +143,7 @@ const RegisterComp = () => {
 
                 </form>
             </div>
-            <div onClick={() => navigate('/')} className="logo">
+            <div onClick={() => navigate('/')} className="reLogo">
                 <img src={logo} alt="logo" />
                 Haven
             </div>

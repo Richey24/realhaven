@@ -16,6 +16,7 @@ import amazon from '../../img/ant-design_amazon-circle-filled.svg'
 import ibm from '../../img/cib_ibm.svg'
 import fedex from '../../img/cib_fedex.svg'
 import airbnb from '../../img/cib_airbnb.svg'
+import { useNavigate } from 'react-router-dom';
 
 function valuetext(value) {
     return `${value}°C`;
@@ -28,6 +29,7 @@ const Header = () => {
     const [value2, setValue2] = useState([5, 37]);
     const [loc, setLoc] = useState("Lagos")
     const [curr, setCurr] = useState("Nigerian Naira (₦)")
+    const navigate = useNavigate()
 
     const getMode1 = (value) => {
         setMode(value)
@@ -83,8 +85,8 @@ const Header = () => {
                 </div>
                 <div className='secNavDiv'>
                     <img className='searchImage' src={searchImage} alt="" />
-                    <p className='signUp'>Sign up</p>
-                    <p style={{ color: '#9CA3AF' }} className='signIn'>Sign in</p>
+                    <p style={{ cursor: 'pointer' }} onClick={() => navigate("/register")} className='signUp'>Sign up</p>
+                    <p onClick={() => navigate("/login")} style={{ color: '#9CA3AF', cursor: 'pointer' }} className='signIn'>Sign in</p>
                 </div>
                 <p className='postProp'>Post a property</p>
             </div>
