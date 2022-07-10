@@ -24,7 +24,7 @@ function valuetext(value) {
 
 const minDistance = 10;
 
-const Header = () => {
+const Header = ({ setSearch }) => {
     const [mode, setMode] = useState("Rent")
     const [value2, setValue2] = useState([5, 37]);
     const [loc, setLoc] = useState("Lagos")
@@ -192,7 +192,7 @@ const Header = () => {
                             />
                         </ul>
                     </div>
-                    <p className='deskSearchButton'>Search</p>
+                    <p onClick={() => setSearch(true)} className='deskSearchButton'>Search</p>
                 </div>
             </div>
             <div style={{ marginTop: '-2.4rem' }} className='myBrands' id='myBrands'>

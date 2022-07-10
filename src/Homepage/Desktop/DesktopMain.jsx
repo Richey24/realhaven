@@ -8,14 +8,27 @@ import Footer from './../Mobile/Footer';
 import Sixth from './Sixth';
 import Seventh from './Seventh';
 import Ninth from './Ninth';
+import { useState } from 'react';
+import Result from './Result';
 
 const DesktopMain = () => {
+    const [search, setSearch] = useState(false)
     return (
         <div>
-            <Header />
-            <Second />
-            <Third />
-            <Fourth />
+            <Header setSearch={setSearch} />
+            {
+                search ?
+                    (
+                        <Result />
+                    ) :
+                    (
+                        <>
+                            <Second />
+                            <Third />
+                            <Fourth />
+                        </>
+                    )
+            }
             <Fifth />
             <Eight />
             <Sixth />
