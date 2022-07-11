@@ -46,8 +46,8 @@ const Result = () => {
                     </div>
                 </div>
                 {
-                    images.map((image) => (
-                        <div className="mainResult">
+                    images.map((image, i) => (
+                        <div key={i} className="mainResult">
                             <img src={image} alt="" />
                             <div>
                                 <p className="houseTypeDesk">4 Bedroom flat for rent <span>Rent</span></p>

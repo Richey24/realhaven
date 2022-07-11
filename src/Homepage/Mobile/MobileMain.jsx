@@ -8,14 +8,26 @@ import Second from './Second'
 import Seventh from './Seventh'
 import Sixth from './Sixth'
 import Third from './Third'
+import { useState } from 'react';
+import Result from './Result'
 
 const MobileMain = () => {
+  const [result, setResult] = useState(false)
   return (
     <div>
-      <Header />
-      <Second />
-      <Third />
-      <Fourth />
+      <Header setResult={setResult} />
+      {
+        result ?
+          (<Result />)
+          :
+          (
+            <>
+              <Second />
+              <Third />
+              <Fourth />
+            </>
+          )
+      }
       <Fifth />
       <Sixth />
       <Seventh />

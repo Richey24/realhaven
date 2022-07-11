@@ -29,7 +29,7 @@ function valuetext(value) {
 
 const minDistance = 10;
 
-const Header = () => {
+const Header = ({ setResult }) => {
     const [showTop, setShowTop] = useState(false)
     const [showRight, setShowRight] = useState(false)
     const [search, setSearch] = useState("")
@@ -130,7 +130,7 @@ const Header = () => {
                 </div>
                 <div className='filterToggle'>
                     <img onClick={handleRightShow} src={filterToggle} alt="" />
-                    <p>Search</p>
+                    <p onClick={() => setResult(true)}>Search</p>
                 </div>
                 <img className='headImage' src={frame} alt="" />
                 <div className='myBrands' id='myBrands'>
@@ -266,7 +266,7 @@ const Header = () => {
                             ))
                         }
                     </ul>
-                    <p className='seeResult'>See 45 Results</p>
+                    <p onClick={() => setResult(true)} className='seeResult'>See 45 Results</p>
                 </Offcanvas.Body>
             </Offcanvas>
         </div>
