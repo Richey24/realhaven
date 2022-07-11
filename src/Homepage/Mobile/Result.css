@@ -44,6 +44,8 @@
     align-items: flex-start;
     padding: 16px;
     gap: 24px;
+    margin-left: 5%;
+    margin-right: 5%;
     width: 100%;
     height: auto;
     background: #FFFFFF;
