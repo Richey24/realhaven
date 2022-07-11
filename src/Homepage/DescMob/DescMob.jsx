@@ -45,7 +45,8 @@ const DescMob = () => {
                             <Main />
                             <Similar />
                             <Seventh />
-                            <Footer /></>
+                            <Footer />
+                        </>
                     )
                 }
             </div>

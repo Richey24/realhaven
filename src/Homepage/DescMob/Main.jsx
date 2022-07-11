@@ -20,6 +20,8 @@ const Main = () => {
     const [mainImage, setMainImage] = useState(two)
     const navigate = useNavigate()
 
+    window.scrollTo(0, 0)
+
     const handleTopClose = () => {
         setShowTop(false)
     }
@@ -33,7 +35,7 @@ const Main = () => {
     }
 
     return (
-        <div style={{ paddingBottom: "4rem" }}>
+        <div style={{ paddingBottom: "3rem" }}>
             <div className="descMain">
                 <div className='fixedTop'>
                     <p className='fixedTopPara'><img src={logo} alt="" />Haven</p>

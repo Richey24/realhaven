@@ -42,7 +42,7 @@
     align-items: flex-start;
     padding: 16px;
     gap: 24px;
-    width: 90%;
+    width: 100%;
     height: auto;
     background: #FFFFFF;
     border: 1px solid #E5E7EB;
@@ -59,14 +59,14 @@
 .mobType {
     font-family: 'Sora';
     font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 1px;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 160%;
     color: #374151;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 90%;
+    width: 100%;
     text-transform: uppercase;
 }
 
@@ -93,7 +93,7 @@
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    line-height: 10%;
+    line-height: 160%;
     color: #374151;
 }
 

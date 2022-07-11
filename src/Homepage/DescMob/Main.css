@@ -5,11 +5,12 @@
 }
 
 .descMainImage {
-    width: 90%;
+    width: 100%;
 }
 
 .descImages {
-    padding-left: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
     margin-top: -7rem;
 }
 
@@ -17,8 +18,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 25px;
-    width: 90%;
+    gap: 20px;
+    width: 100%;
     margin-top: 1rem;
 }
 
@@ -27,8 +28,10 @@
 }
 
 .theDesc {
-    padding-left: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
     padding-top: 2rem;
+    text-align: left;
 }
 
 .descFeatures {
@@ -37,6 +40,8 @@
     font-weight: 700;
     font-size: 16px;
     margin-left: 10%;
+    text-align: left;
+    margin-top: 3rem;
 }
 
 .descList {
@@ -47,4 +52,5 @@
     margin-left: 10%;
     line-height: 200%;
     color: #4B5563;
+    text-align: left;
 }
