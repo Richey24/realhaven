@@ -1,0 +1,38 @@
+.descDeskMain {
+    width: 100%;
+    height: 360px;
+    background: #EAF2FB;
+}
+
+.mainImgDeskDesc {
+    width: 800px;
+    height: 640px;
+    border-radius: 24px;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 10%;
+}
+
+.otherImageDesk {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 10%;
+    gap: 30px;
+    margin-top: 32px;
+}
+
+.otherImageDesk img {
+    width: 180px;
+    height: 144px;
+}
+
+.deskDescAbout {
+    width: 800px;
+    margin-left: 10%;
+    margin-top: 64px;
+}
+
+.mainImgDeskDiv {
+    margin-top: -8rem;
+}

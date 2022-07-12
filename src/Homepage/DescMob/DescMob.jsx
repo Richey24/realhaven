@@ -4,6 +4,7 @@ import Main from "./Main"
 import Similar from "./Similiar"
 import { useState, useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
+import MainDesk from "./MainDesk";
 
 const DescMob = () => {
     const [large, setLarge] = useState(false)
@@ -38,6 +39,8 @@ const DescMob = () => {
                 {large ?
                     (
                         <>
+                            <MainDesk />
+                            <Footer />
                         </>
                     ) :
                     (

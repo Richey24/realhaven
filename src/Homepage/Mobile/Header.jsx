@@ -111,6 +111,13 @@ const Header = ({ setResult }) => {
         setMode(value)
     }
 
+    const makeSearch = () => {
+        setResult(true)
+        setTimeout(() => {
+            document.getElementById("resultMob").scrollIntoView()
+        }, 10)
+    }
+
     return (
         <div>
             <div className="myMobileHero">
@@ -130,7 +137,7 @@ const Header = ({ setResult }) => {
                 </div>
                 <div className='filterToggle'>
                     <img onClick={handleRightShow} src={filterToggle} alt="" />
-                    <p onClick={() => setResult(true)}>Search</p>
+                    <p onClick={makeSearch}>Search</p>
                 </div>
                 <img className='headImage' src={frame} alt="" />
                 <div className='myBrands' id='myBrands'>

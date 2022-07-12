@@ -12,11 +12,13 @@ import seven from '../../img/image 5 (4).png'
 import eight from '../../img/image 5 (5).png'
 import nine from '../../img/image 5 (6).png'
 import arrow from '../../img/arrowgrey.svg'
+import { useNavigate } from 'react-router-dom';
 
 const images = [one, two, three, four, five, six, seven, eight, nine]
 
 const Result = () => {
     const [filter, setFilter] = useState("Most Relevant")
+    const navigate = useNavigate()
 
     const showFilter = () => {
         document.getElementById("searchResultFilter").classList.toggle("showSearchFilter")
@@ -29,7 +31,7 @@ const Result = () => {
 
     return (
         <div>
-            <div className="resultMain">
+            <div id="resultMain" className="resultMain">
                 <h4 className="findPlace">Find the perfect place</h4>
                 <p className="advancedSearch">With our advanced search and filters you can easily find the best place in Nigeria</p>
                 <div className="searchFilterMainDesk">
@@ -47,7 +49,7 @@ const Result = () => {
                 </div>
                 {
                     images.map((image, i) => (
-                        <div key={i} className="mainResult">
+                        <div onClick={() => navigate("/desc")} key={i} className="mainResult">
                             <img src={image} alt="" />
                             <div>
                                 <p className="houseTypeDesk">4 Bedroom flat for rent <span>Rent</span></p>

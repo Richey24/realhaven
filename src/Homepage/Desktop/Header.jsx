@@ -67,6 +67,13 @@ const Header = ({ setSearch }) => {
         showMode('deskCurr')
     }
 
+    const getSearch = () => {
+        setSearch(true)
+        setTimeout(() => {
+            document.getElementById("resultMain").scrollIntoView()
+        }, 10)
+    }
+
     return (
         <div>
             <div className='headerMain'>
@@ -192,7 +199,7 @@ const Header = ({ setSearch }) => {
                             />
                         </ul>
                     </div>
-                    <p onClick={() => setSearch(true)} className='deskSearchButton'>Search</p>
+                    <p onClick={getSearch} className='deskSearchButton'>Search</p>
                 </div>
             </div>
             <div style={{ marginTop: '-2.4rem' }} className='myBrands' id='myBrands'>

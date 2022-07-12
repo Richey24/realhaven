@@ -18,7 +18,7 @@ const Result = () => {
     const navigate = useNavigate()
     return (
         <div>
-            <div className="mobResultMain">
+            <div id="resultMob" className="mobResultMain">
                 <h4 className="mobPerfect">Find the perfect place</h4>
                 <p className="mobAdvanced">With our advanced search and filters you can easily find the best place in Nigeria</p>
                 <p className="mobListing">25 listings found</p>
