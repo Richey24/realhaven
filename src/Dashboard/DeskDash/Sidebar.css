@@ -1,0 +1,112 @@
+.dashLogoDesk {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    padding: 0px;
+    gap: 6px;
+    width: 102.5px;
+    height: 24px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    color: #2E7DD7;
+    margin-left: 10%;
+}
+
+.dashFindDesk {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #374151;
+    margin-left: 10%;
+}
+
+.dashFindDesk span {
+    color: #2E7DD7;
+}
+
+.dashSideMain {
+    width: 22%;
+    min-height: 100vh;
+    background: #FFFFFF;
+    padding-top: 30px;
+}
+
+.dashNewProp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 20px;
+    gap: 10px;
+    width: 225px;
+    height: 48px;
+    background: #2E7DD7;
+    box-shadow: 0px 16px 64px rgba(59, 130, 246, 0.11);
+    border-radius: 8px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.04em;
+    color: #F3F4F6;
+    margin-left: 10%;
+    margin-top: 64px;
+    margin-bottom: 3rem;
+    cursor: pointer;
+}
+
+.dashDash {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #2E7DD7;
+    margin-left: 15%;
+    cursor: pointer;
+}
+
+.dashProfile,
+.dashReq,
+.dashMess,
+.dashDis {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #6B7280;
+    margin-left: 15%;
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+.dashReq::after,
+.dashMess::after {
+    content: attr(data-num);
+    width: 18px;
+    height: 18px;
+    background: #2E7DD7;
+    border-radius: 16px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 11px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

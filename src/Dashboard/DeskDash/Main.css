@@ -1,0 +1,250 @@
+.mainDashDiv {
+    width: 78%;
+    min-height: 100vh;
+    background: #F9FAFB;
+    border-left: 1px solid #E5E7EB;
+}
+
+.dashTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-top: 10px;
+    padding-left: 64px;
+    padding-right: 64px;
+    height: 86px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.dashTop p {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+    color: #374151;
+    position: relative;
+}
+
+.dashTop div span {
+    margin-right: 30px;
+    position: relative;
+}
+
+.dashTop div span::after {
+    content: attr(data-num);
+    width: 14px;
+    height: 14px;
+    background: #2E7DD7;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0px;
+    left: 8px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 9px;
+    line-height: 11px;
+    color: #FFFFFF;
+}
+
+.deskReferDiv {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3rem;
+}
+
+.myDeskRefer {
+    background: #FFFFFF;
+    border: 1px solid #2E7DD7;
+    box-shadow: -1px -1px 2px rgba(17, 17, 17, 0.06), 1px 1px 24px rgba(17, 17, 17, 0.06);
+    border-radius: 12px;
+    width: 595px;
+    height: 160px;
+    padding-left: 24px;
+    padding-top: 24px;
+}
+
+.myDeskRefer p {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 30px;
+    color: #374151;
+}
+
+.deskDude {
+    position: absolute;
+    top: 16%;
+    left: 45%;
+}
+
+.deskMonthStat {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    color: #374151;
+    margin-top: 5rem;
+    margin-left: 3%;
+}
+
+.deskMonthStat span {
+    color: #2E7DD7;
+}
+
+.deskStatMain {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.deskHand {
+    padding: 24px 40px 24px 16px;
+    width: 194px;
+    height: 166px;
+    background: #FFFFFF;
+    border: 1px solid #F3F4F6;
+    border-radius: 8px;
+}
+
+.deskHand img {
+    background: #E7F1F6;
+    border-radius: 12px;
+    padding: 14px;
+}
+
+.deskHand h4 {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #374151;
+    margin-top: 1rem;
+}
+
+.deskHand p {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #374151;
+}
+
+.deskHand h6 {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 8px;
+    color: #2E7DD7;
+}
+
+.deskTable {
+    margin-top: 55px;
+    margin-left: 5%;
+}
+
+.propImageDesk img {
+    width: 160px;
+    height: 90px;
+}
+
+.deskTableHead tr {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    gap: 87px;
+    width: 978px;
+    height: 68px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #E5E7EB;
+    background-color: white;
+}
+
+.deskTableBody tr {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    gap: 87px;
+    width: 978px;
+    height: 144px;
+    background: #F9FAFB;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #E5E7EB;
+}
+
+.propId {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #6B7280;
+}
+
+.propTitleDesk {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 160%;
+    color: #374151;
+    flex-shrink: 0;
+}
+
+.propStatusDesk {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    color: #2E7DD7;
+}
+
+.propPriceDesk {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 160%;
+    color: #374151;
+}
+
+.propLeadDesk {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    color: #374151;
+}
+
+.deskTableHead tr th {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #6B7280;
+}
+
+.deskTableBody tr td {
+    width: 128px;
+}
