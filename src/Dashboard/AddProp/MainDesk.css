@@ -1,0 +1,246 @@
+.getAttDesk {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+    color: #374151;
+    margin-top: 64px;
+    margin-left: 98px;
+}
+
+.deskAddTitle {
+    margin-left: 98px;
+    margin-top: 54px;
+}
+
+.deskAddTitle label {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #374151;
+}
+
+.deskAddTitle input {
+    padding: 20px 160px 20px 24px;
+    gap: 10px;
+    width: 60vw;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    outline: none;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #6B7280;
+}
+
+.puporseDivDesk {
+    margin-left: 98px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    width: 60vw;
+    column-gap: 10px;
+}
+
+.purposePara {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #374151;
+}
+
+.puporseDivDesk li {
+    height: 30px;
+    font-size: 16px !important;
+}
+
+.checkBoxSelect {
+    margin-left: 98px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    width: 60vw;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.checkBoxSelect label {
+    display: flex;
+    align-items: center;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #374151;
+}
+
+.checkBoxSelect label input {
+    margin-right: 10px;
+}
+
+input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+}
+
+.addTextAreaDiv {
+    margin-left: 98px;
+    margin-top: 40px;
+}
+
+.addTextAreaDiv textarea {
+    width: 61vw;
+    height: 136px;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    outline: none;
+    padding: 20px 160px 20px 24px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #6B7280;
+    resize: none;
+    text-transform: capitalize;
+}
+
+.additionFeat {
+    margin-left: 98px;
+    margin-top: 40px;
+}
+
+.additionFeat input {
+    background: #F3F4F6;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    height: 64px;
+    width: 61vw;
+    padding: 20px 160px 20px 24px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #6B7280;
+    outline: none;
+}
+
+.additionFeat h6 {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    width: 60vw;
+    margin-top: 8px;
+    color: #374151;
+}
+
+.additionFeat h6 span {
+    color: #2E7DD7;
+}
+
+.addHouseImages {
+    margin-left: 98px;
+    margin-top: 40px;
+}
+
+.addHouseMainImage {
+    height: 164px;
+    width: 60vw;
+    background: #FFFFFF;
+    border: 1px dashed #E5E7EB;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 160px 20px 24px;
+    cursor: pointer;
+}
+
+.addHouseOtherImage {
+    display: flex;
+    justify-content: space-between;
+    width: 60vw;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.addHouseOtherImage div {
+    height: 112px;
+    width: 11vw;
+    background: #FFFFFF;
+    border: 1px dashed #E5E7EB;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 24px;
+    gap: 10px;
+    margin-top: 16px;
+    cursor: pointer;
+}
+
+.addFinal1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 32px;
+    gap: 10px;
+    width: 213px;
+    height: 60px;
+    background: #F3F4F6;
+    border-radius: 8px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #374151;
+    cursor: pointer;
+}
+
+.addFinal2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 32px;
+    gap: 10px;
+    width: 211px;
+    height: 64px;
+    background: #2E7DD7;
+    border-radius: 8px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.addFinalButton {
+    width: 60vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 98px;
+    margin-bottom: 3rem;
+}

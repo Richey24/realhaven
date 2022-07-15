@@ -12,6 +12,7 @@ const Register = React.lazy(() => import("./Register"));
 const DescMob = React.lazy(() => import("./Homepage/DescMob/DescMob"));
 const Dashboard = React.lazy(() => import("./Dashboard/Dashboard"));
 const Listing = React.lazy(() => import("./Dashboard/Listing"));
+const AddProp = React.lazy(() => import("./Dashboard/AddProp"));
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
@@ -145,6 +146,28 @@ root.render(
             }
           >
             <Listing />
+          </React.Suspense>
+        }
+      />
+      <Route
+        path="/post"
+        element={
+          <React.Suspense
+            fallback={
+              <div
+                style={{
+                  width: "100%",
+                  height: "100vh",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Spinner animation="border" style={{ color: "#2E7DD7" }} />
+              </div>
+            }
+          >
+            <AddProp />
           </React.Suspense>
         }
       />

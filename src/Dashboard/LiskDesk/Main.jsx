@@ -9,17 +9,26 @@ import { useState } from 'react';
 import "../../Homepage/Desktop/Header.css"
 import two from '../../img/Rectangle 309.png'
 import three from '../../img/image 5.png'
+import four from '../../img/image 5 (1).png'
+import five from '../../img/image 5 (2).png'
+import six from '../../img/image 5 (3).png'
+import seven from '../../img/image 5 (4).png'
+import eight from '../../img/image 5 (5).png'
+import nine from '../../img/image 5 (6).png'
 import locate from "../../img/Location.svg"
 import room from '../../img/room.svg'
 import bathroom from '../../img/bathroom.svg'
 import toilet from '../../img/toilet.svg'
 import "../../Homepage/DescMob/Main.css"
+import { Offcanvas } from 'react-bootstrap';
 
-const images = [two, three]
-
+const images = [two, three, four]
+const canvasImages = [four, five, six, seven, eight, nine]
 const Main = () => {
     const [loc, setLoc] = useState("Lagos")
     const [active, setActive] = useState("all")
+    const [showTop, setShowTop] = useState(false)
+
 
     const showMode = (id) => {
         document.getElementById(id).classList.toggle("showDrop")
@@ -28,6 +37,14 @@ const Main = () => {
     const getLoc = (value) => {
         setLoc(value)
         showMode("location")
+    }
+
+    const handleTopClose = () => {
+        setShowTop(false)
+    }
+
+    const handleTopShow = () => {
+        setShowTop(true)
     }
 
     return (
@@ -92,8 +109,8 @@ const Main = () => {
 
 
             {
-                images.map((image) => (
-                    <div className="listContentDiv">
+                images.map((image, i) => (
+                    <div key={i} onClick={handleTopShow} className="listContentDiv">
                         <img className="listContentDivImg" src={image} alt="" />
                         <div>
                             <h4>4 bedroom for rent</h4>
@@ -116,6 +133,41 @@ const Main = () => {
                     </div>
                 ))
             }
+
+
+            <Offcanvas className="listCanvas" show={showTop} onHide={handleTopClose} placement="end">
+                <Offcanvas.Header>
+                    <Offcanvas.Title></Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body style={{ padding: '0' }}>
+                    <center>
+                        <img className="canvasMainImage" src={two} alt="" />
+                        <p className="canvasHouseTitle">4 Bedroom house for rent <span>Rent</span></p>
+                        <h5 className="canvasAddress"><img src={locate} alt="" />Off Allen Avenue Allen Avenue Ikeja Lagos</h5>
+                        <div style={{ marginLeft: "5%", marginTop: "23px" }} className="blueBackMob">
+                            <div data-value="4" className="roomImgMob">
+                                <img src={room} alt="" />
+                            </div>
+                            <div className="bathroomImgMob" data-value="2">
+                                <img src={bathroom} alt="" />
+                            </div>
+                            <div className="toiletImgMob" data-value="5">
+                                <img src={toilet} alt="" />
+                            </div>
+                        </div>
+                        <p style={{ margin: "0px", textAlign: "left", marginLeft: "5%", marginTop: "13px" }} className="listAmtDesk">₦15,000,000/Year</p>
+                        <p className="canvasInfo">4 bedroom House for rent Off Allen Avenue Allen Avenue Ikeja Lagos renting for ₦6,500,000/year. Contact me for more information about the house or browse through my other house collection</p>
+                        <p className="otherPhotos">Other photos</p>
+                        <div className="otherPhotoDiv">
+                            {
+                                canvasImages.map((image, i) => (
+                                    <img key={i} src={image} alt="" />
+                                ))
+                            }
+                        </div>
+                    </center>
+                </Offcanvas.Body>
+            </Offcanvas>
 
 
         </div>

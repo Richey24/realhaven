@@ -91,13 +91,15 @@
     align-items: center;
     padding: 24px;
     gap: 16px;
-    width: 862px;
+    width: 70vw;
     height: 208px;
     background: #FFFFFF;
     border: 1px solid #2E7DD7;
     border-radius: 16px;
     margin-left: 5%;
     margin-top: 50px;
+    margin-bottom: 50px;
+    cursor: pointer;
 }
 
 .listContentDiv h4 {
@@ -138,6 +140,100 @@
     font-size: 20px;
     line-height: 160%;
     color: #2E7DD7;
-    margin-left: 8rem;
     margin-bottom: -5px;
+}
+
+.descImgInfoMob {
+    display: flex;
+    justify-content: space-between;
+    width: 43vw;
+    flex-wrap: wrap;
+}
+
+.listCanvas {
+    height: 100%;
+    width: 350px;
+    transition: ease-in-out 0.5s;
+    padding-bottom: 10px;
+    border-top: 1px solid #E5E7EB;
+}
+
+.offcanvas-backdrop.show {
+    opacity: 0;
+}
+
+.canvasMainImage {
+    width: 90%;
+    border-radius: 16px;
+}
+
+.canvasHouseTitle {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 160%;
+    color: #374151;
+    margin-top: 1rem;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.canvasHouseTitle span {
+    padding: 5px 10px;
+    background: #F8EDED;
+    border-radius: 14px;
+    color: #BF5E65;
+    font-weight: 400;
+}
+
+.canvasAddress {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 160%;
+    color: #374151;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.canvasInfo {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    color: #6B7280;
+    width: 90%;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.otherPhotos {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 160%;
+    color: #374151;
+    text-align: left;
+    margin-left: 5%;
+}
+
+.otherPhotoDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.otherPhotoDiv img {
+    width: 96px;
+    height: 76.8px;
 }
