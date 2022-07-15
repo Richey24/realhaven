@@ -11,6 +11,7 @@ const Login = React.lazy(() => import("./Login"));
 const Register = React.lazy(() => import("./Register"));
 const DescMob = React.lazy(() => import("./Homepage/DescMob/DescMob"));
 const Dashboard = React.lazy(() => import("./Dashboard/Dashboard"));
+const Listing = React.lazy(() => import("./Dashboard/Listing"));
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
@@ -122,6 +123,28 @@ root.render(
             }
           >
             <Dashboard />
+          </React.Suspense>
+        }
+      />
+      <Route
+        path="/listing"
+        element={
+          <React.Suspense
+            fallback={
+              <div
+                style={{
+                  width: "100%",
+                  height: "100vh",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Spinner animation="border" style={{ color: "#2E7DD7" }} />
+              </div>
+            }
+          >
+            <Listing />
           </React.Suspense>
         }
       />
