@@ -1,0 +1,391 @@
+.headerMain {
+    width: 100%;
+    height: 100%;
+    background-color: #EAF2FB;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.leftSide {
+    width: 50%;
+    height: 100%;
+}
+
+.leftSide h4 {
+    width: 576px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 54px;
+    line-height: 81px;
+    color: #374151;
+    margin-top: -15rem;
+    margin-left: 5rem;
+}
+
+.leftSide p {
+    width: 476px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #6B7280;
+    text-align: left;
+    margin-left: 9rem;
+}
+
+.rightImage {
+    width: 50%;
+    height: 100%;
+}
+
+.myNav {
+    height: 90px;
+    width: 90%;
+    background-color: #FFFFFF;
+    border-radius: 24px;
+    position: fixed;
+    top: 15px;
+    left: 5%;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.logoNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 80px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    color: #2E7DD7;
+}
+
+.postProp {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 16px 32px;
+    gap: 10px;
+    width: 222px;
+    height: 56px;
+    background: #2E7DD7;
+    border-radius: 8px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+
+.firstNavDiv {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+    color: #bbc6d7;
+    margin-bottom: 0.5rem;
+}
+
+.firstNavDiv span {
+    cursor: pointer;
+}
+
+.firstNavDiv span:hover {
+    color: #9CA3AF;
+}
+
+.secNavDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+}
+
+.secNavDiv p {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+    color: #2E7DD7;
+}
+
+.priceRange {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    color: #6B7280;
+}
+
+.secNavDiv img {
+    width: 14px;
+    height: 14px;
+}
+
+.rentSelectDesk {
+    width: 197px;
+    border-width: 1px 1px 0px 1px;
+    border-style: solid;
+    border-color: #2E7DD7;
+    border-radius: 8px 8px 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 2rem;
+    margin-top: 4rem;
+    background-color: white;
+    height: 52px;
+}
+
+.rentSelectDesk p {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.filterToggleDesk {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 24px;
+    gap: 24px;
+    background: #FFFFFF;
+    border: 1px solid #2E7DD7;
+    box-shadow: -1px -1px 4px rgba(17, 17, 17, 0.06), 2px 2px 2px rgba(17, 17, 17, 0.06);
+    border-radius: 0px 8px 8px 8px;
+    margin-left: 2rem;
+    padding-top: 12px;
+    width: 821px;
+    height: 126px;
+}
+
+.alignDivSearch {
+    position: absolute;
+    top: 70%;
+    left: 8%;
+    z-index: 1;
+}
+
+.activeSelectDesk {
+    background-color: #2E7DD7;
+    padding: 16px 15px;
+    border-radius: 8px 0px 0px 0px;
+    margin-bottom: -1px;
+    margin-left: -1px;
+    color: white;
+}
+
+.activeSelectLastDesk {
+    background-color: #2E7DD7;
+    padding: 16px 15px;
+    border-radius: 0px 8px 0px 0px;
+    margin-bottom: -1px;
+    margin-right: -1px;
+    color: white;
+}
+
+.activeSelectMidDesk {
+    background-color: #2E7DD7;
+    padding: 16px 15px;
+    margin-bottom: -1px;
+    color: white;
+}
+
+.notActiveDesk {
+    margin-right: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.notActive1Desk {
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.locationDesk1 {
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    background-color: #FFFFFF;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    width: 100%;
+    height: 40px;
+    margin-top: 0.7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 10px;
+    cursor: pointer;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.locationDesk {
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    width: 155px;
+    height: 56px;
+    margin-left: 0.7rem;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+
+.locationDesk1 img {
+    width: 15px;
+}
+
+.locationDesk img {
+    width: 15px;
+}
+
+.locationDesk p {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    align-self: flex-end;
+    color: #374151;
+}
+
+.deskSearchButton {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 10px;
+    width: 133px;
+    height: 78px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #2E7DD7;
+    border-radius: 8px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    color: #FFFFFF;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+
+.propertyListDesk {
+    height: 197px;
+    width: 160px;
+    background-color: #FFFFFF;
+    overflow: scroll;
+    font-size: 12px;
+    color: #4B5563;
+    font-weight: 400;
+    border-radius: 10px;
+    padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+    display: none;
+}
+
+.propertyListDesk1 {
+    display: none;
+}
+
+.propertyListDesk li {
+    list-style-type: none;
+    scrollbar-width: none;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #4B5563;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.propertyListDesk label {
+    list-style-type: none;
+    scrollbar-width: none;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #4B5563;
+    cursor: pointer;
+    height: 23px;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.propertyListDesk li:hover {
+    background-color: #2E7DD7;
+    color: #FFFFFF;
+}
+
+.propertyListDesk div span {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #4B5563;
+    cursor: pointer;
+}
+
+.myPropertyDesk {
+    width: 100%;
+    margin-top: 1rem;
+    border-bottom: 0.5px solid #D1D5DB;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.showDrop {
+    display: block;
+}

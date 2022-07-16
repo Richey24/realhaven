@@ -1,0 +1,239 @@
+.listingInput {
+    width: 300px;
+    border: none;
+    outline: none;
+    margin-left: 20px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #6B7280;
+}
+
+.listingInput::placeholder {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #6B7280;
+}
+
+.listFilterDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-left: 6%;
+    margin-right: 15%;
+    margin-top: 50px;
+}
+
+.listInsideDiv {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.listFilterPara {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 30px;
+    color: #374151;
+}
+
+.buyWrapper {
+    display: flex;
+    justify-content: right;
+    margin-right: 6%;
+    margin-top: 20px;
+    position: relative;
+}
+
+.listFilterBuy {
+    display: flex;
+    justify-content: space-around;
+    width: 446px;
+    height: 42px;
+    background: #F3F4F6;
+    border-radius: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.listFilterBuy p {
+    height: 100%;
+    width: 98px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    color: #374151;
+    cursor: pointer;
+    transition: ease-out 0.4s;
+}
+
+.activeListDesk {
+    transition: ease-in 0.4s;
+    background: #FFFFFF;
+    border-radius: 12px;
+}
+
+.listContentDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 24px;
+    gap: 16px;
+    width: 70vw;
+    height: 208px;
+    background: #FFFFFF;
+    border: 1px solid #2E7DD7;
+    border-radius: 16px;
+    margin-left: 5%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+
+.listContentDiv h4 {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 160%;
+    color: #374151;
+    margin-top: 1rem;
+}
+
+.listContentDiv h5 {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.listContentDiv h5 img {
+    margin-right: 10px;
+}
+
+.listContentDivImg {
+    width: 200px;
+    height: 160px;
+}
+
+.listAmtDesk {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 160%;
+    color: #2E7DD7;
+    margin-bottom: -5px;
+}
+
+.descImgInfoMob {
+    display: flex;
+    justify-content: space-between;
+    width: 43vw;
+    flex-wrap: wrap;
+}
+
+.listCanvas {
+    height: 100%;
+    width: 350px;
+    transition: ease-in-out 0.5s;
+    padding-bottom: 10px;
+    border-top: 1px solid #E5E7EB;
+}
+
+.offcanvas-backdrop.show {
+    opacity: 0;
+}
+
+.canvasMainImage {
+    width: 90%;
+    border-radius: 16px;
+}
+
+.canvasHouseTitle {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 160%;
+    color: #374151;
+    margin-top: 1rem;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.canvasHouseTitle span {
+    padding: 5px 10px;
+    background: #F8EDED;
+    border-radius: 14px;
+    color: #BF5E65;
+    font-weight: 400;
+}
+
+.canvasAddress {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 160%;
+    color: #374151;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.canvasInfo {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    color: #6B7280;
+    width: 90%;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.otherPhotos {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 160%;
+    color: #374151;
+    text-align: left;
+    margin-left: 5%;
+}
+
+.otherPhotoDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.otherPhotoDiv img {
+    width: 96px;
+    height: 76.8px;
+}

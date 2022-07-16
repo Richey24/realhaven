@@ -1,0 +1,292 @@
+.resultMain {
+    width: 100%;
+    height: 100%;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.findPlace {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    color: #374151;
+    text-align: left;
+    margin-left: 10%;
+}
+
+.advancedSearch {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    color: #6B7280;
+    text-align: left;
+    margin-left: 10%;
+}
+
+.searchFilterMainDesk {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 4rem;
+}
+
+.searchFilterMainDesk span {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    color: #374151;
+}
+
+.searchFilterMainDesk p {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px 24px;
+    gap: 24px;
+    width: auto;
+    height: 56px;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #374151;
+    cursor: pointer;
+}
+
+.searchResultFilter {
+    height: 110px;
+    background-color: #FFFFFF;
+    overflow: scroll;
+    padding-top: 0.5rem;
+    font-size: 12px;
+    color: #4B5563;
+    font-weight: 400;
+    filter: drop-shadow(0px 16px 32px rgba(17, 17, 17, 0.11));
+    border-radius: 8px;
+    padding-right: 1rem;
+    display: none;
+    position: absolute;
+}
+
+.searchResultFilter li {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    height: 23px;
+    line-height: 15px;
+    color: #4B5563;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    list-style-type: none;
+    padding-left: 20px;
+    margin-left: -1rem;
+}
+
+.searchResultFilter li:hover {
+    background-color: #2E7DD7;
+    color: white;
+}
+
+.showSearchFilter {
+    display: block;
+}
+
+.mainResult {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-left: 14px;
+    padding-right: 14px;
+    gap: 24px;
+    width: 1100px;
+    height: 348px;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    box-shadow: 0px 24px 48px rgba(17, 17, 17, 0.11);
+    border-radius: 12px;
+    margin-left: 10%;
+    margin-bottom: 40px;
+    cursor: pointer;
+}
+
+.mainResult img {
+    height: 90%;
+}
+
+.mainResult div {
+    text-align: left;
+    margin-bottom: -10px;
+}
+
+.houseTypeDesk {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 100%;
+    color: #374151;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.houseTypeDesk span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 16px;
+    gap: 8px;
+    width: 70px;
+    height: 36px;
+    background: #F8EDED;
+    border-radius: 16px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #BF5E65;
+    text-transform: capitalize;
+}
+
+.houseLocationDesk {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+    color: #374151;
+}
+
+.houseDescDesk {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 160%;
+    color: #6B7280;
+}
+
+.housePriceDesk {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    color: #2E7DD7;
+}
+
+.contactAgent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 24px;
+    gap: 10px;
+    width: 202px;
+    height: 56px;
+    background: #2E7DD7;
+    border: 1px solid #2E7DD7;
+    border-radius: 12px;
+    box-sizing: border-box;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #EAF2FB;
+}
+
+.paginateDesk {
+    background: #FFFFFF;
+    border-width: 1px 0px;
+    border-style: solid;
+    border-color: #E5E7EB;
+    width: 80%;
+    height: 156px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10%;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.paginateDesk div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+}
+
+.paginateDesk div p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 54px;
+    height: 52px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #374151;
+}
+
+.paginateDesk div p:hover {
+    background: #F3F4F6;
+    border-radius: 8px;
+}
+
+.pagePrev {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 25px;
+    color: #4B5563;
+}
+
+.pageNext {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    font-family: 'Sora';
+    cursor: pointer;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    color: #4B5563;
+}
+
+.pagePrev img {
+    transform: rotate(180deg);
+}

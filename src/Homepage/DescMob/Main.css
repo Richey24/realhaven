@@ -1,0 +1,159 @@
+.descMain {
+    width: 100%;
+    height: 250px;
+    background: #EAF2FB;
+}
+
+.descMainImage {
+    width: 100%;
+}
+
+.descImages {
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: -7rem;
+}
+
+.descOtherImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.descOtherImage img {
+    width: 20%;
+}
+
+.theDesc {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2rem;
+    text-align: left;
+}
+
+.descFeatures {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    margin-left: 10%;
+    text-align: left;
+    margin-top: 3rem;
+}
+
+.descList {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    margin-left: 10%;
+    line-height: 200%;
+    color: #4B5563;
+    text-align: left;
+}
+
+.descImgInfoMob {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.imgLinkMob {
+    display: flex;
+    gap: 30px;
+}
+
+.imgLinkMob img {
+    width: 32px;
+    height: 32px;
+}
+
+.blueBackMob {
+    display: flex;
+    gap: 38px;
+}
+
+.roomImgMob::after {
+    content: attr(data-value);
+    background: #2E7DD7;
+    border-radius: 12px;
+    padding: 5px 7px;
+    color: white;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 12px;
+    position: absolute;
+    left: 32px;
+}
+
+.roomImgMob {
+    position: relative;
+}
+
+.roomImgMob img {
+    width: 40px;
+    height: 40px;
+    background: #EAF2FB;
+    padding: 8px 6px;
+    border-radius: 8px;
+}
+
+.bathroomImgMob {
+    position: relative;
+}
+
+.bathroomImgMob img {
+    width: 40px;
+    height: 40px;
+    background: #EAF2FB;
+    padding: 8px 6px;
+    border-radius: 8px;
+}
+
+.bathroomImgMob::after {
+    content: attr(data-value);
+    background: #2E7DD7;
+    border-radius: 12px;
+    padding: 5px 7px;
+    color: white;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 12px;
+    position: absolute;
+    left: 32px;
+}
+
+.toiletImgMob {
+    position: relative;
+}
+
+.toiletImgMob img {
+    width: 40px;
+    height: 40px;
+    background: #EAF2FB;
+    padding: 8px 6px;
+    border-radius: 8px;
+}
+
+.toiletImgMob::after {
+    content: attr(data-value);
+    background: #2E7DD7;
+    border-radius: 12px;
+    padding: 5px 7px;
+    color: white;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 12px;
+    position: absolute;
+    left: 32px;
+}

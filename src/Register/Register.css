@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,200&family=Sora:wght@700&display=swap');
+
+.myContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    position: absolute;
+    z-index: 2;
+}
+
+.countryList {
+    height: 200px;
+    overflow: scroll;
+    width: fit-content;
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: #2E7DD7;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    margin-left: 10px;
+    scrollbar-width: none;
+    padding-right: 10px;
+}
+
+.countryList li {
+    list-style-type: none;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    margin-left: -1.4rem;
+}
+
+.countryList::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+.mainCountry {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #6B7280 !important;
+    height: 60px;
+    width: 80px;
+    margin-bottom: -8%;
+    cursor: pointer;
+}
+
+.phoneNumDiv {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    border: 1px solid #b7bac0;
+    border-radius: 8px;
+    padding-left: 1rem;
+    width: 83%;
+}
+
+body {
+    background-color: #fff;
+}
+
+.side-1 {
+    width: 50%;
+    min-height: 100%;
+}
+
+.side-1 img {
+    min-height: 100%;
+    width: 100%;
+}
+
+.side-2 {
+    padding-top: 5rem;
+    width: 50%;
+}
+
+.myName {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 83%;
+}
+
+.myName input {
+    width: 48%;
+}
+
+
+.side-2 h1 {
+    color: #374151;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+input::placeholder {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #6B7280;
+}
+
+label {
+    width: auto;
+    height: auto;
+    color: #374151;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #374151;
+}
+
+input {
+    border: 1px solid #b7bac0;
+    border-radius: 8px;
+    width: 500px;
+    height: 60px;
+    padding: 10px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #6B7280;
+    outline: none;
+}
+
+button {
+    background-color: #2E7DD7;
+    width: 500px;
+    height: 52px;
+    border-radius: 12px;
+    border: none;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+.label {
+    margin: 1em 0;
+}
+
+.signup {
+    margin-top: -0.6rem;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #374151;
+}
+
+.signup span {
+    color: blue;
+    cursor: pointer;
+}
+
+.opt {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.opt p {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #6B7280;
+}
+
+.google-opt {
+    margin-top: 1rem;
+    font-size: 16px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #6B7280;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFFFFF;
+    border: 1px solid #b7bac0;
+    border-radius: 12px;
+}
+
+.google-opt img {
+    margin-right: 10px;
+}
+
+
+.label p,
+.myBtn p {
+    color: #2E7DD7;
+    font-size: 15px;
+}
+
+#passwordError,
+#submitError,
+#emailError {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.showList {
+    display: block;
+}
+
+.eyeDiv {
+    position: relative;
+}
+
+
+@media screen and (max-width:768px) {
+    .showPass {
+        position: absolute;
+        top: 35%;
+        right: 10%;
+    }
+
+    .side-1 {
+        display: none;
+    }
+
+    .phoneNumDiv {
+        width: 95%;
+    }
+
+    .myName {
+        display: none;
+    }
+
+    .reLogo {
+        position: absolute;
+        left: 5%;
+        top: 2%;
+        font-family: 'Sora';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 18px;
+        color: #2E7DD7;
+        display: flex;
+        align-items: baseline;
+    }
+
+
+
+    .side-2 {
+        width: 100%;
+        padding-left: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    input {
+        border: 1px solid #b7bac0;
+        border-radius: 8px;
+        width: 90vw;
+        height: 60px;
+        padding: 10px;
+        font-weight: 400;
+        font-size: 14px;
+        color: #6B7280;
+    }
+
+    .google-opt {
+        width: 90vw;
+    }
+
+    button {
+        background-color: #2E7DD7;
+        width: 90vw;
+        height: 52px;
+        border-radius: 12px;
+        border: none;
+        font-family: 'Sora';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        color: #FFFFFF;
+    }
+
+    .reLogo img {
+        filter: invert(47%) sepia(47%) saturate(4635%) hue-rotate(195deg) brightness(91%) contrast(83%);
+    }
+}
+
+@media screen and (min-width:768px) {
+    .showPass {
+        position: absolute;
+        top: 35%;
+        right: 20%;
+        cursor: pointer;
+    }
+
+    .side-1 {
+        display: block;
+    }
+
+    .fullName {
+        display: none;
+    }
+
+    .side-2 {
+        box-sizing: border-box;
+        justify-content: center;
+        margin: 0 5em;
+    }
+
+    .reLogo {
+        display: none;
+    }
+}

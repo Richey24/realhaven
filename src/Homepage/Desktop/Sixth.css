@@ -1,0 +1,119 @@
+.deskSixth {
+    width: 100%;
+    height: 726px;
+    margin-top: 1rem;
+    position: relative;
+}
+
+.deskSixth h6 {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.deskSixth p {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    width: 80%;
+}
+
+.activeDivDesk p {
+    color: white;
+    line-height: 180%;
+}
+
+.activeDivDesk q {
+    color: white;
+}
+
+.deskDont {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    color: #374151;
+}
+
+q {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 180%;
+}
+
+q::before {
+    font-size: 32px;
+    padding-right: 1rem;
+    color: white;
+}
+
+q::after {
+    font-size: 32px;
+    padding-left: 1rem;
+    color: white;
+}
+
+.activeDivDesk {
+    margin-top: 3rem;
+    padding-top: 4rem;
+    width: 500px;
+    height: 250px;
+    background-color: #2E7DD7;
+    box-shadow: 0px 48px 64px rgba(17, 17, 17, 0.06);
+    border-radius: 12px;
+    margin-left: 5%;
+    position: absolute;
+    left: 27%;
+    z-index: 1;
+    transition: ease-in 1s;
+}
+
+.leftDivDesk {
+    padding-top: 2rem;
+    position: absolute;
+    left: 5%;
+    top: 30%;
+    background: #F9FAFB;
+    box-shadow: 0px 1px 1px rgba(17, 17, 17, 0.11);
+    border-radius: 12px;
+    width: 400px;
+    height: 200px;
+    transition: ease-out 1s;
+}
+
+.rightDivDesk {
+    padding-top: 2rem;
+    position: absolute;
+    right: 5%;
+    top: 30%;
+    background: #F9FAFB;
+    box-shadow: 0px 1px 1px rgba(17, 17, 17, 0.11);
+    border-radius: 12px;
+    width: 400px;
+    transition: ease-out 1s;
+    height: 200px;
+}
+
+.customerRatingDesk {
+    margin-top: 5rem;
+}
+
+.customerRatingDesk img {
+    width: 55px;
+    height: 55px;
+}
+
+.deskHear {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    color: #778190;
+}

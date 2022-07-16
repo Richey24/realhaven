@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,200&family=Sora:wght@700&display=swap');
+
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Sora', sans-serif;
+} */
+
+.myContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-color: #fff;
+}
+
+.side-1 {
+    width: 50%;
+    height: 100%;
+}
+
+.side-1 img {
+    min-height: 100%;
+    width: 100%;
+}
+
+.side-2 {
+    padding-top: 5rem;
+}
+
+
+.side-2 h1 {
+    color: #374151;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+input::placeholder {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #6B7280;
+}
+
+label {
+    width: auto;
+    height: auto;
+    color: #374151;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #374151;
+}
+
+input {
+    border: 1px solid #b7bac0;
+    border-radius: 8px;
+    width: 500px;
+    height: 60px;
+    padding: 10px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #6B7280;
+}
+
+button {
+    background-color: #2E7DD7;
+    width: 500px;
+    height: 52px;
+    border-radius: 12px;
+    border: none;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+.label {
+    margin: 4em 0;
+}
+
+.label img {
+    position: absolute;
+    right: 8%;
+    top: 63.2%;
+}
+
+.signup {
+    margin-top: -0.6rem;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #374151;
+}
+
+.reLogo {
+    position: absolute;
+    left: 2%;
+    top: 5%;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: baseline;
+}
+
+.signup span {
+    color: blue;
+    cursor: pointer;
+}
+
+.opt {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.opt p {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #6B7280;
+}
+
+.google-opt {
+    margin-top: 3rem;
+    font-size: 16px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #6B7280;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFFFFF;
+    border: 1px solid #b7bac0;
+    border-radius: 12px;
+}
+
+.google-opt img {
+    margin-right: 10px;
+}
+
+
+.label p,
+.myBtn p {
+    color: #2E7DD7;
+    font-size: 15px;
+}
+
+#passwordError,
+#submitError,
+#emailError {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.eyeDivLog {
+    position: relative;
+}
+
+@media screen and (max-width:640px) {
+    .showPassLog {
+        position: absolute;
+        left: 85%;
+        margin-top: -0.5rem;
+    }
+
+    .side-1 {
+        display: none;
+    }
+
+    .reLogo {
+        left: 5%;
+    }
+
+    .label {
+        margin: 2em 0;
+    }
+
+    .side-2 {
+        width: 100%;
+        padding-left: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    input {
+        border: 1px solid #b7bac0;
+        border-radius: 8px;
+        width: 90vw;
+        height: 60px;
+        padding: 10px;
+        font-weight: 400;
+        font-size: 14px;
+        color: #6B7280;
+    }
+
+    .google-opt {
+        width: 90vw;
+    }
+
+    button {
+        background-color: #2E7DD7;
+        width: 90vw;
+        height: 52px;
+        border-radius: 12px;
+        border: none;
+        font-family: 'Sora';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        color: #FFFFFF;
+    }
+
+    .label img {
+        position: absolute;
+        right: 10%;
+        top: 52%;
+    }
+
+    .reLogo {
+        color: #2E7DD7;
+    }
+
+    .reLogo img {
+        filter: invert(47%) sepia(47%) saturate(4635%) hue-rotate(195deg) brightness(91%) contrast(83%);
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .side-1 {
+        display: block;
+    }
+
+    .side-2 {
+        box-sizing: border-box;
+        justify-content: center;
+        margin: 0 5em;
+    }
+
+    .showPassLog {
+        position: absolute;
+        left: 92%;
+        margin-top: -0.8rem;
+        cursor: pointer;
+    }
+}
