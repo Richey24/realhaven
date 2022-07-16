@@ -22,13 +22,13 @@ const Main = () => {
             </div>
             <div className="deskReferDiv">
                 <div className="myDeskRefer">
-                    <div style={{ border: "none", width: "auto", height: "auto" }}>
+                    <div style={{ border: "none", width: "auto", height: "auto", marginBottom: "30px" }}>
                         <p>Hi Rejoice 👋</p>
                         <p style={{ fontWeight: "400" }}>Welcome back 🎉</p>
                     </div>
                     <img className="deskDude" src={dude} alt="" />
                 </div>
-                <img style={{ cursor: "pointer" }} src={refer} alt="" />
+                <img style={{ cursor: "pointer", width: "300px" }} src={refer} alt="" />
             </div>
 
             <p className="deskMonthStat">This are your stat for <span>{new Date().toLocaleString("default", { month: "long" })}</span></p>
@@ -63,11 +63,11 @@ const Main = () => {
                 <thead className="deskTableHead">
                     <tr>
                         <th>ID No</th>
-                        <th>Property Image</th>
+                        <th className="propTableImage">Property Image</th>
                         <th>Property Title</th>
                         <th>Status</th>
-                        <th>Price</th>
-                        <th>Client Leads</th>
+                        <th className="tablePrice">Price</th>
+                        <th className="tableClient">Client Leads</th>
                     </tr>
                 </thead>
                 <tbody className="deskTableBody">

@@ -55,7 +55,10 @@
 
 .deskReferDiv {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 70vw;
+    margin-left: 5%;
     margin-top: 3rem;
 }
 
@@ -64,10 +67,13 @@
     border: 1px solid #2E7DD7;
     box-shadow: -1px -1px 2px rgba(17, 17, 17, 0.06), 1px 1px 24px rgba(17, 17, 17, 0.06);
     border-radius: 12px;
-    width: 595px;
+    width: 60%;
+    min-width: 300px;
     height: 160px;
-    padding-left: 24px;
-    padding-top: 24px;
+    gap: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .myDeskRefer p {
@@ -80,9 +86,53 @@
 }
 
 .deskDude {
-    position: absolute;
-    top: 16%;
-    left: 45%;
+    width: 250px;
+    height: 202px;
+}
+
+@media screen and (max-width: 1300px) {
+    .deskDude {
+        display: none;
+    }
+
+    .myDeskRefer {
+        width: 300px;
+    }
+
+    .propImageDesk {
+        display: none;
+    }
+
+    .propTableImage {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 857px) {
+    .myDeskRefer {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .tableClient {
+        display: none;
+    }
+
+    .propLeadDesk {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .tablePrice {
+        display: none;
+    }
+
+    .propPriceDesk {
+        display: none;
+    }
 }
 
 .deskMonthStat {
@@ -93,7 +143,7 @@
     line-height: 25px;
     color: #374151;
     margin-top: 5rem;
-    margin-left: 3%;
+    margin-left: 5%;
 }
 
 .deskMonthStat span {
@@ -102,15 +152,17 @@
 
 .deskStatMain {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    width: 70vw;
+    margin-left: 5%;
     margin-top: 2rem;
 }
 
 .deskHand {
     padding: 24px 40px 24px 16px;
-    width: 194px;
-    height: 166px;
+    width: 17vw;
+    height: auto;
     background: #FFFFFF;
     border: 1px solid #F3F4F6;
     border-radius: 8px;
@@ -167,7 +219,7 @@
     align-items: center;
     padding: 24px 32px;
     gap: 87px;
-    width: 978px;
+    width: 70vw;
     height: 68px;
     border-width: 1px;
     border-style: solid;
@@ -182,7 +234,7 @@
     align-items: center;
     padding: 24px 32px;
     gap: 87px;
-    width: 978px;
+    width: 70vw;
     height: 144px;
     background: #F9FAFB;
     border-width: 1px;
@@ -225,6 +277,7 @@
     font-size: 14px;
     line-height: 160%;
     color: #374151;
+    margin-right: 20px;
 }
 
 .propLeadDesk {
@@ -243,8 +296,9 @@
     font-size: 14px;
     line-height: 20px;
     color: #6B7280;
+    width: 12%;
 }
 
 .deskTableBody tr td {
-    width: 128px;
+    width: 12%;
 }

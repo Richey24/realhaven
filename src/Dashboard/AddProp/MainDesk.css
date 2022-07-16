@@ -48,6 +48,25 @@
     column-gap: 10px;
 }
 
+.puporseDivDesk input {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #6B7280;
+}
+
+.puporseDivDesk input::-webkit-outer-spin-button,
+.puporseDivDesk input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.puporseDivDesk input[type=number] {
+    -moz-appearance: textfield;
+}
+
 .purposePara {
     font-family: 'Sora';
     font-style: normal;

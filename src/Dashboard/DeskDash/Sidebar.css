@@ -60,6 +60,24 @@
     cursor: pointer;
 }
 
+@media screen and (max-width: 900px) {
+    .dashDash {
+        flex-direction: column;
+    }
+
+    .dashNewProp {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .dashProfile,
+    .dashReq,
+    .dashMess,
+    .dashDis {
+        flex-direction: column;
+    }
+}
+
 .dashDash {
     display: flex;
     align-items: center;

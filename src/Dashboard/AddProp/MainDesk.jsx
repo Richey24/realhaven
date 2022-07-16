@@ -19,10 +19,7 @@ const minDistance = 10;
 const MainDesk = () => {
     const [purpose, setPurpose] = useState("Purpose")
     const [propType, setPropType] = useState("Property type")
-    const [bedNum, setBedNum] = useState("No Of Bedroom")
-    const [bathNum, setBathNum] = useState("No Of Bathroom")
-    const [toiletNum, setToiletNum] = useState("No Of Toilet")
-    const [curr, setCurr] = useState("Nigerian Naira (₦)")
+    const [curr, setCurr] = useState("Naira (₦)")
     const [rate, setRate] = useState("/year")
     const [value2, setValue2] = useState([5, 37]);
 
@@ -61,21 +58,6 @@ const MainDesk = () => {
     const getPurpose = (value) => {
         setPurpose(value)
         showMode("mode")
-    }
-
-    const getBedNum = (value) => {
-        setBedNum(value)
-        showMode("bedroom")
-    }
-
-    const getBathNum = (value) => {
-        setBathNum(value)
-        showMode("bathroom")
-    }
-
-    const getToiletNum = (value) => {
-        setToiletNum(value)
-        showMode("toilet")
     }
 
     const getCurr = (value) => {
@@ -133,60 +115,15 @@ const MainDesk = () => {
             <div className="puporseDivDesk">
                 <div>
                     <p className="purposePara">Bedroom</p>
-                    <div style={{ width: "20vw", margin: "0px" }} onClick={() => showMode("bedroom")} className='locationDesk'>
-                        <p>{bedNum}</p>
-                        <img src={down} alt="" />
-                    </div>
-                    <ul style={{ height: "150px", width: "20vw", position: "absolute", zIndex: "1", margin: "0px" }} id='bedroom' className='propertyListDesk'>
-                        <li onClick={() => getBedNum(1)}>1</li>
-                        <li onClick={() => getBedNum(2)} >2</li>
-                        <li onClick={() => getBedNum(3)}>3</li>
-                        <li onClick={() => getBedNum(4)}>4</li>
-                        <li onClick={() => getBedNum(5)}>5</li>
-                        <li onClick={() => getBedNum(6)}>6</li>
-                        <li onClick={() => getBedNum(7)}>7</li>
-                        <li onClick={() => getBedNum(8)}>8</li>
-                        <li onClick={() => getBedNum(9)}>9</li>
-                        <li onClick={() => getBedNum(10)}>10</li>
-                    </ul>
+                    <input style={{ width: "20vw", margin: "0px", outline: "none", cursor: "unset" }} placeholder="No of Bedrooms" className='locationDesk' type="number" />
                 </div>
                 <div>
                     <p className="purposePara">Bathroom</p>
-                    <div style={{ width: "20vw", margin: "0px" }} onClick={() => showMode("bathroom")} className='locationDesk'>
-                        <p>{bathNum}</p>
-                        <img src={down} alt="" />
-                    </div>
-                    <ul style={{ height: "150px", width: "20vw", position: "absolute", zIndex: "1", margin: "0px" }} id='bathroom' className='propertyListDesk'>
-                        <li onClick={() => getBathNum(1)}>1</li>
-                        <li onClick={() => getBathNum(2)}>2</li>
-                        <li onClick={() => getBathNum(3)}>3</li>
-                        <li onClick={() => getBathNum(4)}>4</li>
-                        <li onClick={() => getBathNum(5)}>5</li>
-                        <li onClick={() => getBathNum(6)}>6</li>
-                        <li onClick={() => getBathNum(7)}>7</li>
-                        <li onClick={() => getBathNum(8)}>8</li>
-                        <li onClick={() => getBathNum(9)}>9</li>
-                        <li onClick={() => getBathNum(10)}>10</li>
-                    </ul>
+                    <input style={{ width: "20vw", margin: "0px", outline: "none", cursor: "unset" }} placeholder="No of Bathrooms" className='locationDesk' type="number" />
                 </div>
                 <div>
                     <p className="purposePara">Toilet</p>
-                    <div style={{ width: "20vw", margin: "0px" }} onClick={() => showMode("toilet")} className='locationDesk'>
-                        <p>{toiletNum}</p>
-                        <img src={down} alt="" />
-                    </div>
-                    <ul style={{ height: "150px", width: "20vw", position: "absolute", zIndex: "1", margin: "0px" }} id='toilet' className='propertyListDesk'>
-                        <li onClick={() => getToiletNum(1)}>1</li>
-                        <li onClick={() => getToiletNum(2)}>2</li>
-                        <li onClick={() => getToiletNum(3)}>3</li>
-                        <li onClick={() => getToiletNum(4)}>4</li>
-                        <li onClick={() => getToiletNum(5)}>5</li>
-                        <li onClick={() => getToiletNum(6)}>6</li>
-                        <li onClick={() => getToiletNum(7)}>7</li>
-                        <li onClick={() => getToiletNum(8)}>8</li>
-                        <li onClick={() => getToiletNum(9)}>9</li>
-                        <li onClick={() => getToiletNum(10)}>10</li>
-                    </ul>
+                    <input style={{ width: "20vw", margin: "0px", outline: "none", cursor: "unset" }} placeholder="No of Toilets" className='locationDesk' type="number" />
                 </div>
             </div>
 
@@ -197,9 +134,9 @@ const MainDesk = () => {
             </div>
 
             <div className="puporseDivDesk">
-                <div>
+                <div style={{ width: "30%" }}>
                     <p className="purposePara">Property price</p>
-                    <div style={{ width: "20vw", margin: "0px" }} onClick={() => showMode("price")} className='locationDesk'>
+                    <div style={{ width: "100%", margin: "0px" }} onClick={() => showMode("price")} className='locationDesk'>
                         <p>Price</p>
                         <img src={down} alt="" />
                     </div>
@@ -236,22 +173,22 @@ const MainDesk = () => {
                         />
                     </ul>
                 </div>
-                <div>
+                <div style={{ width: "30%" }}>
                     <p className="purposePara">Currency</p>
-                    <div style={{ width: "20vw", margin: "0px" }} onClick={() => showMode("currency")} className='locationDesk'>
+                    <div style={{ width: "100%", margin: "0px" }} onClick={() => showMode("currency")} className='locationDesk'>
                         <p>{curr}</p>
                         <img src={down} alt="" />
                     </div>
                     <ul style={{ height: "150px", width: "20vw", position: "absolute", zIndex: "1", margin: "0px" }} id='currency' className='propertyListDesk'>
-                        <li onClick={() => getCurr("Nigerian Naira (₦)")}>Nigerian Naira (₦)</li>
+                        <li onClick={() => getCurr("Naira (₦)")}>Naira (₦)</li>
                         <li onClick={() => getCurr("US Dollar ($)")}>US Dollar ($)</li>
                         <li onClick={() => getCurr("Euro (€)")}>Euro (€)</li>
                         <li onClick={() => getCurr("Pound (£)")}>Pound (£)</li>
                     </ul>
                 </div>
-                <div>
+                <div style={{ width: "30%" }}>
                     <p className="purposePara">Period</p>
-                    <div style={{ width: "20vw", margin: "0px" }} onClick={() => showMode("rate")} className='locationDesk'>
+                    <div style={{ width: "100%", margin: "0px" }} onClick={() => showMode("rate")} className='locationDesk'>
                         <p>{rate}</p>
                         <img src={down} alt="" />
                     </div>
