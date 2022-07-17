@@ -17,7 +17,7 @@ const Sidebar = () => {
     return (
         <div className="dashSideMain">
             <div>
-                <p className="dashLogoDesk"><img src={logo} alt="" />HAVEN</p>
+                <p onClick={() => navigate("/")} className="dashLogoDesk"><img src={logo} alt="" />HAVEN</p>
                 <p className="dashFindDesk">Find Your Home, Your Safe <span>Haven.</span></p>
                 <center>
                     <p style={pathname === "/post" ? { background: "#17457A" } : {}} onClick={() => navigate("/post")} className="dashNewProp"><img src={combined} alt="" />New Property</p>
