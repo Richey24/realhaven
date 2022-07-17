@@ -15,7 +15,7 @@ const Seventh = () => {
                 <div className='deskFlexAdd'>
                     <img src={deskAdd} alt="" />
                     <div>
-                        <div className='deskAddDiv'>
+                        <div style={{ width: '80%' }} className='deskAddDiv'>
                             <h5>Visit us</h5>
                             <img src={arrow} alt="" />
                             <p style={{ textAlign: 'left' }}>No 36A Stanbic IBTC Building Toyin Street, Ikeja, Lagos NIGERIA</p>

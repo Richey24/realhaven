@@ -28,7 +28,7 @@ const Header = ({ setSearch }) => {
     const [mode, setMode] = useState("Rent")
     const [value2, setValue2] = useState([5, 37]);
     const [loc, setLoc] = useState("Lagos")
-    const [curr, setCurr] = useState("Nigerian Naira (₦)")
+    const [curr, setCurr] = useState("Naira (₦)")
     const navigate = useNavigate()
 
     const getMode1 = (value) => {
@@ -162,7 +162,7 @@ const Header = ({ setSearch }) => {
                                 <img src={down} alt="" />
                             </div>
                             <ul id='deskCurr' style={{ margin: '0', padding: '0' }} className='propertyListDesk1'>
-                                <li onClick={() => getCurr("Nigerian Naira (₦)")}>Nigerian Naira (₦)</li>
+                                <li onClick={() => getCurr("Naira (₦)")}>Naira (₦)</li>
                                 <li onClick={() => getCurr("US Dollar ($)")}>US Dollar ($)</li>
                                 <li onClick={() => getCurr("Euro (€)")}>Euro (€)</li>
                                 <li onClick={() => getCurr("Pound (£)")}>Pound (£)</li>

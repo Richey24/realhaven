@@ -65,7 +65,7 @@ const Sixth = () => {
                     <center>
                         <q>Haven is the best real estate</q>
                         <p>agency i could find, the experience was smooth when i got my shop.</p>
-                        <div style={{ marginTop: '7rem' }} className='customerRatingDesk'>
+                        <div className='customerRatingDesk weirdLady'>
                             <img src={rate3} alt="" />
                             <h6>Luis Vilasmil</h6>
                             <h6>Luis Beauty Salon</h6>

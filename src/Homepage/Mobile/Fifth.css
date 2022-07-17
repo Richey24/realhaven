@@ -34,6 +34,8 @@
     height: 202.5px;
 }
 
+
+
 @media only screen and (min-width: 768px) {
     .fifthMain img {
         height: 540px;
@@ -44,6 +46,7 @@
     .weRank {
         font-size: 32px;
         margin-top: 1rem;
+        line-height: 30px;
     }
 
     .bestInterest {
@@ -69,6 +72,21 @@
 
     .exploreMore img {
         width: 25px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .fifthMain img {
+        height: 80vh;
+    }
+
+    .weRank {
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    .bestInterest {
+        font-size: 20px;
     }
 }
 

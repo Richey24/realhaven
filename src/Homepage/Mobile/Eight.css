@@ -49,13 +49,13 @@
     }
 
     .woman {
-        width: 650px;
-        height: 684.09px;
+        width: 50vw;
+        height: 95vh;
     }
 
     .womanDiv {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
         margin-left: 18rem;
     }
@@ -63,5 +63,19 @@
     .womanDiv div {
         display: flex;
         flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .browseProp {
+        font-size: 24px;
+    }
+
+    .downloadApp {
+        font-size: 16px;
+    }
+
+    .womanDiv {
+        margin-left: 10rem;
     }
 }

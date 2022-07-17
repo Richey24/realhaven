@@ -58,3 +58,17 @@
     line-height: 25px;
     margin-top: 22px;
 }
+
+@media screen and (max-width: 1300px) {
+    .deskFind {
+        font-size: 24px;
+    }
+
+    .manyWays {
+        font-size: 18px;
+    }
+
+    .deskAddDiv h5 {
+        font-size: 24px;
+    }
+}

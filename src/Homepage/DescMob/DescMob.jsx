@@ -19,7 +19,10 @@ const DescMob = () => {
         setSpin(false)
     }, [size])
 
-    window.addEventListener("resize", () => { setSize(window.innerWidth) })
+    window.addEventListener("resize", () => {
+        window.innerWidth >= 1200 && setSize(window.innerWidth)
+        window.innerWidth < 800 && window.innerWidth > 780 && setSize(window.innerWidth)
+    })
 
     return (
         spin ?

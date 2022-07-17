@@ -40,6 +40,13 @@
     padding-top: 10px;
 }
 
+@media screen and (max-width: 1300px) {
+    .fourthMain {
+        margin-left: 2rem;
+        width: 90vw;
+    }
+}
+
 @media only screen and (max-width: 768px) {
     .insideMain {
         padding-left: 30px;

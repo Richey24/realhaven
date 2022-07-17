@@ -3,29 +3,30 @@
     height: 100%;
     background-color: #EAF2FB;
     display: flex;
+    position: relative;
     justify-content: space-between;
-    align-items: center;
 }
 
 .leftSide {
     width: 50%;
     height: 100%;
+    padding-top: 12%;
 }
 
 .leftSide h4 {
-    width: 576px;
+    width: 80%;
     font-family: 'Sora';
     font-style: normal;
     font-weight: 700;
     font-size: 54px;
+    text-align: left;
     line-height: 81px;
     color: #374151;
-    margin-top: -15rem;
     margin-left: 5rem;
 }
 
 .leftSide p {
-    width: 476px;
+    width: 70%;
     font-family: 'Sora';
     font-style: normal;
     font-weight: 400;
@@ -33,8 +34,10 @@
     line-height: 30px;
     color: #6B7280;
     text-align: left;
-    margin-left: 9rem;
+    margin-left: 5rem;
 }
+
+
 
 .rightImage {
     width: 50%;
@@ -73,9 +76,8 @@
 
 .postProp {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 16px 32px;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
     width: 222px;
     height: 56px;
@@ -168,25 +170,25 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     padding: 12px 24px;
-    gap: 24px;
     background: #FFFFFF;
     border: 1px solid #2E7DD7;
     box-shadow: -1px -1px 4px rgba(17, 17, 17, 0.06), 2px 2px 2px rgba(17, 17, 17, 0.06);
     border-radius: 0px 8px 8px 8px;
     margin-left: 2rem;
     padding-top: 12px;
-    width: 821px;
+    width: 70vw;
     height: 126px;
 }
 
 .alignDivSearch {
     position: absolute;
     top: 70%;
-    left: 8%;
+    left: 3.5vw;
     z-index: 1;
 }
+
 
 .activeSelectDesk {
     background-color: #2E7DD7;
@@ -249,15 +251,14 @@
     border: 1px solid #E5E7EB;
     border-radius: 8px;
     background-color: #FFFFFF;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
-    width: 155px;
+    width: 15vw;
     height: 56px;
+    max-height: auto;
     margin-left: 0.7rem;
     display: flex;
     justify-content: space-between;
-    align-self: center;
+    align-items: baseline;
+    padding-top: 18px;
     padding-left: 10px;
     padding-right: 10px;
     cursor: pointer;
@@ -276,18 +277,16 @@
     font-family: 'Sora';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 20px;
-    align-self: flex-end;
     color: #374151;
+    flex-shrink: 0;
 }
 
 .deskSearchButton {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 24px;
-    gap: 10px;
+    justify-content: center;
+    align-items: center;
     width: 133px;
     height: 78px;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #2E7DD7;
@@ -300,6 +299,88 @@
     color: #FFFFFF;
     margin-top: 0.5rem;
     cursor: pointer;
+}
+
+@media screen and (max-width: 1300px) {
+    .alignDivSearch {
+        left: 5vw;
+    }
+
+    .myNav {
+        height: 70px;
+    }
+
+    .leftSide h4 {
+        font-size: 35px;
+        line-height: 60px;
+    }
+
+    .leftSide p {
+        font-size: 16px;
+    }
+
+    .logoNav {
+        font-size: 16px;
+    }
+
+    .firstNavDiv {
+        font-size: 16px;
+    }
+
+    .secNavDiv p {
+        font-size: 16px;
+    }
+
+    .postProp {
+        font-size: 16px;
+        padding: 0px;
+        width: 162px;
+        height: 46px;
+    }
+
+    .deskSearchButton {
+        width: 10vw;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .locationDesk {
+        width: 20vw;
+        height: 40px;
+        padding-top: 8px;
+    }
+
+    .locationDesk p {
+        font-size: 12px;
+    }
+
+    .filterToggleDesk {
+        height: 86px;
+        width: 80vw;
+        padding-left: 0px;
+    }
+
+    .rentSelectDesk {
+        height: 46px;
+    }
+
+    .rentSelectDesk p {
+        font-size: 14px;
+    }
+
+    .activeSelectMidDesk,
+    .activeSelectLastDesk,
+    .activeSelectDesk {
+        padding: 13px 12px;
+    }
+
+    .notActive1Desk {
+        margin-right: -2px;
+    }
+
+    .notActiveDesk {
+        margin-left: -2px;
+    }
 }
 
 .propertyListDesk {
@@ -315,6 +396,8 @@
     padding-left: 10px;
     padding-right: 10px;
     margin-left: 10px;
+    position: absolute;
+    z-index: 3;
     display: none;
 }
 
@@ -388,4 +471,8 @@
 
 .showDrop {
     display: block;
+}
+
+.myBrands {
+    position: absolute;
 }
