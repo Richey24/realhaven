@@ -184,7 +184,7 @@
 
 .alignDivSearch {
     position: absolute;
-    top: 70%;
+    bottom: 28%;
     left: 3.5vw;
     z-index: 1;
 }
@@ -304,6 +304,7 @@
 @media screen and (max-width: 1300px) {
     .alignDivSearch {
         left: 5vw;
+        bottom: 20%;
     }
 
     .myNav {
@@ -475,4 +476,14 @@
 
 .myBrands {
     position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 16px;
+    gap: 64px;
+    overflow: hidden;
+    width: 100%;
+    height: fit-content;
+    background: #0E2A49;
 }

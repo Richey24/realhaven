@@ -110,6 +110,12 @@
     }
 }
 
+@media screen and (max-width: 640px) {
+    .navigateButton {
+        margin-left: 0.5rem;
+    }
+}
+
 .navigateButton p {
     width: 129px;
     height: 56px;

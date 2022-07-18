@@ -140,7 +140,7 @@ const Header = ({ setResult }) => {
                     <p onClick={makeSearch}>Search</p>
                 </div>
                 <img className='headImage' src={frame} alt="" />
-                <div className='myBrands' id='myBrands'>
+                <div className='myBrand' id='myBrands'>
                     <img src={foto} alt="" />
                     <img src={disney} alt="" />
                     <img src={samsung} alt="" />

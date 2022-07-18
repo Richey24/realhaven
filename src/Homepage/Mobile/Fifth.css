@@ -90,6 +90,14 @@
     }
 }
 
+@media screen and (max-width: 640px) {
+    .fifthMain img {
+        height: 300px;
+    }
+}
+
+
+
 .exploreMore {
     display: flex;
     flex-direction: row;

@@ -79,3 +79,17 @@
         margin-left: 10rem;
     }
 }
+
+@media screen and (max-width: 640px) {
+    .browseProp {
+        font-size: 24px;
+    }
+
+    .downloadApp {
+        font-size: 16px;
+    }
+
+    .womanDiv {
+        margin-left: 0px;
+    }
+}
