@@ -121,7 +121,7 @@ const Header = ({ setResult }) => {
     return (
         <div>
             <div className="myMobileHero">
-                <div className='fixedTop'>
+                <div id="fixedNav" className='fixedTop'>
                     <p className='fixedTopPara'><img src={logo} alt="" />Haven</p>
                     <img onClick={handleTopShow} src={topToggle} alt="" />
                 </div>

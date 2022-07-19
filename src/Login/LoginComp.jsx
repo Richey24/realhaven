@@ -67,7 +67,7 @@ const LoginComp = () => {
     }
 
     return (
-        <div className="myContainer">
+        <div className="myContainerMob">
             <div className='side-1'>
                 <img src={bg} alt="bacKground" />
             </div>

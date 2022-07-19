@@ -82,7 +82,7 @@ const Header = ({ setSearch }) => {
                     <p>Haven is Nigeria's leading online real estate platform which eases the stress of finding properties online </p>
                 </div>
                 <img className='rightImage' src={mainImage} alt="" />
-                <div className='myNav'>
+                <div id='fixedNav' className='myNav'>
                     <p className='logoNav'><img src={blueLogo} alt="" />Haven</p>
                     <div className='firstNavDiv'>
                         <span>For Sale</span>

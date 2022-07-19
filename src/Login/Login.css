@@ -7,7 +7,7 @@
     font-family: 'Sora', sans-serif;
 } */
 
-.myContainer {
+.myContainerMob {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -19,22 +19,22 @@ body {
     background-color: #fff;
 }
 
-.side-1 {
+.myContainerMob .side-1 {
     width: 50%;
-    height: 100%;
+    min-height: 100%;
 }
 
-.side-1 img {
+.myContainerMob .side-1 img {
     min-height: 100%;
     width: 100%;
 }
 
-.side-2 {
+.myContainerMob .side-2 {
     padding-top: 5rem;
 }
 
 
-.side-2 h1 {
+.myContainerMob .side-2 h1 {
     color: #374151;
     font-family: 'Sora';
     font-style: normal;
@@ -43,7 +43,7 @@ body {
     line-height: 40px;
 }
 
-input::placeholder {
+.myContainerMob input::placeholder {
     font-family: 'Sora';
     font-style: normal;
     font-weight: 400;
@@ -52,7 +52,7 @@ input::placeholder {
     color: #6B7280;
 }
 
-label {
+.myContainerMob label {
     width: auto;
     height: auto;
     color: #374151;
@@ -64,7 +64,7 @@ label {
     color: #374151;
 }
 
-input {
+.myContainerMob input {
     border: 1px solid #b7bac0;
     border-radius: 8px;
     width: 500px;
@@ -75,7 +75,7 @@ input {
     color: #6B7280;
 }
 
-button {
+.myContainerMob button {
     background-color: #2E7DD7;
     width: 500px;
     height: 52px;
@@ -89,17 +89,18 @@ button {
     color: #FFFFFF;
 }
 
-.label {
+.myContainerMob .label {
     margin: 4em 0;
 }
 
-.label img {
+.myContainerMob .label img {
     position: absolute;
     right: 8%;
     top: 63.2%;
+    cursor: pointer;
 }
 
-.signup {
+.myContainerMob .signup {
     margin-top: -0.6rem;
     font-family: 'Sora';
     font-style: normal;
@@ -109,7 +110,7 @@ button {
     color: #374151;
 }
 
-.reLogo {
+.myContainerMob .reLogo {
     position: absolute;
     left: 2%;
     top: 5%;
@@ -123,19 +124,19 @@ button {
     align-items: baseline;
 }
 
-.signup span {
+.myContainerMob .signup span {
     color: blue;
     cursor: pointer;
 }
 
-.opt {
+.myContainerMob .opt {
     width: 100%;
     display: flex;
     justify-content: center;
     margin-top: 3rem;
 }
 
-.opt p {
+.myContainerMob .opt p {
     font-family: 'Sora';
     font-style: normal;
     font-weight: 400;
@@ -144,7 +145,7 @@ button {
     color: #6B7280;
 }
 
-.google-opt {
+.myContainerMob .google-opt {
     margin-top: 3rem;
     font-size: 16px;
     padding-top: 6px;
@@ -163,20 +164,20 @@ button {
     border-radius: 12px;
 }
 
-.google-opt img {
+.myContainerMob .google-opt img {
     margin-right: 10px;
 }
 
 
-.label p,
-.myBtn p {
+.myContainerMob .label p,
+.myContainerMob .myBtn p {
     color: #2E7DD7;
     font-size: 15px;
 }
 
-#passwordError,
-#submitError,
-#emailError {
+.myContainerMob #passwordError,
+.myContainerMob #submitError,
+.myContainerMob #emailError {
     font-family: 'Sora';
     font-style: normal;
     font-weight: 400;
@@ -184,36 +185,65 @@ button {
     line-height: 18px;
 }
 
-.eyeDivLog {
+.myContainerMob .eyeDivLog {
     position: relative;
 }
 
+@media screen and (max-width: 1300px) {
+    .myContainerMob input {
+        width: 40vw;
+    }
+
+    .myContainerMob button {
+        width: 40vw;
+    }
+
+    .myContainerMob .side-1 {
+        flex-shrink: 0;
+    }
+
+    .myContainerMob .side-2 {
+        padding-left: 1%;
+        margin-right: 0px;
+        padding-right: 20px;
+    }
+
+    .myContainerMob .google-opt {
+        margin-bottom: 30px;
+    }
+
+    .myContainerMob .label img {
+        top: 40%;
+        right: 5%;
+    }
+}
+
 @media screen and (max-width:640px) {
-    .showPassLog {
+    .myContainerMob .showPassLog {
         position: absolute;
         left: 85%;
         margin-top: -0.5rem;
     }
 
-    .side-1 {
+    .myContainerMob .side-1 {
         display: none;
     }
 
-    .reLogo {
+    .myContainerMob .reLogo {
         left: 5%;
     }
 
-    .label {
+    .myContainerMob .label {
         margin: 2em 0;
     }
 
-    .side-2 {
+    .myContainerMob .side-2 {
         width: 100%;
         padding-left: 1rem;
         margin-bottom: 2rem;
     }
 
-    input {
+    .myContainerMob input {
         border: 1px solid #b7bac0;
         border-radius: 8px;
         width: 90vw;
@@ -224,11 +254,11 @@ button {
         color: #6B7280;
     }
 
-    .google-opt {
+    .myContainerMob .google-opt {
         width: 90vw;
     }
 
-    button {
+    .myContainerMob button {
         background-color: #2E7DD7;
         width: 90vw;
         height: 52px;
@@ -242,33 +272,33 @@ button {
         color: #FFFFFF;
     }
 
-    .label img {
+    .myContainerMob .label img {
         position: absolute;
         right: 10%;
         top: 52%;
     }
 
-    .reLogo {
+    .myContainerMob .reLogo {
         color: #2E7DD7;
     }
 
-    .reLogo img {
+    .myContainerMob .reLogo img {
         filter: invert(47%) sepia(47%) saturate(4635%) hue-rotate(195deg) brightness(91%) contrast(83%);
     }
 }
 
 @media screen and (min-width:1024px) {
-    .side-1 {
+    .myContainerMob .side-1 {
         display: block;
     }
 
-    .side-2 {
+    .myContainerMob .side-2 {
         box-sizing: border-box;
         justify-content: center;
         margin: 0 5em;
     }
 
-    .showPassLog {
+    .myContainerMob .showPassLog {
         position: absolute;
         left: 92%;
         margin-top: -0.8rem;

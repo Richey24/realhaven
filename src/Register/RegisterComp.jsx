@@ -81,7 +81,7 @@ const RegisterComp = () => {
     }
 
     return (
-        <div className="myContainer">
+        <div className="myContainerReg">
             <div className='side-2'>
                 <h1>Register</h1>
                 <form onSubmit={validateForm}>

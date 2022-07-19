@@ -22,6 +22,19 @@ function App() {
     window.innerWidth < 800 && window.innerWidth > 780 && setSize(window.innerWidth)
   })
 
+  let lastScroll = window.scrollY || document.documentElement.scrollTop
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.scrollY || document.documentElement.scrollTop
+    if (currentScroll > lastScroll) {
+      document.getElementById("fixedNav").style.transition = "east-out 1s"
+      document.getElementById("fixedNav").style.visibility = "hidden"
+    } else {
+      document.getElementById("fixedNav").style.transition = "east-in 1s"
+      document.getElementById("fixedNav").style.visibility = "visible"
+    }
+    lastScroll = currentScroll <= 0 ? 0 : currentScroll
+  })
+
   return (
     spin ?
       <div
