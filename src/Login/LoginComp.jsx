@@ -14,6 +14,7 @@ const LoginComp = () => {
     const [emailError, setEmailError] = useState(true)
     const navigate = useNavigate()
 
+    //validating password
     const validatePassword = (event) => {
         setPassword(event.target.value)
         const passwordError = document.getElementById('passwordError');
@@ -28,6 +29,7 @@ const LoginComp = () => {
     }
 
 
+    //validating email
     const validateEmail = (event) => {
         setEmail(event.target.value)
         let userEmail = event.target.value
@@ -41,6 +43,7 @@ const LoginComp = () => {
         setEmailError(true)
     }
 
+    //validating submission
     const validateForm = (event) => {
         event.preventDefault()
         const submitError = document.getElementById('submitError');
@@ -57,6 +60,7 @@ const LoginComp = () => {
         }
     }
 
+    // toggling hide and show password
     const showPass = () => {
         const password = document.getElementById('password');
         if (password.type === "password") {

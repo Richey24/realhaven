@@ -17,6 +17,7 @@ const RegisterComp = () => {
     const [code, setCode] = useState(countryTelData.allCountries[80].dialCode)
     const navigate = useNavigate()
 
+    //validating password
     const validatePassword = (event) => {
         setPassword(event.target.value)
         const passwordError = document.getElementById('passwordError');
@@ -30,7 +31,7 @@ const RegisterComp = () => {
         setPassError(true)
     }
 
-
+    //validating email
     const validateEmail = (event) => {
         setEmail(event.target.value)
         let userEmail = event.target.value
@@ -44,6 +45,7 @@ const RegisterComp = () => {
         setEmailError(true)
     }
 
+    //validating submission
     const validateForm = (event) => {
         event.preventDefault()
         const submitError = document.getElementById('submitError');
@@ -60,17 +62,20 @@ const RegisterComp = () => {
         }
     }
 
+    // toggling country code
     const showList = () => {
         const myList = document.getElementById("countryList")
         myList.classList.toggle("showList")
     }
 
+    // setting active country code
     const getCode = (codeNum) => {
         setCode(codeNum)
         const myList = document.getElementById("countryList")
         myList.classList.toggle("showList")
     }
 
+    // toggling hide and show password
     const showPass = () => {
         const password = document.getElementById('password');
         if (password.type === "password") {
