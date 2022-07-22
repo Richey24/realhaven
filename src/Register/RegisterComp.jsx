@@ -7,6 +7,7 @@ import "./Register.css"
 import countryTelData from 'country-telephone-data'
 import down from '../img/Stroke-1.svg'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const RegisterComp = () => {
 
@@ -46,7 +47,7 @@ const RegisterComp = () => {
     }
 
     //validating submission
-    const validateForm = (event) => {
+    const validateForm = async (event) => {
         event.preventDefault()
         const submitError = document.getElementById('submitError');
         if (!emailError || !passError) {
@@ -60,6 +61,22 @@ const RegisterComp = () => {
             setTimeout(function () { submitError.style.visibility = 'hidden'; }, 3000);
             return
         }
+        const info = {
+            fullname: event.target.fullname.value || event.target.firstname.value + " " + event.target.lastname.value,
+            email: event.target.email.value,
+            phone: event.target.number.value,
+            password: event.target.password.value
+        }
+        console.log(info);
+        const res = await axios.post("http://localhost:5000/user/register", info, { validateStatus: () => true })
+        if (res.status !== 200) {
+            submitError.innerHTML = "There was an error registering this user, please try again"
+            submitError.style.visibility = 'visible'
+            setTimeout(function () { submitError.style.visibility = 'hidden'; }, 3000);
+            return
+        }
+        document.cookie = `email=${info.email}`
+        navigate("/dashboard")
     }
 
     // toggling country code
@@ -92,16 +109,16 @@ const RegisterComp = () => {
                 <form onSubmit={validateForm}>
                     <label htmlFor="firstName">Your Name</label>
                     <div className="myName">
-                        <input type="text" placeholder="First Name" id="firstName" />
-                        <input type="text" placeholder="Last Name" id="lastName" />
+                        <input type="text" placeholder="First Name" id="firstName" name='firstname' />
+                        <input type="text" placeholder="Last Name" id="lastName" name='lastname' />
                     </div>
                     <div className="fullName">
-                        <input type="text" placeholder="Full Name" id="fullName" />
+                        <input type="text" placeholder="Full Name" id="fullName" name='fullname' />
                     </div>
                     <div className="label">
                         <label htmlFor="email">Email address</label>
                         <br />
-                        <input type="email" value={email} placeholder="name@example.com" onChange={validateEmail} id="email" />
+                        <input type="email" value={email} placeholder="name@example.com" onChange={validateEmail} id="email" name='email' />
                         <p id="emailError" style={{ visibility: "hidden" }}>Email is required</p>
                     </div>
 
@@ -110,12 +127,12 @@ const RegisterComp = () => {
                         <br />
                         <div className='phoneNumDiv'>
                             <p onClick={showList} className='mainCountry'>+{code} <img src={down} alt="down" /></p>
-                            <input style={{ border: 'none' }} type="tel" placeholder="phone number" id="phoneNumber" />
+                            <input style={{ border: 'none' }} type="tel" placeholder="phone number" id="phoneNumber" name='number' />
                         </div>
                         <ul id='countryList' className='countryList'>
                             {
-                                countryTelData.allCountries.sort((a, b) => parseInt(a.dialCode) - parseInt(b.dialCode)).map((code) => (
-                                    <li onClick={() => getCode(code.dialCode)}>+{code.dialCode}</li>
+                                countryTelData.allCountries.sort((a, b) => parseInt(a.dialCode) - parseInt(b.dialCode)).map((code, i) => (
+                                    <li key={i} onClick={() => getCode(code.dialCode)}>+{code.dialCode}</li>
                                 ))
                             }
                         </ul>
@@ -125,7 +142,7 @@ const RegisterComp = () => {
                         <label htmlFor="password">Password</label>
                         <br />
                         <div className='eyeDiv'>
-                            <input placeholder='********' id='password' type='password' value={password} onChange={validatePassword} />
+                            <input placeholder='********' id='password' type='password' value={password} onChange={validatePassword} name="password" />
                             <img className='showPass' onClick={showPass} src={eye} alt="" />
                         </div>
                         <p id="passwordError" style={{ visibility: "hidden" }}>Password is required</p>

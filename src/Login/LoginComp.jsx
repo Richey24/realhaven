@@ -4,6 +4,7 @@ import bg from '../img/Frame 1.png'
 import eye from '../img/Show.svg'
 import google from '../img/flat-color-icons_google.svg'
 import './Login.css'
+import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 
 const LoginComp = () => {
@@ -44,7 +45,7 @@ const LoginComp = () => {
     }
 
     //validating submission
-    const validateForm = (event) => {
+    const validateForm = async (event) => {
         event.preventDefault()
         const submitError = document.getElementById('submitError');
         if (!emailError || !passError) {
@@ -57,6 +58,38 @@ const LoginComp = () => {
             submitError.style.visibility = 'visible'
             setTimeout(function () { submitError.style.visibility = 'hidden'; }, 3000);
             return
+        }
+        const info = {
+            email: event.target.email.value,
+            password: event.target.password.value
+        }
+        const res = await axios.post("http://localhost:5000/user/login", info, { validateStatus: () => true })
+        const user = await res.data
+        switch (res.status) {
+            case 404:
+                submitError.innerHTML = "No User Found With This Email"
+                submitError.style.visibility = 'visible'
+                submitError.style.color = 'red'
+                setTimeout(function () { submitError.style.visibility = 'hidden'; }, 9000);
+                break;
+            case 401:
+                submitError.innerHTML = "Invalid Password"
+                submitError.style.visibility = 'visible'
+                submitError.style.color = 'red'
+                setTimeout(function () { submitError.style.visibility = 'hidden'; }, 9000);
+                break;
+            case 500:
+                submitError.innerHTML = "An Error Occurred, Try Again"
+                submitError.style.visibility = 'visible'
+                submitError.style.color = 'red'
+                setTimeout(function () { submitError.style.visibility = 'hidden'; }, 9000);
+                break;
+            case 200:
+                document.cookie = `email=${user.email}`
+                navigate("/dashboard")
+                break;
+            default:
+                break;
         }
     }
 
@@ -85,7 +118,7 @@ const LoginComp = () => {
                     <div className="label">
                         <label htmlFor="email">Email address</label>
                         <br />
-                        <input type="text" value={email} placeholder="name@example.com" onChange={validateEmail} id="email" />
+                        <input type="text" value={email} placeholder="name@example.com" onChange={validateEmail} id="email" name='email' />
                         <p id="emailError" style={{ visibility: "hidden" }}>Email is required</p>
                     </div>
 
@@ -93,7 +126,7 @@ const LoginComp = () => {
                         <label htmlFor="password">Password</label>
                         <br />
                         <div className='eyeDivLog'>
-                            <input id='password' type='password' value={password} onChange={validatePassword} />
+                            <input id='password' type='password' value={password} onChange={validatePassword} name="password" />
                             <img className='showPassLog' onClick={showPass} src={eye} alt="" />
                         </div>
                         <p id="passwordError" style={{ visibility: "hidden" }}>Password is required</p>
