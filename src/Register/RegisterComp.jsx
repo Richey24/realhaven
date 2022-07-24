@@ -69,14 +69,24 @@ const RegisterComp = () => {
         }
         console.log(info);
         const res = await axios.post("http://localhost:5000/user/register", info, { validateStatus: () => true })
-        if (res.status !== 200) {
-            submitError.innerHTML = "There was an error registering this user, please try again"
-            submitError.style.visibility = 'visible'
-            setTimeout(function () { submitError.style.visibility = 'hidden'; }, 3000);
-            return
+        switch (res.status) {
+            case 500:
+                submitError.innerHTML = "There was an error registering this user, please try again"
+                submitError.style.visibility = 'visible'
+                setTimeout(function () { submitError.style.visibility = 'hidden'; }, 9000);
+                break;
+            case 203:
+                submitError.innerHTML = "This email is already registered, kindly login"
+                submitError.style.visibility = 'visible'
+                setTimeout(function () { submitError.style.visibility = 'hidden'; }, 3000);
+                break
+            case 200:
+                document.cookie = `email=${info.email}`
+                navigate("/dashboard")
+                break
+            default:
+                break;
         }
-        document.cookie = `email=${info.email}`
-        navigate("/dashboard")
     }
 
     // toggling country code
