@@ -186,7 +186,7 @@ input[type="checkbox"] {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 20px 160px 20px 24px;
+    /* padding: 20px 160px 20px 24px; */
     cursor: pointer;
 }
 
@@ -209,10 +209,20 @@ input[type="checkbox"] {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 40px 24px;
+    /* padding: 40px 24px; */
     gap: 10px;
     margin-top: 16px;
     cursor: pointer;
+}
+
+.addHouseMainImage img {
+    width: 30%;
+    height: 90%;
+}
+
+.addHouseOtherImage img {
+    width: 90%;
+    height: 90%;
 }
 
 .addFinal1 {
@@ -241,6 +251,8 @@ input[type="checkbox"] {
     justify-content: center;
     align-items: center;
     padding: 20px 32px;
+    border: none;
+    outline: none;
     gap: 10px;
     width: 211px;
     height: 64px;
@@ -277,4 +289,15 @@ input[type="checkbox"] {
     align-items: center;
     margin-left: 5%;
     margin-top: 10px;
+}
+
+.myToast {
+    position: fixed;
+    top: 0px;
+    width: 70vw;
+    background-color: #2e47d7;
+}
+
+#myToast {
+    color: black;
 }

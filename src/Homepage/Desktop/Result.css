@@ -127,8 +127,9 @@
     cursor: pointer;
 }
 
-.mainResult img {
-    height: 90%;
+.mainResultImage {
+    height: 300px;
+    width: 300px;
 }
 
 .mainResult div {

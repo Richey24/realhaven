@@ -9,8 +9,25 @@ import callback from "../../img/callback.svg"
 import people from "../../img/3-Friends.svg"
 import two from '../../img/Rectangle 309.png'
 import three from '../../img/image 5.png'
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from "react"
+import { useState } from "react"
+import axios from "axios"
 
 const Main = () => {
+    const [user, setUser] = useState({})
+    const navigate = useNavigate()
+    useEffect(() => {
+        const email = document.cookie.split("=")[1]
+        if (!email) {
+            navigate("/login")
+        }
+        (async () => {
+            const res = await axios.post("http://localhost:5000/user/get", { email: email })
+            const result = await res.data
+            setUser(result)
+        })()
+    })
     return (
         <div className="mainDashDiv">
             <div className="dashTop">
@@ -23,7 +40,7 @@ const Main = () => {
             <div className="deskReferDiv">
                 <div className="myDeskRefer">
                     <div style={{ border: "none", width: "auto", height: "auto", marginBottom: "30px" }}>
-                        <p>Hi Rejoice 👋</p>
+                        <p>Hi {user.fullname?.split(" ")[0]} 👋</p>
                         <p style={{ fontWeight: "400" }}>Welcome back 🎉</p>
                     </div>
                     <img className="deskDude" src={dude} alt="" />

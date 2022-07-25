@@ -50,7 +50,7 @@ const Result = () => {
                 {
                     images.map((image, i) => (
                         <div onClick={() => navigate("/desc")} key={i} className="mainResult">
-                            <img src={image} alt="" />
+                            <img className="mainResultImage" src={image} alt="" />
                             <div>
                                 <p className="houseTypeDesk">4 Bedroom flat for rent <span>Rent</span></p>
                                 <p className="houseLocationDesk">Off Allen Avenue Allen Avenue Ikeja Lagos</p>
