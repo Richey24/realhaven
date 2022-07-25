@@ -7,8 +7,6 @@ import hand from "../../img/hand.svg"
 import money from "../../img/money.svg"
 import callback from "../../img/callback.svg"
 import people from "../../img/3-Friends.svg"
-import two from '../../img/Rectangle 309.png'
-import three from '../../img/image 5.png'
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from "react"
 import { useState } from "react"
@@ -16,6 +14,7 @@ import axios from "axios"
 
 const Main = () => {
     const [user, setUser] = useState({})
+    const [houses, setHouses] = useState([])
     const navigate = useNavigate()
     useEffect(() => {
         const email = document.cookie.split("=")[1]
@@ -24,10 +23,14 @@ const Main = () => {
         }
         (async () => {
             const res = await axios.post("http://localhost:5000/user/get", { email: email })
+            const rep = await axios.post("http://localhost:5000/house/user/get", { email: email })
+            const houseResult = await rep.data
             const result = await res.data
             setUser(result)
+            setHouses(houseResult)
         })()
-    })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
     return (
         <div className="mainDashDiv">
             <div className="dashTop">
@@ -88,22 +91,18 @@ const Main = () => {
                     </tr>
                 </thead>
                 <tbody className="deskTableBody">
-                    <tr>
-                        <td className="propId">525</td>
-                        <td className="propImageDesk"><img src={two} alt="" /></td>
-                        <td className="propTitleDesk">4 Bedroom duplex for sale</td>
-                        <td className="propStatusDesk">Sold</td>
-                        <td className="propPriceDesk">₦15,000,000</td>
-                        <td className="propLeadDesk">456</td>
-                    </tr>
-                    <tr>
-                        <td className="propId">660</td>
-                        <td className="propImageDesk"><img src={three} alt="" /></td>
-                        <td className="propTitleDesk">4 Bedroom duplex for sale</td>
-                        <td className="propStatusDesk">Active</td>
-                        <td className="propPriceDesk">₦64,000,000</td>
-                        <td className="propLeadDesk">200</td>
-                    </tr>
+                    {
+                        houses.map((house, i) => (
+                            <tr key={i}>
+                                <td className="propId">{house.Id}</td>
+                                <td className="propImageDesk"><img src={`http://localhost:5000/image/${house.images?.split(",")[0]}`} alt="" /></td>
+                                <td className="propTitleDesk">{house.title}</td>
+                                <td className="propStatusDesk">Active</td>
+                                <td className="propPriceDesk">{house.price} {house.currency}</td>
+                                <td className="propLeadDesk">456</td>
+                            </tr>
+                        ))
+                    }
                 </tbody>
             </table>
 

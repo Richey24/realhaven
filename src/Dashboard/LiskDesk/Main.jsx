@@ -5,10 +5,9 @@ import "../DeskDash/Main.css"
 import "./Main.css"
 import NaijaStates from 'naija-state-local-government';
 import down from '../../img/Icon.svg'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import "../../Homepage/Desktop/Header.css"
 import two from '../../img/Rectangle 309.png'
-import three from '../../img/image 5.png'
 import four from '../../img/image 5 (1).png'
 import five from '../../img/image 5 (2).png'
 import six from '../../img/image 5 (3).png'
@@ -21,13 +20,34 @@ import bathroom from '../../img/bathroom.svg'
 import toilet from '../../img/toilet.svg'
 import "../../Homepage/DescMob/Main.css"
 import { Offcanvas } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import axios from "axios"
 
-const images = [two, three, four]
 const canvasImages = [four, five, six, seven, eight, nine]
 const Main = () => {
     const [loc, setLoc] = useState("Lagos")
     const [active, setActive] = useState("all")
     const [showTop, setShowTop] = useState(false)
+    const [user, setUser] = useState({})
+    const [houses, setHouses] = useState([])
+    const [fHouses, setFHouses] = useState([])
+    const navigate = useNavigate()
+    useEffect(() => {
+        const email = document.cookie.split("=")[1]
+        if (!email) {
+            navigate("/login")
+        }
+        (async () => {
+            const res = await axios.post("http://localhost:5000/user/get", { email: email })
+            const rep = await axios.post("http://localhost:5000/house/user/get", { email: email })
+            const houseResult = await rep.data
+            const result = await res.data
+            setUser(result)
+            setHouses(houseResult)
+            setFHouses(houseResult)
+        })()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
 
     const showMode = (id) => {
@@ -45,6 +65,15 @@ const Main = () => {
 
     const handleTopShow = () => {
         setShowTop(true)
+    }
+
+    const filterHouse = (value) => {
+        if (value === "All") {
+            setHouses(fHouses)
+        } else {
+            const filterResult = fHouses.filter((house) => house.purpose === value)
+            setHouses(filterResult)
+        }
     }
 
     return (
@@ -100,34 +129,34 @@ const Main = () => {
 
             <div className="buyWrapper">
                 <div className="listFilterBuy">
-                    <p onClick={() => setActive("all")} className={active === "all" ? "activeListDesk" : ""}>All(150)</p>
-                    <p onClick={() => setActive("sale")} className={active === "sale" ? "activeListDesk" : ""}>Sale(75)</p>
-                    <p onClick={() => setActive("rent")} className={active === "rent" ? "activeListDesk" : ""}>Rent(30)</p>
-                    <p onClick={() => setActive("buy")} className={active === "buy" ? "activeListDesk" : ""}>Buy(5)</p>
+                    <p onClick={() => { setActive("all"); filterHouse("All") }} className={active === "all" ? "activeListDesk" : ""}>All({fHouses.length})</p>
+                    <p onClick={() => { setActive("sale"); filterHouse("Sale") }} className={active === "sale" ? "activeListDesk" : ""}>Sale({fHouses.filter((house) => house.purpose === "Sale").length})</p>
+                    <p onClick={() => { setActive("rent"); filterHouse("Rent") }} className={active === "rent" ? "activeListDesk" : ""}>Rent({fHouses.filter((house) => house.purpose === "Rent").length})</p>
+                    <p onClick={() => { setActive("buy"); filterHouse("Buy") }} className={active === "buy" ? "activeListDesk" : ""}>Buy({fHouses.filter((house) => house.purpose === "Buy").length})</p>
                 </div>
             </div>
 
 
             {
-                images.map((image, i) => (
+                houses.map((house, i) => (
                     <div key={i} onClick={handleTopShow} className="listContentDiv">
-                        <img className="listContentDivImg" src={image} alt="" />
+                        <img className="listContentDivImg" src={`http://localhost:5000/image/${house.images?.split(",")[0]}`} alt="" />
                         <div>
-                            <h4>4 bedroom for rent</h4>
-                            <h5><img src={locate} alt="" />Off Allen Avenue Allen Avenue Ikeja Lagos</h5>
+                            <h4>{house.title}</h4>
+                            <h5><img src={locate} alt="" />{house.address}</h5>
                             <div className="descImgInfoMob">
                                 <div className="blueBackMob">
-                                    <div data-value="4" className="roomImgMob">
+                                    <div data-value={house.no_of_bedroom} className="roomImgMob">
                                         <img src={room} alt="" />
                                     </div>
-                                    <div className="bathroomImgMob" data-value="2">
+                                    <div className="bathroomImgMob" data-value={house.no_of_bathroom}>
                                         <img src={bathroom} alt="" />
                                     </div>
-                                    <div className="toiletImgMob" data-value="5">
+                                    <div className="toiletImgMob" data-value={house.no_of_toilet}>
                                         <img src={toilet} alt="" />
                                     </div>
                                 </div>
-                                <p className="listAmtDesk">₦15,000,000/Year</p>
+                                <p className="listAmtDesk">{house.price} {house.currency}{house.period}</p>
                             </div>
                         </div>
                     </div>
