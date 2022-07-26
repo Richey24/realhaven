@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '../img/logo.svg'
 import bg from '../img/register.png'
 import eye from '../img/Show.svg'
@@ -17,6 +17,13 @@ const RegisterComp = () => {
     const [emailError, setEmailError] = useState(true)
     const [code, setCode] = useState(countryTelData.allCountries[80].dialCode)
     const navigate = useNavigate()
+
+    useEffect(() => {
+        const email = document.cookie.split("=")[1]
+        if (email) {
+            navigate("/dashboard")
+        }
+    }, [])
 
     //validating password
     const validatePassword = (event) => {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '../img/logo.svg'
 import bg from '../img/Frame 1.png'
 import eye from '../img/Show.svg'
@@ -14,6 +14,13 @@ const LoginComp = () => {
     const [passError, setPassError] = useState(true)
     const [emailError, setEmailError] = useState(true)
     const navigate = useNavigate()
+
+    useEffect(() => {
+        const email = document.cookie.split("=")[1]
+        if (email) {
+            navigate("/dashboard")
+        }
+    }, [])
 
     //validating password
     const validatePassword = (event) => {

@@ -7,28 +7,22 @@ import NaijaStates from 'naija-state-local-government';
 import down from '../../img/Icon.svg'
 import { useState, useEffect } from 'react';
 import "../../Homepage/Desktop/Header.css"
-import two from '../../img/Rectangle 309.png'
-import four from '../../img/image 5 (1).png'
-import five from '../../img/image 5 (2).png'
-import six from '../../img/image 5 (3).png'
-import seven from '../../img/image 5 (4).png'
-import eight from '../../img/image 5 (5).png'
-import nine from '../../img/image 5 (6).png'
 import locate from "../../img/Location.svg"
 import room from '../../img/room.svg'
 import bathroom from '../../img/bathroom.svg'
 import toilet from '../../img/toilet.svg'
 import "../../Homepage/DescMob/Main.css"
-import { Offcanvas } from 'react-bootstrap';
+import { Offcanvas, Spinner } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
 
-const canvasImages = [four, five, six, seven, eight, nine]
 const Main = () => {
     const [loc, setLoc] = useState("Lagos")
     const [active, setActive] = useState("all")
     const [showTop, setShowTop] = useState(false)
     const [user, setUser] = useState({})
+    const [spin, setSpin] = useState(false)
+    const [singleHouse, setSingleHouse] = useState({})
     const [houses, setHouses] = useState([])
     const [fHouses, setFHouses] = useState([])
     const navigate = useNavigate()
@@ -38,6 +32,7 @@ const Main = () => {
             navigate("/login")
         }
         (async () => {
+            setSpin(true)
             const res = await axios.post("http://localhost:5000/user/get", { email: email })
             const rep = await axios.post("http://localhost:5000/house/user/get", { email: email })
             const houseResult = await rep.data
@@ -45,6 +40,7 @@ const Main = () => {
             setUser(result)
             setHouses(houseResult)
             setFHouses(houseResult)
+            setSpin(false)
         })()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -63,10 +59,17 @@ const Main = () => {
         setShowTop(false)
     }
 
-    const handleTopShow = () => {
+    const getHouseByID = async (id) => {
+        setSpin(true)
+        const res = await axios.get(`http://localhost:5000/house/get/one/${id}"`)
+        const result = await res.data
+        console.log(result);
+        setSingleHouse(result)
+        setSpin(false)
         setShowTop(true)
     }
 
+    // filter the house
     const filterHouse = (value) => {
         if (value === "All") {
             setHouses(fHouses)
@@ -78,6 +81,13 @@ const Main = () => {
 
     return (
         <div className="mainDashDiv">
+            {
+                spin && (
+                    <div className="spinDiv">
+                        <Spinner animation="border" style={{ color: "#2E7DD7" }} />
+                    </div>
+                )
+            }
             <div className="dashTop">
                 <div>
                     <img src={search} alt="" />
@@ -139,7 +149,7 @@ const Main = () => {
 
             {
                 houses.map((house, i) => (
-                    <div key={i} onClick={handleTopShow} className="listContentDiv">
+                    <div key={i} onClick={() => getHouseByID(house.Id)} className="listContentDiv">
                         <img className="listContentDivImg" src={`http://localhost:5000/image/${house.images?.split(",")[0]}`} alt="" />
                         <div>
                             <h4>{house.title}</h4>
@@ -170,27 +180,27 @@ const Main = () => {
                 </Offcanvas.Header>
                 <Offcanvas.Body style={{ padding: '0' }}>
                     <center>
-                        <img className="canvasMainImage" src={two} alt="" />
-                        <p className="canvasHouseTitle">4 Bedroom house for rent <span>Rent</span></p>
-                        <h5 className="canvasAddress"><img src={locate} alt="" />Off Allen Avenue Allen Avenue Ikeja Lagos</h5>
+                        <img className="canvasMainImage" src={`http://localhost:5000/image/${singleHouse.images?.split(",")[0]}`} alt="" />
+                        <p className="canvasHouseTitle">{singleHouse.title}<span>{singleHouse.purpose}</span></p>
+                        <h5 className="canvasAddress"><img src={locate} alt="" />{singleHouse.address}</h5>
                         <div style={{ marginLeft: "5%", marginTop: "23px" }} className="blueBackMob">
-                            <div data-value="4" className="roomImgMob">
+                            <div data-value={singleHouse.no_of_bedroom} className="roomImgMob">
                                 <img src={room} alt="" />
                             </div>
-                            <div className="bathroomImgMob" data-value="2">
+                            <div className="bathroomImgMob" data-value={singleHouse.no_of_bathroom}>
                                 <img src={bathroom} alt="" />
                             </div>
-                            <div className="toiletImgMob" data-value="5">
+                            <div className="toiletImgMob" data-value={singleHouse.no_of_toilet}>
                                 <img src={toilet} alt="" />
                             </div>
                         </div>
-                        <p style={{ margin: "0px", textAlign: "left", marginLeft: "5%", marginTop: "13px" }} className="listAmtDesk">₦15,000,000/Year</p>
-                        <p className="canvasInfo">4 bedroom House for rent Off Allen Avenue Allen Avenue Ikeja Lagos renting for ₦6,500,000/year. Contact me for more information about the house or browse through my other house collection</p>
+                        <p style={{ margin: "0px", textAlign: "left", marginLeft: "5%", marginTop: "13px" }} className="listAmtDesk">{singleHouse.price} {singleHouse.currency}{singleHouse.period}</p>
+                        <p className="canvasInfo">{singleHouse.description}</p>
                         <p className="otherPhotos">Other photos</p>
                         <div className="otherPhotoDiv">
                             {
-                                canvasImages.map((image, i) => (
-                                    <img key={i} src={image} alt="" />
+                                singleHouse.images?.slice(0, singleHouse.images?.length - 1)?.split(",").map((image, i) => (
+                                    <img key={i} src={`http://localhost:5000/image/${image}`} alt="" />
                                 ))
                             }
                         </div>
