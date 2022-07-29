@@ -23,17 +23,18 @@ const Main = () => {
         const email = document.cookie.split("=")[1]
         if (!email) {
             navigate("/login")
+        } else {
+            (async () => {
+                setSpin(true)
+                const res = await axios.post(`${url}/user/get`, { email: email })
+                const rep = await axios.post(`${url}/house/user/get`, { email: email })
+                const houseResult = await rep.data
+                const result = await res.data
+                setUser(result)
+                setHouses(houseResult)
+                setSpin(false)
+            })()
         }
-        (async () => {
-            setSpin(true)
-            const res = await axios.post(`${url}/user/get`, { email: email })
-            const rep = await axios.post(`${url}/house/user/get`, { email: email })
-            const houseResult = await rep.data
-            const result = await res.data
-            setUser(result)
-            setHouses(houseResult)
-            setSpin(false)
-        })()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
