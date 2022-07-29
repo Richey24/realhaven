@@ -6,6 +6,7 @@ import google from '../img/flat-color-icons_google.svg'
 import './Login.css'
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
+import url from './../url';
 
 const LoginComp = () => {
 
@@ -70,7 +71,7 @@ const LoginComp = () => {
             email: event.target.email.value,
             password: event.target.password.value
         }
-        const res = await axios.post("http://localhost:5000/user/login", info, { validateStatus: () => true })
+        const res = await axios.post(`${url}/user/login`, info, { validateStatus: () => true })
         const user = await res.data
         switch (res.status) {
             case 404:

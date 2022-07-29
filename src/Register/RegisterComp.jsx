@@ -8,6 +8,7 @@ import countryTelData from 'country-telephone-data'
 import down from '../img/Stroke-1.svg'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import url from './../url';
 
 const RegisterComp = () => {
 
@@ -75,7 +76,7 @@ const RegisterComp = () => {
             password: event.target.password.value
         }
         console.log(info);
-        const res = await axios.post("http://localhost:5000/user/register", info, { validateStatus: () => true })
+        const res = await axios.post(`${url}/user/register`, info, { validateStatus: () => true })
         switch (res.status) {
             case 500:
                 submitError.innerHTML = "There was an error registering this user, please try again"

@@ -15,6 +15,7 @@ import "../../Homepage/DescMob/Main.css"
 import { Offcanvas, Spinner } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
+import url from '../../url';
 
 const Main = () => {
     const [loc, setLoc] = useState("Lagos")
@@ -33,8 +34,8 @@ const Main = () => {
         }
         (async () => {
             setSpin(true)
-            const res = await axios.post("http://localhost:5000/user/get", { email: email })
-            const rep = await axios.post("http://localhost:5000/house/user/get", { email: email })
+            const res = await axios.post(`${url}/user/get`, { email: email })
+            const rep = await axios.post(`${url}/house/user/get`, { email: email })
             const houseResult = await rep.data
             const result = await res.data
             setUser(result)
@@ -61,7 +62,7 @@ const Main = () => {
 
     const getHouseByID = async (id) => {
         setSpin(true)
-        const res = await axios.get(`http://localhost:5000/house/get/one/${id}"`)
+        const res = await axios.get(`${url}/house/get/one/${id}`)
         const result = await res.data
         console.log(result);
         setSingleHouse(result)
@@ -150,7 +151,7 @@ const Main = () => {
             {
                 houses.map((house, i) => (
                     <div key={i} onClick={() => getHouseByID(house.Id)} className="listContentDiv">
-                        <img className="listContentDivImg" src={`http://localhost:5000/image/${house.images?.split(",")[0]}`} alt="" />
+                        <img className="listContentDivImg" src={`${url}/image/${house.images?.split(",")[0]}`} alt="" />
                         <div>
                             <h4>{house.title}</h4>
                             <h5><img src={locate} alt="" />{house.address}</h5>
@@ -180,7 +181,7 @@ const Main = () => {
                 </Offcanvas.Header>
                 <Offcanvas.Body style={{ padding: '0' }}>
                     <center>
-                        <img className="canvasMainImage" src={`http://localhost:5000/image/${singleHouse.images?.split(",")[0]}`} alt="" />
+                        <img className="canvasMainImage" src={`${url}/image/${singleHouse.images?.split(",")[0]}`} alt="" />
                         <p className="canvasHouseTitle">{singleHouse.title}<span>{singleHouse.purpose}</span></p>
                         <h5 className="canvasAddress"><img src={locate} alt="" />{singleHouse.address}</h5>
                         <div style={{ marginLeft: "5%", marginTop: "23px" }} className="blueBackMob">
@@ -200,7 +201,7 @@ const Main = () => {
                         <div className="otherPhotoDiv">
                             {
                                 singleHouse.images?.slice(0, singleHouse.images?.length - 1)?.split(",").map((image, i) => (
-                                    <img key={i} src={`http://localhost:5000/image/${image}`} alt="" />
+                                    <img key={i} src={`${url}/image/${image}`} alt="" />
                                 ))
                             }
                         </div>

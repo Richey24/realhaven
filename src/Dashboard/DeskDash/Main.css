@@ -303,3 +303,11 @@
 .deskTableBody tr td {
     width: 12%;
 }
+
+.spinDiv {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 50%;
+    left: 50%;
+}

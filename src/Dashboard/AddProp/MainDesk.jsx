@@ -10,14 +10,16 @@ import pen from "../../img/Edit.svg"
 import send from "../../img/Send.svg"
 import { useEffect } from "react"
 import { useNavigate } from 'react-router-dom';
-import { Toast } from "react-bootstrap"
+import { Toast, Spinner } from "react-bootstrap"
 import axios from 'axios';
+import url from '../../url';
 
 const MainDesk = () => {
     const [purpose, setPurpose] = useState("Purpose")
     const [propType, setPropType] = useState("Property type")
     const [curr, setCurr] = useState("Naira (₦)")
     const [rate, setRate] = useState("/year")
+    const [spin, setSpin] = useState(false)
     const [previewImage1, setPreviewImage1] = useState("")
     const [previewImage2, setPreviewImage2] = useState("")
     const [previewImage3, setPreviewImage3] = useState("")
@@ -85,6 +87,7 @@ const MainDesk = () => {
     }
 
     const postProperty = async (event) => {
+        setSpin(true)
         event.preventDefault()
         if (!event.target.mainImage.files[0] || !document.cookie.split("=")[1] || !event.target.title.value || !event.target.address.value || !purpose || !propType || !event.target.bedroom.value || !event.target.bathroom.value || !event.target.toilet.value || !event.target.description.value) {
             setShowA(true)
@@ -112,9 +115,9 @@ const MainDesk = () => {
         formData.append("rate", rate)
         formData.append("description", event.target.description.value)
         formData.append("features", event.target.features.value)
-        const res = await axios.post("http://localhost:5000/house/post", formData)
-        const rep = await res.data
-        console.log(rep);
+        await axios.post(`${url}/house/post`, formData)
+        setSpin(false)
+        navigate("/dashboard")
     }
 
     return (
@@ -286,7 +289,7 @@ const MainDesk = () => {
 
                 <div className="addFinalButton">
                     <p className="addFinal1"><img src={pen} alt="" />Save to Drafts</p>
-                    <button type="submit" className="addFinal2"><img src={send} alt="" />Post Property</button>
+                    <button type="submit" className="addFinal2"><img src={send} alt="" />{spin ? (<Spinner animation="border" style={{ color: "#2E7DD7" }} />) : "Post Property"}</button>
                 </div>
             </form>
         </div>
