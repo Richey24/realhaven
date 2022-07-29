@@ -9,6 +9,7 @@ import down from '../img/Stroke-1.svg'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import url from './../url';
+import { Spinner } from 'react-bootstrap';
 
 const RegisterComp = () => {
 
@@ -17,6 +18,7 @@ const RegisterComp = () => {
     const [passError, setPassError] = useState(true)
     const [emailError, setEmailError] = useState(true)
     const [code, setCode] = useState(countryTelData.allCountries[80].dialCode)
+    const [spin, setSpin] = useState(false)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -56,6 +58,7 @@ const RegisterComp = () => {
 
     //validating submission
     const validateForm = async (event) => {
+        setSpin(true)
         event.preventDefault()
         const submitError = document.getElementById('submitError');
         if (!emailError || !passError) {
@@ -95,6 +98,7 @@ const RegisterComp = () => {
             default:
                 break;
         }
+        setSpin(false)
     }
 
     // toggling country code
@@ -167,7 +171,7 @@ const RegisterComp = () => {
                     </div>
 
                     <div className="myBtn">
-                        <button type='submit'>Sign up</button>
+                        <button type='submit'>{spin ? (<Spinner animation="border" style={{ color: "white" }} />) : "Sign Up"}</button>
                         <p id="submitError" style={{ visibility: "hidden" }}>Fill in the required field</p>
                     </div>
 

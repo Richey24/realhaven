@@ -7,6 +7,7 @@ import './Login.css'
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 import url from './../url';
+import { Spinner } from 'react-bootstrap';
 
 const LoginComp = () => {
 
@@ -14,6 +15,7 @@ const LoginComp = () => {
     const [password, setPassword] = useState("")
     const [passError, setPassError] = useState(true)
     const [emailError, setEmailError] = useState(true)
+    const [spin, setSpin] = useState(false)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -54,6 +56,7 @@ const LoginComp = () => {
 
     //validating submission
     const validateForm = async (event) => {
+        setSpin(true)
         event.preventDefault()
         const submitError = document.getElementById('submitError');
         if (!emailError || !passError) {
@@ -99,6 +102,7 @@ const LoginComp = () => {
             default:
                 break;
         }
+        setSpin(false)
     }
 
     // toggling hide and show password
@@ -141,7 +145,7 @@ const LoginComp = () => {
                     </div>
 
                     <div className="myBtn">
-                        <button type='submit'>Login</button>
+                        <button type='submit'>{spin ? (<Spinner animation="border" style={{ color: "white" }} />) : "Login"}</button>
                         <p id="submitError" style={{ visibility: "hidden" }}>Fill in the required field</p>
                     </div>
 
