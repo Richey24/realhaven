@@ -152,6 +152,7 @@ body {
     padding-bottom: 6px;
     font-family: 'Sora';
     font-style: normal;
+    cursor: pointer;
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;

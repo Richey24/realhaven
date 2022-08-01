@@ -124,6 +124,12 @@ const RegisterComp = () => {
         }
     }
 
+    const oAuth = async () => {
+        const res = await axios.get("https://real-haven.herokuapp.com/api/sessions/oauth")
+        const rep = await res.data
+        console.log(rep);
+    }
+
     return (
         <div className="myContainerReg">
             <div className='side-2'>
@@ -181,7 +187,7 @@ const RegisterComp = () => {
                     <div className="opt">
                         <p>Or</p>
                     </div>
-                    <div className="google-opt">
+                    <div onClick={oAuth} className="google-opt">
                         <img src={google} alt="google" /> <span>Sign up with Google instead</span>
                     </div>
 

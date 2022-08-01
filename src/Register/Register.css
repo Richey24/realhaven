@@ -201,6 +201,7 @@ body {
     justify-content: center;
     align-items: center;
     background: #FFFFFF;
+    cursor: pointer;
     border: 1px solid #b7bac0;
     border-radius: 12px;
 }

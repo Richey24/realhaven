@@ -289,7 +289,7 @@ const MainDesk = () => {
 
                 <div className="addFinalButton">
                     <p className="addFinal1"><img src={pen} alt="" />Save to Drafts</p>
-                    <button type="submit" className="addFinal2"><img src={send} alt="" />{spin ? (<Spinner animation="border" style={{ color: "white" }} />) : "Post Property"}</button>
+                    <button type="submit" className="addFinal2">{spin ? (<Spinner animation="border" style={{ color: "white" }} />) : (<p><img src={send} alt="" /> Post Property</p>)}</button>
                 </div>
             </form>
         </div>
