@@ -20,18 +20,18 @@ const Main = () => {
     const [spin, setSpin] = useState(false)
     const navigate = useNavigate()
     useEffect(() => {
-        const email = document.cookie.split("=")[1]
-        if (!email) {
+        const id = sessionStorage.getItem("id")
+        if (!id) {
             navigate("/login")
         } else {
             (async () => {
                 setSpin(true)
-                const res = await axios.post(`${url}/user/get`, { email: email })
-                const rep = await axios.post(`${url}/house/user/get`, { email: email })
-                const houseResult = await rep.data
+                const res = await axios.get(`${url}/v1/user/${id}`)
+                // const rep = await axios.post(`${url}/house/user/get`, { email: email })
+                // const houseResult = await rep.data
                 const result = await res.data
                 setUser(result)
-                setHouses(houseResult)
+                // setHouses(houseResult)
                 setSpin(false)
             })()
         }
@@ -52,13 +52,13 @@ const Main = () => {
                     <p>Your Dashboard</p>
                     <div>
                         <span data-num="3"><img src={noti} alt="" /></span>
-                        <img src={dp} alt="" />
+                        <img className="dashTopImg" src={user.image?.url ? user.image?.url : dp} alt="" />
                     </div>
                 </div>
                 <div className="deskReferDiv">
                     <div className="myDeskRefer">
                         <div style={{ border: "none", width: "auto", height: "auto", marginBottom: "30px" }}>
-                            <p>Hi {user.fullname?.split(" ")[0]} 👋</p>
+                            <p>Hi {user.firstName} 👋</p>
                             <p style={{ fontWeight: "400" }}>Welcome back 🎉</p>
                         </div>
                         <img className="deskDude" src={dude} alt="" />

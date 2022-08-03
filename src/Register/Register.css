@@ -8,6 +8,71 @@
     margin: 0;
 }
 
+.mailDiv {
+    display: none;
+}
+
+.mailDiv h4 {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 40px;
+    color: #374151;
+    margin-top: 3rem;
+}
+
+.mailDiv p {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #6B7280;
+}
+
+.mailDiv button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 52px;
+    background: #2E7DD7;
+    border-radius: 12px;
+    margin-top: 4rem;
+    border: none;
+    outline: none;
+}
+
+.mailDiv button a {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.mailDiv h5 {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    color: #6B7280;
+    margin-top: 10rem;
+    width: 90%;
+    margin-bottom: 2rem;
+}
+
+.mailDiv h5 span {
+    color: #2E7DD7;
+    cursor: pointer;
+}
+
 .countryList {
     height: 200px;
     overflow: scroll;

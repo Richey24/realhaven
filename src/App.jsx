@@ -24,6 +24,9 @@ function App() {
 
   let lastScroll = window.scrollY || document.documentElement.scrollTop
   window.addEventListener("scroll", () => {
+    if (!document.getElementById("fixedNav")) {
+      return
+    }
     const currentScroll = window.scrollY || document.documentElement.scrollTop
     if (currentScroll > lastScroll) {
       document.getElementById("fixedNav").style.transition = "east-out 1s"

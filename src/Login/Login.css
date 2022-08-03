@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,200&family=Sora:wght@700&display=swap');
 
-/* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Sora', sans-serif;
-} */
-
 .myContainerMob {
     display: flex;
     justify-content: space-between;
@@ -71,6 +64,7 @@ body {
     height: 60px;
     padding: 10px;
     font-weight: 400;
+    outline: none;
     font-size: 14px;
     color: #6B7280;
 }
@@ -305,4 +299,164 @@ body {
         margin-top: -0.8rem;
         cursor: pointer;
     }
+}
+
+.forgotDiv {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.forgotDiv input {
+    margin: 0px;
+    padding: 0px;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+}
+
+.forgotDiv label {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 12px;
+    color: #64748B;
+}
+
+.forgotDiv p {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    cursor: pointer;
+}
+
+.forgotMain {
+    display: none;
+}
+
+.forgotMain h4 {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 40px;
+    color: #374151;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.forgotMain p {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #6B7280;
+    text-align: left;
+    margin-bottom: 5rem;
+}
+
+.forgotMain button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 52px;
+    background: #2E7DD7;
+    border-radius: 12px;
+    margin-top: 4rem;
+    border: none;
+    outline: none;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+.forgotMain>form>div {
+    display: flex;
+    justify-content: center;
+}
+
+.forgotMain h5 {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #2E7DD7;
+    cursor: pointer;
+    margin-top: 3rem;
+}
+
+.mailDiv {
+    display: none;
+}
+
+.mailDiv h4 {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 40px;
+    color: #374151;
+    margin-top: 3rem;
+}
+
+.mailDiv p {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #6B7280;
+}
+
+.mailDiv button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 52px;
+    background: #2E7DD7;
+    border-radius: 12px;
+    margin-top: 4rem;
+    border: none;
+    outline: none;
+}
+
+.mailDiv button a {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.mailDiv h5 {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    color: #6B7280;
+    margin-top: 10rem;
+    width: 90%;
+    margin-bottom: 2rem;
+}
+
+.mailDiv h5 span {
+    color: #2E7DD7;
+    cursor: pointer;
 }
