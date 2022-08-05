@@ -114,7 +114,7 @@ const RegisterComp = () => {
                 mailDiv.style.display = "block"
                 const { user } = rep
                 const timer = setInterval(async () => {
-                    const resp = await axios.get(`${url}/v1/user/check/${user.id}`)
+                    const resp = await axios.get(`${url}/v1/user/check/valid/${user.id}`)
                     const status = await resp.data
                     console.log(status);
                     if (status) {
