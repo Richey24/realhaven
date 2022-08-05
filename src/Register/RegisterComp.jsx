@@ -110,9 +110,19 @@ const RegisterComp = () => {
                 break
             case 200:
                 setSpin(false)
-                document.cookie = `email=${info.email}`
                 sideTwoDiv.style.display = "none"
                 mailDiv.style.display = "block"
+                const { user } = rep
+                const timer = setInterval(async () => {
+                    const resp = await axios.get(`${url}/v1/user/check/${user.id}`)
+                    const status = await resp.data
+                    console.log(status);
+                    if (status) {
+                        clearInterval(timer)
+                        sessionStorage.setItem("id", user.id)
+                        navigate("/dashboard")
+                    }
+                }, 5000)
                 break
             default:
                 break;

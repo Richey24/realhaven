@@ -116,7 +116,7 @@ const LoginComp = () => {
                 setTimeout(function () { submitError.style.visibility = 'hidden'; }, 9000);
                 break;
             case 200:
-                document.cookie = `email=${user.email}`
+                sessionStorage.setItem("id", user.id)
                 navigate("/dashboard")
                 break;
             default:
