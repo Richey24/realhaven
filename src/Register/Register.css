@@ -320,6 +320,28 @@ body {
 }
 
 @media screen and (max-width:768px) {
+
+    .mailDiv h4 {
+        font-size: 16px;
+    }
+
+    .mailDiv p {
+        font-size: 14px;
+    }
+
+    .mailDiv button {
+        height: 32px;
+        width: 60%;
+    }
+
+    .mailDiv button a {
+        font-size: 14px;
+    }
+
+    .mailDiv h5 {
+        font-size: 16px;
+    }
+
     .myContainerReg .showPass {
         position: absolute;
         top: 35%;
