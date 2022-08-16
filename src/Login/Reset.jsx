@@ -1,15 +1,25 @@
 
 import { Spinner } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import eye from '../img/Show.svg'
 import logo from '../img/logo.svg'
 import bg from '../img/Frame 1.png'
 import './Login.css'
-import { useState } from "react"
+import axios from "axios"
+import { useEffect, useState } from "react"
+import url from '../url';
 
 const Reset = () => {
     const [spin, setSpin] = useState(false)
     const navigate = useNavigate()
+    const { token } = useParams()
+
+    useEffect(() => {
+        if (token.length < 50) {
+            navigate("/")
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const showPass = () => {
         const password = document.getElementById('password');
@@ -19,8 +29,36 @@ const Reset = () => {
             password.type = "password"
         }
     }
-    const validateForm = (event) => {
+    const validateForm = async (event) => {
         event.preventDefault()
+        const submitError = document.getElementById("submitError")
+        const newPassword = event.target.password.value
+        if (newPassword.length < 8) {
+            submitError.style.visibility = "visible"
+            setTimeout(function () { submitError.style.visibility = 'hidden'; }, 9000);
+            return
+        }
+        const result = await axios.put(`${url}/v1/user/reset-lost-password/${token}`, newPassword, { validateStatus: () => true })
+        switch (result.status) {
+            case 500:
+                submitError.innerHTML = "Something went wrong, try again"
+                submitError.style.visibility = "visible"
+                setTimeout(function () { submitError.style.visibility = 'hidden'; }, 9000);
+                break;
+            case 400:
+                submitError.innerHTML = "Invalid Input"
+                submitError.style.visibility = "visible"
+                setTimeout(function () { submitError.style.visibility = 'hidden'; }, 9000);
+                break
+            case 200:
+                submitError.innerHTML = "Password reset successfully"
+                submitError.style.visibility = "visible"
+                setTimeout(function () { submitError.style.visibility = 'hidden'; }, 9000);
+                navigate("/login")
+                break
+            default:
+                break;
+        }
     }
     const style = {
         fontFamily: "Sora",

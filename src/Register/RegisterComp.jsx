@@ -114,12 +114,14 @@ const RegisterComp = () => {
                 mailDiv.style.display = "block"
                 const { user } = rep
                 const timer = setInterval(async () => {
-                    const resp = await axios.get(`${url}/v1/user/check/valid/${user.id}`)
+                    const resp = await axios.get(`${url}/v1/user/check/valid/${user._id}`)
                     const status = await resp.data
                     console.log(status);
                     if (status) {
                         clearInterval(timer)
-                        sessionStorage.setItem("id", user.id)
+                        sessionStorage.setItem("id", user._id)
+                        sessionStorage.setItem("email", user.email)
+                        sessionStorage.setItem("token", rep.token)
                         navigate("/dashboard")
                     }
                 }, 5000)

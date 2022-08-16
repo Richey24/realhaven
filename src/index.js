@@ -175,7 +175,7 @@ root.render(
           }
         />
         <Route
-          path="/reset/:id"
+          path="/reset/password/:token"
           element={
             <React.Suspense
               fallback={

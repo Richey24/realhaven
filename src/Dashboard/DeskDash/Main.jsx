@@ -21,12 +21,17 @@ const Main = () => {
     const navigate = useNavigate()
     useEffect(() => {
         const id = sessionStorage.getItem("id")
+        const token = sessionStorage.getItem("token")
         if (!id) {
             navigate("/login")
         } else {
             (async () => {
                 setSpin(true)
-                const res = await axios.get(`${url}/v1/user/${id}`)
+                const res = await axios.get(`${url}/v1/user/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })
                 // const rep = await axios.post(`${url}/house/user/get`, { email: email })
                 // const houseResult = await rep.data
                 const result = await res.data

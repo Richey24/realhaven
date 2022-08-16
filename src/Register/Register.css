@@ -10,6 +10,7 @@
 
 .mailDiv {
     display: none;
+    margin: 0px;
 }
 
 .mailDiv h4 {

@@ -82,8 +82,7 @@ const LoginComp = () => {
             password: event.target.password.value
         }
         const res = await axios.post(`${url}/v1/user/login`, info, { validateStatus: () => true })
-        const user = await res.data
-        console.log(user);
+        const rep = await res.data
         switch (res.status) {
             case 404:
                 submitError.innerHTML = "No User Found With This Email"
@@ -116,7 +115,10 @@ const LoginComp = () => {
                 setTimeout(function () { submitError.style.visibility = 'hidden'; }, 9000);
                 break;
             case 200:
-                sessionStorage.setItem("id", user.id)
+                const { user } = rep
+                sessionStorage.setItem("id", user._id)
+                sessionStorage.setItem("email", user.email)
+                sessionStorage.setItem("token", rep.token)
                 navigate("/dashboard")
                 break;
             default:
@@ -149,7 +151,7 @@ const LoginComp = () => {
         sideMain.style.display = "block"
     }
 
-    const showMail = (event) => {
+    const showMail = async (event) => {
         event.preventDefault()
         const forgot = document.getElementById("forgotMain")
         const sideMain = document.getElementById("theSideMain")
@@ -157,6 +159,7 @@ const LoginComp = () => {
         const email = event.target.forgotEmail.value
         const theMail = email.substring(email.indexOf("@") + 1, email.length)
         setMail(theMail)
+        await axios.post(`${url}/v1/user/oauth/save`, email)
         forgot.style.display = "none"
         sideMain.style.display = "none"
         mailDiv.style.display = "block"
