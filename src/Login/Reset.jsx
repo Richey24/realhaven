@@ -38,7 +38,7 @@ const Reset = () => {
             setTimeout(function () { submitError.style.visibility = 'hidden'; }, 9000);
             return
         }
-        const result = await axios.put(`${url}/v1/user/reset-lost-password/${token}`, newPassword, { validateStatus: () => true })
+        const result = await axios.put(`${url}/v1/user/reset-lost-password/${token}`, { password: newPassword }, { validateStatus: () => true })
         switch (result.status) {
             case 500:
                 submitError.innerHTML = "Something went wrong, try again"

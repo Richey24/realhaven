@@ -153,13 +153,15 @@ const LoginComp = () => {
 
     const showMail = async (event) => {
         event.preventDefault()
+        setSpin(true)
         const forgot = document.getElementById("forgotMain")
         const sideMain = document.getElementById("theSideMain")
         const mailDiv = document.getElementById("mailDiv")
         const email = event.target.forgotEmail.value
         const theMail = email.substring(email.indexOf("@") + 1, email.length)
         setMail(theMail)
-        await axios.post(`${url}/v1/user/oauth/save`, email)
+        await axios.post(`${url}/v1/user/forgotpassword`, { email: email })
+        setSpin(false)
         forgot.style.display = "none"
         sideMain.style.display = "none"
         mailDiv.style.display = "block"
@@ -253,7 +255,7 @@ const LoginComp = () => {
                             </div>
                         </div>
                         <center>
-                            <button type="submit">Send Instructions</button>
+                            <button type='submit'>{spin ? (<Spinner animation="border" style={{ color: "white" }} />) : "Send Instruction"}</button>
                             <h5 onClick={hidePass}>Back to login page</h5>
                         </center>
                     </form>
