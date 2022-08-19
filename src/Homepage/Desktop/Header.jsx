@@ -74,7 +74,7 @@ const Header = ({ setSearch }) => {
         }, 10)
     }
 
-    const id = sessionStorage.getItem("id")
+    const id = document.cookie.split(" ")[1].split("=")[1]
 
     return (
         <div>
