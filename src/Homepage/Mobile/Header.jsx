@@ -118,6 +118,8 @@ const Header = ({ setResult }) => {
         }, 10)
     }
 
+    const id = sessionStorage.getItem("id")
+
     return (
         <div>
             <div className="myMobileHero">
@@ -168,10 +170,10 @@ const Header = ({ setResult }) => {
                         <li>Short let</li>
                     </ul>
                     <ul className='myAuth'>
-                        <li onClick={() => navigate('/register')}>Sign up</li>
-                        <li onClick={() => navigate('/login')}>Sign in</li>
+                        <li onClick={() => navigate(id ? '/dashboard' : '/register')}>{id ? "Dashboard" : "Sign up"}</li>
+                        <li onClick={() => navigate(id ? '/listing' : '/login')}>{id ? "Listing" : "Sign in"}</li>
                     </ul>
-                    <p className='postProps'>Post a property</p>
+                    <p onClick={() => navigate(id ? '/post' : '/login')} className='postProps'>Post a property</p>
                 </Offcanvas.Body>
             </Offcanvas>
 

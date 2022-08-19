@@ -8,6 +8,22 @@
     margin: 0;
 }
 
+.counFlag {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.counCode {
+    color: #374151;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
 .mailDiv {
     display: none;
     margin: 0px;
@@ -33,7 +49,7 @@
     color: #6B7280;
 }
 
-.mailDiv button {
+.mailDiv>center>button {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -61,32 +77,55 @@
     font-family: 'Sora';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 25px;
     color: #6B7280;
     margin-top: 10rem;
-    width: 90%;
+    width: 100%;
     margin-bottom: 2rem;
 }
 
-.mailDiv h5 span {
-    color: #2E7DD7;
-    cursor: pointer;
+.mailDiv>center>h5>button {
+    color: #6B7280;
+    cursor: not-allowed;
+    border: none;
+    outline: none;
+    background-color: #FFFFFF;
 }
 
 .countryList {
-    height: 200px;
-    overflow: scroll;
+    height: 250px;
     width: fit-content;
     display: none;
     position: absolute;
     z-index: 1;
-    background-color: #2E7DD7;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    box-shadow: -4px -4px 16px rgba(17, 17, 17, 0.06), 8px 8px 16px rgba(17, 17, 17, 0.06);
+    border-radius: 8px;
     margin-left: 10px;
+    background-color: #FFFFFF;
+    padding: 10px;
+}
+
+.countryList>ul {
+    overflow: scroll;
+    height: 70%;
     scrollbar-width: none;
-    padding-right: 10px;
+}
+
+.countryList>div {
+    border-bottom: 1px solid #959fb3;
+    padding-bottom: 1px;
+}
+
+.countryList div input {
+    width: 300px;
+    margin-left: 20px;
+    border: none;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    color: #6B7280;
 }
 
 .countryList li {
@@ -95,9 +134,18 @@
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    color: white;
     cursor: pointer;
     margin-left: -1.4rem;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    height: 35px;
+    padding: 10px;
+}
+
+.countryList li:hover {
+    background: #F3F4F6;
+    border-radius: 4px;
 }
 
 .countryList::-webkit-scrollbar {
@@ -114,8 +162,12 @@
     line-height: 24px;
     color: #6B7280 !important;
     height: 60px;
-    width: 80px;
+    width: 120px;
     margin-bottom: -8%;
+    background: #EAF2FB;
+    align-self: flex-start;
+    padding-top: 15px;
+    padding-left: 15px;
     cursor: pointer;
 }
 
@@ -125,7 +177,6 @@
     align-items: baseline;
     border: 1px solid #b7bac0;
     border-radius: 8px;
-    padding-left: 1rem;
     width: 53vw;
 }
 
@@ -288,9 +339,11 @@ body {
 .myContainerReg #emailError {
     font-family: 'Sora';
     font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
+    font-weight: 600;
+    font-size: 16px;
     line-height: 18px;
+    color: red;
+    margin-top: 10px;
 }
 
 .myContainerReg .showList {

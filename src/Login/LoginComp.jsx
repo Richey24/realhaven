@@ -23,8 +23,8 @@ const LoginComp = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        const email = sessionStorage.getItem("email")
-        if (email) {
+        const token = document.cookie.split(" ")[0].split("=")[1]
+        if (token) {
             navigate("/dashboard")
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -116,9 +116,8 @@ const LoginComp = () => {
                 break;
             case 200:
                 const { user } = rep
-                sessionStorage.setItem("id", user._id)
-                sessionStorage.setItem("email", user.email)
-                sessionStorage.setItem("token", rep.token)
+                document.cookie = `token=${rep.token}=`
+                document.cookie = `id=${user._id};expires=${new Date(new Date().getTime() + 60 * 60 * 1000 * 24 * 10).toGMTString()}`
                 navigate("/dashboard")
                 break;
             default:
@@ -180,9 +179,8 @@ const LoginComp = () => {
             }
             const result = await axios.post(`${url}/v1/user/oauth/save`, user)
             const mainUser = await result.data
-            sessionStorage.setItem("token", mainUser.token)
-            sessionStorage.setItem("id", mainUser.user._id)
-            sessionStorage.setItem("email", mainUser.user.email)
+            document.cookie = `token=${mainUser.token};expires=${new Date(new Date().getTime() + 60 * 60 * 1000 * 24 * 10).toGMTString()}`
+            document.cookie = `id=${mainUser.user._id};expires=${new Date(new Date().getTime() + 60 * 60 * 1000 * 24 * 10).toGMTString()}`
             navigate("/dashboard")
         }
     })

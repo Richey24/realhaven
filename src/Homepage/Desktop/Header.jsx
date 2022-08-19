@@ -74,6 +74,8 @@ const Header = ({ setSearch }) => {
         }, 10)
     }
 
+    const id = sessionStorage.getItem("id")
+
     return (
         <div>
             <div className='headerMain'>
@@ -91,10 +93,10 @@ const Header = ({ setSearch }) => {
                     </div>
                     <div className='secNavDiv'>
                         <img className='searchImage' src={searchImage} alt="" />
-                        <p style={{ cursor: 'pointer' }} onClick={() => navigate("/register")} className='signUp'>Sign up</p>
-                        <p onClick={() => navigate("/login")} style={{ color: '#9CA3AF', cursor: 'pointer' }} className='signIn'>Sign in</p>
+                        <p style={{ cursor: 'pointer' }} onClick={() => navigate(id ? '/dashboard' : '/register')} className='signUp'>{id ? "Dashboard" : "Sign up"}</p>
+                        <p onClick={() => navigate(id ? '/listing' : '/login')} style={{ color: '#9CA3AF', cursor: 'pointer' }} className='signIn'>{id ? "Listing" : "Sign in"}</p>
                     </div>
-                    <p className='postProp'>Post a property</p>
+                    <p onClick={() => navigate(id ? '/post' : '/login')} className='postProp'>Post a property</p>
                 </div>
 
                 <div className='alignDivSearch'>

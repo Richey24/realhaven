@@ -20,9 +20,9 @@ const Main = () => {
     const [spin, setSpin] = useState(false)
     const navigate = useNavigate()
     useEffect(() => {
-        const id = sessionStorage.getItem("id")
-        const token = sessionStorage.getItem("token")
-        if (!id) {
+        const token = document.cookie.split(" ")[0].split("=")[1]
+        const id = document.cookie.split(" ")[1].split("=")[1]
+        if (!token) {
             navigate("/login")
         } else {
             (async () => {

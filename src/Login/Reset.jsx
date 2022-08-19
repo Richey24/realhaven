@@ -31,6 +31,7 @@ const Reset = () => {
     }
     const validateForm = async (event) => {
         event.preventDefault()
+        setSpin(true)
         const submitError = document.getElementById("submitError")
         const newPassword = event.target.password.value
         if (newPassword.length < 8) {
@@ -59,6 +60,7 @@ const Reset = () => {
             default:
                 break;
         }
+        setSpin(false)
     }
     const style = {
         fontFamily: "Sora",

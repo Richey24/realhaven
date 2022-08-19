@@ -4,8 +4,8 @@ import bg from '../img/register.png'
 import eye from '../img/Show.svg'
 import google from '../img/flat-color-icons_google.svg'
 import art from "../img/Artwork.svg"
+import search from "../img/Search.svg"
 import "./Register.css"
-import countryTelData from 'country-telephone-data'
 import down from '../img/Stroke-1.svg'
 import { useNavigate } from 'react-router-dom'
 import { useGoogleLogin } from '@react-oauth/google';
@@ -19,16 +19,26 @@ const RegisterComp = () => {
     const [password, setPassword] = useState("")
     const [passError, setPassError] = useState(true)
     const [emailError, setEmailError] = useState(true)
-    const [code, setCode] = useState(countryTelData.allCountries[80].dialCode)
     const [spin, setSpin] = useState(false)
     const [mail, setMail] = useState("")
+    const [cc, setCC] = useState([])
+    const [scc, setSCC] = useState([])
+    const [acc, setACC] = useState([])
     const navigate = useNavigate()
 
     useEffect(() => {
-        const email = sessionStorage.getItem("email")
-        if (email) {
+        const token = document.cookie.split(" ")[0].split("=")[1]
+        if (token) {
             navigate("/dashboard")
+            return
         }
+        (async () => {
+            const res = await axios.get("https://restcountries.com/v3.1/all")
+            const coun = await res.data
+            setCC(coun)
+            setSCC(coun)
+            setACC(coun[231])
+        })()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -69,13 +79,15 @@ const RegisterComp = () => {
         const submitError = document.getElementById('submitError');
         if (!emailError || !passError) {
             submitError.style.visibility = 'visible'
-            setTimeout(function () { submitError.style.visibility = 'hidden'; }, 3000);
+            setTimeout(function () { submitError.style.visibility = 'hidden'; }, 9000);
+            setSpin(false)
             return
         }
         if (!email.includes("@")) {
             submitError.innerHTML = "Invalid Email"
             submitError.style.visibility = 'visible'
-            setTimeout(function () { submitError.style.visibility = 'hidden'; }, 3000);
+            setTimeout(function () { submitError.style.visibility = 'hidden'; }, 9000);
+            setSpin(false)
             return
         }
         const name = event.target.fullname.value.split(" ")
@@ -86,7 +98,48 @@ const RegisterComp = () => {
             phoneNumber: event.target.number.value,
             password: event.target.password.value
         }
-        console.log(info);
+        if (info.firstName.length < 2 || info.lastName.length < 2) {
+            submitError.innerHTML = "Name is required"
+            submitError.style.visibility = 'visible'
+            setTimeout(function () { submitError.style.visibility = 'hidden'; }, 9000);
+            setSpin(false)
+            return
+        }
+        if (info.phoneNumber.length < 4) {
+            submitError.innerHTML = "Phone number is required"
+            submitError.style.visibility = 'visible'
+            setTimeout(function () { submitError.style.visibility = 'hidden'; }, 9000);
+            setSpin(false)
+            return
+        }
+        if (info.password.length < 8) {
+            submitError.innerHTML = "Password must be greater than 8"
+            submitError.style.visibility = 'visible'
+            setTimeout(function () { submitError.style.visibility = 'hidden'; }, 9000);
+            setSpin(false)
+            return
+        }
+        if (info.password.search(/[a-z]/) < 0) {
+            submitError.innerHTML = "Password must contain at least one lowercase character"
+            submitError.style.visibility = 'visible'
+            setTimeout(function () { submitError.style.visibility = 'hidden'; }, 9000);
+            setSpin(false)
+            return
+        }
+        if (info.password.search(/[A-Z]/) < 0) {
+            submitError.innerHTML = "Password must contain at least one uppercase character"
+            submitError.style.visibility = 'visible'
+            setTimeout(function () { submitError.style.visibility = 'hidden'; }, 9000);
+            setSpin(false)
+            return
+        }
+        if (info.password.search(/[0-9]/) < 0) {
+            submitError.innerHTML = "Password must contain at least one number"
+            submitError.style.visibility = 'visible'
+            setTimeout(function () { submitError.style.visibility = 'hidden'; }, 9000);
+            setSpin(false)
+            return
+        }
         const theMail = info.email.substring(info.email.indexOf("@") + 1, info.email.length)
         setMail(theMail)
         const res = await axios.post(`${url}/v1/user/register`, info, { validateStatus: () => true })
@@ -112,16 +165,28 @@ const RegisterComp = () => {
                 setSpin(false)
                 sideTwoDiv.style.display = "none"
                 mailDiv.style.display = "block"
+                const resend = document.getElementById("resend")
+                const counter = document.getElementById("count")
+                resend.setAttribute("disabled", true)
+                const countDown = setInterval(() => {
+                    if (parseInt(counter.innerHTML) < 1) {
+                        clearInterval(countDown)
+                        resend.removeAttribute("disabled")
+                        resend.style.color = "#2E7DD7"
+                        resend.style.cursor = "pointer"
+                        counter.style.display = "none"
+                    }
+                    counter.innerHTML = parseInt(counter.innerHTML) - 1
+                }, 1000)
                 const { user } = rep
+
                 const timer = setInterval(async () => {
                     const resp = await axios.get(`${url}/v1/user/check/valid/${user._id}`)
                     const status = await resp.data
-                    console.log(status);
                     if (status) {
                         clearInterval(timer)
-                        sessionStorage.setItem("id", user._id)
-                        sessionStorage.setItem("email", user.email)
-                        sessionStorage.setItem("token", rep.token)
+                        document.cookie = `token=${rep.token}=`
+                        document.cookie = `id=${user._id};expires=${new Date(new Date().getTime() + 60 * 60 * 1000 * 24 * 10).toGMTString()}`
                         navigate("/dashboard")
                     }
                 }, 5000)
@@ -140,7 +205,7 @@ const RegisterComp = () => {
 
     // setting active country code
     const getCode = (codeNum) => {
-        setCode(codeNum)
+        setACC(codeNum)
         const myList = document.getElementById("countryList")
         myList.classList.toggle("showList")
     }
@@ -167,12 +232,40 @@ const RegisterComp = () => {
             }
             const result = await axios.post(`${url}/v1/user/oauth/save`, user)
             const mainUser = await result.data
-            sessionStorage.setItem("token", mainUser.token)
-            sessionStorage.setItem("id", mainUser.user._id)
-            sessionStorage.setItem("email", mainUser.user.email)
+            document.cookie = `token=${mainUser.token};expires=${new Date(new Date().getTime() + 60 * 60 * 1000 * 24 * 10).toGMTString()}`
+            document.cookie = `id=${mainUser.user._id};expires=${new Date(new Date().getTime() + 60 * 60 * 1000 * 24 * 10).toGMTString()}`
             navigate("/dashboard")
         }
     })
+
+    const resend = async () => {
+        const resend = document.getElementById("resend")
+        const counter = document.getElementById("count")
+        counter.innerHTML = 60
+        resend.setAttribute("disabled", true)
+        resend.style.color = "#6B7280"
+        resend.style.cursor = "not-allowed"
+        counter.style.display = "block"
+        // await axios.post(`${url}/v1/user/resend-confirmaccount`, {email: email})
+
+        const countDown = setInterval(() => {
+            if (parseInt(counter.innerHTML) < 1) {
+                clearInterval(countDown)
+                resend.removeAttribute("disabled")
+                resend.style.color = "#2E7DD7"
+                resend.style.cursor = "pointer"
+                counter.style.display = "none"
+            }
+            counter.innerHTML = parseInt(counter.innerHTML) - 1
+        }, 1000)
+
+    }
+
+    const getSearch = (event) => {
+        const searchResult = scc.filter((sc) => sc.name.common.toLowerCase().includes(event.target.value.toLowerCase()))
+        setCC(searchResult)
+    }
+
     return (
         <div className="myContainerReg">
             <div className='side-2'>
@@ -198,16 +291,20 @@ const RegisterComp = () => {
                             <label htmlFor="firstName">Phone Number</label>
                             <br />
                             <div className='phoneNumDiv'>
-                                <p onClick={showList} className='mainCountry'>+{code} <img src={down} alt="down" /></p>
-                                <input style={{ border: 'none' }} type="tel" placeholder="phone number" id="phoneNumber" name='number' />
+                                <p onClick={showList} className='mainCountry'><img className='counFlag' src={acc.flags?.svg} alt="" /> <img src={down} alt="down" /></p>
+                                <span className='counCode'>{acc.idd?.root}{acc.idd?.suffixes}</span>
+                                <input style={{ border: 'none', borderRadius: "0px", fontFamily: "Sora" }} type="tel" placeholder="phone number" id="phoneNumber" name='number' />
                             </div>
-                            <ul id='countryList' className='countryList'>
-                                {
-                                    countryTelData.allCountries.sort((a, b) => parseInt(a.dialCode) - parseInt(b.dialCode)).map((code, i) => (
-                                        <li key={i} onClick={() => getCode(code.dialCode)}>+{code.dialCode}</li>
-                                    ))
-                                }
-                            </ul>
+                            <div id='countryList' className='countryList'>
+                                <div><img src={search} alt="" /><input onChange={getSearch} placeholder='Search for countries' type="text" /></div>
+                                <ul>
+                                    {
+                                        cc.map(({ name, idd, flags }, i) => (
+                                            <li onClick={() => getCode({ idd, flags })} key={i}><img className='counFlag' src={flags?.svg} alt="" />{name?.common} ({idd?.root}{name?.common !== "United States" && (idd?.suffixes)})</li>
+                                        ))
+                                    }
+                                </ul>
+                            </div>
                         </div>
 
                         <div className="label">
@@ -243,7 +340,7 @@ const RegisterComp = () => {
                         <h4>Check your mail</h4>
                         <p>We have sent a link for you to confirm your email</p>
                         <button><a href={`https://${mail}`} target="_blank" rel="noreferrer noopener">Open email app</a></button>
-                        <h5>Did not receive email? Check your spam folder or <span>resend verification link</span></h5>
+                        <h5>Did not receive email? Check your spam folder or <button id="resend" onClick={resend}>resend verification link</button><span id="count">60</span></h5>
                     </center>
                 </div>
             </div>
