@@ -20,8 +20,8 @@ const Main = () => {
     const [spin, setSpin] = useState(false)
     const navigate = useNavigate()
     useEffect(() => {
-        const token = document.cookie.split(" ")[0].split("=")[1]
-        const id = document.cookie.split(" ")[1].split("=")[1]
+        const token = document.cookie?.split(" ")[0]?.split("=")[1]
+        const id = document.cookie?.split(" ")[1]?.split("=")[1]
         if (!token) {
             navigate("/login")
         } else {

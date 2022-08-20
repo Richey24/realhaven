@@ -23,7 +23,7 @@ const LoginComp = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        const token = document.cookie.split(" ")[0].split("=")[1]
+        const token = document.cookie?.split(" ")[0]?.split("=")[1]
         if (token) {
             navigate("/dashboard")
         }
