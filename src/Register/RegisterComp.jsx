@@ -291,7 +291,7 @@ const RegisterComp = () => {
                             <label htmlFor="firstName">Phone Number</label>
                             <br />
                             <div className='phoneNumDiv'>
-                                <p onClick={showList} className='mainCountry'><img className='counFlag' src={acc.flags?.svg} alt="" /> <img src={down} alt="down" /></p>
+                                <p onClick={showList} className='mainCountry'><img className='counFlag' src={acc.flags?.svg} alt="" /> <img className='dropImg' src={down} alt="down" /></p>
                                 <span className='counCode'>{acc.idd?.root}{acc.idd?.suffixes}</span>
                                 <input style={{ border: 'none', borderRadius: "0px", fontFamily: "Sora" }} type="tel" placeholder="phone number" id="phoneNumber" name='number' />
                             </div>

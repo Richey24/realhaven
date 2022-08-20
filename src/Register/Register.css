@@ -101,7 +101,6 @@
     z-index: 1;
     box-shadow: -4px -4px 16px rgba(17, 17, 17, 0.06), 8px 8px 16px rgba(17, 17, 17, 0.06);
     border-radius: 8px;
-    margin-left: 10px;
     background-color: #FFFFFF;
     padding: 10px;
 }
@@ -118,7 +117,7 @@
 }
 
 .countryList div input {
-    width: 300px;
+    width: 70%;
     margin-left: 20px;
     border: none;
     font-style: normal;
@@ -162,7 +161,7 @@
     line-height: 24px;
     color: #6B7280 !important;
     height: 60px;
-    width: 120px;
+    width: 130px;
     margin-bottom: -8%;
     background: #EAF2FB;
     align-self: flex-start;
@@ -374,6 +373,15 @@ body {
 }
 
 @media screen and (max-width:768px) {
+
+    .counFlag {
+        width: 28px;
+        margin-right: 5px;
+    }
+
+    .countryList {
+        width: 90%;
+    }
 
     .mailDiv h4 {
         font-size: 16px;
