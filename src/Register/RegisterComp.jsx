@@ -95,7 +95,7 @@ const RegisterComp = () => {
             firstName: name[0] || event.target.firstname.value,
             lastName: name[1] || event.target.lastname.value,
             email: event.target.email.value,
-            phoneNumber: event.target.number.value,
+            phoneNumber: acc.idd.root + acc.idd.suffixes + event.target.number.value,
             password: event.target.password.value
         }
         if (info.firstName.length < 2 || info.lastName.length < 2) {
@@ -222,6 +222,7 @@ const RegisterComp = () => {
 
     const oAuth = useGoogleLogin({
         onSuccess: async (response) => {
+            setSpin(true)
             const res = await axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${response.access_token}`)
             const rep = await res.data
             const user = {
@@ -234,6 +235,7 @@ const RegisterComp = () => {
             const mainUser = await result.data
             document.cookie = `token=${mainUser.token};expires=${new Date(new Date().getTime() + 60 * 60 * 1000 * 24 * 10).toGMTString()}`
             document.cookie = `id=${mainUser.user._id};expires=${new Date(new Date().getTime() + 60 * 60 * 1000 * 24 * 10).toGMTString()}`
+            setSpin(false)
             navigate("/dashboard")
         }
     })
@@ -264,6 +266,22 @@ const RegisterComp = () => {
     const getSearch = (event) => {
         const searchResult = scc.filter((sc) => sc.name.common.toLowerCase().includes(event.target.value.toLowerCase()))
         setCC(searchResult)
+    }
+
+    if (!acc.idd) {
+        return (
+            <div
+                style={{
+                    width: "100%",
+                    height: "100vh",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
+            >
+                <Spinner animation="border" style={{ color: "#2E7DD7" }} />
+            </div>
+        )
     }
 
     return (

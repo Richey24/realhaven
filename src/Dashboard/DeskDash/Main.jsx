@@ -62,7 +62,7 @@ const Main = () => {
                 </div>
                 <div className="deskReferDiv">
                     <div className="myDeskRefer">
-                        <div style={{ border: "none", width: "auto", height: "auto", marginBottom: "30px" }}>
+                        <div style={{ border: "none", width: "auto", height: "auto" }}>
                             <p>Hi {user.firstName} 👋</p>
                             <p style={{ fontWeight: "400" }}>Welcome back 🎉</p>
                         </div>

@@ -68,6 +68,10 @@
     margin-top: 3rem;
 }
 
+.myDeskRefer>div {
+    margin-bottom: 30px;
+}
+
 .myDeskRefer {
     background: #FFFFFF;
     border: 1px solid #2E7DD7;
@@ -127,16 +131,6 @@
     }
 
     .propLeadDesk {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 800px) {
-    .tablePrice {
-        display: none;
-    }
-
-    .propPriceDesk {
         display: none;
     }
 }
@@ -316,4 +310,69 @@
     height: 100vh;
     top: 50%;
     left: 50%;
+}
+
+@media screen and (max-width: 800px) {
+    .mainDashDiv {
+        width: 100vw;
+        padding-left: 20px;
+        padding-right: 20px;
+        background-color: #FFFFFF;
+    }
+
+    .dashTop {
+        padding: 0px;
+        background-color: #FFFFFF;
+        border: none;
+    }
+
+    .deskReferDiv>img {
+        display: none;
+    }
+
+    .deskReferDiv {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .myDeskRefer {
+        width: 100vw;
+        height: 110px;
+        padding-left: 15px;
+    }
+
+    .deskDude {
+        display: block;
+        width: 40%;
+        height: 200px;
+        margin-bottom: -27px;
+    }
+
+    .myDeskRefer>div {
+        margin-bottom: 1px;
+    }
+
+    .myDeskRefer>div>p {
+        font-size: 18px;
+    }
+
+    .deskStatMain {
+        flex-wrap: wrap;
+        margin: 0px;
+        width: 100%;
+        row-gap: 30px;
+    }
+
+    .deskMonthStat {
+        margin-left: 0px;
+        margin-top: 30px;
+    }
+
+    .deskHand {
+        width: 40vw;
+    }
+
+    .deskTable {
+        display: none;
+    }
 }
