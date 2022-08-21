@@ -14,6 +14,12 @@ import { useNavigate, useLocation } from 'react-router-dom';
 const Sidebar = () => {
     const navigate = useNavigate()
     const { pathname } = useLocation()
+
+    const logOut = () => {
+        document.cookie = "token=;expires=" + new Date(0).toUTCString()
+        document.cookie = "id=;expires=" + new Date(0).toUTCString()
+        navigate("/")
+    }
     return (
         <div className="dashSideMain">
             <div>
@@ -27,7 +33,7 @@ const Sidebar = () => {
                 <p className="dashReq" data-num="3"><img src={bag} alt="" />Requests</p>
                 <p onClick={() => navigate("/listing")} className={pathname === "/listing" ? "dashDash" : "dashDis"}><img src={pathname === "/listing" ? disblue : discover} alt="" />Listings</p>
                 <p className="dashMess" data-num="4"><img src={message} alt="" />Messages</p>
-                <p style={{ marginTop: "6rem" }} className="dashDis"><img src={logout} alt="" />LOGOUT</p>
+                <p onClick={logOut} style={{ marginTop: "6rem" }} className="dashDis"><img src={logout} alt="" />LOGOUT</p>
             </div>
         </div>
     )

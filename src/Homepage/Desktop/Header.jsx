@@ -74,7 +74,12 @@ const Header = ({ setSearch }) => {
         }, 10)
     }
 
-    const id = document.cookie?.split(" ")[1]?.split("=")[1]
+    let id = ""
+    for (let i = 0; i < document.cookie?.split(" ").length; i++) {
+        if (document.cookie?.split(" ")[i].split("=")[0] === "id") {
+            id = document.cookie?.split(" ")[i].split("=")[1]
+        }
+    }
 
     return (
         <div>

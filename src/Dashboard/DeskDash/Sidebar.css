@@ -62,20 +62,9 @@
 }
 
 @media screen and (max-width: 900px) {
-    .dashDash {
-        flex-direction: column;
-    }
-
     .dashNewProp {
-        flex-direction: column;
-        height: auto;
-    }
-
-    .dashProfile,
-    .dashReq,
-    .dashMess,
-    .dashDis {
-        flex-direction: column;
+        width: 70%;
+        margin-left: 7%;
     }
 }
 

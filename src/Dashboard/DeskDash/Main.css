@@ -59,6 +59,10 @@
     color: #FFFFFF;
 }
 
+.phoneAdd {
+    display: none;
+}
+
 .deskReferDiv {
     display: flex;
     justify-content: space-between;
@@ -338,18 +342,17 @@
 
     .myDeskRefer {
         width: 100vw;
-        height: 98px;
+        height: 135px;
     }
 
     .deskDude {
         display: block;
         width: 40%;
-        height: 200px;
-        margin-bottom: -38px;
+        margin-bottom: -20px;
     }
 
     .myDeskRefer>div {
-        margin-bottom: -5px;
+        margin-bottom: 10px;
     }
 
     .myDeskRefer>div>p {
@@ -361,6 +364,7 @@
         margin: 0px;
         width: 100%;
         row-gap: 30px;
+        margin-bottom: 100px;
     }
 
     .deskMonthStat {
@@ -374,5 +378,52 @@
 
     .deskTable {
         display: none;
+    }
+
+    .phoneAdd {
+        display: block;
+        width: 66px;
+        height: 66px;
+        background: #2E7DD7;
+        box-shadow: -32px -32px 48px rgba(17, 17, 17, 0.11), 32px 32px 48px rgba(17, 17, 17, 0.06);
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+    }
+
+    .phoneAdd>div {
+        color: white;
+        border: 3px white solid;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        padding-bottom: 5px;
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    .startLogo {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 10px;
+        font-family: 'Sora';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 18px;
+        color: #2E7DD7;
+        margin-top: 10px;
+    }
+
+    .startHead {
+        border-bottom: 1px solid #E5E7EB;
     }
 }

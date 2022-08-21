@@ -3,25 +3,45 @@ import noti from "../../img/noti.svg"
 import dp from "../../img/dp.png"
 import refer from "../../img/refer.png"
 import dude from "../../img/dude.svg"
+import longdude from "../../img/longdude.svg"
 import hand from "../../img/hand.svg"
 import money from "../../img/money.svg"
 import callback from "../../img/callback.svg"
 import people from "../../img/3-Friends.svg"
-import { useNavigate } from 'react-router-dom';
+import logo from "../../img/logo_blue.svg"
+import combined from "../../img/combined.svg"
+import dashboard from "../../img/dashboard.svg"
+import disblue from "../../img/Vector-blue.svg"
+import dashwhite from "../../img/Category-blue.svg"
+import profile from "../../img/Profile.svg"
+import bag from "../../img/Bag.svg"
+import discover from "../../img/Discovery.svg"
+import message from "../../img/Message.svg"
+import logout from "../../img/Logout.svg"
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from "react"
 import { useState } from "react"
 import axios from "axios"
 import url from '../../url';
-import { Spinner } from 'react-bootstrap';
+import { Spinner, Offcanvas } from 'react-bootstrap';
 
-const Main = () => {
+const Main = ({ showTop, handleTopClose }) => {
     const [user, setUser] = useState({})
     const [houses, setHouses] = useState([])
     const [spin, setSpin] = useState(false)
+    const { pathname } = useLocation()
     const navigate = useNavigate()
     useEffect(() => {
-        const token = document.cookie?.split(" ")[0]?.split("=")[1]
-        const id = document.cookie?.split(" ")[1]?.split("=")[1]
+        let token = ""
+        let id = ""
+        for (let i = 0; i < document.cookie?.split(" ").length; i++) {
+            if (document.cookie?.split(" ")[i].split("=")[0] === "token") {
+                token = document.cookie?.split(" ")[i].split("=")[1]
+            }
+            if (document.cookie?.split(" ")[i].split("=")[0] === "id") {
+                id = document.cookie?.split(" ")[i].split("=")[1]
+            }
+        }
         if (!token) {
             navigate("/login")
         } else {
@@ -42,6 +62,13 @@ const Main = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    const logOut = () => {
+        document.cookie = "token=;expires=" + new Date(0).toUTCString()
+        document.cookie = "id=;expires=" + new Date(0).toUTCString()
+        navigate("/")
+    }
+
     return (
         <div className="mainDashDiv">
             {
@@ -66,7 +93,7 @@ const Main = () => {
                             <p>Hi {user.firstName} 👋</p>
                             <p style={{ fontWeight: "400" }}>Welcome back 🎉</p>
                         </div>
-                        <img className="deskDude" src={dude} alt="" />
+                        <img className="deskDude" src={window.innerWidth > 800 ? dude : longdude} alt="" />
                     </div>
                     <img style={{ cursor: "pointer", width: "300px" }} src={refer} alt="" />
                 </div>
@@ -98,6 +125,27 @@ const Main = () => {
                         <h6>+2% from last month</h6>
                     </div>
                 </div>
+
+                <div onClick={() => navigate("/post")} className="phoneAdd">
+                    <div>+</div>
+                </div>
+
+                <Offcanvas style={{ width: "80%" }} className="topCanvas" show={showTop} onHide={handleTopClose} placement="start">
+                    <Offcanvas.Header className="startHead" closeButton>
+                        <Offcanvas.Title><p className="startLogo"><img src={logo} alt="" />Haven</p></Offcanvas.Title>
+                    </Offcanvas.Header>
+                    <Offcanvas.Body>
+                        <div>
+                            <p style={pathname === "/post" ? { background: "#17457A" } : {}} onClick={() => navigate("/post")} className="dashNewProp"><img src={combined} alt="" />New Property</p>
+                            <p onClick={() => navigate("/dashboard")} className={pathname === "/dashboard" ? "dashDash" : "dashDis"}><img src={pathname === "/dashboard" ? dashboard : dashwhite} alt="" />Dashboard</p>
+                            <p className="dashProfile"><img src={profile} alt="" />Profile</p>
+                            <p className="dashReq" data-num="3"><img src={bag} alt="" />Requests</p>
+                            <p onClick={() => navigate("/listing")} className={pathname === "/listing" ? "dashDash" : "dashDis"}><img src={pathname === "/listing" ? disblue : discover} alt="" />Listings</p>
+                            <p className="dashMess" data-num="4"><img src={message} alt="" />Messages</p>
+                            <p onClick={logOut} style={{ marginTop: "6rem" }} className="dashDis"><img src={logout} alt="" />LOGOUT</p>
+                        </div>
+                    </Offcanvas.Body>
+                </Offcanvas>
 
                 <table className="deskTable">
                     <thead className="deskTableHead">
