@@ -1,11 +1,8 @@
 .dashLogoDesk {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: baseline;
     padding: 0px;
     gap: 6px;
-    width: 102.5px;
     height: 24px;
     font-family: 'Sora';
     font-style: normal;
@@ -32,10 +29,12 @@
 }
 
 .dashSideMain {
-    width: 22%;
+    width: auto;
     min-height: 100vh;
     background: #FFFFFF;
     padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .dashNewProp {
@@ -44,7 +43,7 @@
     align-items: center;
     padding: 12px 20px;
     gap: 10px;
-    width: 90%;
+    width: fit-content;
     height: 48px;
     background: #2E7DD7;
     box-shadow: 0px 16px 64px rgba(59, 130, 246, 0.11);
@@ -58,7 +57,12 @@
     color: #F3F4F6;
     margin-top: 64px;
     margin-bottom: 3rem;
+    margin-left: 10%;
     cursor: pointer;
+}
+
+.dashSideMain img {
+    width: 20px;
 }
 
 @media screen and (max-width: 900px) {
@@ -86,7 +90,8 @@
 .dashProfile,
 .dashReq,
 .dashMess,
-.dashDis {
+.dashDis,
+.dashNotify {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -117,4 +122,86 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.dashNotify::after {
+    content: attr(data-num);
+    width: 18px;
+    height: 18px;
+    background: #EF4444;
+    border-radius: 16px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 11px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashNotify>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background: #F1F5F9;
+    border-radius: 100px;
+}
+
+.userDP {
+    display: flex;
+    align-items: center;
+    margin-left: 10%;
+    margin-top: 30px
+}
+
+.userDP>img {
+    margin-bottom: 18px;
+    border-radius: 100%;
+}
+
+.userDP>p {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #334155;
+    margin-left: 20px;
+}
+
+.userDP>p>span {
+    color: #64748B;
+}
+
+.hideSide {
+    display: none;
+}
+
+.justifyCenter {
+    justify-content: center;
+}
+
+.justifyCenter::after {
+    display: none;
+}
+
+.afterDot {
+    margin-left: 18px;
+}
+
+.afterDot>div {
+    background-color: white;
+}
+
+.afterDot::after {
+    width: 5px;
+    height: 5px;
+    background-color: #EF4444;
+    content: "";
+    margin-left: -15px;
+    margin-top: -15px;
 }

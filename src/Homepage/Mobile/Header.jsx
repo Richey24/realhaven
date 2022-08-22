@@ -175,10 +175,10 @@ const Header = ({ setResult }) => {
                         <li>Short let</li>
                     </ul>
                     <ul className='myAuth'>
-                        <li onClick={() => navigate(id ? '/dashboard' : '/register')}>{id ? "Dashboard" : "Sign up"}</li>
-                        <li onClick={() => navigate(id ? '/listing' : '/login')}>{id ? "Listing" : "Sign in"}</li>
+                        <li onClick={() => { handleTopClose(); navigate(id ? '/dashboard' : '/register') }}>{id ? "Dashboard" : "Sign up"}</li>
+                        <li onClick={() => { handleTopClose(); navigate(id ? '/listing' : '/login') }}>{id ? "Listing" : "Sign in"}</li>
                     </ul>
-                    <p onClick={() => navigate(id ? '/post' : '/login')} className='postProps'>Post a property</p>
+                    <p onClick={() => { handleTopClose(); navigate(id ? '/post' : '/login') }} className='postProps'>Post a property</p>
                 </Offcanvas.Body>
             </Offcanvas>
 

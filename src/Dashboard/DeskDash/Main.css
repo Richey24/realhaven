@@ -1,5 +1,5 @@
 .mainDashDiv {
-    width: 78%;
+    width: 100vw;
     min-height: 100vh;
     background: #F9FAFB;
     border-left: 1px solid #E5E7EB;
@@ -342,17 +342,17 @@
 
     .myDeskRefer {
         width: 100vw;
-        height: 135px;
+        height: 125px;
     }
 
     .deskDude {
         display: block;
         width: 40%;
-        margin-bottom: -20px;
+        margin-bottom: -28px;
     }
 
     .myDeskRefer>div {
-        margin-bottom: 10px;
+        margin-bottom: 7px;
     }
 
     .myDeskRefer>div>p {
@@ -397,15 +397,14 @@
 
     .phoneAdd>div {
         color: white;
-        border: 3px white solid;
+        border: 2px white solid;
         width: 30px;
         height: 30px;
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: 8px;
-        padding-bottom: 5px;
-        font-size: 30px;
+        font-size: 20px;
         font-weight: 700;
     }
 

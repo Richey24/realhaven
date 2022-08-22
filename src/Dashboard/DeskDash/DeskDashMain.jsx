@@ -19,7 +19,7 @@ const DeskDashMain = () => {
         <div>
             <div className="deskDashMain">
                 <Header handleTopShow={handleTopShow} />
-                <Sidebar />
+                <Sidebar handleTopClose={handleTopClose} />
                 <Main showTop={showTop} handleTopClose={handleTopClose} />
             </div>
         </div>
