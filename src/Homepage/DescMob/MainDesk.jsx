@@ -22,6 +22,12 @@ import Seventh from './../Desktop/Seventh';
 const MainDesk = () => {
     const navigate = useNavigate()
     const [mainImage, setMainImage] = useState(two)
+    let id = ""
+    for (let i = 0; i < document.cookie?.split(" ").length; i++) {
+        if (document.cookie?.split(" ")[i].split("=")[0] === "id") {
+            id = document.cookie?.split(" ")[i].split("=")[1]
+        }
+    }
     return (
         <div>
             <div style={{ textAlign: "left" }}>
@@ -35,10 +41,10 @@ const MainDesk = () => {
                         </div>
                         <div className='secNavDiv'>
                             <img className='searchImage' src={searchImage} alt="" />
-                            <p style={{ cursor: 'pointer' }} onClick={() => navigate("/register")} className='signUp'>Sign up</p>
-                            <p onClick={() => navigate("/login")} style={{ color: '#9CA3AF', cursor: 'pointer' }} className='signIn'>Sign in</p>
+                            <p style={{ cursor: 'pointer' }} onClick={() => navigate(id ? '/home' : '/register')} className='signUp'>{id ? "Dashboard" : "Sign up"}</p>
+                            <p onClick={navigate(id ? '/listing' : '/login')} style={{ color: '#9CA3AF', cursor: 'pointer' }} className='signIn'>{id ? "Listing" : "Sign in"}</p>
                         </div>
-                        <p className='postProp'>Post a property</p>
+                        <p onClick={() => navigate(id ? '/post' : '/login')} className='postProp'>Post a property</p>
                     </div>
                 </div>
                 <div className='mainImgDeskDiv'>

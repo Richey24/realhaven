@@ -12,11 +12,11 @@ import logo from "../../img/logo_blue.svg"
 import combined from "../../img/combined.svg"
 import dashboard from "../../img/dashboard.svg"
 import disblue from "../../img/Vector-blue.svg"
-import dashwhite from "../../img/Category-blue.svg"
-import profile from "../../img/Profile.svg"
 import bag from "../../img/Bag.svg"
 import discover from "../../img/Discovery.svg"
 import message from "../../img/Message.svg"
+import home from "../../img/Home.svg"
+import setting from "../../img/Setting.svg"
 import logout from "../../img/Logout.svg"
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from "react"
@@ -137,11 +137,26 @@ const Main = ({ showTop, handleTopClose }) => {
                     <Offcanvas.Body>
                         <div>
                             <p style={pathname === "/post" ? { background: "#17457A" } : {}} onClick={() => navigate("/post")} className="dashNewProp"><img src={combined} alt="" />New Property</p>
-                            <p onClick={() => navigate("/dashboard")} className={pathname === "/dashboard" ? "dashDash" : "dashDis"}><img src={pathname === "/dashboard" ? dashboard : dashwhite} alt="" />Dashboard</p>
-                            <p className="dashProfile"><img src={profile} alt="" />Profile</p>
+
+
+                            <p onClick={() => navigate("/dashboard")} className={pathname === "/home" ? "dashDash" : "dashDis"}><img src={pathname === "/home" ? home : home} alt="" />Home</p>
+
+
+                            <p className="dashProfile"><img src={pathname === "/dashboard" ? dashboard : dashboard} alt="" />Dashboard</p>
+
+
                             <p className="dashReq" data-num="3"><img src={bag} alt="" />Requests</p>
+
+
                             <p onClick={() => navigate("/listing")} className={pathname === "/listing" ? "dashDash" : "dashDis"}><img src={pathname === "/listing" ? disblue : discover} alt="" />Listings</p>
+
+
                             <p className="dashMess" data-num="4"><img src={message} alt="" />Messages</p>
+
+
+                            <p className="dashProfile"><img src={setting} alt="" />Settings</p>
+
+
                             <p onClick={logOut} style={{ marginTop: "6rem" }} className="dashDis"><img src={logout} alt="" />LOGOUT</p>
                         </div>
                     </Offcanvas.Body>

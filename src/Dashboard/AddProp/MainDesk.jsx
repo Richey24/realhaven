@@ -7,12 +7,13 @@ import "../../Homepage/Desktop/Header.css"
 import { useState } from 'react';
 import preview from "../../img/preview.svg"
 import pen from "../../img/Edit.svg"
-import send from "../../img/Send.svg"
+import setting from "../../img/Setting.svg"
 import { useEffect } from "react"
 import { useNavigate } from 'react-router-dom';
-import { Toast, Spinner } from "react-bootstrap"
+import { Toast, ProgressBar } from "react-bootstrap"
 import axios from 'axios';
 import url from '../../url';
+import FourthLayer from "./FourthLayer"
 
 const MainDesk = () => {
     const [purpose, setPurpose] = useState("Purpose")
@@ -26,12 +27,21 @@ const MainDesk = () => {
     const [previewImage4, setPreviewImage4] = useState("")
     const [previewImage5, setPreviewImage5] = useState("")
     const [previewImage6, setPreviewImage6] = useState("")
+    const [property, setProperty] = useState({})
     const [showA, setShowA] = useState(false)
+    const [now, setNow] = useState(25)
+    const [info, setInfo] = useState(["Add Basic Information", "Let's get started"])
+    const [step, setStep] = useState(1)
     const navigate = useNavigate()
 
     useEffect(() => {
-        const email = document.cookie.split("=")[1]
-        if (!email) {
+        let id = ""
+        for (let i = 0; i < document.cookie?.split(" ").length; i++) {
+            if (document.cookie?.split(" ")[i].split("=")[0] === "id") {
+                id = document.cookie?.split(" ")[i].split("=")[1]
+            }
+        }
+        if (!id) {
             navigate("/login")
         }
     })
@@ -89,35 +99,172 @@ const MainDesk = () => {
     const postProperty = async (event) => {
         setSpin(true)
         event.preventDefault()
-        if (!event.target.mainImage.files[0] || !document.cookie.split("=")[1] || !event.target.title.value || !event.target.address.value || !purpose || !propType || !event.target.bedroom.value || !event.target.bathroom.value || !event.target.toilet.value || !event.target.description.value) {
-            setShowA(true)
-            setTimeout(() => { setShowA(false) }, 5000)
+        const mainProp = new FormData()
+        mainProp.append("title", property.title)
+        mainProp.append("address", property.address)
+        mainProp.append("aptUnit", property.aptUnit)
+        mainProp.append("country", property.country)
+        mainProp.append("state", property.state)
+        mainProp.append("city", property.city)
+        mainProp.append("postalCode", property.postalCode)
+        mainProp.append("city", property.city)
+        mainProp.append("purpose", property.purpose)
+        mainProp.append("propertyType", property.propertyType)
+        mainProp.append("noOfBedroom", property.noOfBedroom)
+        mainProp.append("noOfBathroom", property.noOfBathroom)
+        mainProp.append("noOfToilet", property.noOfToilet)
+        mainProp.append("description", property.description)
+        mainProp.append("stateOfBuilding", property.stateOfBuilding)
+        mainProp.append("price", property.price)
+        mainProp.append("currency", property.currency)
+        mainProp.append("pricePer", property.pricePer)
+        mainProp.append("additionalFeatures", property.additionalFeatures)
+        mainProp.append("file", property.mainImage, "mainImage")
+        for (let i = 0; i < property.otherImages.length; i++) {
+            mainProp.append("file", property.otherImages[i], "file")
+        }
+        console.log(mainProp.getAll("file"));
+        const res = await axios.post(`${url}/v1/property`, mainProp, { validateStatus: () => true })
+        const post = await res.data
+        console.log(post);
+        setSpin(false)
+        // navigate("/dashboard")
+    }
+
+    const moveOn = () => {
+        const firstLayer = document.getElementById("firstLayer")
+        const secondLayer = document.getElementById("secondLayer")
+        const thirdLayer = document.getElementById("thirdLayer")
+        const fourthLayer = document.getElementById("fourthLayer")
+        const finalButton = document.getElementById("finalButton")
+        const elements = document.getElementsByTagName("input")
+        const desc = document.getElementById("desc")
+        switch (now) {
+            case 25:
+                if (!elements.title.value || !elements.address.value || !elements.country.value || !elements.city.value || !elements.state.value || !elements.postalCode.value) {
+                    setShowA(true)
+                    setTimeout(() => {
+                        setShowA(false)
+                    }, 6000)
+                    return
+                }
+                setStep(step + 1)
+                setNow(now + 25)
+                setInfo(["Add Property description", "Nicely done, keep going!"])
+                firstLayer.style.display = "none"
+                thirdLayer.style.display = "none"
+                fourthLayer.style.display = "none"
+                secondLayer.style.display = "block"
+                window.scrollTo(0, 0)
+                break;
+            case 50:
+                if (!elements.bedroom.value || !elements.bathroom.value || !elements.toilet.value || !desc.value || !propType || !purpose) {
+                    setShowA(true)
+                    setTimeout(() => {
+                        setShowA(false)
+                    }, 6000)
+                    return
+                }
+                setStep(step + 1)
+                setNow(now + 25)
+                setInfo(["Add Property description", "Almost there now!"])
+                firstLayer.style.display = "none"
+                secondLayer.style.display = "none"
+                fourthLayer.style.display = "none"
+                thirdLayer.style.display = "block"
+                window.scrollTo(0, 0)
+                break;
+            case 75:
+                if (!elements.price.value || !elements.features.value) {
+                    setShowA(true)
+                    setTimeout(() => {
+                        setShowA(false)
+                    }, 6000)
+                    return
+                }
+                if (!elements.mainImage.files[0]) {
+                    setShowA(true)
+                    setTimeout(() => {
+                        const myToast = document.getElementById("myToast")
+                        myToast.innerHTML = "The First Image Is Required"
+                    }, 10)
+                    setTimeout(() => {
+                        const myToast = document.getElementById("myToast")
+                        myToast.innerHTML = "Kindly fill all the required field"
+                        setShowA(false)
+                    }, 6000)
+                    return
+                }
+                const conArray = [elements.furnished, elements.serviced, elements.newlybuilt].filter((element) => element.checked === true)
+
+                const newArray = conArray.map((con) => con.value)
+
+                const imageArray = [elements.secondImage.files[0], elements.thirdImage.files[0], elements.fourthImage.files[0], elements.fifthImage.files[0], elements.sixthImage.files[0]].filter((image) => image !== undefined)
+
+                const theProp = {
+                    title: elements.title.value,
+                    address: elements.address.value,
+                    aptUnit: elements.apt.value,
+                    city: elements.city.value,
+                    state: elements.state.value,
+                    country: elements.country.value,
+                    postalCode: elements.postalCode.value,
+                    purpose: purpose,
+                    propertyType: propType,
+                    noOfBedroom: elements.bedroom.value,
+                    noOfBathroom: elements.bathroom.value,
+                    noOfToilet: elements.toilet.value,
+                    description: desc.value,
+                    stateOfBuilding: newArray,
+                    price: elements.price.value,
+                    currency: curr,
+                    pricePer: rate,
+                    additionalFeatures: elements.features.value.split(","),
+                    mainImage: elements.mainImage.files[0],
+                    otherImages: imageArray
+                }
+                setProperty(theProp)
+                setStep(step + 1)
+                setNow(now + 25)
+                setInfo(["Post preview, Check if the details are correct", "Yay! you did it!"])
+                secondLayer.style.display = "none"
+                thirdLayer.style.display = "none"
+                firstLayer.style.display = "none"
+                finalButton.style.display = "none"
+                fourthLayer.style.display = "block"
+                window.scrollTo(0, 0)
+                break;
+            default:
+                break;
+        }
+    }
+    const moveBack = () => {
+        if (now === 25) {
             return
         }
-        const formData = new FormData()
-        event.target.mainImage.files[0] && formData.append("image", event.target.mainImage.files[0])
-        event.target.secondImage.files[0] && formData.append("image", event.target.secondImage.files[0])
-        event.target.thirdImage.files[0] && formData.append("image", event.target.thirdImage.files[0])
-        event.target.fourthImage.files[0] && formData.append("image", event.target.fourthImage.files[0])
-        event.target.fifthImage.files[0] && formData.append("image", event.target.fifthImage.files[0])
-        event.target.sixthImage.files[0] && formData.append("image", event.target.sixthImage.files[0])
-        formData.append("email", document.cookie.split("=")[1])
-        formData.append("title", event.target.title.value)
-        formData.append("address", event.target.address.value)
-        formData.append("purpose", purpose)
-        formData.append("propType", propType)
-        formData.append("bedroom", event.target.bedroom.value)
-        formData.append("bathroom", event.target.bathroom.value)
-        formData.append("toilet", event.target.toilet.value)
-        formData.append("status", (event.target.furnished.checked ? event.target.furnished.value : "") + " " + (event.target.serviced.checked ? event.target.serviced.value : "") + " " + (event.target.newlybuilt.checked ? event.target.newlybuilt.value : ""))
-        formData.append("price", event.target.price.value)
-        formData.append("currency", curr)
-        formData.append("rate", rate)
-        formData.append("description", event.target.description.value)
-        formData.append("features", event.target.features.value)
-        await axios.post(`${url}/house/post`, formData)
-        setSpin(false)
-        navigate("/dashboard")
+        const firstLayer = document.getElementById("firstLayer")
+        const secondLayer = document.getElementById("secondLayer")
+        const thirdLayer = document.getElementById("thirdLayer")
+        switch (now) {
+            case 50:
+                setStep(step - 1)
+                setNow(now - 25)
+                setInfo(["Add Basic Information", "Let's get started"])
+                secondLayer.style.display = "none"
+                thirdLayer.style.display = "none"
+                firstLayer.style.display = "block"
+                break;
+            case 75:
+                setStep(step - 1)
+                setNow(now - 25)
+                setInfo(["Add Property description", "Nicely done, keep going!"])
+                thirdLayer.style.display = "none"
+                firstLayer.style.display = "none"
+                secondLayer.style.display = "block"
+                break;
+            default:
+                break;
+        }
     }
 
     return (
@@ -129,168 +276,221 @@ const MainDesk = () => {
             </Toast>
             <form onSubmit={postProperty}>
                 <div className="dashTop">
-                    <p>Post Property</p>
                     <div>
+                        <p>Post Property</p>
+                        <h4 className="getAttDesk">Get your properties the attention of 500k+ home seekers</h4>
+                    </div>
+                    <div className="getAttDiv">
                         <span data-num="3"><img src={noti} alt="" /></span>
-                        <img src={dp} alt="" />
-                    </div>
-                </div>
-                <h4 className="getAttDesk">Get your properties the attention of 500k+ home seekers</h4>
-                <div className="deskAddTitle">
-                    <label htmlFor="title">Title</label>
-                    <br />
-                    <input placeholder="Name your property E.g “Five Bedroom Luxury Semi Detached Duplex" type="text" name="title" id="title" />
-                </div>
-                <div className="deskAddTitle">
-                    <label htmlFor="title">Address</label>
-                    <br />
-                    <input placeholder="Address of the property you are posting" type="text" name="address" />
-                </div>
-
-                <div className="puporseDivDesk">
-                    <div>
-                        <p className="purposePara">Purpose</p>
-                        <div style={{ width: "30vw", margin: "0px" }} onClick={() => showMode("mode")} className='locationDesk'>
-                            <p>{purpose}</p>
-                            <img src={down} alt="" />
-                        </div>
-                        <ul style={{ height: "auto", width: "30vw", position: "absolute", zIndex: "1", margin: "0px" }} id='mode' className='propertyListDesk'>
-                            <li onClick={() => getPurpose("Rent")}>Rent</li>
-                            <li onClick={() => getPurpose("Sell")}>Sell</li>
-                            <li onClick={() => getPurpose("Buy")}>Buy</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p className="purposePara">Property type</p>
-                        <div style={{ width: "30vw", margin: "0px" }} onClick={() => showMode("apartment")} className='locationDesk'>
-                            <p>{propType}</p>
-                            <img src={down} alt="" />
-                        </div>
-                        <ul style={{ height: "150px", width: "30vw", position: "absolute", zIndex: "1", margin: "0px" }} id='apartment' className='propertyListDesk'>
-                            <li onClick={() => getPropType("Duplex")}>Duplex</li>
-                            <li onClick={() => getPropType("Detached Bungalow")}>Detached Bungalow</li>
-                            <li onClick={() => getPropType("Shop")}>Shop</li>
-                            <li onClick={() => getPropType("Office Space")}>Office Space</li>
-                            <li onClick={() => getPropType("Penthouse")}>Penthouse</li>
-                            <li onClick={() => getPropType("Apartments")}>Apartments</li>
-                        </ul>
-                    </div>
-                </div>
-
-
-                <div className="puporseDivDesk">
-                    <div>
-                        <p className="purposePara">Bedroom</p>
-                        <input name="bedroom" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Bedrooms" className='locationDesk' type="number" />
-                    </div>
-                    <div>
-                        <p className="purposePara">Bathroom</p>
-                        <input name="bathroom" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Bathrooms" className='locationDesk' type="number" />
-                    </div>
-                    <div>
-                        <p className="purposePara">Toilet</p>
-                        <input name="toilet" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Toilets" className='locationDesk' type="number" />
-                    </div>
-                </div>
-
-                <div className="checkBoxSelect">
-                    <label htmlFor="furnished"><input type="checkbox" name="furnished" id="furnished" value="Furnished" />Furnished</label>
-                    <label htmlFor="serviced"><input type="checkbox" name="serviced" id="serviced" value="Serviced" />Serviced</label>
-                    <label htmlFor="newlybuilt"><input type="checkbox" name="newlybuilt" id="newlybuilt" value="Newly built" />Newly-built</label>
-                </div>
-
-                <div className="puporseDivDesk">
-                    <div style={{ width: "30%" }}>
-                        <p className="purposePara">Property price</p>
+                        <img src={setting} alt="" />
                         <div>
-                            <input name="price" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="Property Price" className='locationDesk' type="number" />
+                            <img src={dp} alt="" />
+                            <p>Rejoice dev</p>
                         </div>
                     </div>
-                    <div style={{ width: "30%" }}>
-                        <p className="purposePara">Currency</p>
-                        <div style={{ width: "100%", margin: "0px" }} onClick={() => showMode("currency")} className='locationDesk'>
-                            <p>{curr}</p>
-                            <img src={down} alt="" />
-                        </div>
-                        <ul style={{ height: "150px", width: "18vw", position: "absolute", zIndex: "1", margin: "0px" }} id='currency' className='propertyListDesk'>
-                            <li onClick={() => getCurr("Naira (₦)")}>Naira (₦)</li>
-                            <li onClick={() => getCurr("US Dollar ($)")}>US Dollar ($)</li>
-                            <li onClick={() => getCurr("Euro (€)")}>Euro (€)</li>
-                            <li onClick={() => getCurr("Pound (£)")}>Pound (£)</li>
-                        </ul>
+                </div>
+                <div className="proBarDiv">
+                    <div>
+                        <p>STEP {step} of 4</p>
+                        <h4>{info[0]}</h4>
                     </div>
-                    <div style={{ width: "30%" }}>
-                        <p className="purposePara">Period</p>
-                        <div style={{ width: "100%", margin: "0px" }} onClick={() => showMode("rate")} className='locationDesk'>
-                            <p>{rate}</p>
-                            <img src={down} alt="" />
-                        </div>
-                        <ul style={{ height: "150px", width: "18vw", position: "absolute", zIndex: "1", margin: "0px" }} id='rate' className='propertyListDesk'>
-                            <li onClick={() => getRate("/year")}>/year</li>
-                            <li onClick={() => getRate("/month")}>/month</li>
-                            <li onClick={() => getRate("/week")}>/week</li>
-                        </ul>
+                    <div className="divBar">
+                        <ProgressBar className="proBar" now={now} />
+                        <p>{info[1]}<span>{now}%</span></p>
                     </div>
                 </div>
-
-
-                <div className="addTextAreaDiv">
-                    <p className="purposePara">Description</p>
-                    <textarea name="description" placeholder="Tell us everything about the property..."></textarea>
-                </div>
-
-                <div className="additionFeat">
-                    <p className="purposePara">Additional Features</p>
-                    <input name="features" placeholder="Add features" type="text" />
-                    <h6>Suggested: <span>Balcony, Family Lounge, Swimming Pool, CCTV, Jacuzzi, Adequate car space, Security</span></h6>
-                </div>
-                <div className="addHouseImages">
-                    <p className="purposePara">Add Images</p>
-                    <input name="mainImage" onChange={(event) => getPreviewImage1(event, 1)} type="file" id="mainImage" hidden />
-                    <label htmlFor="mainImage">
-                        <div className="addHouseMainImage">
-                            <img src={previewImage1 ? `${previewImage1}` : preview} alt="" />
-                        </div>
-                    </label>
-                    <div className="addHouseOtherImage">
-                        <input onChange={(event) => getPreviewImage1(event, 2)} type="file" id="secondImage" name="secondImage" hidden />
-                        <label htmlFor="secondImage">
-                            <div>
-                                <img src={previewImage2 ? previewImage2 : preview} alt="" />
-                            </div>
-                        </label>
-                        <input onChange={(event) => getPreviewImage1(event, 3)} type="file" id="thirdImage" name="thirdImage" hidden />
-                        <label htmlFor="thirdImage">
-                            <div>
-                                <img src={previewImage3 ? previewImage3 : preview} alt="" />
-                            </div>
-                        </label>
-                        <input onChange={(event) => getPreviewImage1(event, 4)} type="file" id="fourthImage" name="fourthImage" hidden />
-                        <label htmlFor="fourthImage">
-                            <div>
-                                <img src={previewImage4 ? previewImage4 : preview} alt="" />
-                            </div>
-                        </label>
-                        <input onChange={(event) => getPreviewImage1(event, 5)} type="file" hidden id="fifthImage" name="fifthImage" />
-                        <label htmlFor="fifthImage">
-                            <div>
-                                <img src={previewImage5 ? previewImage5 : preview} alt="" />
-                            </div>
-                        </label>
-                        <input onChange={(event) => getPreviewImage1(event, 6)} type="file" hidden id="sixthImage" name="sixthImage" />
-                        <label htmlFor="sixthImage">
-                            <div>
-                                <img src={previewImage6 ? previewImage6 : preview} alt="" />
-                            </div>
-                        </label>
+                <div id="firstLayer">
+                    <div className="deskAddTitle">
+                        <label htmlFor="title">Title</label>
+                        <br />
+                        <input placeholder="Name your property E.g “Five Bedroom Luxury Semi Detached Duplex" type="text" name="title" id="title" />
                     </div>
-                    <p className="purposePara">600x600 or higher recommeneded.</p>
+                    <div className="puporseDivDesk">
+                        <div>
+                            <p className="purposePara">Address</p>
+                            <input name="address" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="Enter the property address" className='locationDesk' type="text" />
+                        </div>
+                        <div>
+                            <p className="purposePara" style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", width: "19.5vw" }}>Apt/Unit <span className="aptSpan">optional</span></p>
+                            <input name="apt" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="000" className='locationDesk' type="text" />
+                        </div>
+                        <div>
+                            <p className="purposePara">Country</p>
+                            <input name="country" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="Nigeria" className='locationDesk' type="text" />
+                        </div>
+                    </div>
+
+                    <div className="puporseDivDesk">
+                        <div>
+                            <p className="purposePara">City</p>
+                            <input name="city" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="City/Town" className='locationDesk' type="text" />
+                        </div>
+                        <div>
+                            <p className="purposePara">State</p>
+                            <input name="state" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="State/Province" className='locationDesk' type="text" />
+                        </div>
+                        <div>
+                            <p className="purposePara">Postal code</p>
+                            <input name="postalCode" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="******" className='locationDesk' type="text" />
+                        </div>
+                    </div>
+
                 </div>
 
-                <div className="addFinalButton">
+                <div id="secondLayer" style={{ display: "none" }}>
+                    <div className="puporseDivDesk">
+                        <div>
+                            <p className="purposePara">Purpose</p>
+                            <div style={{ width: "30vw", margin: "0px" }} onClick={() => showMode("mode")} className='locationDesk'>
+                                <p>{purpose}</p>
+                                <img src={down} alt="" />
+                            </div>
+                            <ul style={{ height: "auto", width: "30vw", position: "absolute", zIndex: "1", margin: "0px" }} id='mode' className='propertyListDesk'>
+                                <li onClick={() => getPurpose("Rent")}>Rent</li>
+                                <li onClick={() => getPurpose("Sell")}>Sell</li>
+                                <li onClick={() => getPurpose("Buy")}>Buy</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p className="purposePara">Property type</p>
+                            <div style={{ width: "30vw", margin: "0px" }} onClick={() => showMode("apartment")} className='locationDesk'>
+                                <p>{propType}</p>
+                                <img src={down} alt="" />
+                            </div>
+                            <ul style={{ height: "150px", width: "30vw", position: "absolute", zIndex: "1", margin: "0px" }} id='apartment' className='propertyListDesk'>
+                                <li onClick={() => getPropType("Duplex")}>Duplex</li>
+                                <li onClick={() => getPropType("Detached Bungalow")}>Detached Bungalow</li>
+                                <li onClick={() => getPropType("Shop")}>Shop</li>
+                                <li onClick={() => getPropType("Office Space")}>Office Space</li>
+                                <li onClick={() => getPropType("Penthouse")}>Penthouse</li>
+                                <li onClick={() => getPropType("Apartments")}>Apartments</li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div className="puporseDivDesk">
+                        <div>
+                            <p className="purposePara">Bedroom</p>
+                            <input name="bedroom" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Bedrooms" className='locationDesk' type="number" />
+                        </div>
+                        <div>
+                            <p className="purposePara">Bathroom</p>
+                            <input name="bathroom" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Bathrooms" className='locationDesk' type="number" />
+                        </div>
+                        <div>
+                            <p className="purposePara">Toilet</p>
+                            <input name="toilet" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Toilets" className='locationDesk' type="number" />
+                        </div>
+                    </div>
+
+
+                    <div className="addTextAreaDiv">
+                        <p className="purposePara">Description</p>
+                        <textarea id="desc" name="description" placeholder="Tell us everything about the property..."></textarea>
+                    </div>
+
+                    <div className="checkBoxSelect">
+                        <label htmlFor="furnished"><input type="checkbox" name="furnished" id="furnished" value="Furnished" />Furnished</label>
+                        <label htmlFor="serviced"><input type="checkbox" name="serviced" id="serviced" value="Serviced" />Serviced</label>
+                        <label htmlFor="newlybuilt"><input type="checkbox" name="newlybuilt" id="newlybuilt" value="Newly built" />Newly-built</label>
+                    </div>
+
+                </div>
+
+                <div id="thirdLayer" style={{ display: "none" }}>
+                    <div className="puporseDivDesk">
+                        <div style={{ width: "30%" }}>
+                            <p className="purposePara">Property price</p>
+                            <div>
+                                <input id="price" name="price" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="Property Price" className='locationDesk' type="number" />
+                            </div>
+                        </div>
+                        <div style={{ width: "30%" }}>
+                            <p className="purposePara">Currency</p>
+                            <div style={{ width: "100%", margin: "0px" }} onClick={() => showMode("currency")} className='locationDesk'>
+                                <p>{curr}</p>
+                                <img src={down} alt="" />
+                            </div>
+                            <ul style={{ height: "150px", width: "18vw", position: "absolute", zIndex: "1", margin: "0px" }} id='currency' className='propertyListDesk'>
+                                <li onClick={() => getCurr("Naira (₦)")}>Naira (₦)</li>
+                                <li onClick={() => getCurr("US Dollar ($)")}>US Dollar ($)</li>
+                                <li onClick={() => getCurr("Euro (€)")}>Euro (€)</li>
+                                <li onClick={() => getCurr("Pound (£)")}>Pound (£)</li>
+                            </ul>
+                        </div>
+                        <div style={{ width: "30%" }}>
+                            <p className="purposePara">Period</p>
+                            <div style={{ width: "100%", margin: "0px" }} onClick={() => showMode("rate")} className='locationDesk'>
+                                <p>{rate}</p>
+                                <img src={down} alt="" />
+                            </div>
+                            <ul style={{ height: "150px", width: "18vw", position: "absolute", zIndex: "1", margin: "0px" }} id='rate' className='propertyListDesk'>
+                                <li onClick={() => getRate("/year")}>/year</li>
+                                <li onClick={() => getRate("/month")}>/month</li>
+                                <li onClick={() => getRate("/week")}>/week</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div className="additionFeat">
+                        <p className="purposePara">Additional Features</p>
+                        <input name="features" placeholder="Add features" type="text" />
+                        <h6>Suggested: <span>Balcony, Family Lounge, Swimming Pool, CCTV, Jacuzzi, Adequate car space, Security</span></h6>
+                    </div>
+                    <div className="addHouseImages">
+                        <p className="purposePara">Add Images</p>
+                        <input name="mainImage" onChange={(event) => getPreviewImage1(event, 1)} type="file" id="mainImage" hidden />
+                        <label htmlFor="mainImage">
+                            <div className="addHouseMainImage">
+                                <img src={previewImage1 ? `${previewImage1}` : preview} alt="" />
+                            </div>
+                        </label>
+                        <div className="addHouseOtherImage">
+                            <input onChange={(event) => getPreviewImage1(event, 2)} type="file" id="secondImage" name="secondImage" hidden />
+                            <label htmlFor="secondImage">
+                                <div>
+                                    <img src={previewImage2 ? previewImage2 : preview} alt="" />
+                                </div>
+                            </label>
+                            <input onChange={(event) => getPreviewImage1(event, 3)} type="file" id="thirdImage" name="thirdImage" hidden />
+                            <label htmlFor="thirdImage">
+                                <div>
+                                    <img src={previewImage3 ? previewImage3 : preview} alt="" />
+                                </div>
+                            </label>
+                            <input onChange={(event) => getPreviewImage1(event, 4)} type="file" id="fourthImage" name="fourthImage" hidden />
+                            <label htmlFor="fourthImage">
+                                <div>
+                                    <img src={previewImage4 ? previewImage4 : preview} alt="" />
+                                </div>
+                            </label>
+                            <input onChange={(event) => getPreviewImage1(event, 5)} type="file" hidden id="fifthImage" name="fifthImage" />
+                            <label htmlFor="fifthImage">
+                                <div>
+                                    <img src={previewImage5 ? previewImage5 : preview} alt="" />
+                                </div>
+                            </label>
+                            <input onChange={(event) => getPreviewImage1(event, 6)} type="file" hidden id="sixthImage" name="sixthImage" />
+                            <label htmlFor="sixthImage">
+                                <div>
+                                    <img src={previewImage6 ? previewImage6 : preview} alt="" />
+                                </div>
+                            </label>
+                        </div>
+                        <p className="purposePara">600x600 or higher recommeneded.</p>
+                    </div>
+
+                </div>
+
+                <div className="addFinalButton" id="finalButton">
                     <p className="addFinal1"><img src={pen} alt="" />Save to Drafts</p>
-                    <button type="submit" className="addFinal2">{spin ? (<Spinner animation="border" style={{ color: "white" }} />) : (<p><img src={send} alt="" /> Post Property</p>)}</button>
+                    <div>
+                        <p onClick={moveBack} style={{ background: "white", color: "black", border: "1px solid #E5E7EB" }} className="addFinal2">Back</p>
+                        <p onClick={moveOn} className="addFinal2">Next</p>
+                    </div>
                 </div>
+                <FourthLayer spin={spin} property={property} />
             </form>
         </div>
     )

@@ -1,17 +1,58 @@
 .getAttDesk {
     font-family: 'Sora';
     font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
+    font-weight: 400;
+    font-size: 0.8em;
     line-height: 25px;
-    color: #374151;
-    margin-top: 64px;
-    margin-left: 98px;
+    color: #6B7280;
+    margin-top: -10px;
 }
 
 .deskAddTitle {
     margin-left: 98px;
     margin-top: 54px;
+}
+
+.getAttDiv {
+    display: flex;
+    align-items: baseline;
+}
+
+.getAttDiv>img {
+    width: 20px;
+    margin-right: 15px;
+    margin-left: -10px;
+}
+
+.getAttDiv>span {
+    align-self: flex-start;
+}
+
+.getAttDiv>div {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 93px;
+    height: 28px;
+    background: #F1F5F9;
+    border-radius: 100px;
+}
+
+.getAttDiv>div>p {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.6em;
+    line-height: 16px;
+    color: #334155;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.getAttDiv>div>img {
+    border-radius: 100%;
+    width: 20px;
+    margin-top: 3px;
 }
 
 .deskAddTitle label {
@@ -26,7 +67,7 @@
 .deskAddTitle input {
     padding: 20px 160px 20px 24px;
     gap: 10px;
-    width: 60vw;
+    width: 61.5vw;
     background: #FFFFFF;
     border: 1px solid #E5E7EB;
     border-radius: 8px;
@@ -186,7 +227,6 @@ input[type="checkbox"] {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    /* padding: 20px 160px 20px 24px; */
     cursor: pointer;
 }
 
@@ -247,15 +287,12 @@ input[type="checkbox"] {
 
 .addFinal2 {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 20px 32px;
     border: none;
     outline: none;
-    gap: 10px;
-    width: 211px;
-    height: 64px;
+    width: 121px;
+    height: 46px;
     background: #2E7DD7;
     border-radius: 8px;
     font-family: 'Sora';
@@ -274,6 +311,21 @@ input[type="checkbox"] {
     align-items: center;
     margin-left: 98px;
     margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+
+.addFinalButton>div {
+    display: flex;
+    gap: 10px;
+}
+
+.aptSpan {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 12px;
+    color: #9CA3AF;
 }
 
 .priceRange {
@@ -300,4 +352,28 @@ input[type="checkbox"] {
 
 #myToast {
     color: black;
+}
+
+.proBar {
+    width: 22vw;
+    height: 8px;
+}
+
+.proBarDiv {
+    display: flex;
+    justify-content: space-between;
+    width: 60vw;
+    margin-top: 40px;
+    margin-left: 10%;
+    font-family: 'Sora';
+    font-style: normal;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.proBarDiv span {
+    margin-left: 8vw;
+}
+
+.divBar p {
+    margin-top: 20px;
 }

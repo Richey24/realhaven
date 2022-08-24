@@ -20,6 +20,7 @@ const LoginComp = () => {
     const [emailError, setEmailError] = useState(true)
     const [spin, setSpin] = useState(false)
     const [mail, setMail] = useState("")
+    const [load, setLoad] = useState(false)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -30,7 +31,7 @@ const LoginComp = () => {
             }
         }
         if (token) {
-            navigate("/dashboard")
+            navigate("/home")
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -123,7 +124,7 @@ const LoginComp = () => {
                 const { user } = rep
                 document.cookie = `token=${rep.token}=`
                 document.cookie = `id=${user._id};expires=${new Date(new Date().getTime() + 60 * 60 * 1000 * 24 * 10).toGMTString()}`
-                navigate("/dashboard")
+                navigate("/home")
                 break;
             default:
                 break;
@@ -174,6 +175,7 @@ const LoginComp = () => {
 
     const oAuth = useGoogleLogin({
         onSuccess: async (response) => {
+            setLoad(true)
             const res = await axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${response.access_token}`)
             const rep = await res.data
             const user = {
@@ -186,9 +188,25 @@ const LoginComp = () => {
             const mainUser = await result.data
             document.cookie = `token=${mainUser.token};expires=${new Date(new Date().getTime() + 60 * 60 * 1000 * 24 * 10).toGMTString()}`
             document.cookie = `id=${mainUser.user._id};expires=${new Date(new Date().getTime() + 60 * 60 * 1000 * 24 * 10).toGMTString()}`
-            navigate("/dashboard")
+            setLoad(false)
+            navigate("/home")
         }
     })
+    if (load) {
+        return (
+            <div
+                style={{
+                    width: "100%",
+                    height: "100vh",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
+            >
+                <Spinner animation="border" style={{ color: "#2E7DD7" }} />
+            </div>
+        )
+    }
     return (
         <div className="myContainerMob">
             <div className='side-1'>

@@ -109,7 +109,7 @@ root.render(
           }
         />
         <Route
-          path="/dashboard"
+          path="/home"
           element={
             <React.Suspense
               fallback={

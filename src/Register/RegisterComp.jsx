@@ -24,6 +24,7 @@ const RegisterComp = () => {
     const [cc, setCC] = useState([])
     const [scc, setSCC] = useState([])
     const [acc, setACC] = useState([])
+    const [load, setLoad] = useState(false)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -34,7 +35,7 @@ const RegisterComp = () => {
             }
         }
         if (token) {
-            navigate("/dashboard")
+            navigate("/home")
             return
         }
         (async () => {
@@ -192,7 +193,7 @@ const RegisterComp = () => {
                         clearInterval(timer)
                         document.cookie = `token=${rep.token}=`
                         document.cookie = `id=${user._id};expires=${new Date(new Date().getTime() + 60 * 60 * 1000 * 24 * 10).toGMTString()}`
-                        navigate("/dashboard")
+                        navigate("/home")
                     }
                 }, 5000)
                 break
@@ -227,7 +228,7 @@ const RegisterComp = () => {
 
     const oAuth = useGoogleLogin({
         onSuccess: async (response) => {
-            setSpin(true)
+            setLoad(true)
             const res = await axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${response.access_token}`)
             const rep = await res.data
             const user = {
@@ -240,8 +241,8 @@ const RegisterComp = () => {
             const mainUser = await result.data
             document.cookie = `token=${mainUser.token};expires=${new Date(new Date().getTime() + 60 * 60 * 1000 * 24 * 10).toGMTString()}`
             document.cookie = `id=${mainUser.user._id};expires=${new Date(new Date().getTime() + 60 * 60 * 1000 * 24 * 10).toGMTString()}`
-            setSpin(false)
-            navigate("/dashboard")
+            setLoad(false)
+            navigate("/home")
         }
     })
 
@@ -274,6 +275,22 @@ const RegisterComp = () => {
     }
 
     if (!acc.idd) {
+        return (
+            <div
+                style={{
+                    width: "100%",
+                    height: "100vh",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
+            >
+                <Spinner animation="border" style={{ color: "#2E7DD7" }} />
+            </div>
+        )
+    }
+
+    if (load) {
         return (
             <div
                 style={{

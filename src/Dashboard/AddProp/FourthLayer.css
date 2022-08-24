@@ -1,0 +1,205 @@
+.fourthLayer {
+    margin-left: 10%;
+    margin-top: 30px;
+    width: 80%;
+}
+
+.firstDiv {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    width: 95%;
+}
+
+.leftArrow {
+    transform: rotate(180deg);
+}
+
+.middleImage {
+    width: 50vw;
+    height: 350px;
+    border-radius: 8%;
+}
+
+.leftArrow,
+.rightArrow {
+    width: 30px;
+}
+
+.secondDiv {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.secondDiv img {
+    width: 9vw;
+}
+
+.thirdDiv {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin-top: 40px;
+}
+
+.thirdDiv>p {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 160%;
+    color: #374151;
+    text-transform: uppercase;
+    display: flex;
+    gap: 10px;
+}
+
+.thirdDiv>p>span {
+    width: 55px;
+    height: 25px;
+    background: #F8EDED;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    font-size: 12px;
+    color: #BF5E65;
+    text-transform: capitalize;
+}
+
+.thirdDiv>h5 {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 160%;
+    color: #2E7DD7;
+}
+
+.fourthDiv {
+    display: flex;
+    width: 95%;
+    margin-top: 20px;
+}
+
+.fourthAddress {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 160%;
+    color: #374151;
+    width: 90%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    text-transform: capitalize;
+}
+
+.blueBackMob {
+    display: flex;
+    gap: 38px;
+}
+
+.roomImgMob::after {
+    content: attr(data-value);
+    background: #2E7DD7;
+    border-radius: 12px;
+    padding: 5px 7px;
+    color: white;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 12px;
+    position: absolute;
+    left: 32px;
+}
+
+.roomImgMob {
+    position: relative;
+}
+
+.roomImgMob img {
+    width: 40px;
+    height: 40px;
+    background: #EAF2FB;
+    padding: 8px 6px;
+    border-radius: 8px;
+}
+
+.bathroomImgMob {
+    position: relative;
+}
+
+.bathroomImgMob img {
+    width: 40px;
+    height: 40px;
+    background: #EAF2FB;
+    padding: 8px 6px;
+    border-radius: 8px;
+}
+
+.bathroomImgMob::after {
+    content: attr(data-value);
+    background: #2E7DD7;
+    border-radius: 12px;
+    padding: 5px 7px;
+    color: white;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 12px;
+    position: absolute;
+    left: 32px;
+}
+
+.toiletImgMob {
+    position: relative;
+}
+
+.toiletImgMob img {
+    width: 40px;
+    height: 40px;
+    background: #EAF2FB;
+    padding: 8px 6px;
+    border-radius: 8px;
+}
+
+.toiletImgMob::after {
+    content: attr(data-value);
+    background: #2E7DD7;
+    border-radius: 12px;
+    padding: 5px 7px;
+    color: white;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 12px;
+    position: absolute;
+    left: 32px;
+}
+
+.fifthDesc {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    color: #6B7280;
+    margin-top: 30px;
+}
+
+.sixthDiv {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin-top: 80px;
+    margin-bottom: 80px
+}

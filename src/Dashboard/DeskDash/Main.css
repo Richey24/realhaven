@@ -106,12 +106,9 @@
 }
 
 @media screen and (max-width: 1300px) {
-    .deskDude {
-        display: none;
-    }
 
     .myDeskRefer {
-        width: 300px;
+        width: 40vw;
     }
 
     .propImageDesk {
