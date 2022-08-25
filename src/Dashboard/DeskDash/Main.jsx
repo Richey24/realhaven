@@ -139,7 +139,7 @@ const Main = ({ showTop, handleTopClose }) => {
                             <p style={pathname === "/post" ? { background: "#17457A" } : {}} onClick={() => navigate("/post")} className="dashNewProp"><img src={combined} alt="" />New Property</p>
 
 
-                            <p onClick={() => navigate("/dashboard")} className={pathname === "/home" ? "dashDash" : "dashDis"}><img src={pathname === "/home" ? home : home} alt="" />Home</p>
+                            <p onClick={() => navigate("/home")} className={pathname === "/home" ? "dashDash" : "dashDis"}><img src={pathname === "/home" ? home : home} alt="" />Home</p>
 
 
                             <p className="dashProfile"><img src={pathname === "/dashboard" ? dashboard : dashboard} alt="" />Dashboard</p>

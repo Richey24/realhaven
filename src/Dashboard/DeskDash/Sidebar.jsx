@@ -56,7 +56,7 @@ const Sidebar = ({ handleTopClose }) => {
                 <p style={pathname === "/post" ? { background: "#17457A" } : {}} onClick={() => navigate("/post")} className="dashNewProp"><img src={combined} alt="" /><span className="toBeHidden">New Property</span></p>
 
 
-                <p className={pathname === "/home" ? "dashDash jCenter" : "dashDis jCenter"}><img src={home} alt="" /><span className="toBeHidden">Home</span></p>
+                <p onClick={() => navigate("/home")} className={pathname === "/home" ? "dashDash jCenter" : "dashDis jCenter"}><img src={home} alt="" /><span className="toBeHidden">Home</span></p>
 
 
                 <p onClick={() => navigate("/dashboard")} className={pathname === "/dashboard" ? "dashDash jCenter" : "dashDis jCenter"}><img src={pathname === "/dashboard" ? dashboard : dashboard} alt="" /><span className="toBeHidden">Dashboard</span></p>
