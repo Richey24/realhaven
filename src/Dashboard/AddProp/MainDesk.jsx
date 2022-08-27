@@ -107,7 +107,6 @@ const MainDesk = () => {
         mainProp.append("state", property.state)
         mainProp.append("city", property.city)
         mainProp.append("postalCode", property.postalCode)
-        mainProp.append("city", property.city)
         mainProp.append("purpose", property.purpose)
         mainProp.append("propertyType", property.propertyType)
         mainProp.append("noOfBedroom", property.noOfBedroom)
@@ -119,16 +118,16 @@ const MainDesk = () => {
         mainProp.append("currency", property.currency)
         mainProp.append("pricePer", property.pricePer)
         mainProp.append("additionalFeatures", property.additionalFeatures)
-        mainProp.append("file", property.mainImage, "mainImage")
+        mainProp.append("mainImage", property.mainImage)
         for (let i = 0; i < property.otherImages.length; i++) {
-            mainProp.append("file", property.otherImages[i], "file")
+            mainProp.append("file", property.otherImages[i])
         }
-        console.log(mainProp.getAll("file"));
         const res = await axios.post(`${url}/v1/property`, mainProp, { validateStatus: () => true })
-        const post = await res.data
-        console.log(post);
+        if (res.status === 200) {
+
+        }
         setSpin(false)
-        // navigate("/dashboard")
+        // navigate("/listing")
     }
 
     const moveOn = () => {
@@ -266,6 +265,13 @@ const MainDesk = () => {
                 break;
         }
     }
+
+    // window.navigator.geolocation.getCurrentPosition(async (position) => {
+    //     const { latitude, longitude } = position.coords;
+    //     const res = await axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=a06ee162a5a1476a87cdbec1d7c4f197`)
+    //     const loc = await res.data
+    //     console.log(loc);
+    // }, console.log("sad"))
 
     return (
         <div className="mainDashDiv">

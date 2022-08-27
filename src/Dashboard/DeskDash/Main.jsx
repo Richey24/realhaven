@@ -31,6 +31,11 @@ const Main = ({ showTop, handleTopClose }) => {
     const [spin, setSpin] = useState(false)
     const { pathname } = useLocation()
     const navigate = useNavigate()
+    const logOut = () => {
+        document.cookie = "token=;expires=" + new Date(0).toUTCString()
+        document.cookie = "id=;expires=" + new Date(0).toUTCString()
+        navigate("/")
+    }
     useEffect(() => {
         let token = ""
         let id = ""
@@ -51,7 +56,11 @@ const Main = ({ showTop, handleTopClose }) => {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
-                })
+                }, { validateStatus: () => true })
+                if (res.status !== 200) {
+                    logOut()
+                    return
+                }
                 // const rep = await axios.post(`${url}/house/user/get`, { email: email })
                 // const houseResult = await rep.data
                 const result = await res.data
@@ -62,12 +71,6 @@ const Main = ({ showTop, handleTopClose }) => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-    const logOut = () => {
-        document.cookie = "token=;expires=" + new Date(0).toUTCString()
-        document.cookie = "id=;expires=" + new Date(0).toUTCString()
-        navigate("/")
-    }
 
     return (
         <div className="mainDashDiv">
