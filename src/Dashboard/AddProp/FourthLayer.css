@@ -21,11 +21,6 @@
     border-radius: 8%;
 }
 
-.leftArrow,
-.rightArrow {
-    width: 30px;
-}
-
 .secondDiv {
     display: flex;
     justify-content: center;
@@ -54,6 +49,7 @@
     text-transform: uppercase;
     display: flex;
     gap: 10px;
+    word-break: break-all;
 }
 
 .thirdDiv>p>span {
@@ -68,6 +64,7 @@
     font-size: 12px;
     color: #BF5E65;
     text-transform: capitalize;
+    word-break: keep-all;
 }
 
 .thirdDiv>h5 {
@@ -77,6 +74,7 @@
     font-size: 20px;
     line-height: 160%;
     color: #2E7DD7;
+    word-break: break-all;
 }
 
 .fourthDiv {
@@ -194,6 +192,7 @@
     line-height: 160%;
     color: #6B7280;
     margin-top: 30px;
+    width: 100%;
 }
 
 .sixthDiv {
@@ -202,4 +201,67 @@
     width: 95%;
     margin-top: 80px;
     margin-bottom: 80px
+}
+
+@media screen and (max-width: 800px) {
+    .middleImage {
+        width: 90vw;
+    }
+
+    .secondDiv img {
+        width: 18%;
+        height: 70px;
+        border-radius: 8px;
+    }
+
+    .fourthLayer {
+        margin-left: 0px;
+        width: 90vw;
+    }
+
+    .thirdDiv,
+    .secondDiv {
+        width: 90vw;
+    }
+
+    .thirdDiv p {
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .thirdDiv h5 {
+        font-size: 16px;
+    }
+
+    .fifthDesc {
+        width: 95%;
+        word-break: break-all;
+    }
+
+    .fourthDiv {
+        flex-direction: column;
+    }
+
+    .fourthAddress {
+        width: 100%;
+        font-size: 12px;
+        margin-bottom: 30px;
+    }
+
+    .fourthAddress img {
+        margin-right: 10px;
+    }
+
+    .thirdDiv {
+        flex-direction: column;
+    }
+
+    .fifthDesc {
+        font-size: 13px;
+    }
+
+    .sixthDiv {
+        width: 100%;
+    }
+
 }

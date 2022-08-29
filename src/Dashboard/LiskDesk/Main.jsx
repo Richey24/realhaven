@@ -17,11 +17,21 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios"
 import url from '../../url';
 
+let token = ""
+let id = ""
+for (let i = 0; i < document.cookie?.split(" ").length; i++) {
+    if (document.cookie?.split(" ")[i].split("=")[0] === "token") {
+        token = document.cookie?.split(" ")[i].split("=")[1]
+    }
+    if (document.cookie?.split(" ")[i].split("=")[0] === "id") {
+        id = document.cookie?.split(" ")[i].split("=")[1]
+    }
+}
+
 const Main = () => {
     const [loc, setLoc] = useState("Lagos")
     const [active, setActive] = useState("all")
     const [showTop, setShowTop] = useState(false)
-    const [user, setUser] = useState({})
     const [spin, setSpin] = useState(false)
     const [singleHouse, setSingleHouse] = useState({})
     const [houses, setHouses] = useState([])
@@ -34,13 +44,15 @@ const Main = () => {
         } else {
             (async () => {
                 setSpin(true)
-                const res = await axios.post(`${url}/user/get`, { email: email })
-                const rep = await axios.post(`${url}/house/user/get`, { email: email })
-                const houseResult = await rep.data
-                const result = await res.data
-                setUser(result)
-                setHouses(houseResult)
-                setFHouses(houseResult)
+                const res = await axios.get(`${url}/v1/property/find?userId=${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+                console.log(res);
+                const houseResult = await res.data
+                setHouses(houseResult.properties)
+                setFHouses(houseResult.properties)
                 setSpin(false)
             })()
         }

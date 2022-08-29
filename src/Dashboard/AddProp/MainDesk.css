@@ -64,6 +64,20 @@
     color: #374151;
 }
 
+.propertyListDesk {
+    width: 18vw;
+}
+
+#mode,
+#apartment {
+    width: 30.5vw;
+}
+
+#currency,
+#rate {
+    width: 18vw;
+}
+
 .deskAddTitle input {
     padding: 20px 160px 20px 24px;
     gap: 10px;
@@ -96,7 +110,10 @@
     font-size: 14px;
     line-height: 24px;
     color: #6B7280;
+    width: 20vw;
 }
+
+
 
 .puporseDivDesk input::-webkit-outer-spin-button,
 .puporseDivDesk input::-webkit-inner-spin-button {
@@ -270,7 +287,6 @@ input[type="checkbox"] {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 18px 32px;
     gap: 10px;
     width: 213px;
     height: 60px;
@@ -376,4 +392,167 @@ input[type="checkbox"] {
 
 .divBar p {
     margin-top: 20px;
+}
+
+#secondLayer>div>div>div {
+    width: 30.5vw;
+}
+
+@media screen and (max-width: 800px) {
+    .proBarDiv h4 {
+        font-size: 14px;
+    }
+
+    .proBarDiv {
+        margin-left: 2%;
+        width: 98%;
+        align-items: baseline;
+    }
+
+    .divBar p {
+        font-size: 12px;
+        width: 40vw;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .proBar {
+        width: 40vw;
+    }
+
+    .getAttDesk,
+    .getAttDiv {
+        display: none;
+    }
+
+    .deskAddTitle,
+    .puporseDivDesk {
+        margin-left: 0px;
+    }
+
+    .deskAddTitle input {
+        width: 90vw;
+        padding-right: 10px;
+    }
+
+    .puporseDivDesk input {
+        width: 28.5vw;
+    }
+
+    .purposePara {
+        font-size: 14px;
+    }
+
+    .aptSpan {
+        margin-left: 17px;
+    }
+
+    .addFinalButton {
+        margin-left: 0px;
+        gap: 15px;
+    }
+
+    .addFinal1 img {
+        display: none;
+    }
+
+    .addFinal1 {
+        flex-shrink: 0;
+        font-size: 14px;
+        width: 40vw;
+        height: 46px;
+    }
+
+    .addFinalButton div p {
+        width: 21.5vw;
+    }
+
+    .myToast {
+        width: 90vw;
+        background-color: #2E7DD7;
+    }
+
+    #secondLayer>div {
+        width: 100%;
+    }
+
+    #secondLayer>div>div>div {
+        width: 45vw;
+    }
+
+    #secondLayer>div>div>ul {
+        width: 45vw;
+    }
+
+    #thirdLayer>div {
+        width: 100%;
+    }
+
+    #thirdLayer>div>div>div {
+        width: 45vw;
+    }
+
+    #thirdLayer>div>div>ul {
+        width: 30%;
+    }
+
+    .addTextAreaDiv {
+        margin-left: 0px;
+    }
+
+    .addTextAreaDiv>textarea {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .checkBoxSelect {
+        margin-left: 0px;
+    }
+
+    .additionFeat {
+        margin-left: 0px;
+    }
+
+    .additionFeat>input {
+        width: 100%;
+    }
+
+    .additionFeat h6 {
+        width: 100%;
+    }
+
+    .addHouseImages {
+        margin-left: 0px;
+    }
+
+    .mainImage {
+        width: 100%;
+    }
+
+    .addHouseMainImage {
+        width: 100%;
+    }
+
+    .addHouseOtherImage {
+        width: 100%;
+    }
+
+    .addHouseOtherImage label div {
+        width: 100%;
+        height: 90px;
+    }
+
+    .addHouseOtherImage label {
+        width: 18%;
+    }
+
+    .addHouseOtherImage img {
+        width: 60px;
+        height: 65px;
+    }
+
+    .checkBoxSelect label {
+        font-size: 13px;
+    }
+
 }

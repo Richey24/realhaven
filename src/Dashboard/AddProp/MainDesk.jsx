@@ -8,14 +8,34 @@ import { useState } from 'react';
 import preview from "../../img/preview.svg"
 import pen from "../../img/Edit.svg"
 import setting from "../../img/Setting.svg"
+import combined from "../../img/combined.svg"
+import dashboard from "../../img/dashboard.svg"
+import disblue from "../../img/Vector-blue.svg"
+import bag from "../../img/Bag.svg"
+import discover from "../../img/Discovery.svg"
+import logo from "../../img/logo_blue.svg"
+import message from "../../img/Message.svg"
+import home from "../../img/Home.svg"
+import logout from "../../img/Logout.svg"
 import { useEffect } from "react"
-import { useNavigate } from 'react-router-dom';
-import { Toast, ProgressBar } from "react-bootstrap"
+import { useNavigate, useLocation } from 'react-router-dom';
+import { Toast, ProgressBar, Offcanvas } from "react-bootstrap"
 import axios from 'axios';
 import url from '../../url';
 import FourthLayer from "./FourthLayer"
 
-const MainDesk = () => {
+let token = ""
+let id = ""
+for (let i = 0; i < document.cookie?.split(" ").length; i++) {
+    if (document.cookie?.split(" ")[i].split("=")[0] === "token") {
+        token = document.cookie?.split(" ")[i].split("=")[1]
+    }
+    if (document.cookie?.split(" ")[i].split("=")[0] === "id") {
+        id = document.cookie?.split(" ")[i].split("=")[1]
+    }
+}
+
+const MainDesk = ({ showTop, handleTopClose }) => {
     const [purpose, setPurpose] = useState("Purpose")
     const [propType, setPropType] = useState("Property type")
     const [curr, setCurr] = useState("Naira (₦)")
@@ -33,14 +53,15 @@ const MainDesk = () => {
     const [info, setInfo] = useState(["Add Basic Information", "Let's get started"])
     const [step, setStep] = useState(1)
     const navigate = useNavigate()
+    const { pathname } = useLocation()
+
+    const logOut = () => {
+        document.cookie = "token=;expires=" + new Date(0).toUTCString()
+        document.cookie = "id=;expires=" + new Date(0).toUTCString()
+        navigate("/")
+    }
 
     useEffect(() => {
-        let id = ""
-        for (let i = 0; i < document.cookie?.split(" ").length; i++) {
-            if (document.cookie?.split(" ")[i].split("=")[0] === "id") {
-                id = document.cookie?.split(" ")[i].split("=")[1]
-            }
-        }
         if (!id) {
             navigate("/login")
         }
@@ -100,6 +121,7 @@ const MainDesk = () => {
         setSpin(true)
         event.preventDefault()
         const mainProp = new FormData()
+        mainProp.append("userId", id)
         mainProp.append("title", property.title)
         mainProp.append("address", property.address)
         mainProp.append("aptUnit", property.aptUnit)
@@ -122,12 +144,41 @@ const MainDesk = () => {
         for (let i = 0; i < property.otherImages.length; i++) {
             mainProp.append("file", property.otherImages[i])
         }
-        const res = await axios.post(`${url}/v1/property`, mainProp, { validateStatus: () => true })
+        const res = await axios.post(`${url}/v1/property`, mainProp, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            validateStatus: () => true
+        })
         if (res.status === 200) {
-
+            setShowA(true)
+            setTimeout(() => {
+                const myToast = document.getElementById("myToast")
+                myToast.innerHTML = "Property Uploaded Successfully"
+                setSpin(false)
+                navigate("/listing")
+            }, 10)
+            setTimeout(() => {
+                const myToast = document.getElementById("myToast")
+                myToast.innerHTML = "Kindly fill all the required field"
+                setSpin(false)
+                setShowA(false)
+            }, 6000)
+        } else {
+            setShowA(true)
+            setTimeout(() => {
+                const myToast = document.getElementById("myToast")
+                myToast.innerHTML = "Something went wrong, try again"
+                setSpin(false)
+            }, 10)
+            setTimeout(() => {
+                const myToast = document.getElementById("myToast")
+                myToast.innerHTML = "Kindly fill all the required field"
+                setSpin(false)
+                setShowA(false)
+            }, 6000)
         }
         setSpin(false)
-        // navigate("/listing")
     }
 
     const moveOn = () => {
@@ -157,7 +208,7 @@ const MainDesk = () => {
                 window.scrollTo(0, 0)
                 break;
             case 50:
-                if (!elements.bedroom.value || !elements.bathroom.value || !elements.toilet.value || !desc.value || !propType || !purpose) {
+                if (!elements.bedroom.value || !elements.bathroom.value || !elements.toilet.value || !desc.value || propType === "Property type" || purpose === "Purpose") {
                     setShowA(true)
                     setTimeout(() => {
                         setShowA(false)
@@ -280,6 +331,37 @@ const MainDesk = () => {
                     <strong id="myToast" className="me-auto">Kindly fill all the required field</strong>
                 </Toast.Header>
             </Toast>
+            <Offcanvas style={{ width: "80%" }} className="topCanvas" show={showTop} onHide={handleTopClose} placement="start">
+                <Offcanvas.Header className="startHead" closeButton>
+                    <Offcanvas.Title><p className="startLogo"><img src={logo} alt="" />Haven</p></Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                    <div>
+                        <p style={pathname === "/post" ? { background: "#17457A" } : {}} onClick={() => navigate("/post")} className="dashNewProp"><img src={combined} alt="" />New Property</p>
+
+
+                        <p onClick={() => navigate("/home")} className={pathname === "/home" ? "dashDash" : "dashDis"}><img src={pathname === "/home" ? home : home} alt="" />Home</p>
+
+
+                        <p className="dashProfile"><img src={pathname === "/dashboard" ? dashboard : dashboard} alt="" />Dashboard</p>
+
+
+                        <p className="dashReq" data-num="3"><img src={bag} alt="" />Requests</p>
+
+
+                        <p onClick={() => navigate("/listing")} className={pathname === "/listing" ? "dashDash" : "dashDis"}><img src={pathname === "/listing" ? disblue : discover} alt="" />Listings</p>
+
+
+                        <p className="dashMess" data-num="4"><img src={message} alt="" />Messages</p>
+
+
+                        <p className="dashProfile"><img src={setting} alt="" />Settings</p>
+
+
+                        <p onClick={logOut} style={{ marginTop: "6rem" }} className="dashDis"><img src={logout} alt="" />LOGOUT</p>
+                    </div>
+                </Offcanvas.Body>
+            </Offcanvas>
             <form onSubmit={postProperty}>
                 <div className="dashTop">
                     <div>
@@ -314,30 +396,30 @@ const MainDesk = () => {
                     <div className="puporseDivDesk">
                         <div>
                             <p className="purposePara">Address</p>
-                            <input name="address" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="Enter the property address" className='locationDesk' type="text" />
+                            <input name="address" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="Enter the property address" className='locationDesk' type="text" />
                         </div>
                         <div>
                             <p className="purposePara" style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", width: "19.5vw" }}>Apt/Unit <span className="aptSpan">optional</span></p>
-                            <input name="apt" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="000" className='locationDesk' type="text" />
+                            <input name="apt" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="000" className='locationDesk' type="text" />
                         </div>
                         <div>
                             <p className="purposePara">Country</p>
-                            <input name="country" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="Nigeria" className='locationDesk' type="text" />
+                            <input name="country" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="Nigeria" className='locationDesk' type="text" />
                         </div>
                     </div>
 
                     <div className="puporseDivDesk">
                         <div>
                             <p className="purposePara">City</p>
-                            <input name="city" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="City/Town" className='locationDesk' type="text" />
+                            <input name="city" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="City/Town" className='locationDesk' type="text" />
                         </div>
                         <div>
                             <p className="purposePara">State</p>
-                            <input name="state" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="State/Province" className='locationDesk' type="text" />
+                            <input name="state" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="State/Province" className='locationDesk' type="text" />
                         </div>
                         <div>
                             <p className="purposePara">Postal code</p>
-                            <input name="postalCode" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="******" className='locationDesk' type="text" />
+                            <input name="postalCode" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="******" className='locationDesk' type="text" />
                         </div>
                     </div>
 
@@ -347,11 +429,11 @@ const MainDesk = () => {
                     <div className="puporseDivDesk">
                         <div>
                             <p className="purposePara">Purpose</p>
-                            <div style={{ width: "30vw", margin: "0px" }} onClick={() => showMode("mode")} className='locationDesk'>
+                            <div style={{ margin: "0px" }} onClick={() => showMode("mode")} className='locationDesk'>
                                 <p>{purpose}</p>
                                 <img src={down} alt="" />
                             </div>
-                            <ul style={{ height: "auto", width: "30vw", position: "absolute", zIndex: "1", margin: "0px" }} id='mode' className='propertyListDesk'>
+                            <ul style={{ height: "auto", position: "absolute", zIndex: "1", margin: "0px" }} id='mode' className='propertyListDesk'>
                                 <li onClick={() => getPurpose("Rent")}>Rent</li>
                                 <li onClick={() => getPurpose("Sell")}>Sell</li>
                                 <li onClick={() => getPurpose("Buy")}>Buy</li>
@@ -359,11 +441,11 @@ const MainDesk = () => {
                         </div>
                         <div>
                             <p className="purposePara">Property type</p>
-                            <div style={{ width: "30vw", margin: "0px" }} onClick={() => showMode("apartment")} className='locationDesk'>
+                            <div style={{ margin: "0px" }} onClick={() => showMode("apartment")} className='locationDesk'>
                                 <p>{propType}</p>
                                 <img src={down} alt="" />
                             </div>
-                            <ul style={{ height: "150px", width: "30vw", position: "absolute", zIndex: "1", margin: "0px" }} id='apartment' className='propertyListDesk'>
+                            <ul style={{ height: "150px", position: "absolute", zIndex: "1", margin: "0px" }} id='apartment' className='propertyListDesk'>
                                 <li onClick={() => getPropType("Duplex")}>Duplex</li>
                                 <li onClick={() => getPropType("Detached Bungalow")}>Detached Bungalow</li>
                                 <li onClick={() => getPropType("Shop")}>Shop</li>
@@ -378,15 +460,15 @@ const MainDesk = () => {
                     <div className="puporseDivDesk">
                         <div>
                             <p className="purposePara">Bedroom</p>
-                            <input name="bedroom" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Bedrooms" className='locationDesk' type="number" />
+                            <input name="bedroom" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Bedrooms" className='locationDesk' type="number" />
                         </div>
                         <div>
                             <p className="purposePara">Bathroom</p>
-                            <input name="bathroom" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Bathrooms" className='locationDesk' type="number" />
+                            <input name="bathroom" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Bathrooms" className='locationDesk' type="number" />
                         </div>
                         <div>
                             <p className="purposePara">Toilet</p>
-                            <input name="toilet" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Toilets" className='locationDesk' type="number" />
+                            <input name="toilet" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Toilets" className='locationDesk' type="number" />
                         </div>
                     </div>
 
@@ -409,7 +491,7 @@ const MainDesk = () => {
                         <div style={{ width: "30%" }}>
                             <p className="purposePara">Property price</p>
                             <div>
-                                <input id="price" name="price" style={{ width: "20vw", margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="Property Price" className='locationDesk' type="number" />
+                                <input id="price" name="price" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="Property Price" className='locationDesk' type="number" />
                             </div>
                         </div>
                         <div style={{ width: "30%" }}>
@@ -418,7 +500,7 @@ const MainDesk = () => {
                                 <p>{curr}</p>
                                 <img src={down} alt="" />
                             </div>
-                            <ul style={{ height: "150px", width: "18vw", position: "absolute", zIndex: "1", margin: "0px" }} id='currency' className='propertyListDesk'>
+                            <ul style={{ height: "150px", position: "absolute", zIndex: "1", margin: "0px" }} id='currency' className='propertyListDesk'>
                                 <li onClick={() => getCurr("Naira (₦)")}>Naira (₦)</li>
                                 <li onClick={() => getCurr("US Dollar ($)")}>US Dollar ($)</li>
                                 <li onClick={() => getCurr("Euro (€)")}>Euro (€)</li>
@@ -431,7 +513,7 @@ const MainDesk = () => {
                                 <p>{rate}</p>
                                 <img src={down} alt="" />
                             </div>
-                            <ul style={{ height: "150px", width: "18vw", position: "absolute", zIndex: "1", margin: "0px" }} id='rate' className='propertyListDesk'>
+                            <ul style={{ height: "150px", position: "absolute", zIndex: "1", margin: "0px" }} id='rate' className='propertyListDesk'>
                                 <li onClick={() => getRate("/year")}>/year</li>
                                 <li onClick={() => getRate("/month")}>/month</li>
                                 <li onClick={() => getRate("/week")}>/week</li>
@@ -447,7 +529,7 @@ const MainDesk = () => {
                     <div className="addHouseImages">
                         <p className="purposePara">Add Images</p>
                         <input name="mainImage" onChange={(event) => getPreviewImage1(event, 1)} type="file" id="mainImage" hidden />
-                        <label htmlFor="mainImage">
+                        <label className="mainImage" htmlFor="mainImage">
                             <div className="addHouseMainImage">
                                 <img src={previewImage1 ? `${previewImage1}` : preview} alt="" />
                             </div>
