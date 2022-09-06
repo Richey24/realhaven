@@ -7,6 +7,7 @@ import "bootstrap/dist/js/bootstrap";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import Settings from "./Dashboard/Settings/Settings";
 const App = React.lazy(() => import("./App"));
 const Login = React.lazy(() => import("./Login"));
 const Register = React.lazy(() => import("./Register"));
@@ -171,6 +172,28 @@ root.render(
               }
             >
               <AddProp />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="/setting"
+          element={
+            <React.Suspense
+              fallback={
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100vh",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Spinner animation="border" style={{ color: "#2E7DD7" }} />
+                </div>
+              }
+            >
+              <Settings />
             </React.Suspense>
           }
         />
