@@ -88,7 +88,7 @@ const Sidebar = ({ handleTopClose }) => {
                     <p className="toBeHidden">Rejoice SnrDev <span>uahomorejoice@gmail.com</span></p>
                 </div> */}
 
-                <p style={{ marginTop: "13rem", marginBottom: "3rem" }} onClick={logOut} className="dashProfile jCenter"><img src={logout} alt="" /><span className="toBeHidden">LOGOUT</span></p>
+                <p style={{ marginTop: "10rem", marginBottom: "3rem" }} onClick={logOut} className="dashProfile jCenter"><img src={logout} alt="" /><span className="toBeHidden">LOGOUT</span></p>
             </div>
         </div>
     )

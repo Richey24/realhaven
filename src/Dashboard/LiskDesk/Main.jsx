@@ -49,7 +49,6 @@ const Main = () => {
                         Authorization: `Bearer ${token}`
                     }
                 })
-                console.log(res);
                 const houseResult = await res.data
                 setHouses(houseResult.properties)
                 setFHouses(houseResult.properties)
@@ -73,12 +72,10 @@ const Main = () => {
         setShowTop(false)
     }
 
-    const getHouseByID = async (id) => {
+    const getHouseByID = async (house) => {
+        console.log(house);
         setSpin(true)
-        const res = await axios.get(`${url}/house/get/one/${id}`)
-        const result = await res.data
-        console.log(result);
-        setSingleHouse(result)
+        setSingleHouse(house)
         setSpin(false)
         setShowTop(true)
     }
@@ -163,20 +160,20 @@ const Main = () => {
 
             {
                 houses.map((house, i) => (
-                    <div key={i} onClick={() => getHouseByID(house.Id)} className="listContentDiv">
-                        <img className="listContentDivImg" src={`${url}/image/${house.images?.split(",")[0]}`} alt="" />
+                    <div key={i} onClick={() => getHouseByID(house)} className="listContentDiv">
+                        <img className="listContentDivImg" src={house.mainImage?.url} alt="" />
                         <div>
                             <h4>{house.title}</h4>
                             <h5><img src={locate} alt="" />{house.address}</h5>
                             <div className="descImgInfoMob">
                                 <div className="blueBackMob">
-                                    <div data-value={house.no_of_bedroom} className="roomImgMob">
+                                    <div data-value={house.noOfBedroom} className="roomImgMob">
                                         <img src={room} alt="" />
                                     </div>
-                                    <div className="bathroomImgMob" data-value={house.no_of_bathroom}>
+                                    <div className="bathroomImgMob" data-value={house.noOfBathroom}>
                                         <img src={bathroom} alt="" />
                                     </div>
-                                    <div className="toiletImgMob" data-value={house.no_of_toilet}>
+                                    <div className="toiletImgMob" data-value={house.noOfToilet}>
                                         <img src={toilet} alt="" />
                                     </div>
                                 </div>
@@ -194,17 +191,17 @@ const Main = () => {
                 </Offcanvas.Header>
                 <Offcanvas.Body style={{ padding: '0' }}>
                     <center>
-                        <img className="canvasMainImage" src={`${url}/image/${singleHouse.images?.split(",")[0]}`} alt="" />
+                        <img className="canvasMainImage" src={singleHouse.mainImage?.url} alt="" />
                         <p className="canvasHouseTitle">{singleHouse.title}<span>{singleHouse.purpose}</span></p>
                         <h5 className="canvasAddress"><img src={locate} alt="" />{singleHouse.address}</h5>
                         <div style={{ marginLeft: "5%", marginTop: "23px" }} className="blueBackMob">
-                            <div data-value={singleHouse.no_of_bedroom} className="roomImgMob">
+                            <div data-value={singleHouse.noOfBedroom} className="roomImgMob">
                                 <img src={room} alt="" />
                             </div>
-                            <div className="bathroomImgMob" data-value={singleHouse.no_of_bathroom}>
+                            <div className="bathroomImgMob" data-value={singleHouse.noOfBathroom}>
                                 <img src={bathroom} alt="" />
                             </div>
-                            <div className="toiletImgMob" data-value={singleHouse.no_of_toilet}>
+                            <div className="toiletImgMob" data-value={singleHouse.noOfToilet}>
                                 <img src={toilet} alt="" />
                             </div>
                         </div>
@@ -213,8 +210,9 @@ const Main = () => {
                         <p className="otherPhotos">Other photos</p>
                         <div className="otherPhotoDiv">
                             {
-                                singleHouse.images?.slice(0, singleHouse.images?.length - 1)?.split(",").map((image, i) => (
-                                    <img key={i} src={`${url}/image/${image}`} alt="" />
+                                singleHouse.otherImages?.url?.map((image, i) => (
+                                    <img key={i} src={image} alt="" />
+
                                 ))
                             }
                         </div>

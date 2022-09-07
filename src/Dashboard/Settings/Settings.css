@@ -1,0 +1,24 @@
+.deskDashMain {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* background: #F9FAFB; */
+}
+
+.mainHead {
+    display: none;
+}
+
+@media screen and (max-width: 800px) {
+    .dashSideMain {
+        display: none;
+    }
+
+    .mainHead {
+        display: block;
+    }
+
+    .deskDashMain {
+        display: block;
+    }
+}

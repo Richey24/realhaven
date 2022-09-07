@@ -9,16 +9,19 @@ import preview from "../../img/preview.svg"
 import pen from "../../img/Edit.svg"
 import setting from "../../img/Setting.svg"
 import combined from "../../img/combined.svg"
-import dashboard from "../../img/dashboard.svg"
-import disblue from "../../img/Vector-blue.svg"
-import bag from "../../img/Bag.svg"
-import discover from "../../img/Discovery.svg"
 import logo from "../../img/logo_blue.svg"
-import message from "../../img/Message.svg"
-import home from "../../img/Home.svg"
+import dashboard from "../../img/Category-blue.svg"
+import dashBlue from "../../img/DashBlue.svg"
+import settingWhite from "../../img/SettingWhite.svg"
+import listing from "../../img/Listing.svg"
+import listingBlue from "../../img/ListingBlue.svg"
+import request from "../../img/Request.svg"
+import requestBlue from "../../img/RequestBlue.svg"
+import analytics from "../../img/Analytics.svg"
+import analyticsBlue from "../../img/AnalyticsBlue.svg"
 import logout from "../../img/Logout.svg"
-import { useEffect } from "react"
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useEffect } from "react"
 import { Toast, ProgressBar, Offcanvas } from "react-bootstrap"
 import axios from 'axios';
 import url from '../../url';
@@ -340,28 +343,24 @@ const MainDesk = ({ showTop, handleTopClose }) => {
                         <p style={pathname === "/post" ? { background: "#17457A" } : {}} onClick={() => navigate("/post")} className="dashNewProp"><img src={combined} alt="" />New Property</p>
 
 
-                        <p onClick={() => navigate("/home")} className={pathname === "/home" ? "dashDash" : "dashDis"}><img src={pathname === "/home" ? home : home} alt="" />Home</p>
+
+                        <p onClick={() => navigate("/home")} className={pathname === "/home" ? "dashDash jCenter" : "dashDis jCenter"}><img src={pathname === "/home" ? dashBlue : dashboard} alt="" /><span className="toBeHidden">Dashboard</span></p>
+
+                        <p onClick={() => navigate("/analytics")} className={pathname === "/analytics" ? "dashDash jCenter" : "dashDis jCenter"}><img src={pathname === "analytics" ? analyticsBlue : analytics} alt="" /><span className="toBeHidden">Analytics</span></p>
 
 
-                        <p className="dashProfile"><img src={pathname === "/dashboard" ? dashboard : dashboard} alt="" />Dashboard</p>
+                        <p onClick={() => navigate("/request")} id="dashReq" className={pathname === "/request" ? "dashDash jCenter" : "dashDis jCenter"}><img src={pathname === "request" ? requestBlue : request} alt="" /><span className="toBeHidden">Requests</span></p>
 
 
-                        <p className="dashReq" data-num="3"><img src={bag} alt="" />Requests</p>
+                        <p onClick={() => navigate("/listing")} className={pathname === "/listing" ? "dashDash jCenter" : "dashDis jCenter"}><img src={pathname === "/listing" ? listingBlue : listing} alt="" /><span className="toBeHidden">Listings</span></p>
 
-
-                        <p onClick={() => navigate("/listing")} className={pathname === "/listing" ? "dashDash" : "dashDis"}><img src={pathname === "/listing" ? disblue : discover} alt="" />Listings</p>
-
-
-                        <p className="dashMess" data-num="4"><img src={message} alt="" />Messages</p>
-
-
-                        <p className="dashProfile"><img src={setting} alt="" />Settings</p>
-
+                        <p onClick={() => navigate("/setting")} className={pathname === "/setting" ? "dashDash jCenter" : "dashDis jCenter"}><img src={pathname === "/setting" ? setting : settingWhite} alt="" /><span className="toBeHidden">Settings</span></p>
 
                         <p onClick={logOut} style={{ marginTop: "6rem" }} className="dashDis"><img src={logout} alt="" />LOGOUT</p>
                     </div>
                 </Offcanvas.Body>
             </Offcanvas>
+
             <form onSubmit={postProperty}>
                 <div className="dashTop">
                     <div>

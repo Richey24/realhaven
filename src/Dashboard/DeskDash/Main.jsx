@@ -1,5 +1,5 @@
 import "./Main.css"
-import noti from "../../img/noti.svg"
+import noti from "../../img/notiwhite.svg"
 import dp from "../../img/dp.png"
 import refer from "../../img/refer.png"
 import dude from "../../img/dude.svg"
@@ -9,14 +9,17 @@ import money from "../../img/money.svg"
 import callback from "../../img/callback.svg"
 import people from "../../img/3-Friends.svg"
 import logo from "../../img/logo_blue.svg"
+import dashboard from "../../img/Category-blue.svg"
+import dashBlue from "../../img/DashBlue.svg"
 import combined from "../../img/combined.svg"
-import dashboard from "../../img/dashboard.svg"
-import disblue from "../../img/Vector-blue.svg"
-import bag from "../../img/Bag.svg"
-import discover from "../../img/Discovery.svg"
-import message from "../../img/Message.svg"
-import home from "../../img/Home.svg"
 import setting from "../../img/Setting.svg"
+import settingWhite from "../../img/SettingWhite.svg"
+import listing from "../../img/Listing.svg"
+import listingBlue from "../../img/ListingBlue.svg"
+import request from "../../img/Request.svg"
+import requestBlue from "../../img/RequestBlue.svg"
+import analytics from "../../img/Analytics.svg"
+import analyticsBlue from "../../img/AnalyticsBlue.svg"
 import logout from "../../img/Logout.svg"
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from "react"
@@ -61,11 +64,15 @@ const Main = ({ showTop, handleTopClose }) => {
                     logOut()
                     return
                 }
-                // const rep = await axios.post(`${url}/house/user/get`, { email: email })
-                // const houseResult = await rep.data
+                const rep = await axios.get(`${url}/v1/property/find?userId=${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+                const houseResult = await rep.data
                 const result = await res.data
                 setUser(result)
-                // setHouses(houseResult)
+                setHouses(houseResult.properties)
                 setSpin(false)
             })()
         }
@@ -86,8 +93,12 @@ const Main = ({ showTop, handleTopClose }) => {
                 <div className="dashTop">
                     <p>Your Dashboard</p>
                     <div>
-                        <span data-num="3"><img src={noti} alt="" /></span>
-                        <img className="dashTopImg" src={user.image?.url ? user.image?.url : dp} alt="" />
+                        <img src={noti} alt="" />
+                        <img src={settingWhite} alt="" />
+                        <div>
+                            <img className="dashTopImg" src={user.image?.url ? user.image?.url : dp} alt="" />
+                            <p>{user.firstName}</p>
+                        </div>
                     </div>
                 </div>
                 <div className="deskReferDiv">
@@ -142,23 +153,18 @@ const Main = ({ showTop, handleTopClose }) => {
                             <p style={pathname === "/post" ? { background: "#17457A" } : {}} onClick={() => navigate("/post")} className="dashNewProp"><img src={combined} alt="" />New Property</p>
 
 
-                            <p onClick={() => navigate("/home")} className={pathname === "/home" ? "dashDash" : "dashDis"}><img src={pathname === "/home" ? home : home} alt="" />Home</p>
+
+                            <p onClick={() => navigate("/home")} className={pathname === "/home" ? "dashDash jCenter" : "dashDis jCenter"}><img src={pathname === "/home" ? dashBlue : dashboard} alt="" /><span className="toBeHidden">Dashboard</span></p>
+
+                            <p onClick={() => navigate("/analytics")} className={pathname === "/analytics" ? "dashDash jCenter" : "dashDis jCenter"}><img src={pathname === "analytics" ? analyticsBlue : analytics} alt="" /><span className="toBeHidden">Analytics</span></p>
 
 
-                            <p className="dashProfile"><img src={pathname === "/dashboard" ? dashboard : dashboard} alt="" />Dashboard</p>
+                            <p onClick={() => navigate("/request")} id="dashReq" className={pathname === "/request" ? "dashDash jCenter" : "dashDis jCenter"}><img src={pathname === "request" ? requestBlue : request} alt="" /><span className="toBeHidden">Requests</span></p>
 
 
-                            <p className="dashReq" data-num="3"><img src={bag} alt="" />Requests</p>
+                            <p onClick={() => navigate("/listing")} className={pathname === "/listing" ? "dashDash jCenter" : "dashDis jCenter"}><img src={pathname === "/listing" ? listingBlue : listing} alt="" /><span className="toBeHidden">Listings</span></p>
 
-
-                            <p onClick={() => navigate("/listing")} className={pathname === "/listing" ? "dashDash" : "dashDis"}><img src={pathname === "/listing" ? disblue : discover} alt="" />Listings</p>
-
-
-                            <p className="dashMess" data-num="4"><img src={message} alt="" />Messages</p>
-
-
-                            <p className="dashProfile"><img src={setting} alt="" />Settings</p>
-
+                            <p onClick={() => navigate("/setting")} className={pathname === "/setting" ? "dashDash jCenter" : "dashDis jCenter"}><img src={pathname === "/setting" ? setting : settingWhite} alt="" /><span className="toBeHidden">Settings</span></p>
 
                             <p onClick={logOut} style={{ marginTop: "6rem" }} className="dashDis"><img src={logout} alt="" />LOGOUT</p>
                         </div>
@@ -180,8 +186,8 @@ const Main = ({ showTop, handleTopClose }) => {
                         {
                             houses.map((house, i) => (
                                 <tr key={i}>
-                                    <td className="propId">{house.Id}</td>
-                                    <td className="propImageDesk"><img src={`${url}/image/${house.images?.split(",")[0]}`} alt="" /></td>
+                                    <td className="propId">{i + 1}</td>
+                                    <td className="propImageDesk"><img src={house.mainImage?.url} alt="" /></td>
                                     <td className="propTitleDesk">{house.title}</td>
                                     <td className="propStatusDesk">Active</td>
                                     <td className="propPriceDesk">{house.price} {house.currency}</td>
