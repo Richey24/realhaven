@@ -1,5 +1,5 @@
 .mainDiv {
-    width: 75vw;
+    width: 100vw;
     min-height: 100vh;
     background: #F9FAFB;
     font-family: 'Sora';
@@ -268,8 +268,9 @@
 
 .secondSect>ul {
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
     padding-left: 10px;
+    padding-right: 10px;
     height: 40px;
     padding-top: 10px;
     border-bottom: 2px solid #E5E7EB;

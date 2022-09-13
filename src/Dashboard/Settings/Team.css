@@ -1,0 +1,131 @@
+.inviteDiv {
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 2px;
+    height: 68px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.firstInviteDiv {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.firstInviteDiv>img {
+    width: 40px;
+    height: 40px;
+    border-radius: 1000px;
+}
+
+.secInviteDiv {
+    display: flex;
+    gap: 10px;
+}
+
+.firstInviteDiv>div>p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #6B7280;
+}
+
+.firstInviteDiv>div>p>span {
+    color: #374151;
+    font-weight: 600;
+}
+
+.secInviteDiv>div {
+    width: 24px;
+    height: 24px;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.underDiv {
+    width: 98%;
+    height: 10px;
+    margin-left: 1%;
+    background: #F9FAFB;
+}
+
+.addTeam {
+    margin-top: 1rem;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.addTeam>div {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 2px;
+    width: 85%;
+    height: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 5px;
+}
+
+.addTeam>div>input {
+    width: 90%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+#teamRole {
+    width: 20%;
+    height: 20px;
+    font-size: 10px;
+    outline: none;
+    border: 1px solid #E5E7EB;
+    border-radius: 2px;
+}
+
+.addTeam>button {
+    border: none;
+    outline: none;
+    background: #2E7DD7;
+    border-radius: 4px;
+    height: 36px;
+    color: #FFFFFF;
+    font-size: 14px;
+    width: 14%;
+}
+
+.teamHead {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 4rem;
+}
+
+.teamHead>span {
+    font-size: 14px;
+    color: #2E7DD7;
+}
+
+.teamList>div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.teamList>div>p {
+    font-size: 12px;
+    color: #2E7DD7;
+}

@@ -451,6 +451,27 @@ const MainDesk = ({ showTop, handleTopClose }) => {
                                 <li onClick={() => getPropType("Office Space")}>Office Space</li>
                                 <li onClick={() => getPropType("Penthouse")}>Penthouse</li>
                                 <li onClick={() => getPropType("Apartments")}>Apartments</li>
+                                <li onClick={() => getPropType("Cottage")}>Cottage</li>
+                                <li onClick={() => getPropType("Townhouse")}>Townhouse</li>
+                                <li onClick={() => getPropType("Mansion")}>Mansion</li>
+                                <li onClick={() => getPropType("Ranch-style house")}>Ranch-style house</li>
+                                <li onClick={() => getPropType("Condominium")}>Condominium</li>
+                                <li onClick={() => getPropType("Terraced house")}>Terraced house</li>
+                                <li onClick={() => getPropType("Villa")}>Villa</li>
+                                <li onClick={() => getPropType("Mobile home")}>Mobile home</li>
+                                <li onClick={() => getPropType("Farmhouse")}>Farmhouse</li>
+                                <li onClick={() => getPropType("Semi-detached")}>Semi-detached</li>
+                                <li onClick={() => getPropType("Single-family home")}>Single-family home</li>
+                                <li onClick={() => getPropType("Tiny house movement")}>Tiny house movement</li>
+                                <li onClick={() => getPropType("Tree house")}>Tree house</li>
+                                <li onClick={() => getPropType("American Craftsman")}>American Craftsman</li>
+                                <li onClick={() => getPropType("Colonial architecture")}>Colonial architecture</li>
+                                <li onClick={() => getPropType("Hut")}>Hut</li>
+                                <li onClick={() => getPropType("Victorian architecture")}>Victorian architecture</li>
+                                <li onClick={() => getPropType("Tudor architecture")}>Tudor architecture</li>
+                                <li onClick={() => getPropType("Castle")}>Castle</li>
+                                <li onClick={() => getPropType("Contemporary architecture")}>Contemporary architecture</li>
+                                <li onClick={() => getPropType("Log cabin")}>Log cabin</li>
                             </ul>
                         </div>
                     </div>

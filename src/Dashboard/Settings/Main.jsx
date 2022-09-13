@@ -11,6 +11,12 @@ import copy from "../../img/copy.svg"
 import upload from "../../img/upload.svg"
 import Profile from "./Profile";
 import Compliance from "./Compliance";
+import Team from "./Team";
+import Permission from './Permission';
+import Subscription from './Subscription';
+import Billing from './Billing';
+import Notification from './Notification';
+import Integration from './Integration';
 
 const Main = () => {
     const [user, setUser] = useState({})
@@ -165,11 +171,29 @@ const Main = () => {
 
                         <li className={active === "integration" ? "activeSect" : ""} style={{ color: active === "integration" ? "#2E7DD7" : "" }} onClick={() => getActive("integration")}>Integration</li>
                     </ul>
-                    <div style={{ display: "none" }}>
+                    <div style={{ display: active === "profile" ? "" : "none" }}>
                         <Profile />
                     </div>
-                    <div>
+                    <div style={{ display: active === "Compliance" ? "" : "none" }}>
                         <Compliance />
+                    </div>
+                    <div style={{ display: active === "team" ? "" : "none" }}>
+                        <Team />
+                    </div>
+                    <div style={{ display: active === "permission" ? "" : "none" }}>
+                        <Permission />
+                    </div>
+                    <div style={{ display: active === "subscription" ? "" : "none" }}>
+                        <Subscription />
+                    </div>
+                    <div style={{ display: active === "billing" ? "" : "none" }}>
+                        <Billing />
+                    </div>
+                    <div style={{ display: active === "notification" ? "" : "none" }}>
+                        <Notification />
+                    </div>
+                    <div style={{ display: active === "integration" ? "" : "none" }}>
+                        <Integration />
                     </div>
                 </div>
             </div>
