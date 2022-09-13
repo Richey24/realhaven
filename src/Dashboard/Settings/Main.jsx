@@ -10,6 +10,7 @@ import camera from "../../img/camera.svg"
 import copy from "../../img/copy.svg"
 import upload from "../../img/upload.svg"
 import Profile from "./Profile";
+import Compliance from "./Compliance";
 
 const Main = () => {
     const [user, setUser] = useState({})
@@ -164,8 +165,11 @@ const Main = () => {
 
                         <li className={active === "integration" ? "activeSect" : ""} style={{ color: active === "integration" ? "#2E7DD7" : "" }} onClick={() => getActive("integration")}>Integration</li>
                     </ul>
-                    <div>
+                    <div style={{ display: "none" }}>
                         <Profile />
+                    </div>
+                    <div>
+                        <Compliance />
                     </div>
                 </div>
             </div>
