@@ -1,5 +1,5 @@
 import "./Profile.css"
-import message from "../../img/message.svg"
+import message from "../../img/Message.svg"
 import phone from "../../img/phone.svg"
 import search from "../../img/Search.svg"
 import time from "../../img/time.svg"

@@ -1,7 +1,7 @@
 import "./Compliance.css"
 import "./Profile.css"
 import upload from "../../img/upload.svg"
-import message from "../../img/message.svg"
+import message from "../../img/Message.svg"
 import search from "../../img/Search.svg"
 import { useState, useEffect } from 'react';
 import axios from "axios"
