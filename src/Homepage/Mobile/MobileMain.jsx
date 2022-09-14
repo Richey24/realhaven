@@ -11,7 +11,7 @@ import Third from './Third'
 import { useState } from 'react';
 import Result from './Result'
 
-const MobileMain = () => {
+const MobileMain = ({ properties }) => {
   const [result, setResult] = useState(false)
   return (
     <div>
@@ -23,8 +23,8 @@ const MobileMain = () => {
           (
             <>
               <Second />
-              <Third />
-              <Fourth />
+              <Third properties={properties} />
+              <Fourth properties={properties} />
             </>
           )
       }

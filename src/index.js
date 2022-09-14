@@ -88,7 +88,7 @@ root.render(
           }
         />
         <Route
-          path="/desc"
+          path="/desc/:id"
           element={
             <React.Suspense
               fallback={

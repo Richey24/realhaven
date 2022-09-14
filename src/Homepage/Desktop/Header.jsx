@@ -17,6 +17,8 @@ import ibm from '../../img/cib_ibm.svg'
 import fedex from '../../img/cib_fedex.svg'
 import airbnb from '../../img/cib_airbnb.svg'
 import { useNavigate } from 'react-router-dom';
+import url from './../../url';
+import axios from 'axios'
 
 function valuetext(value) {
     return `${value}°C`;
@@ -24,7 +26,7 @@ function valuetext(value) {
 
 const minDistance = 10;
 
-const Header = ({ setSearch }) => {
+const Header = ({ setSearch, setResult }) => {
     const [mode, setMode] = useState("Rent")
     const [value2, setValue2] = useState([5, 37]);
     const [loc, setLoc] = useState("Lagos")
@@ -67,8 +69,13 @@ const Header = ({ setSearch }) => {
         showMode('deskCurr')
     }
 
-    const getSearch = () => {
+    const getSearch = async () => {
+        console.log(loc, mode);
+        const house = await axios.get(`${url}/v1/property/find?purpose=${mode}`)
+        const result = await house.data
+        console.log(result);
         setSearch(true)
+        setResult(result.properties)
         setTimeout(() => {
             document.getElementById("resultMain").scrollIntoView()
         }, 10)
@@ -138,17 +145,17 @@ const Header = ({ setSearch }) => {
                                     <p>Property type</p>
                                     <span>clear</span>
                                 </div>
-                                <label htmlFor='duplex'><input type="checkbox" id='duplex' value='Duplex' />Duplex</label>
+                                <label htmlFor='duplex'><input type="checkbox" name='propType' id='duplex' value='Duplex' />Duplex</label>
                                 <br />
-                                <label htmlFor='apartments'><input type="checkbox" id='apartments' value='Apartment' />Apartments</label>
+                                <label htmlFor='apartments'><input type="checkbox" name='propType' id='apartments' value='Apartment' />Apartments</label>
                                 <br />
-                                <label htmlFor='bungalow'><input type="checkbox" id='bungalow' value='Detached Bungalow' />Detached Bungalow</label>
+                                <label htmlFor='bungalow'><input type="checkbox" name='propType' id='bungalow' value='Detached Bungalow' />Detached Bungalow</label>
                                 <br />
-                                <label htmlFor='office'><input type="checkbox" id='office' value='Office Space' />Office Space</label>
+                                <label htmlFor='office'><input type="checkbox" name='propType' id='office' value='Office Space' />Office Space</label>
                                 <br />
-                                <label htmlFor='penthouse'><input type="checkbox" id='penthouse' value='Penthouse' />Penthouse</label>
+                                <label htmlFor='penthouse'><input type="checkbox" name='propType' id='penthouse' value='Penthouse' />Penthouse</label>
                                 <br />
-                                <label htmlFor='shop'><input type="checkbox" id='shop' value='Shop' />Shop</label>
+                                <label htmlFor='shop'><input type="checkbox" name='propType' id='shop' value='Shop' />Shop</label>
                             </ul>
                         </div>
                         <div>

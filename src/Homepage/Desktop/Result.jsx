@@ -2,21 +2,11 @@ import "./Result.css"
 import { useState } from 'react';
 import down from '../../img/Icon.svg'
 import call from '../../img/Call.svg'
-import one from '../../img/Rectangle 307.png'
-import two from '../../img/Rectangle 309.png'
-import three from '../../img/image 5.png'
-import four from '../../img/image 5 (1).png'
-import five from '../../img/image 5 (2).png'
-import six from '../../img/image 5 (3).png'
-import seven from '../../img/image 5 (4).png'
-import eight from '../../img/image 5 (5).png'
-import nine from '../../img/image 5 (6).png'
 import arrow from '../../img/arrowgrey.svg'
 import { useNavigate } from 'react-router-dom';
 
-const images = [one, two, three, four, five, six, seven, eight, nine]
 
-const Result = () => {
+const Result = ({ result }) => {
     const [filter, setFilter] = useState("Most Relevant")
     const navigate = useNavigate()
 
@@ -48,14 +38,14 @@ const Result = () => {
                     </div>
                 </div>
                 {
-                    images.map((image, i) => (
+                    result.map((res, i) => (
                         <div onClick={() => navigate("/desc")} key={i} className="mainResult">
-                            <img className="mainResultImage" src={image} alt="" />
+                            <img className="mainResultImage" src={res.mainImage?.url} alt="" />
                             <div>
-                                <p className="houseTypeDesk">4 Bedroom flat for rent <span>Rent</span></p>
-                                <p className="houseLocationDesk">Off Allen Avenue Allen Avenue Ikeja Lagos</p>
-                                <p className="houseDescDesk">4 bedroom House for rent Off Allen Avenue Allen Avenue Ikeja Lagos renting for ₦6,500,000/year. Click to see property details or browse all our range of properties in Allen Avenue Ikeja Lagos</p>
-                                <p className="housePriceDesk">₦15,000,000/Year</p>
+                                <p className="houseTypeDesk">{res.title}<span>{res.purpose}</span></p>
+                                <p className="houseLocationDesk">{res.address} {res.city} {res.country}</p>
+                                <p className="houseDescDesk">{res.description}</p>
+                                <p className="housePriceDesk">{res.price}{res.currency}/{res.pricePer}</p>
                                 <p className="contactAgent"><img src={call} alt="" /> Contact Agent</p>
                             </div>
                         </div>

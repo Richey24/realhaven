@@ -50,7 +50,7 @@ const Main = ({ showTop, handleTopClose }) => {
                 id = document.cookie?.split(" ")[i].split("=")[1]
             }
         }
-        if (!token) {
+        if (!token || !id) {
             navigate("/login")
         } else {
             (async () => {

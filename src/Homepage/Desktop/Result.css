@@ -3,6 +3,7 @@
     height: 100%;
     padding-top: 4rem;
     padding-bottom: 4rem;
+    padding-right: 10rem;
 }
 
 .findPlace {
@@ -110,10 +111,10 @@
 .mainResult {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding-left: 14px;
-    padding-right: 14px;
+    padding-right: 24px;
     gap: 24px;
     width: 90vw;
     min-height: 348px;

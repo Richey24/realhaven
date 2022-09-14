@@ -6,7 +6,6 @@ import search from "../../img/Search.svg"
 import { useState, useEffect } from 'react';
 import axios from "axios"
 import down from '../../img/Stroke-1.svg'
-import NaijaStates from 'naija-state-local-government';
 
 const Compliance = () => {
     const [con, setCon] = useState([])
@@ -16,8 +15,9 @@ const Compliance = () => {
     const [num, setNum] = useState({})
     const [cat, setCat] = useState("Real Estate")
     const [theID, setTheID] = useState("National ID")
-    const [nState, setNState] = useState(NaijaStates.states()[0])
-    const [lga, setLga] = useState(NaijaStates.lgas("Abia").lgas)
+    const [nState, setNState] = useState("")
+    const [myState, setMyState] = useState([])
+    const [lga, setLga] = useState([])
     const [aLga, setAlga] = useState(lga[0])
     useEffect(() => {
         (async () => {
@@ -26,8 +26,16 @@ const Compliance = () => {
             setCon(coun)
             setNumCon(coun)
             setSCon(coun)
-            setACC(coun[212])
-            setNum(coun[212])
+            setACC(coun[162])
+            setNum(coun[162])
+            const theState = await axios.get(`https://countriesnow.space/api/v0.1/countries/states/q?country=${coun[162].name.common}`)
+            const result = await theState.data
+            setNState(result.data.states[0].name)
+            setMyState(result.data.states)
+            const theCity = await axios.get(`https://countriesnow.space/api/v0.1/countries/state/cities/q?country=${coun[162].name.common}&state=${result.data.states[0].name}`)
+            const cities = await theCity.data
+            setLga(cities.data)
+            setAlga(cities.data[0])
         })()
     }, [])
 
@@ -36,10 +44,18 @@ const Compliance = () => {
         myList.classList.toggle("showList")
     }
 
-    const getCode = (codeNum, value) => {
+    const getCode = async (codeNum, value) => {
         setACC(codeNum)
         const myList = document.getElementById(value)
         myList.classList.toggle("showList")
+        const theState = await axios.get(`https://countriesnow.space/api/v0.1/countries/states/q?country=${codeNum.name.common}`)
+        const result = await theState.data
+        setNState(result.data.states[0]?.name)
+        setMyState(result.data.states)
+        const theCity = await axios.get(`https://countriesnow.space/api/v0.1/countries/state/cities/q?country=${codeNum.name.common}&state=${result.data.states[0].name}`)
+        const cities = await theCity.data
+        setLga(cities.data)
+        setAlga(cities.data[0])
     }
 
     const getNum = (codeNum, value) => {
@@ -68,11 +84,13 @@ const Compliance = () => {
         document.getElementById("countryList6").classList.toggle("showList")
     }
 
-    const getState = (value) => {
+    const getState = async (value) => {
         setNState(value)
-        setLga(NaijaStates.lgas(value).lgas)
-        setAlga(NaijaStates.lgas(value).lgas[0])
         document.getElementById("countryList3").classList.toggle("showList")
+        const theCity = await axios.get(`https://countriesnow.space/api/v0.1/countries/state/cities/q?country=${acc.name.common}&state=${value}`)
+        const cities = await theCity.data
+        setLga(cities.data)
+        setAlga(cities.data[0])
     }
 
     const getLga = (value) => {
@@ -171,8 +189,8 @@ const Compliance = () => {
                             <div id='countryList3' className='countryList'>
                                 <ul>
                                     {
-                                        NaijaStates.states().map((state, i) => (
-                                            <li onClick={() => getState(state)} key={i}>{state}</li>
+                                        myState.map(({ name }, i) => (
+                                            <li onClick={() => getState(name)} key={i}>{name}</li>
                                         ))
                                     }
                                 </ul>
@@ -187,7 +205,7 @@ const Compliance = () => {
                             <div id='countryList4' className='countryList'>
                                 <ul>
                                     {
-                                        NaijaStates.lgas(nState).lgas.map((lg, i) => (
+                                        lga.map((lg, i) => (
                                             <li onClick={() => getLga(lg)} key={i}>{lg}</li>
                                         ))
                                     }
