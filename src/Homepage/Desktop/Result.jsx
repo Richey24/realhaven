@@ -39,7 +39,7 @@ const Result = ({ result }) => {
                 </div>
                 {
                     result.map((res, i) => (
-                        <div onClick={() => navigate("/desc")} key={i} className="mainResult">
+                        <div onClick={() => navigate(`/desc/${res._id}`)} key={i} className="mainResult">
                             <img className="mainResultImage" src={res.mainImage?.url} alt="" />
                             <div>
                                 <p className="houseTypeDesk">{res.title}<span>{res.purpose}</span></p>

@@ -11,7 +11,7 @@ import Ninth from './Ninth';
 import { useState } from 'react';
 import Result from './Result';
 
-const DesktopMain = ({ properties }) => {
+const DesktopMain = ({ properties, recommend }) => {
     const [search, setSearch] = useState(false)
     const [result, setResult] = useState([])
     return (
@@ -26,7 +26,7 @@ const DesktopMain = ({ properties }) => {
                         <>
                             <Second />
                             <Third properties={properties} />
-                            <Fourth properties={properties} />
+                            <Fourth properties={recommend} />
                         </>
                     )
             }

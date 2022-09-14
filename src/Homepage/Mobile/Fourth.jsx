@@ -4,7 +4,6 @@ import arrow from '../../img/arrowgrey.svg'
 
 
 const Fourth = ({ properties }) => {
-    console.log(properties);
     const increment = () => {
         const img = document.getElementById("fourthTrend")
         img.scrollLeft += 320

@@ -132,8 +132,8 @@ const MainDesk = ({ showTop, handleTopClose }) => {
         mainProp.append("state", property.state)
         mainProp.append("city", property.city)
         mainProp.append("postalCode", property.postalCode)
-        mainProp.append("purpose", property.purpose)
-        mainProp.append("propertyType", property.propertyType)
+        mainProp.append("purpose", property.purpose.toLowerCase())
+        mainProp.append("propertyType", property.propertyType.toLowerCase())
         mainProp.append("noOfBedroom", property.noOfBedroom)
         mainProp.append("noOfBathroom", property.noOfBathroom)
         mainProp.append("noOfToilet", property.noOfToilet)
@@ -228,7 +228,7 @@ const MainDesk = ({ showTop, handleTopClose }) => {
                 window.scrollTo(0, 0)
                 break;
             case 75:
-                if (!elements.price.value || !elements.features.value) {
+                if (!elements.price.value) {
                     setShowA(true)
                     setTimeout(() => {
                         setShowA(false)
@@ -319,13 +319,6 @@ const MainDesk = ({ showTop, handleTopClose }) => {
                 break;
         }
     }
-
-    // window.navigator.geolocation.getCurrentPosition(async (position) => {
-    //     const { latitude, longitude } = position.coords;
-    //     const res = await axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=a06ee162a5a1476a87cdbec1d7c4f197`)
-    //     const loc = await res.data
-    //     console.log(loc);
-    // }, console.log("sad"))
 
     return (
         <div className="mainDashDiv">

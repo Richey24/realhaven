@@ -11,20 +11,21 @@ import Third from './Third'
 import { useState } from 'react';
 import Result from './Result'
 
-const MobileMain = ({ properties }) => {
+const MobileMain = ({ properties, recommend }) => {
   const [result, setResult] = useState(false)
+  const [house, setHouse] = useState([])
   return (
     <div>
-      <Header setResult={setResult} />
+      <Header setHouse={setHouse} setResult={setResult} />
       {
         result ?
-          (<Result />)
+          (<Result result={house} />)
           :
           (
             <>
               <Second />
               <Third properties={properties} />
-              <Fourth properties={properties} />
+              <Fourth properties={recommend} />
             </>
           )
       }

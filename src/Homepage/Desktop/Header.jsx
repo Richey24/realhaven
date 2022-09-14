@@ -70,14 +70,12 @@ const Header = ({ setSearch, setResult }) => {
     }
 
     const getSearch = async () => {
-        console.log(loc, mode);
-        const house = await axios.get(`${url}/v1/property/find?purpose=${mode}`)
+        const house = await axios.get(`${url}/v1/property/find?purpose=${mode}&state=${loc}`)
         const result = await house.data
-        console.log(result);
         setSearch(true)
         setResult(result.properties)
         setTimeout(() => {
-            document.getElementById("resultMain").scrollIntoView()
+            document.getElementById("resultMain")?.scrollIntoView()
         }, 10)
     }
 

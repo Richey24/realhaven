@@ -21,6 +21,8 @@ import down from '../../img/Icon.svg'
 import { Slider } from '@mui/material'
 import NaijaStates from 'naija-state-local-government';
 import { useNavigate } from 'react-router-dom'
+import url from './../../url';
+import axios from 'axios'
 
 
 function valuetext(value) {
@@ -29,7 +31,7 @@ function valuetext(value) {
 
 const minDistance = 10;
 
-const Header = ({ setResult }) => {
+const Header = ({ setResult, setHouse }) => {
     const [showTop, setShowTop] = useState(false)
     const [showRight, setShowRight] = useState(false)
     const [search, setSearch] = useState("")
@@ -111,10 +113,13 @@ const Header = ({ setResult }) => {
         setMode(value)
     }
 
-    const makeSearch = () => {
+    const makeSearch = async () => {
+        const house = await axios.get(`${url}/v1/property/find?purpose=${mode}&state=${loc}`)
+        const result = await house.data
+        setHouse(result.properties)
         setResult(true)
         setTimeout(() => {
-            document.getElementById("resultMob").scrollIntoView()
+            document.getElementById("resultMob")?.scrollIntoView()
         }, 10)
     }
 

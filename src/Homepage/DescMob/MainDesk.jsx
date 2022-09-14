@@ -42,7 +42,7 @@ const MainDesk = () => {
                         <div className='secNavDiv'>
                             <img className='searchImage' src={searchImage} alt="" />
                             <p style={{ cursor: 'pointer' }} onClick={() => navigate(id ? '/home' : '/register')} className='signUp'>{id ? "Dashboard" : "Sign up"}</p>
-                            <p onClick={navigate(id ? '/listing' : '/login')} style={{ color: '#9CA3AF', cursor: 'pointer' }} className='signIn'>{id ? "Listing" : "Sign in"}</p>
+                            <p onClick={() => navigate(id ? '/listing' : '/login')} style={{ color: '#9CA3AF', cursor: 'pointer' }} className='signIn'>{id ? "Listing" : "Sign in"}</p>
                         </div>
                         <p onClick={() => navigate(id ? '/post' : '/login')} className='postProp'>Post a property</p>
                     </div>
