@@ -1,10 +1,11 @@
 import './Third.css'
 import slant from '../../img/slantarrow.svg'
 import arrow from '../../img/arrowgrey.svg'
+import { useNavigate } from 'react-router-dom'
 
 
 const Third = ({ properties }) => {
-
+    const navigate = useNavigate()
     const increment = () => {
         const img = document.getElementById("trendImage")
         img.scrollLeft += 320
@@ -25,7 +26,7 @@ const Third = ({ properties }) => {
 
                             <div className='myAbs'>
                                 <p>{property.title}</p>
-                                <img src={slant} alt="" />
+                                <img onClick={() => navigate(`/desc/${property._id}`)} src={slant} alt="" />
                             </div>
                         </div>
                     ))

@@ -8,8 +8,8 @@ import { useNavigate } from 'react-router-dom';
 
 const Result = ({ result }) => {
     const [filter, setFilter] = useState("Most Relevant")
+    const [theResult, setTheResult] = useState(result)
     const navigate = useNavigate()
-
     const showFilter = () => {
         document.getElementById("searchResultFilter").classList.toggle("showSearchFilter")
     }
@@ -19,13 +19,20 @@ const Result = ({ result }) => {
         showFilter()
     }
 
+
+    const getCheapest = () => {
+        const sortedRes = result.sort((a, b) => a.price - b.price)
+        setTheResult(sortedRes);
+        getFilter("Cheapest")
+    }
+
     return (
         <div>
             <div id="resultMain" className="resultMain">
                 <h4 className="findPlace">Find the perfect place</h4>
                 <p className="advancedSearch">With our advanced search and filters you can easily find the best place in Nigeria</p>
                 <div className="searchFilterMainDesk">
-                    <span>45 listings found</span>
+                    <span>{result.length} listings found</span>
                     <div>
 
                         <p onClick={showFilter}>{filter} <img src={down} alt="" /></p>
@@ -33,19 +40,19 @@ const Result = ({ result }) => {
                             <li onClick={() => getFilter("Most Relevant")}>Most Relevant</li>
                             <li onClick={() => getFilter("Most Recent")}>Most Recent</li>
                             <li onClick={() => getFilter("Nearest to location")}>Nearest to location</li>
-                            <li onClick={() => getFilter("Cheapest")}>Cheapest</li>
+                            <li onClick={getCheapest}>Cheapest</li>
                         </ul>
                     </div>
                 </div>
                 {
-                    result.map((res, i) => (
+                    theResult.map((res, i) => (
                         <div onClick={() => navigate(`/desc/${res._id}`)} key={i} className="mainResult">
                             <img className="mainResultImage" src={res.mainImage?.url} alt="" />
                             <div>
                                 <p className="houseTypeDesk">{res.title}<span>{res.purpose}</span></p>
                                 <p className="houseLocationDesk">{res.address} {res.city} {res.country}</p>
                                 <p className="houseDescDesk">{res.description}</p>
-                                <p className="housePriceDesk">{res.price}{res.currency}/{res.pricePer}</p>
+                                <p className="housePriceDesk">{res.price}{res.currency}{res.pricePer}</p>
                                 <p className="contactAgent"><img src={call} alt="" /> Contact Agent</p>
                             </div>
                         </div>

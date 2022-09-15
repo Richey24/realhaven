@@ -114,6 +114,8 @@
     justify-content: space-between;
     align-items: center;
     padding-left: 14px;
+    padding-top: 14px;
+    padding-bottom: 14px;
     padding-right: 24px;
     gap: 24px;
     width: 90vw;
@@ -131,6 +133,7 @@
 .mainResultImage {
     height: 300px;
     width: 300px;
+    border-radius: 12px;
 }
 
 .mainResult div {

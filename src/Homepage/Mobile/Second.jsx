@@ -4,10 +4,12 @@ import second from '../../img/Frame 36641 (1).png'
 import third from '../../img/Frame 36641 (2).png'
 import blueArrow from '../../img/arrowblue.svg'
 import redArrow from '../../img/arrowpink.svg'
+import { useNavigate } from 'react-router-dom'
 
-import React from 'react'
 
 const Second = () => {
+    const navigate = useNavigate()
+
     return (
         <div>
             <div className='secondMain'>
@@ -24,13 +26,13 @@ const Second = () => {
                             <img src={second} alt="" />
                             <h4>Sell Properties</h4>
                             <p>Put your properties in front of millions of Nigerians and get the best deal in days not months.</p>
-                            <span>Sell properties now<img src={blueArrow} alt="" /></span>
+                            <span onClick={() => navigate("/login")}>Sell properties now<img src={blueArrow} alt="" /></span>
                         </div>
                         <div style={{ borderColor: "#BF5E65" }} className='buyProps'>
                             <img src={third} alt="" />
                             <h4>Become an agent</h4>
                             <p>Create an account and join us to become an agent. You get your personal website and everything all set up for you to become a real estate agent.</p>
-                            <span style={{ color: '#BF5E65' }}>Join us now<img src={redArrow} alt="" /></span>
+                            <span onClick={() => navigate("/register")} style={{ color: '#BF5E65' }}>Join us now<img src={redArrow} alt="" /></span>
                         </div>
                     </div>
                 </center>

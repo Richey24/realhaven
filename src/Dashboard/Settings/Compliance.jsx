@@ -246,6 +246,7 @@ const Compliance = () => {
                         </p>
                         <div style={{ height: "100px" }} id='countryList6' className='countryList'>
                             <ul>
+                                <li onClick={() => getTheID("National ID")}>National ID</li>
                                 <li onClick={() => getTheID("Driver License")}>Driver License</li>
                                 <li onClick={() => getTheID("Voter's card")}>Voter's card</li>
                             </ul>

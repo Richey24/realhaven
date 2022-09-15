@@ -40,7 +40,7 @@ const Footer = () => {
                 </div>
                 <center>
                     <p className='logo2'><img src={logo} alt="" />Haven</p>
-                    <p className='copyRight'>Copyright © 2022 PlanetScale and Hashnode . All rights reserved.</p>
+                    <p className='copyRight'>Copyright © 2022 Real Haven Ltd . All rights reserved.</p>
                 </center>
                 <div className='footerSocial'>
                     <img src={twitter} alt="" />

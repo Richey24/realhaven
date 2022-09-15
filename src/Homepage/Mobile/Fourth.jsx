@@ -1,9 +1,12 @@
 import './Fourth.css'
 import './Third.css'
 import arrow from '../../img/arrowgrey.svg'
+import { useNavigate } from 'react-router-dom'
 
 
 const Fourth = ({ properties }) => {
+    const navigate = useNavigate()
+
     const increment = () => {
         const img = document.getElementById("fourthTrend")
         img.scrollLeft += 320
@@ -22,11 +25,11 @@ const Fourth = ({ properties }) => {
             <div id='fourthTrend' className='insideMain'>
                 {
                     properties.map((property, i) => (
-                        <div key={i} className='insideMainDiv'>
+                        <div onClick={() => navigate(`/desc/${property._id}`)} key={i} className='insideMainDiv'>
                             <img src={property?.mainImage?.url} alt="" />
                             <h4>{property.title}</h4>
                             <p>{property.address} {property.city} {property.state !== "No states available" && property.state} {property.country}</p>
-                            <span>{property.price} {property.currency}</span>
+                            <span>{property.price} {property.currency}{property.pricePer}</span>
                         </div>
                     ))
                 }
