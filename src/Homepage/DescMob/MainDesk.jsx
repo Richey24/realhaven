@@ -3,11 +3,6 @@ import searchImage from '../../img/Search.svg'
 import { useNavigate } from 'react-router-dom';
 import "../Desktop/Header.css"
 import "./MainDesk.css"
-import one from '../../img/Rectangle 307.png'
-import two from '../../img/Rectangle 309.png'
-import three from '../../img/image 5.png'
-import four from '../../img/image 5 (1).png'
-import five from '../../img/image 5 (2).png'
 import { useState } from 'react'
 import call from '../../img/Call.svg'
 import room from '../../img/room.svg'
@@ -19,9 +14,9 @@ import "../Desktop/Result.css"
 import Similar from './Similiar';
 import Seventh from './../Desktop/Seventh';
 
-const MainDesk = () => {
+const MainDesk = ({ property }) => {
     const navigate = useNavigate()
-    const [mainImage, setMainImage] = useState(two)
+    const [mainImage, setMainImage] = useState(property.mainImage?.url)
     let id = ""
     for (let i = 0; i < document.cookie?.split(" ").length; i++) {
         if (document.cookie?.split(" ")[i].split("=")[0] === "id") {
@@ -50,25 +45,26 @@ const MainDesk = () => {
                 <div className='mainImgDeskDiv'>
                     <img className='mainImgDeskDesc' src={mainImage} alt="" />
                     <div className='otherImageDesk'>
-                        <img onClick={() => setMainImage(one)} src={one} alt="" />
-                        <img onClick={() => setMainImage(three)} src={three} alt="" />
-                        <img onClick={() => setMainImage(four)} src={four} alt="" />
-                        <img onClick={() => setMainImage(five)} src={five} alt="" />
+                        {
+                            property.otherImage?.map((image, i) => (
+                                <img onClick={() => setMainImage(image.url)} src={image.url} alt="" />
+                            ))
+                        }
                     </div>
                 </div>
                 <div className='deskDescAbout'>
-                    <p className="houseTypeDesk">4 Bedroom flat for rent <span>Rent</span></p>
-                    <p className="houseLocationDesk">Off Allen Avenue Allen Avenue Ikeja Lagos</p>
-                    <p className="houseDescDesk">4 bedroom House for rent Off Allen Avenue Allen Avenue Ikeja Lagos renting for ₦6,500,000/year. Contact the seller for more information about the house or browse all our range of properties in Allen Avenue Ikeja Lagos</p>
+                    <p className="houseTypeDesk">{property.title} <span>{property.purpose}</span></p>
+                    <p className="houseLocationDesk">{property.address} {property.city} {property.state}</p>
+                    <p className="houseDescDesk">{property.description}</p>
                     <div className="descImgInfoMob">
                         <div className="blueBackMob">
-                            <div data-value="4" className="roomImgMob">
+                            <div data-value={property.noOfBedroom} className="roomImgMob">
                                 <img src={room} alt="" />
                             </div>
-                            <div className="bathroomImgMob" data-value="2">
+                            <div className="bathroomImgMob" data-value={property.noOfBathroom}>
                                 <img src={bathroom} alt="" />
                             </div>
-                            <div className="toiletImgMob" data-value="5">
+                            <div className="toiletImgMob" data-value={property.noOfToilet}>
                                 <img src={toilet} alt="" />
                             </div>
                         </div>
@@ -78,7 +74,7 @@ const MainDesk = () => {
                         </div>
                     </div>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "3rem" }}>
-                        <p className="housePriceDesk">₦15,000,000/Year</p>
+                        <p className="housePriceDesk">{property.price}{property.currency}{property.pricePer}</p>
                         <p className="contactAgent"><img src={call} alt="" /> Contact Agent</p>
                     </div>
                 </div>

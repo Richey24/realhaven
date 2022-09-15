@@ -13,6 +13,7 @@ const DescMob = () => {
     const [large, setLarge] = useState(false)
     const [size, setSize] = useState(window.innerWidth)
     const [spin, setSpin] = useState(true)
+    const [property, setProperty] = useState({})
     const { id } = useParams()
     useEffect(() => {
         if (window.innerWidth >= 800) {
@@ -22,9 +23,10 @@ const DescMob = () => {
         }
         (async () => {
             console.log(id)
-            const house = await axios.get(`${url}/v1/property/find?id=${id}`)
+            const house = await axios.get(`${url}/v1/property/${id}`)
             const result = await house.data
             console.log(result);
+            setProperty(result)
         })()
         setSpin(false)
     }, [size, id])
@@ -52,13 +54,13 @@ const DescMob = () => {
                 {large ?
                     (
                         <>
-                            <MainDesk />
+                            <MainDesk property={property} />
                             <Footer />
                         </>
                     ) :
                     (
                         <>
-                            <Main />
+                            <Main property={property} />
                             <Similar />
                             <Seventh />
                             <Footer />
