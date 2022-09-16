@@ -15,20 +15,20 @@ const DescMob = () => {
     const [spin, setSpin] = useState(true)
     const [property, setProperty] = useState({})
     const { id } = useParams()
+    window.scrollTo(0, 0)
     useEffect(() => {
+        setSpin(true)
         if (window.innerWidth >= 800) {
             setLarge(true)
         } else {
             setLarge(false)
         }
         (async () => {
-            console.log(id)
-            const house = await axios.get(`${url}/v1/property/${id}`)
+            const house = await axios.get(`${url}/v1/property/find/one/${id}`)
             const result = await house.data
-            console.log(result);
             setProperty(result)
+            setSpin(false)
         })()
-        setSpin(false)
     }, [size, id])
 
     window.addEventListener("resize", () => {

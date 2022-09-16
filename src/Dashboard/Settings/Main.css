@@ -261,7 +261,8 @@
 .secondSect {
     border-radius: 4px;
     background-color: #FFFFFF;
-    height: 696px;
+    height: fit-content;
+    max-height: 696px;
     width: 60%;
     overflow: scroll;
 }

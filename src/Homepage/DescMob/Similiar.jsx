@@ -1,19 +1,33 @@
 import '../Mobile/Fourth.css'
 import '../Mobile/Third.css'
-import one from '../../img/image.png'
-import two from '../../img/image 4.png'
-import three from '../../img/image 5.png'
-import four from '../../img/image 5 (1).png'
-import five from '../../img/image 5 (2).png'
-import six from '../../img/image 5 (3).png'
-import seven from '../../img/image 5 (4).png'
-import eight from '../../img/image 5 (5).png'
-import nine from '../../img/image 5 (6).png'
 import arrow from '../../img/arrowgrey.svg'
+import { useEffect, useState } from 'react';
+import url from './../../url';
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
-const images = [one, two, three, four, five, six, seven, eight, nine]
-
-const Similar = () => {
+const Similar = ({ property }) => {
+    const [recommend, setRecommend] = useState([])
+    const navigate = useNavigate()
+    useEffect(() => {
+        (async () => {
+            const recCity = await axios.get(`${url}/v1/property/find?state=${property.state}&city=${property.city}`)
+            const recoCity = await recCity.data
+            if (recoCity.noOfProperties < 1) {
+                const rec = await axios.get(`${url}/v1/property/find?state=${property.state}`)
+                const reco = await rec.data
+                if (reco.noOfProperties < 1) {
+                    const house = await axios.get(`${url}/v1/property/find`)
+                    const result = await house.data
+                    setRecommend(result.properties)
+                } else {
+                    setRecommend(reco.properties)
+                }
+            } else {
+                setRecommend(recoCity.properties)
+            }
+        })()
+    })
     const increment = () => {
         const img = document.getElementById("fourthTrend")
         img.scrollLeft += 320
@@ -31,12 +45,12 @@ const Similar = () => {
             </div>
             <div id='fourthTrend' className='insideMain'>
                 {
-                    images.map((image, i) => (
-                        <div key={i} className='insideMainDiv'>
-                            <img src={image} alt="" />
-                            <h4>5 Bedroom Duplex</h4>
-                            <p>Orchid Lagos</p>
-                            <span>₦150,000,000</span>
+                    recommend.map((prop, i) => (
+                        property._id !== prop._id && <div onClick={() => navigate(`/desc/${prop._id}`)} key={i} className='insideMainDiv'>
+                            <img src={prop?.mainImage?.url} alt="" />
+                            <h4>{prop.title}</h4>
+                            <p>{prop.address} {prop.city} {prop.state !== "No states available" && prop.state} {prop.country}</p>
+                            <span>{prop.price} {prop.currency}{prop.pricePer}</span>
                         </div>
                     ))
                 }

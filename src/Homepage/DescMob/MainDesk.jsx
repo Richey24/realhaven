@@ -3,7 +3,7 @@ import searchImage from '../../img/Search.svg'
 import { useNavigate } from 'react-router-dom';
 import "../Desktop/Header.css"
 import "./MainDesk.css"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import call from '../../img/Call.svg'
 import room from '../../img/room.svg'
 import bathroom from '../../img/bathroom.svg'
@@ -16,7 +16,11 @@ import Seventh from './../Desktop/Seventh';
 
 const MainDesk = ({ property }) => {
     const navigate = useNavigate()
-    const [mainImage, setMainImage] = useState(property.mainImage?.url)
+    const [mainImage, setMainImage] = useState("")
+
+    useEffect(() => {
+        setMainImage(property.mainImage?.url)
+    }, [property.mainImage?.url])
     let id = ""
     for (let i = 0; i < document.cookie?.split(" ").length; i++) {
         if (document.cookie?.split(" ")[i].split("=")[0] === "id") {
@@ -46,8 +50,8 @@ const MainDesk = ({ property }) => {
                     <img className='mainImgDeskDesc' src={mainImage} alt="" />
                     <div className='otherImageDesk'>
                         {
-                            property.otherImage?.map((image, i) => (
-                                <img onClick={() => setMainImage(image.url)} src={image.url} alt="" />
+                            property.otherImages?.url?.map((image, i) => (
+                                <img loading='lazy' key={i} onClick={() => setMainImage(image)} src={image} alt="" />
                             ))
                         }
                     </div>
@@ -80,25 +84,15 @@ const MainDesk = ({ property }) => {
                 </div>
                 <p style={{ fontSize: "24px" }} className="descFeatures">Features:</p>
                 <ul style={{ fontSize: "24px" }} className="descList">
-                    <li>All rooms en-suite</li>
-                    <li>Adequate car space</li>
-                    <li>Fitted kitchen</li>
-                    <li>Balcony</li>
-                    <li>Family lounge</li>
-                    <li>Inbuilt speakers</li>
-                    <li>Chandeliers</li>
-                    <li>Cctv</li>
-                    <li>Fitted wardrobe</li>
-                    <li>Modern sanitary wares</li>
-                    <li>Jacuzzi</li>
-                    <li>Shower cubicle</li>
-                    <li>Secured estate</li>
-                    <li>Security post</li>
-                    <li>Interlocked flooring</li>
+                    {
+                        property.additionalFeatures?.map((feat, i) => (
+                            <li key={i}>{feat}</li>
+                        ))
+                    }
                 </ul>
             </div>
             <div style={{ marginLeft: "3%" }}>
-                <Similar />
+                <Similar property={property} />
             </div>
             <div style={{ textAlign: "center" }}>
                 <Seventh />

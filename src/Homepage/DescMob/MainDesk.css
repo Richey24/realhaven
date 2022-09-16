@@ -15,16 +15,19 @@
 
 .otherImageDesk {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     margin-left: 10%;
     gap: 30px;
     margin-top: 32px;
+    width: 800px;
+    flex-wrap: wrap;
 }
 
 .otherImageDesk img {
     width: 180px;
     height: 144px;
+    border-radius: 16px;
 }
 
 .deskDescAbout {
