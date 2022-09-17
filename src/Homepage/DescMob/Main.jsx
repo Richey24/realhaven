@@ -34,6 +34,13 @@ const Main = ({ property }) => {
         setSearch(e.target.value)
     }
 
+    let id = ""
+    for (let i = 0; i < document.cookie?.split(" ").length; i++) {
+        if (document.cookie?.split(" ")[i].split("=")[0] === "id") {
+            id = document.cookie?.split(" ")[i].split("=")[1]
+        }
+    }
+
     return (
         <div style={{ paddingBottom: "3rem" }}>
             <div className="descMain">
@@ -47,8 +54,8 @@ const Main = ({ property }) => {
                 <img className="descMainImage" src={mainImage} alt="" />
                 <div className="descOtherImage">
                     {
-                        property.otherImage?.map((image, i) => (
-                            <img onClick={() => setMainImage(image.url)} src={image.url} alt="" />
+                        property.otherImages?.url?.map((image, i) => (
+                            <img key={i} onClick={() => setMainImage(image)} src={image} alt="" />
                         ))
                     }
                 </div>
@@ -79,21 +86,11 @@ const Main = ({ property }) => {
             </div>
             <p className="descFeatures">Features:</p>
             <ul className="descList">
-                <li>All rooms en-suite</li>
-                <li>Adequate car space</li>
-                <li>Fitted kitchen</li>
-                <li>Balcony</li>
-                <li>Family lounge</li>
-                <li>Inbuilt speakers</li>
-                <li>Chandeliers</li>
-                <li>Cctv</li>
-                <li>Fitted wardrobe</li>
-                <li>Modern sanitary wares</li>
-                <li>Jacuzzi</li>
-                <li>Shower cubicle</li>
-                <li>Secured estate</li>
-                <li>Security post</li>
-                <li>Interlocked flooring</li>
+                {
+                    property.additionalFeatures?.map((feat, i) => (
+                        <li key={i}>{feat}</li>
+                    ))
+                }
             </ul>
 
             <Offcanvas className="topCanvas" show={showTop} onHide={handleTopClose} placement="top">
@@ -111,8 +108,8 @@ const Main = ({ property }) => {
                         <li>Short let</li>
                     </ul>
                     <ul className='myAuth'>
-                        <li onClick={() => navigate('/register')}>Sign up</li>
-                        <li onClick={() => navigate('/login')}>Sign in</li>
+                        <li onClick={() => navigate(id ? '/home' : '/register')}>{id ? "Dashboard" : "Sign up"}</li>
+                        <li onClick={() => navigate(id ? '/listing' : '/login')}>{id ? "Listing" : "Sign in"}</li>
                     </ul>
                     <p className='postProps'>Post a property</p>
                 </Offcanvas.Body>

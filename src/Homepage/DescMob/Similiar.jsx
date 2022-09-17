@@ -11,12 +11,13 @@ const Similar = ({ property }) => {
     const navigate = useNavigate()
     useEffect(() => {
         (async () => {
+            console.log(property.state);
             const recCity = await axios.get(`${url}/v1/property/find?state=${property.state}&city=${property.city}`)
             const recoCity = await recCity.data
-            if (recoCity.noOfProperties < 1) {
+            if (recoCity.properties.length <= 1) {
                 const rec = await axios.get(`${url}/v1/property/find?state=${property.state}`)
                 const reco = await rec.data
-                if (reco.noOfProperties < 1) {
+                if (reco.properties.length <= 1) {
                     const house = await axios.get(`${url}/v1/property/find`)
                     const result = await house.data
                     setRecommend(result.properties)
@@ -27,7 +28,7 @@ const Similar = ({ property }) => {
                 setRecommend(recoCity.properties)
             }
         })()
-    })
+    }, [property.city, property.state])
     const increment = () => {
         const img = document.getElementById("fourthTrend")
         img.scrollLeft += 320

@@ -61,7 +61,7 @@ const DescMob = () => {
                     (
                         <>
                             <Main property={property} />
-                            <Similar />
+                            <Similar property={property} />
                             <Seventh />
                             <Footer />
                         </>
