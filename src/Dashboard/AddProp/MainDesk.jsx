@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import noti from "../../img/noti.svg"
 import dp from "../../img/dp.png"
 import "../DeskDash/Main.css"
@@ -22,7 +23,7 @@ import analyticsBlue from "../../img/AnalyticsBlue.svg"
 import logout from "../../img/Logout.svg"
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from "react"
-import { Toast, ProgressBar, Offcanvas } from "react-bootstrap"
+import { Toast, ProgressBar, Offcanvas, Spinner } from "react-bootstrap"
 import axios from 'axios';
 import url from '../../url';
 import FourthLayer from "./FourthLayer"
@@ -55,6 +56,7 @@ const MainDesk = ({ showTop, handleTopClose }) => {
     const [now, setNow] = useState(25)
     const [info, setInfo] = useState(["Add Basic Information", "Let's get started"])
     const [step, setStep] = useState(1)
+    const [user, setUser] = useState({})
     const navigate = useNavigate()
     const { pathname } = useLocation()
 
@@ -67,8 +69,24 @@ const MainDesk = ({ showTop, handleTopClose }) => {
     useEffect(() => {
         if (!id) {
             navigate("/login")
+        } else {
+            (async () => {
+                setSpin(true)
+                const res = await axios.get(`${url}/v1/user/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }, { validateStatus: () => true })
+                if (res.status !== 200) {
+                    logOut()
+                    return
+                }
+                const result = await res.data
+                setUser(result)
+                setSpin(false)
+            })()
         }
-    })
+    }, [])
 
     const showMode = (id) => {
         document.getElementById(id).classList.toggle("showDrop")
@@ -320,6 +338,14 @@ const MainDesk = ({ showTop, handleTopClose }) => {
         }
     }
 
+    if (spin) {
+        return (
+            <div className="spinDiv">
+                <Spinner animation="border" style={{ color: "#2E7DD7" }} />
+            </div>
+        )
+    }
+
     return (
         <div className="mainDashDiv">
             <Toast className="myToast" show={showA} onClose={() => setShowA(false)}>
@@ -360,12 +386,12 @@ const MainDesk = ({ showTop, handleTopClose }) => {
                         <p>Post Property</p>
                         <h4 className="getAttDesk">Get your properties the attention of 500k+ home seekers</h4>
                     </div>
-                    <div className="getAttDiv">
-                        <span data-num="3"><img src={noti} alt="" /></span>
-                        <img src={setting} alt="" />
+                    <div>
+                        <img src={noti} alt="" />
+                        <img src={settingWhite} alt="" />
                         <div>
-                            <img src={dp} alt="" />
-                            <p>Rejoice dev</p>
+                            <img className="dashTopImg" src={user.image?.url ? user.image?.url : dp} alt="" />
+                            <p>{user.firstName}</p>
                         </div>
                     </div>
                 </div>
