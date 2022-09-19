@@ -48,7 +48,8 @@
     color: #334155;
 }
 
-.dashTop>div {
+.homeDashTop,
+.dashSec {
     display: flex;
     align-items: baseline;
     gap: 10px;
@@ -332,6 +333,8 @@
         padding: 0px;
         background-color: #FFFFFF;
         border: none;
+        height: 58px;
+        margin-top: 1rem;
     }
 
     .deskReferDiv>img {
@@ -434,4 +437,6 @@
         margin: 0px;
         border-radius: 0px;
     }
+
+
 }

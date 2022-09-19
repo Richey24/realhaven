@@ -21,6 +21,7 @@ import requestBlue from "../../img/RequestBlue.svg"
 import analytics from "../../img/Analytics.svg"
 import analyticsBlue from "../../img/AnalyticsBlue.svg"
 import logout from "../../img/Logout.svg"
+import cancel from "../../img/cancel.svg"
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from "react"
 import { Toast, ProgressBar, Offcanvas, Spinner } from "react-bootstrap"
@@ -346,6 +347,12 @@ const MainDesk = ({ showTop, handleTopClose }) => {
         )
     }
 
+    const roundUp = (event) => {
+        if (parseInt(event.target.value) > 10) {
+            event.target.value = 10
+        }
+    }
+
     return (
         <div className="mainDashDiv">
             <Toast className="myToast" show={showA} onClose={() => setShowA(false)}>
@@ -382,11 +389,12 @@ const MainDesk = ({ showTop, handleTopClose }) => {
 
             <form onSubmit={postProperty}>
                 <div className="dashTop">
-                    <div>
+                    <div className="dashTopDiv">
                         <p>Post Property</p>
                         <h4 className="getAttDesk">Get your properties the attention of 500k+ home seekers</h4>
                     </div>
-                    <div>
+                    <img className="dashTopImg" onClick={() => navigate("/home")} src={cancel} alt="" />
+                    <div className="dashSec">
                         <img src={noti} alt="" />
                         <img src={settingWhite} alt="" />
                         <div>
@@ -499,15 +507,15 @@ const MainDesk = ({ showTop, handleTopClose }) => {
                     <div className="puporseDivDesk">
                         <div>
                             <p className="purposePara">Bedroom</p>
-                            <input name="bedroom" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Bedrooms" className='locationDesk' type="number" />
+                            <input onChange={roundUp} name="bedroom" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Bedrooms" className='locationDesk' type="number" />
                         </div>
                         <div>
                             <p className="purposePara">Bathroom</p>
-                            <input name="bathroom" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Bathrooms" className='locationDesk' type="number" />
+                            <input onChange={roundUp} name="bathroom" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Bathrooms" className='locationDesk' type="number" />
                         </div>
                         <div>
                             <p className="purposePara">Toilet</p>
-                            <input name="toilet" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Toilets" className='locationDesk' type="number" />
+                            <input onChange={roundUp} name="toilet" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Toilets" className='locationDesk' type="number" />
                         </div>
                     </div>
 
@@ -533,9 +541,9 @@ const MainDesk = ({ showTop, handleTopClose }) => {
                                 <input id="price" name="price" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="Property Price" className='locationDesk' type="number" />
                             </div>
                         </div>
-                        <div style={{ width: "30%" }}>
+                        <div>
                             <p className="purposePara">Currency</p>
-                            <div style={{ width: "100%", margin: "0px" }} onClick={() => showMode("currency")} className='locationDesk'>
+                            <div style={{ margin: "0px" }} onClick={() => showMode("currency")} className='locationDesk' id="locationDesk">
                                 <p>{curr}</p>
                                 <img src={down} alt="" />
                             </div>
@@ -546,13 +554,13 @@ const MainDesk = ({ showTop, handleTopClose }) => {
                                 <li onClick={() => getCurr("Pound (£)")}>Pound (£)</li>
                             </ul>
                         </div>
-                        <div style={{ width: "30%" }}>
+                        <div>
                             <p className="purposePara">Period</p>
-                            <div style={{ width: "100%", margin: "0px" }} onClick={() => showMode("rate")} className='locationDesk'>
+                            <div style={{ margin: "0px" }} onClick={() => showMode("rate")} className='locationDesk' id="locationDesk">
                                 <p>{rate}</p>
                                 <img src={down} alt="" />
                             </div>
-                            <ul style={{ height: "150px", position: "absolute", zIndex: "1", margin: "0px" }} id='rate' className='propertyListDesk'>
+                            <ul style={{ height: "120px", position: "absolute", zIndex: "1", margin: "0px" }} id='rate' className='propertyListDesk'>
                                 <li onClick={() => getRate("/year")}>/year</li>
                                 <li onClick={() => getRate("/month")}>/month</li>
                                 <li onClick={() => getRate("/week")}>/week</li>
@@ -614,7 +622,7 @@ const MainDesk = ({ showTop, handleTopClose }) => {
                     <p className="addFinal1"><img src={pen} alt="" />Save to Drafts</p>
                     <div>
                         <p onClick={moveBack} style={{ background: "white", color: "black", border: "1px solid #E5E7EB" }} className="addFinal2">Back</p>
-                        <p onClick={moveOn} className="addFinal2">Next</p>
+                        <p id="addFinal33" onClick={moveOn} className="addFinal2">Continue</p>
                     </div>
                 </div>
                 <FourthLayer spin={spin} property={property} />

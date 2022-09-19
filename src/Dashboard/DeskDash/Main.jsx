@@ -92,7 +92,7 @@ const Main = ({ showTop, handleTopClose }) => {
             <div style={{ visibility: spin ? "hidden" : "" }} >
                 <div className="dashTop">
                     <p>Your Dashboard</p>
-                    <div>
+                    <div className="homeDashTop">
                         <img src={noti} alt="" />
                         <img src={settingWhite} alt="" />
                         <div>
