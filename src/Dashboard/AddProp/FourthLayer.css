@@ -48,6 +48,7 @@
     color: #374151;
     text-transform: uppercase;
     display: flex;
+    justify-content: space-between;
     gap: 10px;
     word-break: break-all;
 }
@@ -206,6 +207,10 @@
 @media screen and (max-width: 800px) {
     .middleImage {
         width: 90vw;
+    }
+
+    .firstDiv {
+        width: 100%;
     }
 
     .secondDiv img {

@@ -7,6 +7,7 @@
 .descMainImage {
     width: 100%;
     height: 300px;
+    border-radius: 16px;
 }
 
 .descImages {
@@ -28,6 +29,7 @@
 .descOtherImage img {
     width: 20%;
     height: 70px;
+    border-radius: 8px;
 }
 
 .theDesc {

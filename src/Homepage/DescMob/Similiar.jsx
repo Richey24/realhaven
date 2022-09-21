@@ -11,7 +11,6 @@ const Similar = ({ property }) => {
     const navigate = useNavigate()
     useEffect(() => {
         (async () => {
-            console.log(property.state);
             const recCity = await axios.get(`${url}/v1/property/find?state=${property.state}&city=${property.city}`)
             const recoCity = await recCity.data
             if (recoCity.properties.length <= 1) {

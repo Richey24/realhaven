@@ -4,7 +4,6 @@ import dp from "../../img/dp.png"
 import "../DeskDash/Main.css"
 import "./MainDesk.css"
 import down from '../../img/Icon.svg'
-import "../../Homepage/Desktop/Header.css"
 import { useState } from 'react';
 import preview from "../../img/preview.svg"
 import pen from "../../img/Edit.svg"
@@ -43,7 +42,6 @@ for (let i = 0; i < document.cookie?.split(" ").length; i++) {
 const MainDesk = ({ showTop, handleTopClose }) => {
     const [purpose, setPurpose] = useState("Purpose")
     const [propType, setPropType] = useState("Property type")
-    const [curr, setCurr] = useState("Naira (₦)")
     const [rate, setRate] = useState("/year")
     const [spin, setSpin] = useState(false)
     const [previewImage1, setPreviewImage1] = useState("")
@@ -69,7 +67,7 @@ const MainDesk = ({ showTop, handleTopClose }) => {
 
     useEffect(() => {
         if (!id) {
-            navigate("/login")
+            logOut()
         } else {
             (async () => {
                 setSpin(true)
@@ -106,11 +104,6 @@ const MainDesk = ({ showTop, handleTopClose }) => {
     const getPurpose = (value) => {
         setPurpose(value)
         showMode("mode")
-    }
-
-    const getCurr = (value) => {
-        setCurr(value)
-        showMode("currency")
     }
 
     const getPreviewImage1 = (event, id) => {
@@ -289,7 +282,6 @@ const MainDesk = ({ showTop, handleTopClose }) => {
                     description: desc.value,
                     stateOfBuilding: newArray,
                     price: elements.price.value,
-                    currency: curr,
                     pricePer: rate,
                     additionalFeatures: elements.features.value.split(","),
                     mainImage: elements.mainImage.files[0],
@@ -426,7 +418,7 @@ const MainDesk = ({ showTop, handleTopClose }) => {
                         </div>
                         <div>
                             <p className="purposePara" style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", width: "19.5vw" }}>Apt/Unit <span className="aptSpan">optional</span></p>
-                            <input name="apt" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="000" className='locationDesk' type="text" />
+                            <input name="apt" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="000" className='locationDesk' type="number" />
                         </div>
                         <div>
                             <p className="purposePara">Country</p>
@@ -501,6 +493,13 @@ const MainDesk = ({ showTop, handleTopClose }) => {
                                 <li onClick={() => getPropType("Log cabin")}>Log cabin</li>
                             </ul>
                         </div>
+
+                        <div>
+                            <p className="purposePara">Property price</p>
+                            <div>
+                                <input id="price" name="price" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="Property Price" className='locationDesk' type="number" />
+                            </div>
+                        </div>
                     </div>
 
 
@@ -534,27 +533,7 @@ const MainDesk = ({ showTop, handleTopClose }) => {
                 </div>
 
                 <div id="thirdLayer" style={{ display: "none" }}>
-                    <div className="puporseDivDesk">
-                        <div style={{ width: "30%" }}>
-                            <p className="purposePara">Property price</p>
-                            <div>
-                                <input id="price" name="price" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="Property Price" className='locationDesk' type="number" />
-                            </div>
-                        </div>
-                        <div>
-                            <p className="purposePara">Currency</p>
-                            <div style={{ margin: "0px" }} onClick={() => showMode("currency")} className='locationDesk' id="locationDesk">
-                                <p>{curr}</p>
-                                <img src={down} alt="" />
-                            </div>
-                            <ul style={{ height: "150px", position: "absolute", zIndex: "1", margin: "0px" }} id='currency' className='propertyListDesk'>
-                                <li onClick={() => getCurr("Naira (₦)")}>Naira (₦)</li>
-                                <li onClick={() => getCurr("US Dollar ($)")}>US Dollar ($)</li>
-                                <li onClick={() => getCurr("Euro (€)")}>Euro (€)</li>
-                                <li onClick={() => getCurr("Pound (£)")}>Pound (£)</li>
-                            </ul>
-                        </div>
-                        <div>
+                    {/* <div>
                             <p className="purposePara">Period</p>
                             <div style={{ margin: "0px" }} onClick={() => showMode("rate")} className='locationDesk' id="locationDesk">
                                 <p>{rate}</p>
@@ -565,8 +544,7 @@ const MainDesk = ({ showTop, handleTopClose }) => {
                                 <li onClick={() => getRate("/month")}>/month</li>
                                 <li onClick={() => getRate("/week")}>/week</li>
                             </ul>
-                        </div>
-                    </div>
+                        </div> */}
 
                     <div className="additionFeat">
                         <p className="purposePara">Additional Features</p>

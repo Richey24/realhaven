@@ -42,7 +42,7 @@ const FourthLayer = ({ property, spin }) => {
 
             <div className="sixthDiv">
                 <p className="addFinal1"><img src={pen} alt="" />Save to Drafts</p>
-                <button type="submit" style={{ background: "#2E7DD7", color: "white", border: "none", outline: "none" }} className="addFinal1"><img src={send} alt="" />{spin ? (<Spinner animation="border" style={{ color: "white" }} />) : "Post Property"}</button>
+                <button type="submit" style={{ background: "#2E7DD7", color: "white", border: "none", outline: "none" }} className="addFinal2" id="addFinal33"><img src={send} alt="" />{spin ? (<Spinner animation="border" style={{ color: "white" }} />) : "Post Property"}</button>
             </div>
         </div>
     )

@@ -61,7 +61,7 @@ const Main = ({ property }) => {
                 </div>
             </div>
             <div className="theDesc">
-                <p className="mobType">{property.title}<span>{property.purpose}</span></p>
+                <p className="mobType">{property.title}<span style={{ marginLeft: "0.5rem" }}>{property.purpose}</span></p>
                 <p className="mobLocation">{property.address} {property.city} {property.state}</p>
                 <p className="mobAddress">{property.description}</p>
                 <div className="descImgInfoMob">
@@ -108,10 +108,10 @@ const Main = ({ property }) => {
                         <li>Short let</li>
                     </ul>
                     <ul className='myAuth'>
-                        <li onClick={() => navigate(id ? '/home' : '/register')}>{id ? "Dashboard" : "Sign up"}</li>
-                        <li onClick={() => navigate(id ? '/listing' : '/login')}>{id ? "Listing" : "Sign in"}</li>
+                        <li onClick={() => { handleTopClose(); navigate(id ? '/home' : '/register') }}>{id ? "Dashboard" : "Sign up"}</li>
+                        <li onClick={() => { handleTopClose(); navigate(id ? '/listing' : '/login') }}>{id ? "Listing" : "Sign in"}</li>
                     </ul>
-                    <p className='postProps'>Post a property</p>
+                    <p style={{ marginTop: "5rem" }} onClick={() => { handleTopClose(); navigate(id ? '/post' : '/login') }} className='postProps'>Post a property</p>
                 </Offcanvas.Body>
             </Offcanvas>
         </div>
