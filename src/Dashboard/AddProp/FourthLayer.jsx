@@ -8,6 +8,7 @@ import send from "../../img/Send.svg"
 import { Spinner } from 'react-bootstrap';
 
 const FourthLayer = ({ property, spin }) => {
+
     return (
         <div style={{ display: "none" }} id="fourthLayer" className="fourthLayer">
             <div className="firstDiv">
@@ -22,7 +23,7 @@ const FourthLayer = ({ property, spin }) => {
             </div>
             <div className="thirdDiv">
                 <p>{property.title} <span>{property.purpose}</span></p>
-                <h5>{property.price}{property.currency}{property.pricePer}</h5>
+                <h5>₦{property.price}{property.pricePer}</h5>
             </div>
             <div className="fourthDiv">
                 <h5 className="fourthAddress"><img src={locate} alt="" />{`${property.aptUnit} ${property.address} ${property.city} ${property.state} ${property.country} ${property.postalCode}`}</h5>
@@ -39,6 +40,15 @@ const FourthLayer = ({ property, spin }) => {
                 </div>
             </div>
             <p className="fifthDesc">{property.description}</p>
+
+            <p className="feat">Features:</p>
+            <ul className="featList">
+                {
+                    property.additionalFeatures?.map((feat, i) => (
+                        <li key={i}>{feat}</li>
+                    ))
+                }
+            </ul>
 
             <div className="sixthDiv">
                 <p className="addFinal1"><img src={pen} alt="" />Save to Drafts</p>

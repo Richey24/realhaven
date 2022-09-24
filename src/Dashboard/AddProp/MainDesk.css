@@ -340,6 +340,12 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
+.locationDesk>#price {
+    height: 100%;
+    border: none;
+    outline: none;
+}
+
 .propertyListDesk {
     height: 197px;
     background-color: #FFFFFF;
@@ -459,7 +465,9 @@ input[type="checkbox"] {
 }
 
 #secondLayer>div>div>div,
-#secondLayer>div>div>ul {
+#secondLayer>div>div>ul,
+#firstLayer>div>div>div,
+#firstLayer>div>div>ul {
     width: 20vw;
     font-family: 'Sora';
     font-style: normal;
@@ -591,6 +599,7 @@ input[type="checkbox"] {
     }
 
     #secondLayer>div>div>div,
+    #firstLayer>div>div>div,
     #locationDesk {
         width: 90vw;
         height: 60px;
@@ -598,6 +607,7 @@ input[type="checkbox"] {
     }
 
     #secondLayer>div>div>ul,
+    #firstLayer>div>div>ul,
     #thirdLayer>div>div>ul {
         width: 90vw;
         background-color: #F9FAFB;

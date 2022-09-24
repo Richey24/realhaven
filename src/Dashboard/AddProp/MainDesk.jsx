@@ -27,6 +27,7 @@ import { Toast, ProgressBar, Offcanvas, Spinner } from "react-bootstrap"
 import axios from 'axios';
 import url from '../../url';
 import FourthLayer from "./FourthLayer"
+import NaijaStates from 'naija-state-local-government';
 
 let token = ""
 let id = ""
@@ -37,6 +38,10 @@ for (let i = 0; i < document.cookie?.split(" ").length; i++) {
     if (document.cookie?.split(" ")[i].split("=")[0] === "id") {
         id = document.cookie?.split(" ")[i].split("=")[1]
     }
+}
+
+const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 const MainDesk = ({ showTop, handleTopClose }) => {
@@ -56,6 +61,8 @@ const MainDesk = ({ showTop, handleTopClose }) => {
     const [info, setInfo] = useState(["Add Basic Information", "Let's get started"])
     const [step, setStep] = useState(1)
     const [user, setUser] = useState({})
+    const [state, setState] = useState(NaijaStates.states()[24])
+    const [city, setCity] = useState(NaijaStates.lgas(state).lgas[0])
     const navigate = useNavigate()
     const { pathname } = useLocation()
 
@@ -106,6 +113,17 @@ const MainDesk = ({ showTop, handleTopClose }) => {
         showMode("mode")
     }
 
+    const getState = (value) => {
+        setState(value)
+        setCity(NaijaStates.lgas(value).lgas[0])
+        showMode("state")
+    }
+
+    const getCity = (value) => {
+        setCity(value)
+        showMode("city")
+    }
+
     const getPreviewImage1 = (event, id) => {
         const imgUrl = URL.createObjectURL(event.target.files[0])
         switch (id) {
@@ -140,7 +158,7 @@ const MainDesk = ({ showTop, handleTopClose }) => {
         mainProp.append("title", property.title)
         mainProp.append("address", property.address)
         mainProp.append("aptUnit", property.aptUnit)
-        mainProp.append("country", property.country)
+        mainProp.append("country", "Nigeria")
         mainProp.append("state", property.state)
         mainProp.append("city", property.city)
         mainProp.append("postalCode", property.postalCode)
@@ -206,7 +224,7 @@ const MainDesk = ({ showTop, handleTopClose }) => {
         const desc = document.getElementById("desc")
         switch (now) {
             case 25:
-                if (!elements.title.value || !elements.address.value || !elements.country.value || !elements.city.value || !elements.state.value || !elements.postalCode.value) {
+                if (!elements.title.value || !elements.address.value) {
                     setShowA(true)
                     setTimeout(() => {
                         setShowA(false)
@@ -266,13 +284,15 @@ const MainDesk = ({ showTop, handleTopClose }) => {
 
                 const imageArray = [elements.secondImage.files[0], elements.thirdImage.files[0], elements.fourthImage.files[0], elements.fifthImage.files[0], elements.sixthImage.files[0]].filter((image) => image !== undefined)
 
+                const price = numberWithCommas(elements.price.value)
+
                 const theProp = {
                     title: elements.title.value,
                     address: elements.address.value,
                     aptUnit: elements.apt.value,
-                    city: elements.city.value,
-                    state: elements.state.value,
-                    country: elements.country.value,
+                    city: city,
+                    state: state,
+                    country: "Nigeria",
                     postalCode: elements.postalCode.value,
                     purpose: purpose,
                     propertyType: propType,
@@ -281,7 +301,7 @@ const MainDesk = ({ showTop, handleTopClose }) => {
                     noOfToilet: elements.toilet.value,
                     description: desc.value,
                     stateOfBuilding: newArray,
-                    price: elements.price.value,
+                    price: price,
                     pricePer: rate,
                     additionalFeatures: elements.features.value.split(","),
                     mainImage: elements.mainImage.files[0],
@@ -422,18 +442,38 @@ const MainDesk = ({ showTop, handleTopClose }) => {
                         </div>
                         <div>
                             <p className="purposePara">Country</p>
-                            <input name="country" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="Nigeria" className='locationDesk' type="text" />
+                            <input name="country" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} disabled value="Nigeria" className='locationDesk' type="text" />
                         </div>
                     </div>
 
                     <div className="puporseDivDesk">
                         <div>
-                            <p className="purposePara">City</p>
-                            <input name="city" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="City/Town" className='locationDesk' type="text" />
+                            <p className="purposePara">State</p>
+                            <div style={{ margin: "0px" }} onClick={() => showMode("state")} className='locationDesk'>
+                                <p>{state}</p>
+                                <img src={down} alt="" />
+                            </div>
+                            <ul style={{ height: "200px", position: "absolute", zIndex: "1", margin: "0px" }} id='state' className='propertyListDesk'>
+                                {
+                                    NaijaStates.states().map((state, i) => (
+                                        <li onClick={() => getState(state)} key={i}>{state}</li>
+                                    ))
+                                }
+                            </ul>
                         </div>
                         <div>
-                            <p className="purposePara">State</p>
-                            <input name="state" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="State/Province" className='locationDesk' type="text" />
+                            <p className="purposePara">City</p>
+                            <div style={{ margin: "0px" }} onClick={() => showMode("city")} className='locationDesk'>
+                                <p>{city}</p>
+                                <img src={down} alt="" />
+                            </div>
+                            <ul style={{ height: "200px", position: "absolute", zIndex: "1", margin: "0px" }} id='city' className='propertyListDesk'>
+                                {
+                                    NaijaStates.lgas(state).lgas.map((lga, i) => (
+                                        <li onClick={() => getCity(lga)} key={i}>{lga}</li>
+                                    ))
+                                }
+                            </ul>
                         </div>
                         <div>
                             <p className="purposePara">Postal code</p>
@@ -496,8 +536,9 @@ const MainDesk = ({ showTop, handleTopClose }) => {
 
                         <div>
                             <p className="purposePara">Property price</p>
-                            <div>
-                                <input id="price" name="price" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="Property Price" className='locationDesk' type="number" />
+                            <div style={{ paddingTop: "0px", paddingRight: "0px", cursor: "unset" }} className='locationDesk'>
+                                <p>₦</p>
+                                <input id="price" name="price" placeholder="150,000" type="number" />
                             </div>
                         </div>
                     </div>
