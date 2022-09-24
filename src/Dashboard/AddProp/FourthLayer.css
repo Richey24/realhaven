@@ -23,7 +23,7 @@
 
 .secondDiv {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 10px;
     margin-top: 20px;
 }
@@ -230,6 +230,10 @@
 @media screen and (max-width: 800px) {
     .middleImage {
         width: 90vw;
+    }
+
+    #addFinal33 {
+        width: 200px;
     }
 
     .firstDiv {

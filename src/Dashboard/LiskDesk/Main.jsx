@@ -1,10 +1,10 @@
 import noti from "../../img/noti.svg"
 import dp from "../../img/dp.png"
-import search from "../../img/Search.svg"
-import "../DeskDash/Main.css"
+import settingWhite from "../../img/SettingWhite.svg"
 import "./Main.css"
 import NaijaStates from 'naija-state-local-government';
 import down from '../../img/Icon.svg'
+import search from "../../img/Search.svg"
 import { useState, useEffect } from 'react';
 import "../../Homepage/Desktop/Header.css"
 import locate from "../../img/Location.svg"
@@ -36,6 +36,7 @@ const Main = () => {
     const [singleHouse, setSingleHouse] = useState({})
     const [houses, setHouses] = useState([])
     const [fHouses, setFHouses] = useState([])
+    const [user, setUser] = useState({})
     const navigate = useNavigate()
     useEffect(() => {
         const email = document.cookie.split("=")[1]
@@ -44,12 +45,25 @@ const Main = () => {
         } else {
             (async () => {
                 setSpin(true)
-                const res = await axios.get(`${url}/v1/property/find?userId=${id}`, {
+                const res = await axios.get(`${url}/v1/user/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }, { validateStatus: () => true })
+                if (res.status !== 200) {
+                    document.cookie = "token=;expires=" + new Date(0).toUTCString()
+                    document.cookie = "id=;expires=" + new Date(0).toUTCString()
+                    navigate("/")
+                    return
+                }
+                const userRes = await res.data
+                setUser(userRes)
+                const rep = await axios.get(`${url}/v1/property/find?userId=${id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
                 })
-                const houseResult = await res.data
+                const houseResult = await rep.data
                 setHouses(houseResult.properties)
                 setFHouses(houseResult.properties)
                 setSpin(false)
@@ -73,7 +87,6 @@ const Main = () => {
     }
 
     const getHouseByID = async (house) => {
-        console.log(house);
         setSpin(true)
         setSingleHouse(house)
         setSpin(false)
@@ -90,8 +103,12 @@ const Main = () => {
         }
     }
 
+    const getActive = (x) => {
+        setActive(x)
+    }
+
     return (
-        <div className="mainDashDiv">
+        <div className="listDashDiv">
             {
                 spin && (
                     <div className="spinDiv">
@@ -100,63 +117,34 @@ const Main = () => {
                 )
             }
             <div className="dashTop">
-                <div>
-                    <img src={search} alt="" />
-                    <input className="listingInput" type="text" placeholder="Search for properties titles, location etc" />
+                <div id="theListText">
+                    <h6>Your Listing</h6>
+                    <p>All the properties you’ve listed on your agency</p>
                 </div>
-                <div>
-                    <span data-num="3"><img src={noti} alt="" /></span>
-                    <img src={dp} alt="" />
+                <div id="theListIcon">
+                    <img src={noti} alt="" />
+                    <img src={settingWhite} alt="" />
+                    <div>
+                        <img className="dashTopImg" src={user.image?.url ? user.image?.url : dp} alt="" />
+                        <p>{user.firstName}</p>
+                    </div>
                 </div>
             </div>
 
             <div className="listFilterDiv">
-                <p className="listFilterPara">Listings</p>
-                <div className="listInsideDiv">
-                    <div>
-                        <div style={{ minWidth: "169px", width: "auto" }} onClick={() => showMode("location")} className='locationDesk'>
-                            <p style={{ fontSize: "14px", marginRight: "10px" }}>{loc}</p>
-                            <img src={down} alt="" />
-                        </div>
-                        <ul style={{ width: "auto", position: "absolute", zIndex: "1" }} id='location' className='propertyListDesk'>
-                            {
-                                NaijaStates.states().map((state, i) => (
-                                    <li onClick={() => getLoc(state)} key={i} >{state}</li>
-                                ))
-                            }
-                        </ul>
-                    </div>
-                    <div>
-                        <div style={{ width: "169px" }} onClick={() => showMode("apartment")} className='locationDesk'>
-                            <p style={{ fontSize: "14px" }}>Apartments</p>
-                            <img src={down} alt="" />
-                        </div>
-                        <ul style={{ width: "169px", position: "absolute", zIndex: "1" }} id='apartment' className='propertyListDesk'>
-                            <label htmlFor='duplex'><input type="checkbox" id='duplex' value='Duplex' />Duplex</label>
-                            <br />
-                            <label htmlFor='apartments'><input type="checkbox" id='apartments' value='Apartment' />Apartments</label>
-                            <br />
-                            <label htmlFor='bungalow'><input type="checkbox" id='bungalow' value='Detached Bungalow' />Detached Bungalow</label>
-                            <br />
-                            <label htmlFor='office'><input type="checkbox" id='office' value='Office Space' />Office Space</label>
-                            <br />
-                            <label htmlFor='penthouse'><input type="checkbox" id='penthouse' value='Penthouse' />Penthouse</label>
-                            <br />
-                            <label htmlFor='shop'><input type="checkbox" id='shop' value='Shop' />Shop</label>
-                        </ul>
-                    </div>
+                <div className="listP">
+                    <p onClick={() => getActive("all")} className={active === "all" && "activeList"}>All<span>200</span></p>
+                    <p onClick={() => getActive("pro")} className={active === "pro" && "activeList"}>Promoted<span>54</span></p>
+                    <p onClick={() => getActive("sold")} className={active === "sold" && "activeList"}>Sold<span>78</span></p>
+                    <p onClick={() => getActive("active")} className={active === "active" && "activeList"}>Active<span>122</span></p>
+                    <p onClick={() => getActive("draft")} className={active === "draft" && "activeList"}>Draft<span>4</span></p>
+                </div>
+                <div>
+                    <div className="listSearch"><img src={search} alt="" /><input placeholder="apartment" type="text" id="searchInput" /></div>
+                    <div className="listFilter">Recent <img src={down} alt="" /></div>
+                    <p className="listPro">Promote Properties</p>
                 </div>
             </div>
-
-            <div className="buyWrapper">
-                <div className="listFilterBuy">
-                    <p onClick={() => { setActive("all"); filterHouse("All") }} className={active === "all" ? "activeListDesk" : ""}>All({fHouses.length})</p>
-                    <p onClick={() => { setActive("sale"); filterHouse("Sale") }} className={active === "sale" ? "activeListDesk" : ""}>Sale({fHouses.filter((house) => house.purpose === "Sale").length})</p>
-                    <p onClick={() => { setActive("rent"); filterHouse("Rent") }} className={active === "rent" ? "activeListDesk" : ""}>Rent({fHouses.filter((house) => house.purpose === "Rent").length})</p>
-                    <p onClick={() => { setActive("buy"); filterHouse("Buy") }} className={active === "buy" ? "activeListDesk" : ""}>Buy({fHouses.filter((house) => house.purpose === "Buy").length})</p>
-                </div>
-            </div>
-
 
             {
                 houses.map((house, i) => (
@@ -177,7 +165,7 @@ const Main = () => {
                                         <img src={toilet} alt="" />
                                     </div>
                                 </div>
-                                <p className="listAmtDesk">{house.price} {house.currency}{house.period}</p>
+                                <p className="listAmtDesk">{house.price} {house.pricePer}</p>
                             </div>
                         </div>
                     </div>
@@ -205,7 +193,7 @@ const Main = () => {
                                 <img src={toilet} alt="" />
                             </div>
                         </div>
-                        <p style={{ margin: "0px", textAlign: "left", marginLeft: "5%", marginTop: "13px" }} className="listAmtDesk">{singleHouse.price} {singleHouse.currency}{singleHouse.period}</p>
+                        <p style={{ margin: "0px", textAlign: "left", marginLeft: "5%", marginTop: "13px" }} className="listAmtDesk">{singleHouse.price} {singleHouse.pricePer}</p>
                         <p className="canvasInfo">{singleHouse.description}</p>
                         <p className="otherPhotos">Other photos</p>
                         <div className="otherPhotoDiv">
