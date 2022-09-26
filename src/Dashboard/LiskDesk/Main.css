@@ -1,6 +1,23 @@
 .listDashDiv {
     width: 100vw;
     background-color: #F9FAFB;
+    font-family: 'Sora';
+    font-style: normal;
+}
+
+.dashListTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-top: 10px;
+    padding-left: 64px;
+    padding-right: 64px;
+    height: 86px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #E5E7EB;
+    font-family: 'Sora';
+    font-style: normal;
 }
 
 #theListText>h6 {
@@ -19,6 +36,17 @@
     display: flex;
     align-items: baseline;
     gap: 10px;
+}
+
+#theListIcon>div {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    min-width: 93px;
+    max-width: auto;
+    height: 24px;
+    background: #F1F5F9;
+    border-radius: 100px;
 }
 
 .listFilterDiv {
@@ -65,7 +93,7 @@
 }
 
 .listSearch {
-    width: 45%;
+    width: 12vw;
     height: 44px;
     background: #F3F4F6;
     border: 0.5px solid #DFE3E8;
@@ -89,16 +117,59 @@
     outline: none;
 }
 
+.filterDivList {
+    width: 12vw;
+    position: relative;
+}
+
+.listSelect {
+    position: absolute;
+    width: 14vw;
+    height: 175px;
+    padding-top: 10px;
+    padding-left: 18px;
+    background: #FFFFFF;
+    border: 0.5px solid #F3F4F6;
+    box-shadow: 24px 0px 48px rgba(17, 17, 17, 0.11);
+    border-radius: 8px;
+    top: 30px;
+    margin-left: 30px;
+    display: none;
+}
+
+.filterDivList>ul>li {
+    list-style-type: none;
+    margin-bottom: 10px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #6B7280;
+    cursor: pointer;
+}
+
+.filterDivList>ul>li:hover {
+    color: #2E7DD7;
+}
+
 .listFilter {
     height: 44px;
-    width: 30%;
+    width: 100%;
     background: #FFFFFF;
     border: 1px solid #97BEEB;
     border-radius: 4px;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: baseline;
     cursor: pointer;
+    padding-top: 8px;
+}
+
+.listFilter>p {
+    width: 72%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .listPro {
@@ -106,179 +177,14 @@
     background: #F3F4F6;
     border: 0.5px solid #DFE3E8;
     border-radius: 4px;
-    width: 45%;
+    width: 12vw;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-}
-
-.listContentDiv {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    gap: 16px;
-    width: 70vw;
-    height: auto;
-    background: #FFFFFF;
-    border: 1px solid #2E7DD7;
-    border-radius: 16px;
-    margin-left: 5%;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    cursor: pointer;
-}
-
-.listContentDiv h4 {
-    font-family: 'Sora';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 160%;
-    color: #374151;
-    margin-top: 1rem;
-    text-transform: capitalize;
-}
-
-.listContentDiv h5 {
-    font-family: 'Sora';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 160%;
-    color: #374151;
-    display: flex;
-    width: 80%;
-    align-items: center;
-    margin-bottom: 50px;
-}
-
-.listContentDiv h5 img {
-    margin-right: 10px;
-}
-
-.listContentDivImg {
-    width: 200px;
-    height: 160px;
-}
-
-.listAmtDesk {
-    font-family: 'Sora';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 160%;
-    color: #2E7DD7;
-    margin-bottom: -5px;
-}
-
-.descImgInfoMob {
-    display: flex;
-    justify-content: space-between;
-    width: 43vw;
-    flex-wrap: wrap;
-}
-
-.listCanvas {
-    height: 100%;
-    width: 350px;
-    transition: ease-in-out 0.5s;
-    padding-bottom: 10px;
-    border-top: 1px solid #E5E7EB;
-}
-
-.offcanvas-backdrop.show {
-    opacity: 0;
-}
-
-.canvasMainImage {
-    width: 90%;
-    border-radius: 16px;
-}
-
-.canvasHouseTitle {
-    font-family: 'Sora';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 160%;
-    color: #374151;
-    margin-top: 1rem;
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: left;
-    text-transform: capitalize;
-}
-
-.canvasHouseTitle span {
-    padding: 5px 10px;
-    background: #F8EDED;
-    border-radius: 14px;
-    color: #BF5E65;
-    font-weight: 400;
-}
-
-.canvasAddress {
-    font-family: 'Sora';
-    font-style: normal;
-    font-weight: 400;
     font-size: 14px;
-    line-height: 160%;
-    color: #374151;
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: left;
-    text-transform: capitalize;
 }
 
-.canvasAddress img {
-    margin-right: 10px;
-}
-
-.canvasInfo {
-    font-family: 'Sora';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 160%;
-    color: #6B7280;
-    width: 90%;
-    text-align: left;
-    margin-top: 10px;
-    text-transform: capitalize;
-}
-
-.otherPhotos {
-    font-family: 'Sora';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 160%;
-    color: #374151;
-    text-align: left;
-    margin-left: 5%;
-}
-
-.otherPhotoDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.otherPhotoDiv img {
-    width: 96px;
-    height: 76.8px;
-}
 
 .spinDiv {
     position: fixed;
@@ -286,4 +192,16 @@
     height: 100vh;
     top: 50%;
     left: 50%;
+}
+
+.resultAmt {
+    margin-left: 6%;
+    margin-top: 2rem;
+    font-weight: 400;
+    font-size: 16px;
+    color: #2E7DD7;
+}
+
+.shown {
+    display: block;
 }

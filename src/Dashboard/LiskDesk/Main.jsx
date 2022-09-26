@@ -31,6 +31,7 @@ for (let i = 0; i < document.cookie?.split(" ").length; i++) {
 const Main = () => {
     const [loc, setLoc] = useState("Lagos")
     const [active, setActive] = useState("all")
+    const [fAct, setFAct] = useState("recent")
     const [showTop, setShowTop] = useState(false)
     const [spin, setSpin] = useState(false)
     const [singleHouse, setSingleHouse] = useState({})
@@ -107,6 +108,15 @@ const Main = () => {
         setActive(x)
     }
 
+    const listSelect = () => {
+        document.getElementById("listFilter").classList.toggle("shown")
+    }
+
+    const getAct = (value) => {
+        setFAct(value)
+        listSelect()
+    }
+
     return (
         <div className="listDashDiv">
             {
@@ -116,7 +126,7 @@ const Main = () => {
                     </div>
                 )
             }
-            <div className="dashTop">
+            <div className="dashListTop">
                 <div id="theListText">
                     <h6>Your Listing</h6>
                     <p>All the properties you’ve listed on your agency</p>
@@ -141,74 +151,25 @@ const Main = () => {
                 </div>
                 <div>
                     <div className="listSearch"><img src={search} alt="" /><input placeholder="apartment" type="text" id="searchInput" /></div>
-                    <div className="listFilter">Recent <img src={down} alt="" /></div>
+                    <div className="filterDivList">
+                        <div onClick={listSelect} className="listFilter"><p>{fAct}</p> <img src={down} alt="" /></div>
+                        <ul id="listFilter" className="listSelect">
+                            <li onClick={() => getAct("Default")} style={{ color: fAct === "Default" && "#2E7DD7" }}>Default</li>
+                            <li onClick={() => getAct("Recent")} style={{ color: fAct === "Recent" && "#2E7DD7" }}>Recent</li>
+                            <li onClick={() => getAct("Date Posted (desc)")} style={{ color: fAct === "Date Posted (desc)" && "#2E7DD7" }}>Date Posted (desc)</li>
+                            <li onClick={() => getAct("Alphabetical (asc)")} style={{ color: fAct === "Alphabetical (asc)" && "#2E7DD7" }}>Alphabetical (asc)</li>
+                            <li onClick={() => getAct("Alphabetical (desc)")} style={{ color: fAct === "Alphabetical (desc)" && "#2E7DD7" }}>Alphabetical (desc)</li>
+                        </ul>
+                    </div>
                     <p className="listPro">Promote Properties</p>
                 </div>
             </div>
 
-            {
-                houses.map((house, i) => (
-                    <div key={i} onClick={() => getHouseByID(house)} className="listContentDiv">
-                        <img className="listContentDivImg" src={house.mainImage?.url} alt="" />
-                        <div>
-                            <h4>{house.title}</h4>
-                            <h5><img src={locate} alt="" />{house.address}</h5>
-                            <div className="descImgInfoMob">
-                                <div className="blueBackMob">
-                                    <div data-value={house.noOfBedroom} className="roomImgMob">
-                                        <img src={room} alt="" />
-                                    </div>
-                                    <div className="bathroomImgMob" data-value={house.noOfBathroom}>
-                                        <img src={bathroom} alt="" />
-                                    </div>
-                                    <div className="toiletImgMob" data-value={house.noOfToilet}>
-                                        <img src={toilet} alt="" />
-                                    </div>
-                                </div>
-                                <p className="listAmtDesk">{house.price} {house.pricePer}</p>
-                            </div>
-                        </div>
-                    </div>
-                ))
-            }
+            <p className="resultAmt">Displaying {houses.length} results</p>
 
+            <div className="mainContent">
 
-            <Offcanvas className="listCanvas" show={showTop} onHide={handleTopClose} placement="end">
-                <Offcanvas.Header>
-                    <Offcanvas.Title></Offcanvas.Title>
-                </Offcanvas.Header>
-                <Offcanvas.Body style={{ padding: '0' }}>
-                    <center>
-                        <img className="canvasMainImage" src={singleHouse.mainImage?.url} alt="" />
-                        <p className="canvasHouseTitle">{singleHouse.title}<span>{singleHouse.purpose}</span></p>
-                        <h5 className="canvasAddress"><img src={locate} alt="" />{singleHouse.address}</h5>
-                        <div style={{ marginLeft: "5%", marginTop: "23px" }} className="blueBackMob">
-                            <div data-value={singleHouse.noOfBedroom} className="roomImgMob">
-                                <img src={room} alt="" />
-                            </div>
-                            <div className="bathroomImgMob" data-value={singleHouse.noOfBathroom}>
-                                <img src={bathroom} alt="" />
-                            </div>
-                            <div className="toiletImgMob" data-value={singleHouse.noOfToilet}>
-                                <img src={toilet} alt="" />
-                            </div>
-                        </div>
-                        <p style={{ margin: "0px", textAlign: "left", marginLeft: "5%", marginTop: "13px" }} className="listAmtDesk">{singleHouse.price} {singleHouse.pricePer}</p>
-                        <p className="canvasInfo">{singleHouse.description}</p>
-                        <p className="otherPhotos">Other photos</p>
-                        <div className="otherPhotoDiv">
-                            {
-                                singleHouse.otherImages?.url?.map((image, i) => (
-                                    <img key={i} src={image} alt="" />
-
-                                ))
-                            }
-                        </div>
-                    </center>
-                </Offcanvas.Body>
-            </Offcanvas>
-
-
+            </div>
         </div>
     )
 }
