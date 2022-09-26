@@ -29,7 +29,7 @@ const Fourth = ({ properties }) => {
                             <img src={property?.mainImage?.url} alt="" />
                             <h4>{property.title}</h4>
                             <p>{property.address} {property.city} {property.state !== "No states available" && property.state} {property.country}</p>
-                            <span>{property.price} {property.currency}{property.pricePer}</span>
+                            <span>₦{property.price}{property.pricePer}</span>
                         </div>
                     ))
                 }

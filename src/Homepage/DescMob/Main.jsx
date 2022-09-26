@@ -81,7 +81,7 @@ const Main = ({ property }) => {
                         <img src={link} alt="" />
                     </div>
                 </div>
-                <p className="mobAmount">{property.price}{property.currency}{property.pricePer}</p>
+                <p className="mobAmount">₦{property.price}{property.pricePer}</p>
                 <p className="mobContact"><img src={call} alt="" /> Contact Agent</p>
             </div>
             <p className="descFeatures">Features:</p>

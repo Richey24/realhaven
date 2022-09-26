@@ -78,7 +78,7 @@ const MainDesk = ({ property }) => {
                         </div>
                     </div>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "3rem" }}>
-                        <p className="housePriceDesk">{property.price}{property.currency}{property.pricePer}</p>
+                        <p className="housePriceDesk">₦{property.price}{property.pricePer}</p>
                         <p className="contactAgent"><img src={call} alt="" /> Contact Agent</p>
                     </div>
                 </div>
