@@ -1,0 +1,36 @@
+#fullScreen {
+    width: 100vw;
+    height: 100vh;
+}
+
+.fullScreenDiv {
+    position: absolute;
+    z-index: 4;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    display: none;
+}
+
+#count {
+    right: 47%;
+    font-family: 'Sora';
+    font-style: normal;
+    font-size: 24px;
+    color: #374151;
+}
+
+#cancel {
+    left: 94.5%;
+    top: 8%;
+}
+
+#moveleft {
+    left: 2%;
+    top: 50%;
+}
+
+#moveright {
+    right: 2%;
+    top: 50%;
+}
