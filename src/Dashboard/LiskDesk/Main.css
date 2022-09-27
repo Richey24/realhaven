@@ -443,8 +443,10 @@
 .singleLoc {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-left: 5%;
     margin-right: 5%;
+    margin-bottom: 2%;
 }
 
 .singleLoc>p {
@@ -455,4 +457,64 @@
 .singleLoc>div {
     display: flex;
     gap: 30px;
+}
+
+.singleLoc>div>div {
+    width: 48px;
+    height: 48px;
+    background: #F3F4F6;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.singleLoc>div>div::after {
+    content: attr(data-num);
+    background: #374151;
+    border-radius: 12px;
+    color: white;
+    position: absolute;
+    right: 3%;
+    top: 1%;
+    padding: 1px 4px;
+    font-size: 13px;
+}
+
+.singleLoc>p>img {
+    margin-right: 10px;
+}
+
+.singleDesc {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    color: #6B7280;
+}
+
+.singleContact {
+    width: 202px;
+    height: 50px;
+    background: #2E7DD7;
+    border: 1px solid #2E7DD7;
+    border-radius: 8px;
+    color: white;
+    margin-left: 5%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+}
+
+.singleFeat {
+    margin-left: 5%;
+    font-weight: 700;
+    font-size: 20px;
+    color: #374151;
+}
+
+.singleAdd {
+    margin-left: 5%;
 }

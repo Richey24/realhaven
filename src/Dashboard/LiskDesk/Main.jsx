@@ -14,10 +14,11 @@ import del from "../../img/Delete.svg"
 import expand from "../../img/expand.svg"
 import moveleft from "../../img/moveleft.svg"
 import moveright from "../../img/moveright.svg"
-import room from '../../img/room.svg'
-import bathroom from '../../img/bathroom.svg'
-import toilet from '../../img/toilet.svg'
+import room from '../../img/blackbed.svg'
+import bathroom from '../../img/blackbath.svg'
+import toilet from '../../img/blacktoilet.svg'
 import cancel from "../../img/canc.svg"
+import call from "../../img/Call.svg"
 import "../../Homepage/DescMob/Main.css"
 import { Offcanvas, Spinner, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
@@ -292,11 +293,21 @@ const Main = () => {
                                 {singleHouse.aptUnit} {singleHouse.address} {singleHouse.city} {singleHouse.state}
                             </p>
                             <div>
-                                <span data-num={singleHouse.noOfBedroom}><img src={room} alt="" /></span>
-                                <span data-num={singleHouse.noOfBedroom}><img src={bathroom} alt="" /></span>
-                                <span data-num={singleHouse.noOfBedroom}><img src={toilet} alt="" /></span>
+                                <div data-num={singleHouse.noOfBedroom}><img src={room} alt="" /></div>
+                                <div data-num={singleHouse.noOfBedroom}><img src={bathroom} alt="" /></div>
+                                <div data-num={singleHouse.noOfBedroom}><img src={toilet} alt="" /></div>
                             </div>
                         </div>
+                        <p className="singleDesc">{singleHouse.description}</p>
+                        <p className="singleContact"><img src={call} alt="" />Contact Agent</p>
+                        <p className="singleFeat">Features</p>
+                        <ul className="singleAdd">
+                            {
+                                singleHouse.additionalFeatures?.map((feat, i) => (
+                                    <li key={i}>{feat}</li>
+                                ))
+                            }
+                        </ul>
                     </div>
                 </div>
             </div>
