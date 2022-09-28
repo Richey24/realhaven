@@ -188,7 +188,7 @@ const Main = ({ showTop, handleTopClose }) => {
                                     <td className="propImageDesk"><img src={house.mainImage?.url} alt="" /></td>
                                     <td className="propTitleDesk">{house.title}</td>
                                     <td className="propStatusDesk">Active</td>
-                                    <td className="propPriceDesk">{house.price} {house.currency}</td>
+                                    <td className="propPriceDesk">₦{house.price}</td>
                                     <td className="propLeadDesk">456</td>
                                 </tr>
                             ))

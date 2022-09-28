@@ -41,13 +41,21 @@
 
 #theListIcon>div {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: flex-start;
     gap: 4px;
     min-width: 93px;
     max-width: auto;
     height: 24px;
     background: #F1F5F9;
     border-radius: 100px;
+    padding-top: 3px;
+}
+
+#theListIcon>div>p {
+    font-weight: 400;
+    font-size: 12px;
+    color: #334155;
 }
 
 .listFilterDiv {
@@ -517,4 +525,37 @@
 
 .singleAdd {
     margin-left: 5%;
+}
+
+.emptyDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.emptyDiv>img {
+    height: 305.61px;
+    width: 50vw;
+}
+
+.emptyDiv>h6 {
+    margin-top: 2rem;
+    font-weight: 400;
+    font-size: 16px;
+    color: #334155;
+}
+
+.emptyDiv>p {
+    width: 11vw;
+    height: 54px;
+    background: #F3F4F6;
+    border: 1px solid #2E7DD7;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2E7DD7;
+    cursor: pointer;
+    margin-top: 1rem;
 }

@@ -19,6 +19,7 @@ import bathroom from '../../img/blackbath.svg'
 import toilet from '../../img/blacktoilet.svg'
 import cancel from "../../img/canc.svg"
 import call from "../../img/Call.svg"
+import emp from "../../img/empty.svg"
 import "../../Homepage/DescMob/Main.css"
 import { Offcanvas, Spinner, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
@@ -44,6 +45,7 @@ const Main = () => {
     const [singleHouse, setSingleHouse] = useState({})
     const [num, setNum] = useState(0)
     const [images, setImages] = useState([])
+    const [empty, setEmpty] = useState(false)
     const [houses, setHouses] = useState([])
     const [fHouses, setFHouses] = useState([])
     const [user, setUser] = useState({})
@@ -111,13 +113,24 @@ const Main = () => {
         setNum(0)
     }
 
-    // filter the house
-    const filterHouse = (value) => {
-        if (value === "All") {
-            setHouses(fHouses)
+    // search for house
+    const searchHouse = (event) => {
+        const arr = []
+        const titleResult = fHouses.filter((house) => house.title.toLowerCase().includes(event.target.value.toLowerCase()))
+
+        const addResult = fHouses.filter((house) => `${house.address} ${house.city} ${house.state}`.toLowerCase().includes(event.target.value))
+
+        const descResult = fHouses.filter((house) => house.description.toLowerCase().includes(event.target.value.toLowerCase()))
+
+        arr.push(...titleResult, ...addResult, ...descResult)
+
+        const arrUniq = [...new Map(arr.map(v => [v._id, v])).values()]
+
+        setHouses(arrUniq)
+        if (arrUniq.length <= 0) {
+            setEmpty(true)
         } else {
-            const filterResult = fHouses.filter((house) => house.purpose === value)
-            setHouses(filterResult)
+            setEmpty(false)
         }
     }
 
@@ -161,6 +174,28 @@ const Main = () => {
         setNum(i)
     }
 
+    const clearSearch = () => {
+        document.getElementById("searchInput").value = ""
+        setHouses(fHouses)
+        setEmpty(false)
+    }
+
+    const sortHouse = (val) => {
+        const arr = [...fHouses]
+        if (val === "aS") {
+            const aD = arr.sort((house1, house2) => house1.title.localeCompare(house2.title))
+            setHouses(aD)
+            getAct("Alphabetical (asc)")
+        } else if (val === "aD") {
+            const aS = arr.sort((house1, house2) => -1 * house1.title.localeCompare(house2.title))
+            setHouses(aS)
+            getAct("Alphabetical (desc)")
+        } else if (val === "def") {
+            setHouses(fHouses)
+            getAct("Default")
+        }
+    }
+
     return (
         <div className="listDashDiv">
             <div id="listDashDiv">
@@ -197,37 +232,50 @@ const Main = () => {
                             <p onClick={() => getActive("draft")} className={active === "draft" ? "activeList" : ""}>Draft<span>4</span></p>
                         </div>
                         <div>
-                            <div className="listSearch"><img src={search} alt="" /><input placeholder="apartment" type="text" id="searchInput" /></div>
+                            <div className="listSearch"><img src={search} alt="" /><input onChange={searchHouse} placeholder="apartment" type="text" id="searchInput" /></div>
+
                             <div className="filterDivList">
                                 <div onClick={listSelect} className="listFilter"><p>{fAct}</p> <img src={down} alt="" /></div>
                                 <ul id="listFilter" className="listSelect">
-                                    <li onClick={() => getAct("Default")} style={{ color: fAct === "Default" && "#2E7DD7" }}>Default</li>
+                                    <li onClick={() => sortHouse("def")} style={{ color: fAct === "Default" && "#2E7DD7" }}>Default</li>
                                     <li onClick={() => getAct("Recent")} style={{ color: fAct === "Recent" && "#2E7DD7" }}>Recent</li>
                                     <li onClick={() => getAct("Date Posted (desc)")} style={{ color: fAct === "Date Posted (desc)" && "#2E7DD7" }}>Date Posted (desc)</li>
-                                    <li onClick={() => getAct("Alphabetical (asc)")} style={{ color: fAct === "Alphabetical (asc)" && "#2E7DD7" }}>Alphabetical (asc)</li>
-                                    <li onClick={() => getAct("Alphabetical (desc)")} style={{ color: fAct === "Alphabetical (desc)" && "#2E7DD7" }}>Alphabetical (desc)</li>
+                                    <li onClick={() => sortHouse("aS")} style={{ color: fAct === "Alphabetical (asc)" && "#2E7DD7" }}>Alphabetical (asc)</li>
+                                    <li onClick={() => sortHouse("aD")} style={{ color: fAct === "Alphabetical (desc)" && "#2E7DD7" }}>Alphabetical (desc)</li>
                                 </ul>
                             </div>
                             <p className="listPro">Promote Properties</p>
                         </div>
                     </div>
 
-                    <p className="resultAmt">Displaying {houses.length} results</p>
+                    {!spin && <p className="resultAmt">Displaying {houses.length} results</p>}
 
-                    <div className="mainContent">
-                        {
-                            houses.map((house, i) => (
-                                <div onClick={() => getHouseByID(house)} className="inCon" key={i}>
-                                    <img className="inMain" src={house.mainImage?.url} alt="" />
-                                    <p className="inTitle">{house.title}</p>
-                                    <p className="inAdd"><img src={locate} alt="" />{house.aptUnit} {house.address} {house.city} {house.state}</p>
-                                    <h6>₦{house.price}{house.pricePer}</h6>
+                    {
+                        empty ?
+                            (
+                                <div className="emptyDiv">
+                                    <img src={emp} alt="" />
+                                    <h6>We couldn’t find any results.</h6>
+                                    <p onClick={clearSearch}>Clear Search</p>
                                 </div>
-                            ))
-                        }
-                    </div>
+                            ) :
+                            (
+                                <div className="mainContent">
+                                    {
+                                        houses.map((house, i) => (
+                                            <div onClick={() => getHouseByID(house)} className="inCon" key={i}>
+                                                <img className="inMain" src={house.mainImage?.url} alt="" />
+                                                <p className="inTitle">{house.title}</p>
+                                                <p className="inAdd"><img src={locate} alt="" />{house.aptUnit} {house.address} {house.city} {house.state}</p>
+                                                <h6>₦{house.price}{house.pricePer}</h6>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            )
+                    }
 
-                    <p className="loadMore">Load more...</p>
+                    {!spin && !empty && <p className="loadMore">Load more...</p>}
 
                 </div>
 
