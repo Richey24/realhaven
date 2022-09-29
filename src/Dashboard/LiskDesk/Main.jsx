@@ -94,7 +94,6 @@ const Main = () => {
     const getHouseByID = async (house) => {
         setSpin(true)
         setSingleHouse(house)
-        console.log(house);
         setImages([house.mainImage.url, ...house.otherImages.url])
         document.getElementById("theModal").classList.toggle("shown")
         document.getElementById("mainContent").classList.toggle("blurBack")
@@ -188,19 +187,51 @@ const Main = () => {
         } else if (val === "def") {
             setHouses(fHouses)
             getAct("Default")
+        } else if (val === "date") {
+            const dateSort = arr.sort((house1, house2) => new Date(house1.createdAt) - new Date(house2.createdAt))
+            setHouses(dateSort)
+            getAct("Date Posted (desc)")
+        } else if (val === "recent") {
+            const recentSort = arr.sort((house1, house2) => new Date(house2.createdAt) - new Date(house1.createdAt))
+            setHouses(recentSort)
+            getAct("Recent")
         }
+    }
+
+    const deleteHouse = async (houseId) => {
+        setSpin(true)
+        await axios.delete(`${url}/v1/property/${houseId}`)
+        const rep = await axios.get(`${url}/v1/property/find?userId=${id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        const houseResult = await rep.data
+        if (houseResult.properties.length < 1) {
+            setEmpty(true)
+        }
+        setHouses(houseResult.properties)
+        setFHouses(houseResult.properties)
+        setSpin(false)
+    }
+
+    const copyLink = (id) => {
+        navigator.clipboard.writeText(`${window.location.origin}/desc/${id}`).then(() => {
+            alert("link copied")
+        })
+    }
+
+    if (spin) {
+        return (
+            <div className="spinDiv">
+                <Spinner animation="border" style={{ color: "#2E7DD7" }} />
+            </div>
+        )
     }
 
     return (
         <div className="listDashDiv">
             <div id="listDashDiv">
-                {
-                    spin && (
-                        <div className="spinDiv">
-                            <Spinner animation="border" style={{ color: "#2E7DD7" }} />
-                        </div>
-                    )
-                }
                 <div className="dashListTop">
                     <div id="theListText">
                         <h6>Your Listing</h6>
@@ -233,8 +264,8 @@ const Main = () => {
                                 <div onClick={listSelect} className="listFilter"><p>{fAct}</p> <img src={down} alt="" /></div>
                                 <ul id="listFilter" className="listSelect">
                                     <li onClick={() => sortHouse("def")} style={{ color: fAct === "Default" && "#2E7DD7" }}>Default</li>
-                                    <li onClick={() => getAct("Recent")} style={{ color: fAct === "Recent" && "#2E7DD7" }}>Recent</li>
-                                    <li onClick={() => getAct("Date Posted (desc)")} style={{ color: fAct === "Date Posted (desc)" && "#2E7DD7" }}>Date Posted (desc)</li>
+                                    <li onClick={() => sortHouse("recent")} style={{ color: fAct === "Recent" && "#2E7DD7" }}>Recent</li>
+                                    <li onClick={() => sortHouse("date")} style={{ color: fAct === "Date Posted (desc)" && "#2E7DD7" }}>Date Posted (desc)</li>
                                     <li onClick={() => sortHouse("aS")} style={{ color: fAct === "Alphabetical (asc)" && "#2E7DD7" }}>Alphabetical (asc)</li>
                                     <li onClick={() => sortHouse("aD")} style={{ color: fAct === "Alphabetical (desc)" && "#2E7DD7" }}>Alphabetical (desc)</li>
                                 </ul>
@@ -270,7 +301,7 @@ const Main = () => {
                             )
                     }
 
-                    {!spin && !empty && <p className="loadMore">Load more...</p>}
+                    {!spin && houses.length > 6 && !empty && <p className="loadMore">Load more...</p>}
 
                 </div>
 
@@ -281,7 +312,7 @@ const Main = () => {
                             <OverlayTrigger
                                 placement="bottom"
                                 overlay={
-                                    <Tooltip id="activity">Activity</Tooltip>
+                                    <Tooltip id="activity">Promote</Tooltip>
                                 }
                             >
                                 <img src={activity} alt="" />
@@ -289,10 +320,10 @@ const Main = () => {
                             <OverlayTrigger
                                 placement="bottom"
                                 overlay={
-                                    <Tooltip id="activity">Link</Tooltip>
+                                    <Tooltip id="activity">Copy Link</Tooltip>
                                 }
                             >
-                                <img src={link} alt="" />
+                                <img onClick={() => copyLink(singleHouse._id)} src={link} alt="" />
                             </OverlayTrigger>
                             <OverlayTrigger
                                 placement="bottom"
@@ -308,15 +339,15 @@ const Main = () => {
                                     <Tooltip id="activity">Delete</Tooltip>
                                 }
                             >
-                                <img src={del} alt="" />
+                                <img onClick={() => deleteHouse(singleHouse._id)} src={del} alt="" />
                             </OverlayTrigger>
                         </div>
                     </div>
                     <div className="modeBody">
                         <img className="mainBodyImg" src={images[num]} alt="" />
                         <img onClick={fullScreen} className="expand" src={expand} alt="" />
-                        <img onClick={decrease} className="moveleft" src={moveleft} alt="" />
-                        <img onClick={increase} className="moveright" src={moveright} alt="" />
+                        {num > 0 && <img onClick={decrease} className="moveleft" src={moveleft} alt="" />}
+                        {num < images.length - 1 && <img onClick={increase} className="moveright" src={moveright} alt="" />}
                         <p className="count">{num + 1}/{images.length}</p>
                         <div className="otherImg">
                             {
@@ -357,8 +388,8 @@ const Main = () => {
 
             <div id="fullScreenDiv" className="fullScreenDiv">
                 <img src={images[num]} alt="" id="fullScreen" />
-                <img onClick={decrease} className="moveleft" id="moveleft" src={moveleft} alt="" />
-                <img onClick={increase} className="moveright" id="moveright" src={moveright} alt="" />
+                {num > 0 && <img onClick={decrease} className="moveleft" id="moveleft" src={moveleft} alt="" />}
+                {num < images.length - 1 && <img onClick={increase} className="moveright" id="moveright" src={moveright} alt="" />}
                 <img onClick={hideScreen} id="cancel" className="expand" src={cancel} alt="" />
                 <p id="count" className="count">{num + 1}/{images.length}</p>
             </div>

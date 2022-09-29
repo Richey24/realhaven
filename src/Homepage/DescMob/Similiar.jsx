@@ -50,7 +50,7 @@ const Similar = ({ property }) => {
                             <img src={prop?.mainImage?.url} alt="" />
                             <h4>{prop.title}</h4>
                             <p>{prop.address} {prop.city} {prop.state !== "No states available" && prop.state} {prop.country}</p>
-                            <span>{prop.price} {prop.currency}{prop.pricePer}</span>
+                            <span>₦{prop.price}{prop.pricePer}</span>
                         </div>
                     ))
                 }

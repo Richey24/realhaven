@@ -133,6 +133,7 @@
 
 .listSelect {
     position: absolute;
+    z-index: 1;
     width: 14vw;
     height: 175px;
     padding-top: 10px;
@@ -221,6 +222,7 @@
     padding-top: 1%;
     padding-bottom: 1%;
     cursor: pointer;
+    position: relative;
 }
 
 .inMain {
@@ -235,11 +237,31 @@
     font-size: 16px;
     color: #374151;
     margin-top: 1.2rem;
+    width: 100%;
+    overflow: hidden;
+    line-height: 1.3rem;
+    max-height: 3.9rem;
+    -webkit-box-orient: vertical;
+    display: block;
+    display: -webkit-box;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    text-transform: uppercase;
 }
 
 .inAdd {
     color: #6B7280;
-    margin-top: 2rem;
+    width: 100%;
+    overflow: hidden;
+    line-height: 1.5rem;
+    max-height: 3rem;
+    -webkit-box-orient: vertical;
+    display: block;
+    display: -webkit-box;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
 }
 
 .inAdd>img {
@@ -250,7 +272,8 @@
     font-weight: 600;
     font-size: 16px;
     color: #2E7DD7;
-    margin-top: 2rem;
+    position: absolute;
+    bottom: 2%;
 }
 
 .mainContent {
@@ -401,6 +424,7 @@
     display: flex;
     justify-content: flex-start;
     gap: 1.5%;
+    row-gap: 10px;
     margin-top: 1rem;
     margin-left: 5%;
     flex-wrap: wrap;

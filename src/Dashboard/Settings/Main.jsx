@@ -116,9 +116,20 @@ const Main = () => {
         if (event.target.files.length < 1) return
         const image = new FormData()
         image.append("file", event.target.files[0])
-        const res = await axios.put(`${url}/v1/user/cover/photo/${id}`, image)
-        const rep = await res.data
-        console.log(rep);
+        const res = await axios.put(`${url}/v1/user/cover/photo/${id}`, image, { validateStatus: () => true })
+        if (res.status === 200) {
+            const res = await axios.get(`${url}/v1/user/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }, { validateStatus: () => true })
+            if (res.status !== 200) {
+                logOut()
+                return
+            }
+            const result = await res.data
+            setUser(result)
+        }
     }
 
     const uploadDP = async (event) => {
@@ -126,9 +137,20 @@ const Main = () => {
         if (event.target.files.length < 1) return
         const image = new FormData()
         image.append("file", event.target.files[0])
-        const res = await axios.put(`${url}/v1/user/profile/photo/${id}`, image)
-        const rep = await res.data
-        console.log(rep);
+        const res = await axios.put(`${url}/v1/user/profile/photo/${id}`, image, { validateStatus: () => true })
+        if (res.status === 200) {
+            const res = await axios.get(`${url}/v1/user/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }, { validateStatus: () => true })
+            if (res.status !== 200) {
+                logOut()
+                return
+            }
+            const result = await res.data
+            setUser(result)
+        }
     }
 
     return (

@@ -155,6 +155,8 @@ const MainDesk = ({ showTop, handleTopClose }) => {
         if (document.activeElement.type !== "submit") return
         setSpin(true)
         const mainProp = new FormData()
+        console.log(id);
+        console.log(property);
         mainProp.append("userId", id)
         mainProp.append("title", property.title)
         mainProp.append("address", property.address)
@@ -171,19 +173,24 @@ const MainDesk = ({ showTop, handleTopClose }) => {
         mainProp.append("description", property.description)
         mainProp.append("stateOfBuilding", property.stateOfBuilding)
         mainProp.append("price", property.price)
-        mainProp.append("currency", property.currency)
         mainProp.append("pricePer", property.pricePer)
-        mainProp.append("additionalFeatures", property.additionalFeatures)
+        for (let i = 0; i < property.additionalFeatures.length; i++) {
+            mainProp.append("additionalFeatures", property.additionalFeatures[i])
+        }
         mainProp.append("mainImage", property.mainImage)
         for (let i = 0; i < property.otherImages.length; i++) {
             mainProp.append("file", property.otherImages[i])
         }
+        console.log(property.additionalFeatures);
         const res = await axios.post(`${url}/v1/property`, mainProp, {
             headers: {
                 Authorization: `Bearer ${token}`
             },
             validateStatus: () => true
         })
+        setSpin(false)
+        const rep = res.data
+        console.log(rep);
         if (res.status === 200) {
             setShowA(true)
             setTimeout(() => {
