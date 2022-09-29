@@ -86,7 +86,8 @@
     justify-content: flex-end;
     padding-top: 3rem;
     padding-right: 4rem;
-    background-image: url("../../img/background.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .coverImage>label {
@@ -131,6 +132,8 @@
 
 .firstSectImg {
     border-radius: 128px;
+    width: 128px;
+    height: 128px;
 }
 
 .profileImg {

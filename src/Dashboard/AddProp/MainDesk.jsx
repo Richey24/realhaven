@@ -151,8 +151,9 @@ const MainDesk = ({ showTop, handleTopClose }) => {
     }
 
     const postProperty = async (event) => {
-        setSpin(true)
         event.preventDefault()
+        if (document.activeElement.type !== "submit") return
+        setSpin(true)
         const mainProp = new FormData()
         mainProp.append("userId", id)
         mainProp.append("title", property.title)
@@ -203,6 +204,7 @@ const MainDesk = ({ showTop, handleTopClose }) => {
                 const myToast = document.getElementById("myToast")
                 myToast.innerHTML = "Something went wrong, try again"
                 setSpin(false)
+                setNow(25)
             }, 10)
             setTimeout(() => {
                 const myToast = document.getElementById("myToast")

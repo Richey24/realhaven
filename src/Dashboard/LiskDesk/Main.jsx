@@ -76,18 +76,13 @@ const Main = () => {
                     }
                 })
                 const houseResult = await rep.data
+                if (houseResult.properties.length < 1) {
+                    setEmpty(true)
+                }
                 setHouses(houseResult.properties)
                 setFHouses(houseResult.properties)
                 setSpin(false)
             })()
-            document.getElementById("moveleft").addEventListener("click", () => {
-                if (num <= 0) return
-                setNum(num - 1)
-            })
-            document.getElementById("moveright").addEventListener("click", () => {
-                if (num >= images.length - 1) return
-                setNum(num + 1)
-            })
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -255,7 +250,7 @@ const Main = () => {
                             (
                                 <div className="emptyDiv">
                                     <img src={emp} alt="" />
-                                    <h6>We couldn’t find any results.</h6>
+                                    <h6>{fHouses.length < 1 ? "You haven't posted any property" : "We couldn’t find any results."}</h6>
                                     <p onClick={clearSearch}>Clear Search</p>
                                 </div>
                             ) :

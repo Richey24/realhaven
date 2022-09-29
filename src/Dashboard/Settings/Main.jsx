@@ -5,10 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios"
 import settingWhite from "../../img/SettingWhite.svg"
 import noti from "../../img/notiwhite.svg"
-import dp from "../../img/dp.png"
+import dp from "../../img/largedp.svg"
 import camera from "../../img/camera.svg"
 import copy from "../../img/copy.svg"
 import upload from "../../img/upload.svg"
+import background from "../../img/background.svg"
 import Profile from "./Profile";
 import Compliance from "./Compliance";
 import Team from "./Team";
@@ -17,6 +18,17 @@ import Subscription from './Subscription';
 import Billing from './Billing';
 import Notification from './Notification';
 import Integration from './Integration';
+
+let token = ""
+let id = ""
+for (let i = 0; i < document.cookie?.split(" ").length; i++) {
+    if (document.cookie?.split(" ")[i].split("=")[0] === "token") {
+        token = document.cookie?.split(" ")[i].split("=")[1]
+    }
+    if (document.cookie?.split(" ")[i].split("=")[0] === "id") {
+        id = document.cookie?.split(" ")[i].split("=")[1]
+    }
+}
 
 const Main = () => {
     const [user, setUser] = useState({})
@@ -69,16 +81,6 @@ const Main = () => {
     }
 
     useEffect(() => {
-        let token = ""
-        let id = ""
-        for (let i = 0; i < document.cookie?.split(" ").length; i++) {
-            if (document.cookie?.split(" ")[i].split("=")[0] === "token") {
-                token = document.cookie?.split(" ")[i].split("=")[1]
-            }
-            if (document.cookie?.split(" ")[i].split("=")[0] === "id") {
-                id = document.cookie?.split(" ")[i].split("=")[1]
-            }
-        }
         if (!token) {
             navigate("/login")
         } else {
@@ -109,6 +111,26 @@ const Main = () => {
         setActive(value)
     }
 
+    const uploadCover = async (event) => {
+        console.log(event.target.files);
+        if (event.target.files.length < 1) return
+        const image = new FormData()
+        image.append("file", event.target.files[0])
+        const res = await axios.put(`${url}/v1/user/cover/photo/${id}`, image)
+        const rep = await res.data
+        console.log(rep);
+    }
+
+    const uploadDP = async (event) => {
+        console.log(event.target.files);
+        if (event.target.files.length < 1) return
+        const image = new FormData()
+        image.append("file", event.target.files[0])
+        const res = await axios.put(`${url}/v1/user/profile/photo/${id}`, image)
+        const rep = await res.data
+        console.log(rep);
+    }
+
     return (
         <div className="mainDiv">
             <div className="dashTop">
@@ -124,8 +146,8 @@ const Main = () => {
                     </div>
                 </div>
             </div>
-            <div className="coverImage">
-                <input type="file" id="cover" hidden />
+            <div style={{ backgroundImage: user.coverPhoto?.url ? `url(${user.coverPhoto?.url})` : `url(${background})` }} className="coverImage">
+                <input onChange={uploadCover} type="file" id="cover" hidden />
                 <label htmlFor="cover"><img src={camera} alt="" />Change cover</label>
             </div>
 
@@ -133,7 +155,7 @@ const Main = () => {
                 <div className="firstSection">
                     <div className="profileImg">
                         <img className="firstSectImg" src={user.image?.url ? user.image?.url : dp} alt="" />
-                        <input type="file" id="profile" hidden />
+                        <input onChange={uploadDP} type="file" id="profile" hidden />
                         <label htmlFor="profile"><img src={camera} alt="" /></label>
                     </div>
                     <h6>{user.firstName} {user.lastName}</h6>
