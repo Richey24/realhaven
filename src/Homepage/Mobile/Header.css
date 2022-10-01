@@ -248,7 +248,7 @@
     font-weight: 600;
     font-size: 20px;
     line-height: 24px;
-    border-radius: 8px 0px 0px 8px
+    border-radius: 8px 0px 0px 8px;
 }
 
 .needHelp {
@@ -294,6 +294,7 @@
     align-items: center;
     padding-left: 10px;
     padding-right: 10px;
+    position: relative;
 }
 
 .housing img {
@@ -304,7 +305,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 85%;
+    width: 80%;
     font-size: 14px;
     margin-top: 1rem;
     margin-bottom: -1.5rem;
@@ -318,45 +319,99 @@
     font-size: 16px;
     line-height: 20px;
     color: #2E7DD7;
-    margin-top: 3rem;
-    margin-bottom: -0.2rem;
-    margin-left: 1rem;
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 1.2rem;
+}
+
+.spinRes {
+    color: #2E7DD7;
+    width: 20px;
+    height: 20px;
 }
 
 .propertyList {
     height: 197px;
     background-color: #FFFFFF;
     overflow: scroll;
-    font-size: 12px;
+    font-size: 14px;
     color: #4B5563;
     font-weight: 400;
     display: none;
+    border: 0.5px solid #F3F4F6;
+    box-shadow: 24px 0px 48px rgba(17, 17, 17, 0.11);
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 10px;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    padding-top: 5px;
+}
+
+.propertyForm {
+    position: relative;
 }
 
 .propertyList2 {
-    height: 117px;
+    height: 157px;
     background-color: #FFFFFF;
     overflow: scroll;
-    font-size: 12px;
+    font-size: 14px;
     color: #4B5563;
     font-weight: 400;
     display: none;
+    border: 0.5px solid #F3F4F6;
+    box-shadow: 24px 0px 48px rgba(17, 17, 17, 0.11);
+    border-radius: 8px;
+    width: 85%;
+    margin-left: 4%;
+    margin-top: 10px;
+    position: absolute;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    z-index: 2;
+}
+
+.propertyList3 {
+    height: 157px;
+    background-color: #FFFFFF;
+    overflow: scroll;
+    font-size: 14px;
+    color: #4B5563;
+    font-weight: 400;
+    display: none;
+    border: 0.5px solid #F3F4F6;
+    box-shadow: 24px 0px 48px rgba(17, 17, 17, 0.11);
+    border-radius: 8px;
+    width: 76%;
+    margin-left: 4%;
+    margin-top: 10px;
+    position: absolute;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    z-index: 2;
 }
 
 .propertyList2 label {
-    margin-top: 0.5rem;
+    display: flex;
+    column-gap: 10px;
+    margin-top: 4px;
 }
 
 .propertyList li {
     list-style-type: none;
     scrollbar-width: none;
-
+    margin-top: 7px;
 }
 
-.propertyList2 li {
+.propertyList2 li,
+.propertyList3 li {
     list-style-type: none;
     scrollbar-width: none;
-
 }
 
 .propertyList2 li::-webkit-scrollbar {
@@ -426,4 +481,8 @@
     margin-right: 10px;
     margin-left: 10px;
     margin-top: 20px;
+}
+
+.relateBody {
+    position: relative;
 }

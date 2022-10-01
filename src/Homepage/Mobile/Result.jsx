@@ -18,7 +18,7 @@ const Result = ({ result }) => {
                             <p className="mobType">{res.title} <span>{res.purpose}</span></p>
                             <p className="mobLocation">{res.address} {res.city} {res.country}</p>
                             <p className="mobAddress">{res.description}</p>
-                            <p className="mobAmount">{res.price}{res.currency}/{res.pricePer}</p>
+                            <p className="mobAmount">{res.price}{res.pricePer}</p>
                             <p className="mobContact"><img src={call} alt="" /> Contact Agent</p>
                         </div>
                     ))
