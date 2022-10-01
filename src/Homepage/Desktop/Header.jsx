@@ -27,10 +27,9 @@ function valuetext(value) {
 const minDistance = 10;
 
 const Header = ({ setSearch, setResult }) => {
-    const [mode, setMode] = useState("Rent")
+    const [mode, setMode] = useState("rent")
     const [value2, setValue2] = useState([5, 37]);
     const [loc, setLoc] = useState("Lagos")
-    const [curr, setCurr] = useState("Naira (₦)")
     const navigate = useNavigate()
 
     const getMode1 = (value) => {
@@ -64,14 +63,11 @@ const Header = ({ setSearch, setResult }) => {
         showMode("location")
     }
 
-    const getCurr = (value) => {
-        setCurr(value)
-        showMode('deskCurr')
-    }
-
     const getSearch = async () => {
+        console.log(mode, loc);
         const house = await axios.get(`${url}/v1/property/find?purpose=${mode}&state=${loc}`)
         const result = await house.data
+        console.log(result);
         setSearch(true)
         setResult(result.properties)
         setTimeout(() => {
@@ -111,9 +107,9 @@ const Header = ({ setSearch, setResult }) => {
 
                 <div className='alignDivSearch'>
                     <div className='rentSelectDesk'>
-                        <p onClick={() => getMode1("Buy")} className={mode === "Buy" ? 'activeSelectDesk' : "notActive1Desk"}>Buy</p>
-                        <p onClick={() => getMode1("Sell")} className={mode === "Sell" ? 'activeSelectMidDesk' : "notActiveDesk"}>Sell</p>
-                        <p onClick={() => getMode1("Rent")} className={mode === "Rent" ? 'activeSelectLastDesk' : "notActiveDesk"}>Rent</p>
+                        <p onClick={() => getMode1("buy")} className={mode === "buy" ? 'activeSelectDesk' : "notActive1Desk"}>Buy</p>
+                        <p onClick={() => getMode1("sell")} className={mode === "sell" ? 'activeSelectMidDesk' : "notActiveDesk"}>Sell</p>
+                        <p onClick={() => getMode1("rent")} className={mode === "rent" ? 'activeSelectLastDesk' : "notActiveDesk"}>Rent</p>
                     </div>
                     <div className='filterToggleDesk'>
                         <div>
@@ -124,7 +120,7 @@ const Header = ({ setSearch, setResult }) => {
                             <ul id='location' className='propertyListDesk'>
                                 <div className='myPropertyDesk'>
                                     <p>Location</p>
-                                    <span onClick={() => setMode("Rent")}>clear</span>
+                                    <span onClick={() => getLoc("Lagos")}>clear</span>
                                 </div>
                                 {
                                     NaijaStates.states().map((state, i) => (
@@ -138,23 +134,36 @@ const Header = ({ setSearch, setResult }) => {
                                 <p>Apartments</p>
                                 <img src={down} alt="" />
                             </div>
-                            <ul id='apartment' className='propertyListDesk'>
+                            <form id='apartment' className='propertyListDesk'>
                                 <div className='myPropertyDesk'>
                                     <p>Property type</p>
-                                    <span>clear</span>
+                                    <span><input className='clearApart' type="reset" value="clear" /></span>
                                 </div>
                                 <label htmlFor='duplex'><input type="checkbox" name='propType' id='duplex' value='Duplex' />Duplex</label>
-                                <br />
                                 <label htmlFor='apartments'><input type="checkbox" name='propType' id='apartments' value='Apartment' />Apartments</label>
-                                <br />
                                 <label htmlFor='bungalow'><input type="checkbox" name='propType' id='bungalow' value='Detached Bungalow' />Detached Bungalow</label>
-                                <br />
                                 <label htmlFor='office'><input type="checkbox" name='propType' id='office' value='Office Space' />Office Space</label>
-                                <br />
                                 <label htmlFor='penthouse'><input type="checkbox" name='propType' id='penthouse' value='Penthouse' />Penthouse</label>
-                                <br />
                                 <label htmlFor='shop'><input type="checkbox" name='propType' id='shop' value='Shop' />Shop</label>
-                            </ul>
+                                <label htmlFor='cottage'><input type="checkbox" name='propType' id='cottage' value='Cottage' />Cottage</label>
+                                <label htmlFor='Townhouse'><input type="checkbox" name='propType' id='Townhouse' value='Townhouse' />Townhouse</label>
+                                <label htmlFor='Mansion'><input type="checkbox" name='propType' id='Mansion' value='Mansion' />Mansion</label>
+                                <label htmlFor='Ranch-style house'><input type="checkbox" name='propType' id='Ranch-style house' value='Ranch-style house' />Ranch-style house</label>
+                                <label htmlFor='Condominium'><input type="checkbox" name='propType' id='Condominium' value='Condominium' />Condominium</label>
+                                <label htmlFor='Terraced house'><input type="checkbox" name='propType' id='Terraced house' value='Terraced house' />Terraced house</label>
+                                <label htmlFor='Villa'><input type="checkbox" name='propType' id='Villa' value='Villa' />Villa</label>
+                                <label htmlFor='Mobile home'><input type="checkbox" name='propType' id='Mobile home' value='Mobile home' />Mobile home</label>
+                                <label htmlFor='Farmhouse'><input type="checkbox" name='propType' id='Farmhouse' value='Farmhouse' />Farmhouse</label>
+                                <label htmlFor='Semi-detached'><input type="checkbox" name='propType' id='Semi-detached' value='Semi-detached' />Semi-detached</label>
+                                <label htmlFor='Single-family home'><input type="checkbox" name='propType' id='Single-family home' value='Single-family home' />Single-family home</label>
+                                <label htmlFor='Tiny house movement'><input type="checkbox" name='propType' id='Tiny house movement' value='Tiny house movement' />Tiny house movement</label>
+                                <label htmlFor='Tree house'><input type="checkbox" name='propType' id='Tree house' value='Tree house' />Tree house</label>
+                                <label htmlFor='American Craftsman'><input type="checkbox" name='propType' id='American Craftsman' value='American Craftsman' />American Craftsman</label>
+                                <label htmlFor='Colonial architecture'><input type="checkbox" name='propType' id='Colonial architecture' value='Colonial architecture' />Colonial architecture</label>
+                                <label htmlFor='Victorian architecture'><input type="checkbox" name='propType' id='Victorian architecture' value='Victorian architecture' />Victorian architecture</label>
+                                <label htmlFor='Tudor architecture'><input type="checkbox" name='propType' id='Tudor architecture' value='Tudor architecture' />Tudor architecture</label>
+                                <label htmlFor='Contemporary architecture'><input type="checkbox" name='propType' id='Contemporary architecture' value='Contemporary architecture' />Contemporary architecture</label>
+                            </form>
                         </div>
                         <div>
                             <div onClick={() => showMode("priceRange")} className='locationDesk'>
@@ -163,21 +172,11 @@ const Header = ({ setSearch, setResult }) => {
                                 }
                                 <img src={down} alt="" />
                             </div>
-                            <ul id='priceRange' className='propertyListDesk'>
+                            <ul id='priceRange' className='propertyListDesk' style={{ height: "130px" }}>
                                 <div className='myPropertyDesk'>
                                     <p>Price range</p>
-                                    <span>clear</span>
+                                    <span onClick={() => setValue2([5, 37])}>clear</span>
                                 </div>
-                                <div onClick={() => showMode("deskCurr")} className='locationDesk1'>
-                                    <p>{curr}</p>
-                                    <img src={down} alt="" />
-                                </div>
-                                <ul id='deskCurr' style={{ margin: '0', padding: '0' }} className='propertyListDesk1'>
-                                    <li onClick={() => getCurr("Naira (₦)")}>Naira (₦)</li>
-                                    <li onClick={() => getCurr("US Dollar ($)")}>US Dollar ($)</li>
-                                    <li onClick={() => getCurr("Euro (€)")}>Euro (€)</li>
-                                    <li onClick={() => getCurr("Pound (£)")}>Pound (£)</li>
-                                </ul>
                                 <div className="priceRange">
                                     {
                                         mode === "Buy" ?

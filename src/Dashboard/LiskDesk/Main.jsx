@@ -192,7 +192,7 @@ const Main = () => {
             setHouses(dateSort)
             getAct("Date Posted (desc)")
         } else if (val === "recent") {
-            const recentSort = arr.sort((house1, house2) => new Date(house2.createdAt) - new Date(house1.createdAt))
+            const recentSort = arr.sort((house1, house2) => new Date(house2.createdAt).getTime() - new Date(house1.createdAt).getTime())
             setHouses(recentSort)
             getAct("Recent")
         }

@@ -55,7 +55,6 @@ const DescMob = () => {
                     (
                         <>
                             <MainDesk property={property} />
-                            <Footer />
                         </>
                     ) :
                     (

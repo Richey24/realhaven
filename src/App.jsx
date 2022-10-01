@@ -29,6 +29,8 @@ function App() {
         const loc = await res.data
         const state = loc.results[0].components.state === "Federal Capital Territory" ? loc.results[0].components.state : loc.results[0].components.state.split(" ")[0]
         const city = loc.results[0].components.county
+        sessionStorage.setItem("state", state)
+        sessionStorage.setItem("city", city)
         const recCity = await axios.get(`${url}/v1/property/find?state=${state}&city=${city}`)
         const recoCity = await recCity.data
         if (recoCity.noOfProperties < 1) {

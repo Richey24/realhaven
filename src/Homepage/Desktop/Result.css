@@ -113,11 +113,11 @@
 .mainResult {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     padding-left: 14px;
     padding-top: 14px;
-    padding-bottom: 14px;
+    padding-bottom: 7px;
     padding-right: 24px;
     gap: 24px;
     width: 100%;
@@ -129,10 +129,27 @@
     border-radius: 12px;
     margin-bottom: 40px;
     cursor: pointer;
+    position: relative;
+}
+
+.emptyRes>img {
+    height: 395.61px;
+    width: 50vw;
+}
+
+.emptyRes>p {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: 0.32px;
+    color: #6B7280;
 }
 
 .mainResultImage {
-    height: 300px;
+    height: 318px;
     width: 300px;
     border-radius: 12px;
 }
@@ -140,6 +157,7 @@
 .mainResult div {
     text-align: left;
     margin-bottom: -10px;
+    width: 100%;
 }
 
 .houseTypeDesk {
@@ -222,6 +240,8 @@
     font-weight: 400;
     font-size: 16px;
     color: #EAF2FB;
+    position: absolute;
+    bottom: 2%;
 }
 
 .paginateDesk {

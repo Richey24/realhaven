@@ -5,12 +5,11 @@
 }
 
 .mainImgDeskDesc {
-    width: 800px;
+    width: 100%;
     height: 640px;
     border-radius: 24px;
     display: flex;
     justify-content: flex-start;
-    margin-left: 10%;
 }
 
 .otherImageDesk {
@@ -18,9 +17,9 @@
     justify-content: flex-start;
     align-items: center;
     margin-left: 10%;
-    gap: 20px;
+    gap: 40px;
     margin-top: 32px;
-    width: 800px;
+    width: 55vw;
     flex-wrap: wrap;
 }
 
@@ -38,4 +37,168 @@
 
 .mainImgDeskDiv {
     margin-top: -8rem;
+}
+
+.houseTypeDesk {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 100%;
+    color: #374151;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.houseTypeDesk span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 16px;
+    gap: 8px;
+    width: 70px;
+    height: 36px;
+    background: #F8EDED;
+    border-radius: 16px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #BF5E65;
+    text-transform: capitalize;
+}
+
+.houseLocationDesk {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+    color: #374151;
+}
+
+.houseDescDesk {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 160%;
+    color: #6B7280;
+}
+
+.housePriceDesk {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    color: #2E7DD7;
+}
+
+.contactAgentDesc {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 24px;
+    gap: 10px;
+    width: 252px;
+    height: 56px;
+    background: #2E7DD7;
+    border: 1px solid #2E7DD7;
+    border-radius: 12px;
+    box-sizing: border-box;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #EAF2FB;
+}
+
+.descImgRel {
+    position: relative;
+    width: 55vw;
+    margin-left: 10%;
+}
+
+.descEx {
+    position: absolute;
+    top: 5%;
+    left: 3%;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(30px);
+    cursor: pointer;
+}
+
+.descMl {
+    position: absolute;
+    top: 47%;
+    left: 3%;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(30px);
+    border-radius: 100px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+}
+
+.descMr {
+    position: absolute;
+    top: 47%;
+    right: 3%;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(30px);
+    border-radius: 100px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+}
+
+.descAct {
+    border: 4px solid #2E7DD7;
+}
+
+.descFull {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: none;
+}
+
+.descFullImg {
+    width: 100%;
+    height: 100%;
+}
+
+.descCanc {
+    position: absolute;
+    top: 5%;
+    right: 3%;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(30px);
+    cursor: pointer;
+}
+
+.descFull>p {
+    position: absolute;
+    left: 50%;
+    bottom: 3%;
+    width: 83px;
+    height: 40px;
+    background: #FFFFFF;
+    backdrop-filter: blur(30px);
+    border-radius: 4px;
+    font-family: Sora;
+    font-weight: 400;
+    font-size: 24px;
+    color: #374151;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
