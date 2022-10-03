@@ -56,6 +56,12 @@ function App() {
 
   let lastScroll = window.scrollY || document.documentElement.scrollTop
   window.addEventListener("scroll", () => {
+    if (window.scrollY > 2000) {
+      const script = document.createElement("script")
+      script.src = "//code.tidio.co/shcjw82xbopd8qzdqjscd7vuirxnjm0p.js"
+      script.async = true
+      document.body.appendChild(script)
+    }
     if (!document.getElementById("fixedNav")) {
       return
     }

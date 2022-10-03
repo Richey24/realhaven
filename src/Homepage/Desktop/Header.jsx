@@ -30,7 +30,12 @@ const Header = ({ setSearch, setResult }) => {
     const [mode, setMode] = useState("rent")
     const [value2, setValue2] = useState([5, 37]);
     const [loc, setLoc] = useState("Lagos")
-    const navigate = useNavigate()
+    const nav = useNavigate()
+
+    const navigate = (link) => {
+        document.getElementById("tidio-chat").style.display = "none"
+        nav(link)
+    }
 
     const getMode1 = (value) => {
         setMode(value)
