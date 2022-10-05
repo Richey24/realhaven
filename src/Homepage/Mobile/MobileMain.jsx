@@ -16,7 +16,7 @@ const MobileMain = ({ properties, recommend }) => {
   const [house, setHouse] = useState([])
   return (
     <div>
-      <Header setHouse={setHouse} setResult={setResult} />
+      <Header properties={properties} setHouse={setHouse} setResult={setResult} />
       {
         result ?
           (<Result result={house} />)

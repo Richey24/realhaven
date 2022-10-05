@@ -79,6 +79,7 @@
     border-radius: 8px;
     padding-right: 1rem;
     display: none;
+    z-index: 2;
     position: absolute;
     width: 100%;
 }

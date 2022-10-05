@@ -32,7 +32,7 @@ function valuetext(value) {
 
 const minDistance = 10;
 
-const Header = ({ setResult, setHouse }) => {
+const Header = ({ setResult, setHouse, properties }) => {
     const [showTop, setShowTop] = useState(false)
     const [showRight, setShowRight] = useState(false)
     const [search, setSearch] = useState("")
@@ -69,7 +69,23 @@ const Header = ({ setResult, setHouse }) => {
     }
 
     const getSearch = (e) => {
-        setSearch(e.target.value)
+        const val = e.target.value
+        setSearch(val)
+    }
+
+    const searchEnter = (e) => {
+        const code = e.keyCode || e.which
+        console.log(e.keyCode);
+        if (parseInt(code) === 13) {
+            const filter = properties.filter((property) => `${property.title} ${property.description} ${property.address} ${property.state} ${property.city}`.includes(search))
+            console.log(filter);
+            setHouse(filter)
+            setResult(true)
+            handleTopClose()
+            setTimeout(() => {
+                document.getElementById("resultMob")?.scrollIntoView()
+            }, 10)
+        }
     }
 
     const handleChange2 = (event, newValue, activeThumb) => {
@@ -186,7 +202,7 @@ const Header = ({ setResult, setHouse }) => {
                 </Offcanvas.Header>
                 <Offcanvas.Body style={{ padding: '0' }}>
                     <div className='searchBox'>
-                        <input value={search} onChange={getSearch} placeholder="Search for properties e.g 'Duplex' " type="text" />
+                        <input value={search} onKeyDown={searchEnter} onChange={getSearch} placeholder="Search for properties e.g 'Duplex' " type="text" />
                         <img onClick={() => setSearch("")} src={shield} alt="" />
                     </div>
                     <ul className='listSelect'>
