@@ -1,7 +1,4 @@
-import Footer from "../Mobile/Footer"
-import Seventh from "../Mobile/Seventh"
 import Main from "./Main"
-import Similar from "./Similiar"
 import { useState, useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
 import MainDesk from "./MainDesk";
@@ -60,9 +57,6 @@ const DescMob = () => {
                     (
                         <>
                             <Main property={property} />
-                            <Similar property={property} />
-                            <Seventh />
-                            <Footer />
                         </>
                     )
                 }

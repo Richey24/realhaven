@@ -162,3 +162,72 @@
     position: absolute;
     left: 32px;
 }
+
+.descAct {
+    border: 4px solid #2E7DD7;
+}
+
+.descFullMOb {
+    width: 100%;
+    height: 100vh;
+    padding-top: 50%;
+    position: relative;
+    display: none;
+}
+
+.descFullImgMob {
+    width: 100%;
+    height: 300px;
+}
+
+.descMobAbs {
+    position: relative;
+}
+
+.expMob,
+.leftMoveMob,
+.rightMoveMob,
+.descCancMob {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+}
+
+.descCancMob {
+    right: 3%;
+    top: 5%;
+    background-color: tomato;
+}
+
+.expMob {
+    left: 5%;
+    top: 5%;
+}
+
+.leftMoveMob {
+    left: 5%;
+    top: 50%;
+}
+
+.rightMoveMob {
+    top: 50%;
+    right: 3%;
+}
+
+.descFullMOb>p {
+    position: absolute;
+    left: 46%;
+    bottom: 40%;
+    width: 50px;
+    height: 25px;
+    background: #FFFFFF;
+    backdrop-filter: blur(30px);
+    border-radius: 4px;
+    font-family: Sora;
+    font-weight: 400;
+    font-size: 14px;
+    color: #374151;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

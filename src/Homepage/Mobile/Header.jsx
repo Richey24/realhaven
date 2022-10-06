@@ -83,7 +83,8 @@ const Header = ({ setResult, setHouse, properties }) => {
             setResult(true)
             handleTopClose()
             setTimeout(() => {
-                document.getElementById("resultMob")?.scrollIntoView()
+                const theDiv = document.getElementById("mobContact") || document.getElementById("mobPage")
+                theDiv.scrollIntoView()
             }, 10)
         }
     }

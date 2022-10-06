@@ -23,7 +23,7 @@ const Seventh = () => {
                         <div style={{ width: '80%' }} className='deskAddDiv'>
                             <h5>Email us</h5>
                             <img src={arrow} alt="" />
-                            <p>hello@haven.homes</p>
+                            <p>support@haven.homes</p>
                         </div>
                         <div style={{ width: '80%' }} className='deskAddDiv'>
                             <h5>Call us</h5>
