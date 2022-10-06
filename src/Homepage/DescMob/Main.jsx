@@ -160,7 +160,6 @@ const Main = ({ property }) => {
                 <Similar property={property} />
                 <Seventh />
                 <Footer />
-
             </div>
             <div id="descFullMob" className="descFullMOb">
                 <img className="descFullImgMob" src={images[num]} alt="" />
