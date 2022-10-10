@@ -33,7 +33,10 @@ const Header = ({ setSearch, setResult }) => {
     const nav = useNavigate()
 
     const navigate = (link) => {
-        document.getElementById("tidio-chat").style.display = "none"
+        const tidio = document.getElementById("tidio-chat")
+        if (tidio !== null) {
+            tidio.style.display = "none"
+        }
         nav(link)
     }
 

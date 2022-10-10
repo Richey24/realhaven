@@ -218,9 +218,7 @@
     background: #FFFFFF;
     border: 1px solid #E5E7EB;
     border-radius: 12px;
-    padding-left: 1%;
-    padding-top: 1%;
-    padding-bottom: 1%;
+    padding: 24px;
     cursor: pointer;
     position: relative;
 }
@@ -571,7 +569,9 @@
 }
 
 .emptyDiv>p {
-    width: 11vw;
+    width: auto;
+    padding-left: 40px;
+    padding-right: 40px;
     height: 54px;
     background: #F3F4F6;
     border: 1px solid #2E7DD7;
@@ -582,4 +582,145 @@
     color: #2E7DD7;
     cursor: pointer;
     margin-top: 1rem;
+}
+
+.hoverIcon {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    gap: 10px;
+    top: 9%;
+    right: 12%;
+    z-index: 1;
+}
+
+.hoverIcon>div {
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hoverIcon img {
+    cursor: pointer;
+}
+
+.hPurpose {
+    width: 55px;
+    height: 26px;
+    text-transform: capitalize;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    position: absolute;
+    left: 9%;
+    top: 43%;
+    display: flex;
+    padding-top: 1px;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.inConDiv {
+    position: relative;
+}
+
+.delModal {
+    width: 400px;
+    height: 260px;
+    background: #FFFFFF;
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    box-shadow: 0px 20px 24px -4px rgba(16, 24, 40, 0.1), 0px 8px 8px -4px rgba(16, 24, 40, 0.04);
+    border-radius: 12px;
+    padding: 20px;
+    z-index: 3;
+    display: none;
+}
+
+.delFirstDiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+.delModal>h6 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    color: #101828;
+    margin-top: 10px;
+}
+
+.delModal>p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #4B5563;
+}
+
+.delSecondDiv {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.delCancel {
+    width: 170px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #F3F4F6;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    color: #374151;
+}
+
+.delDelete {
+    width: 170px;
+    height: 44px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background: #F43F5E;
+    border: 1px solid #F43F5E;
+    border-radius: 8px;
+    color: white;
+}
+
+.copyModal {
+    width: 400px;
+    height: 136px;
+    background: #FFFFFF;
+    box-shadow: 20px 0px 24px rgba(16, 24, 40, 0.1), 0px 20px 8px rgba(16, 24, 40, 0.04);
+    border-radius: 12px;
+    padding: 20px;
+    gap: 15px;
+    position: absolute;
+    top: 5%;
+    left: 45%;
+    z-index: 4;
+    display: none;
+}
+
+.copyModal>img {
+    width: 70px;
+    height: 70px;
+}
+
+.copyModal h6 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    color: #101828;
+}
+
+.copyModal p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #4B5563;
 }

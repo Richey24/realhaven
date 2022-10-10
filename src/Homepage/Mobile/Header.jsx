@@ -162,6 +162,20 @@ const Header = ({ setResult, setHouse, properties }) => {
         }
     }
 
+    const signIn = () => {
+        handleTopClose()
+        setTimeout(() => {
+            navigate(id ? '/post' : '/login')
+        }, 1000)
+    }
+
+    const signUp = () => {
+        handleTopClose()
+        setTimeout(() => {
+            navigate(id ? '/home' : '/register')
+        }, 1000)
+    }
+
     return (
         <div>
             <div className="myMobileHero">
@@ -212,10 +226,10 @@ const Header = ({ setResult, setHouse, properties }) => {
                         <li>Short let</li>
                     </ul>
                     <ul className='myAuth'>
-                        <li onClick={() => { handleTopClose(); navigate(id ? '/home' : '/register') }}>{id ? "Dashboard" : "Sign up"}</li>
+                        <li onClick={signUp}>{id ? "Dashboard" : "Sign up"}</li>
                         <li onClick={() => { handleTopClose(); navigate(id ? '/listing' : '/login') }}>{id ? "Listing" : "Sign in"}</li>
                     </ul>
-                    <p onClick={() => { handleTopClose(); navigate(id ? '/post' : '/login') }} className='postProps'>Post a property</p>
+                    <p onClick={signIn} className='postProps'>Post a property</p>
                 </Offcanvas.Body>
             </Offcanvas>
 

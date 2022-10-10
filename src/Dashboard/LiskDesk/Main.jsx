@@ -20,11 +20,16 @@ import toilet from '../../img/blacktoilet.svg'
 import cancel from "../../img/canc.svg"
 import call from "../../img/Call.svg"
 import emp from "../../img/empty.svg"
+import building from "../../img/building.svg"
+import bigDel from "../../img/bigdel.svg"
+import bigCopy from "../../img/bigcopy.svg"
+import canc from "../../img/cancel.svg"
 import "../../Homepage/DescMob/Main.css"
 import { Offcanvas, Spinner, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
 import url from '../../url';
+import Promote from "./Promote"
 
 let token = ""
 let id = ""
@@ -48,6 +53,7 @@ const Main = () => {
     const [empty, setEmpty] = useState(false)
     const [houses, setHouses] = useState([])
     const [fHouses, setFHouses] = useState([])
+    const [delID, setDelID] = useState("")
     const [user, setUser] = useState({})
     const navigate = useNavigate()
 
@@ -107,21 +113,26 @@ const Main = () => {
         setNum(0)
     }
 
+    const showDelModal = (id) => {
+        setDelID(id)
+        document.getElementById("delModal").style.display = "block"
+        if (!document.getElementById("theModal").classList.contains("shown")) {
+            document.getElementById("mainContent").classList.toggle("blurBack")
+        }
+    }
+
+    const closeDelModal = () => {
+        document.getElementById("delModal").style.display = "none"
+        if (!document.getElementById("theModal").classList.contains("shown")) {
+            document.getElementById("mainContent").classList.toggle("blurBack")
+        }
+    }
+
     // search for house
     const searchHouse = (event) => {
-        const arr = []
-        const titleResult = fHouses.filter((house) => house.title.toLowerCase().includes(event.target.value.toLowerCase()))
-
-        const addResult = fHouses.filter((house) => `${house.address} ${house.city} ${house.state}`.toLowerCase().includes(event.target.value))
-
-        const descResult = fHouses.filter((house) => house.description.toLowerCase().includes(event.target.value.toLowerCase()))
-
-        arr.push(...titleResult, ...addResult, ...descResult)
-
-        const arrUniq = [...new Map(arr.map(v => [v._id, v])).values()]
-
-        setHouses(arrUniq)
-        if (arrUniq.length <= 0) {
+        const arr = fHouses.filter((house) => `${house.title} ${house.address} ${house.state} ${house.city} ${house.description}`.toLowerCase().includes(event.target.value.toLowerCase()))
+        setHouses(arr)
+        if (arr.length <= 0) {
             setEmpty(true)
         } else {
             setEmpty(false)
@@ -169,6 +180,10 @@ const Main = () => {
     }
 
     const clearSearch = () => {
+        if (fHouses.length < 1) {
+            navigate("/post")
+            return
+        }
         document.getElementById("searchInput").value = ""
         setHouses(fHouses)
         setEmpty(false)
@@ -199,6 +214,7 @@ const Main = () => {
     }
 
     const deleteHouse = async (houseId) => {
+        closeDelModal()
         setSpin(true)
         await axios.delete(`${url}/v1/property/${houseId}`)
         const rep = await axios.get(`${url}/v1/property/find?userId=${id}`, {
@@ -217,8 +233,18 @@ const Main = () => {
 
     const copyLink = (id) => {
         navigator.clipboard.writeText(`${window.location.origin}/desc/${id}`).then(() => {
-            alert("link copied")
+            document.getElementById("copyModal").style.display = "flex"
+            setTimeout(() => {
+                document.getElementById("copyModal").style.display = "none"
+            }, 2500)
         })
+    }
+
+    const showIcon = (id) => {
+        document.getElementById(id).style.display = "block"
+    }
+    const hideIcon = (id) => {
+        document.getElementById(id).style.display = "none"
     }
 
     if (spin) {
@@ -251,7 +277,7 @@ const Main = () => {
 
                     <div className="listFilterDiv">
                         <div className="listP">
-                            <p onClick={() => getActive("all")} className={active === "all" ? "activeList" : ""}>All<span>200</span></p>
+                            <p onClick={() => getActive("all")} className={active === "all" ? "activeList" : ""}>All<span>{fHouses.length}</span></p>
                             <p onClick={() => getActive("pro")} className={active === "pro" ? "activeList" : ""}>Promoted<span>54</span></p>
                             <p onClick={() => getActive("sold")} className={active === "sold" ? "activeList" : ""}>Sold<span>78</span></p>
                             <p onClick={() => getActive("active")} className={active === "active" ? "activeList" : ""}>Active<span>122</span></p>
@@ -280,20 +306,70 @@ const Main = () => {
                         empty ?
                             (
                                 <div className="emptyDiv">
-                                    <img src={emp} alt="" />
-                                    <h6>{fHouses.length < 1 ? "You haven't posted any property" : "We couldn’t find any results."}</h6>
-                                    <p onClick={clearSearch}>Clear Search</p>
+                                    <img src={fHouses.length < 1 ? building : emp} alt="" />
+                                    <h6>{fHouses.length < 1 ? "You haven’t added any properties yet" : "We couldn’t find any results."}</h6>
+                                    <p style={fHouses.length < 1 ? { backgroundColor: "white" } : {}} onClick={clearSearch}>{fHouses.length < 1 ? "Add a new property" : "Clear Search"}</p>
                                 </div>
                             ) :
                             (
                                 <div className="mainContent">
                                     {
                                         houses.map((house, i) => (
-                                            <div onClick={() => getHouseByID(house)} className="inCon" key={i}>
-                                                <img className="inMain" src={house.mainImage?.url} alt="" />
-                                                <p className="inTitle">{house.title}</p>
-                                                <p className="inAdd"><img src={locate} alt="" />{house.aptUnit} {house.address} {house.city} {house.state}</p>
-                                                <h6>₦{house.price}{house.pricePer}</h6>
+                                            <div key={i} onMouseEnter={() => showIcon(house._id)} onMouseLeave={() => hideIcon(house._id)} className="inConDiv">
+                                                <div onClick={() => getHouseByID(house)} className="inCon">
+                                                    <img className="inMain" src={house.mainImage?.url} alt="" />
+                                                    <p className="inTitle">{house.title}</p>
+                                                    <p className="inAdd"><img src={locate} alt="" />{house.aptUnit} {house.address} {house.city} {house.state}</p>
+                                                    <h6>₦{house.price}{house.pricePer}</h6>
+                                                    <div className="hPurpose">
+                                                        <p style={{ color: house.purpose === "rent" ? "#306584" : "#BF5E65" }}>{house.purpose}</p>
+                                                    </div>
+                                                </div>
+                                                <div style={{ display: "none" }} id={house._id}>
+                                                    <div className="hoverIcon">
+                                                        <div>
+                                                            <OverlayTrigger
+                                                                placement="bottom"
+                                                                overlay={
+                                                                    <Tooltip
+                                                                        id="activity">Promote</Tooltip>
+                                                                }
+                                                            >
+                                                                <img src={activity} alt="" />
+                                                            </OverlayTrigger>
+                                                        </div>
+                                                        <div onClick={() => copyLink(house._id)}>
+                                                            <OverlayTrigger
+                                                                placement="bottom"
+                                                                overlay={
+                                                                    <Tooltip id="copy">Copy link</Tooltip>
+                                                                }
+                                                            >
+                                                                <img src={link} alt="" />
+                                                            </OverlayTrigger>
+                                                        </div>
+                                                        <div>
+                                                            <OverlayTrigger
+                                                                placement="bottom"
+                                                                overlay={
+                                                                    <Tooltip id="share">Share</Tooltip>
+                                                                }
+                                                            >
+                                                                <img src={share} alt="" />
+                                                            </OverlayTrigger>
+                                                        </div>
+                                                        <div>
+                                                            <OverlayTrigger
+                                                                placement="bottom"
+                                                                overlay={
+                                                                    <Tooltip id="delete">Delete</Tooltip>
+                                                                }
+                                                            >
+                                                                <img onClick={() => showDelModal(house._id)} src={del} alt="" />
+                                                            </OverlayTrigger>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         ))
                                     }
@@ -339,7 +415,7 @@ const Main = () => {
                                     <Tooltip id="activity">Delete</Tooltip>
                                 }
                             >
-                                <img onClick={() => deleteHouse(singleHouse._id)} src={del} alt="" />
+                                <img onClick={() => showDelModal(singleHouse._id)} src={del} alt="" />
                             </OverlayTrigger>
                         </div>
                     </div>
@@ -394,6 +470,27 @@ const Main = () => {
                 <p id="count" className="count">{num + 1}/{images.length}</p>
             </div>
 
+            <div id="delModal" className="delModal">
+                <div className="delFirstDiv">
+                    <img src={bigDel} alt="" />
+                    <img onClick={closeDelModal} style={{ cursor: "pointer" }} src={canc} alt="" />
+                </div>
+                <h6>Delete property</h6>
+                <p>Are you sure you want to delete this property? This action cannot be undone.</p>
+                <div className="delSecondDiv">
+                    <button onClick={closeDelModal} className="delCancel">Cancel</button>
+                    <button onClick={() => deleteHouse(delID)} className="delDelete">Delete</button>
+                </div>
+            </div>
+
+            <div id="copyModal" className="copyModal">
+                <img src={bigCopy} alt="" />
+                <div>
+                    <h6>Link copied to clipboard</h6>
+                    <p>You can send this link to anyone or post it on your social media for more reach</p>
+                </div>
+            </div>
+            <Promote />
         </div>
     )
 }
