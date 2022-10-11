@@ -537,7 +537,7 @@ input[type="checkbox"] {
 
     .proBarDiv {
         margin-left: 2%;
-        width: 98%;
+        width: 9ovw;
         align-items: baseline;
     }
 
@@ -755,6 +755,7 @@ input[type="checkbox"] {
         padding-top: 1rem;
         height: 140px;
         border-bottom: #E5E7EB 1px solid;
+        width: 90vw;
     }
 
     .dashSec {
