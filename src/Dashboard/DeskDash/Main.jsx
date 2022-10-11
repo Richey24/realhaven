@@ -116,7 +116,7 @@ const Main = ({ showTop, handleTopClose }) => {
                 <div className="deskStatMain">
                     <div className="deskHand">
                         <img src={hand} alt="" />
-                        <h4>55</h4>
+                        <h4>{houses.length}</h4>
                         <p>Properties listed</p>
                         <h6>+8% from last month</h6>
                     </div>

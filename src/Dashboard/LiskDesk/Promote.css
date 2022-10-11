@@ -4,11 +4,12 @@
     background: #FFFFFF;
     border-radius: 8px;
     position: absolute;
-    top: 12%;
-    left: 45%;
+    top: 6%;
+    left: 36%;
     padding: 24px;
     font-family: 'Switzer';
     z-index: 5;
+    display: none;
 }
 
 .promoteImage {
@@ -22,18 +23,16 @@
     cursor: pointer;
 }
 
-.promoteFirst {
-    display: none;
-}
-
-.promoteFirst>h6 {
+.promoteFirst>h6,
+.promoteFourth>h6 {
     font-weight: 600;
     font-size: 18px;
     color: #374151;
     margin-top: 20px;
 }
 
-.promoteFirst>span {
+.promoteFirst>span,
+.promoteFourth {
     font-weight: 400;
     font-size: 14px;
     color: #6B7280;
@@ -52,6 +51,7 @@
     font-size: 16px;
     color: #FFFFFF;
     margin-top: 20px;
+    cursor: pointer;
 }
 
 .secHead {
@@ -59,6 +59,17 @@
     justify-content: space-between;
     align-items: flex-start;
     border-bottom: 1px solid #E5E7EB;
+}
+
+.secHead h6 {
+    font-size: 600;
+    font-size: 20px;
+}
+
+.secHead p {
+    font-weight: 400;
+    font-size: 16px;
+    color: #6B7280;
 }
 
 .secHead>img {
@@ -106,6 +117,8 @@
 .secondButton {
     display: flex;
     justify-content: space-between;
+    margin-bottom: -25px;
+    margin-top: 10px;
 }
 
 .secondButton>p {
@@ -116,4 +129,120 @@
     height: 44px;
     background: #F3F4F6;
     border-radius: 8px;
+    cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.promoteThird>label {
+    font-weight: 500;
+    font-size: 14px;
+    color: #374151;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.promoteThird>input {
+    width: 100%;
+    padding-left: 10px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #6B7280;
+    border: 1px solid #F3F4F6;
+    border-radius: 4px;
+    outline: none;
+    height: 50px;
+}
+
+.cardDetail {
+    display: flex;
+    gap: 3%;
+    margin-top: 20px;
+}
+
+.cardDetail label {
+    font-weight: 500;
+    font-size: 14px;
+    color: #374151;
+}
+
+.cardDetail input {
+    width: 100%;
+    padding-left: 10px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #6B7280;
+    border: 1px solid #F3F4F6;
+    border-radius: 4px;
+    outline: none;
+    height: 50px;
+}
+
+.saveLater {
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+    margin-bottom: 40px;
+}
+
+.saveLater>input {
+    width: 20px;
+    height: 20px;
+}
+
+.saveLater>label {
+    font-weight: 400;
+    font-size: 14px;
+    color: #6B7280;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.thirdTotal {
+    display: flex;
+    justify-content: space-between;
+}
+
+.thirdTotal>h6 {
+    font-weight: 700;
+    font-size: 18px;
+    color: #374151;
+}
+
+.thirdTotal>p {
+    color: #6B7280;
+}
+
+.thirdTotal span {
+    font-weight: 400;
+    font-size: 16px;
+    color: #6B7280;
+}
+
+.promoteThird>.secondButton,
+.promoteFourth>.secondButton {
+    gap: 20px;
+}
+
+.promoteThird>.secondButton>p,
+.promoteFourth>.secondButton>p {
+    width: 50%;
+    font-weight: 600;
+}
+
+.promoteFourth {
+    text-align: center;
+}
+
+.promoteFourth>h6 {
+    margin-top: 40px;
 }

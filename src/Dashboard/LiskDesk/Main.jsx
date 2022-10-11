@@ -59,6 +59,8 @@ const Main = () => {
 
     useEffect(() => {
         if (!id) {
+            document.cookie = "token=;expires=" + new Date(0).toUTCString()
+            document.cookie = "id=;expires=" + new Date(0).toUTCString()
             navigate("/login")
         } else {
             (async () => {
@@ -102,30 +104,33 @@ const Main = () => {
         setSingleHouse(house)
         setImages([house.mainImage.url, ...house.otherImages.url])
         document.getElementById("theModal").classList.toggle("shown")
-        document.getElementById("mainContent").classList.toggle("blurBack")
+        document.getElementById("darkList").style.display = "block"
         setSpin(false)
         setShowTop(true)
     }
 
     const closeModal = () => {
         document.getElementById("theModal").classList.toggle("shown")
-        document.getElementById("mainContent").classList.toggle("blurBack")
+        document.getElementById("darkList").style.display = "none"
         setNum(0)
     }
 
     const showDelModal = (id) => {
         setDelID(id)
         document.getElementById("delModal").style.display = "block"
-        if (!document.getElementById("theModal").classList.contains("shown")) {
-            document.getElementById("mainContent").classList.toggle("blurBack")
-        }
+        document.getElementById("darkList").style.display = "block"
     }
 
     const closeDelModal = () => {
         document.getElementById("delModal").style.display = "none"
         if (!document.getElementById("theModal").classList.contains("shown")) {
-            document.getElementById("mainContent").classList.toggle("blurBack")
+            document.getElementById("darkList").style.display = "none"
         }
+    }
+
+    const showPromote = () => {
+        document.getElementById("promoteDiv").style.display = "block"
+        document.getElementById("darkList").style.display = "block"
     }
 
     // search for house
@@ -234,8 +239,12 @@ const Main = () => {
     const copyLink = (id) => {
         navigator.clipboard.writeText(`${window.location.origin}/desc/${id}`).then(() => {
             document.getElementById("copyModal").style.display = "flex"
+            document.getElementById("darkList").style.display = "block"
             setTimeout(() => {
                 document.getElementById("copyModal").style.display = "none"
+                if (!document.getElementById("theModal").classList.contains("shown")) {
+                    document.getElementById("darkList").style.display = "none"
+                }
             }, 2500)
         })
     }
@@ -335,7 +344,7 @@ const Main = () => {
                                                                         id="activity">Promote</Tooltip>
                                                                 }
                                                             >
-                                                                <img src={activity} alt="" />
+                                                                <img onClick={showPromote} src={activity} alt="" />
                                                             </OverlayTrigger>
                                                         </div>
                                                         <div onClick={() => copyLink(house._id)}>
@@ -391,7 +400,7 @@ const Main = () => {
                                     <Tooltip id="activity">Promote</Tooltip>
                                 }
                             >
-                                <img src={activity} alt="" />
+                                <img onClick={showPromote} src={activity} alt="" />
                             </OverlayTrigger>
                             <OverlayTrigger
                                 placement="bottom"
