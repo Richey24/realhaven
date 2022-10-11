@@ -536,6 +536,7 @@ input[type="checkbox"] {
     }
 
     .proBarDiv {
+        margin-left: 1%;
         width: 90vw;
         align-items: baseline;
     }
