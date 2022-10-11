@@ -227,7 +227,7 @@ const Header = ({ setResult, setHouse, properties }) => {
                     </ul>
                     <ul className='myAuth'>
                         <li onClick={signUp}>{id ? "Dashboard" : "Sign up"}</li>
-                        <li onClick={() => { handleTopClose(); navigate(id ? '/listing' : '/login') }}>{id ? "Listing" : "Sign in"}</li>
+                        <li onClick={signIn}>{id ? "Listing" : "Sign in"}</li>
                     </ul>
                     <p onClick={signIn} className='postProps'>Post a property</p>
                 </Offcanvas.Body>
