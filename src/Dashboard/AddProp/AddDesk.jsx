@@ -24,6 +24,9 @@ const AddDesk = () => {
                 <Sidebar handleTopClose={handleTopClose} />
                 <MainDesk showTop={showTop} handleTopClose={handleTopClose} />
             </div>
+            <div id="dimDiv">
+
+            </div>
         </div>
     )
 }

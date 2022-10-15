@@ -6,7 +6,6 @@
     position: absolute;
     top: 6%;
     left: 36%;
-    padding: 24px;
     font-family: 'Switzer';
     z-index: 5;
     display: none;
@@ -17,13 +16,23 @@
     width: 100%;
 }
 
+.promoteImageDiv {
+    background-color: #EAF2FB;
+    border-radius: 8px;
+}
+
+.proSecondDiv {
+    padding: 24px;
+}
+
 .promoteCancel {
-    margin-left: 95%;
-    margin-bottom: 30px;
+    margin-left: 90%;
+    margin-bottom: 10px;
+    margin-top: 19px;
     cursor: pointer;
 }
 
-.promoteFirst>h6,
+.promoteFirst h6,
 .promoteFourth>h6 {
     font-weight: 600;
     font-size: 18px;
@@ -31,14 +40,14 @@
     margin-top: 20px;
 }
 
-.promoteFirst>span,
+.promoteFirst span,
 .promoteFourth {
     font-weight: 400;
     font-size: 14px;
     color: #6B7280;
 }
 
-.promoteFirst>p {
+.promoteFirst p {
     height: 44px;
     background: #2E7DD7;
     border: 1px solid #2E7DD7;
@@ -74,6 +83,10 @@
 
 .secHead>img {
     cursor: pointer;
+}
+
+.promoteSecond {
+    padding: 24px;
 }
 
 .promoteSecond>label {
@@ -163,6 +176,10 @@ input[type=number] {
     height: 50px;
 }
 
+.promoteThird {
+    padding: 24px;
+}
+
 .cardDetail {
     display: flex;
     gap: 3%;
@@ -229,12 +246,12 @@ input[type=number] {
 }
 
 .promoteThird>.secondButton,
-.promoteFourth>.secondButton {
+.promoteFourth .secondButton {
     gap: 20px;
 }
 
 .promoteThird>.secondButton>p,
-.promoteFourth>.secondButton>p {
+.promoteFourth .secondButton>p {
     width: 50%;
     font-weight: 600;
 }
@@ -243,6 +260,23 @@ input[type=number] {
     text-align: center;
 }
 
-.promoteFourth>h6 {
-    margin-top: 40px;
+.promoteFourth h6 {
+    margin-top: 20px;
+}
+
+.nameErr {
+    height: 10px;
+    margin-bottom: 0px;
+    font-weight: 400;
+    font-size: 12px;
+    color: #F43F5E;
+    margin-bottom: 10px;
+}
+
+.promoteFourth .promoteImage {
+    height: 300px;
+}
+
+.promoteFourth .promoteCancel {
+    margin-left: 85%;
 }

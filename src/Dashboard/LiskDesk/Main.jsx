@@ -30,6 +30,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios"
 import url from '../../url';
 import Promote from "./Promote"
+import Draft from "./Draft"
 
 let token = ""
 let id = ""
@@ -290,10 +291,10 @@ const Main = () => {
                             <p onClick={() => getActive("pro")} className={active === "pro" ? "activeList" : ""}>Promoted<span>54</span></p>
                             <p onClick={() => getActive("sold")} className={active === "sold" ? "activeList" : ""}>Sold<span>78</span></p>
                             <p onClick={() => getActive("active")} className={active === "active" ? "activeList" : ""}>Active<span>122</span></p>
-                            <p onClick={() => getActive("draft")} className={active === "draft" ? "activeList" : ""}>Draft<span>4</span></p>
+                            <p onClick={() => getActive("draft")} className={active === "draft" ? "activeList" : ""}>Draft<span>{Object.keys(localStorage).filter((key) => !isNaN(key)).length}</span></p>
                         </div>
                         <div>
-                            <div className="listSearch"><img src={search} alt="" /><input onChange={searchHouse} placeholder="apartment" type="text" id="searchInput" /></div>
+                            <div style={{ backgroundColor: active === 'draft' ? 'white' : '' }} className="listSearch"><img src={search} alt="" /><input style={{ backgroundColor: active === 'draft' ? 'white' : '' }} onChange={searchHouse} placeholder={active === "all" ? "apartment" : "Search"} type="text" id="searchInput" /></div>
 
                             <div className="filterDivList">
                                 <div onClick={listSelect} className="listFilter"><p>{fAct}</p> <img src={down} alt="" /></div>
@@ -309,84 +310,94 @@ const Main = () => {
                         </div>
                     </div>
 
-                    {!spin && <p className="resultAmt">Displaying {houses.length} results</p>}
+                    {active === "all" && <div>
+
+                        {!spin && <p className="resultAmt">Displaying {houses.length} results</p>}
+
+                        {
+                            empty ?
+                                (
+                                    <div className="emptyDiv">
+                                        <img src={fHouses.length < 1 ? building : emp} alt="" />
+                                        <h6>{fHouses.length < 1 ? "You haven’t added any properties yet" : "We couldn’t find any results."}</h6>
+                                        <p style={fHouses.length < 1 ? { backgroundColor: "white" } : {}} onClick={clearSearch}>{fHouses.length < 1 ? "Add a new property" : "Clear Search"}</p>
+                                    </div>
+                                ) :
+                                (
+                                    <div className="mainContent">
+                                        {
+                                            houses.map((house, i) => (
+                                                <div key={i} onMouseEnter={() => showIcon(house._id)} onMouseLeave={() => hideIcon(house._id)} className="inConDiv">
+                                                    <div onClick={() => getHouseByID(house)} className="inCon">
+                                                        <img className="inMain" src={house.mainImage?.url} alt="" />
+                                                        <p className="inTitle">{house.title}</p>
+                                                        <p className="inAdd"><img src={locate} alt="" />{house.aptUnit} {house.address} {house.city} {house.state}</p>
+                                                        <h6>₦{house.price}{house.pricePer}</h6>
+                                                        <div className="hPurpose">
+                                                            <p style={{ color: house.purpose === "rent" ? "#306584" : "#BF5E65" }}>{house.purpose}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div style={{ display: "none" }} id={house._id}>
+                                                        <div className="hoverIcon">
+                                                            <div>
+                                                                <OverlayTrigger
+                                                                    placement="bottom"
+                                                                    overlay={
+                                                                        <Tooltip
+                                                                            id="activity">Promote</Tooltip>
+                                                                    }
+                                                                >
+                                                                    <img onClick={showPromote} src={activity} alt="" />
+                                                                </OverlayTrigger>
+                                                            </div>
+                                                            <div onClick={() => copyLink(house._id)}>
+                                                                <OverlayTrigger
+                                                                    placement="bottom"
+                                                                    overlay={
+                                                                        <Tooltip id="copy">Copy link</Tooltip>
+                                                                    }
+                                                                >
+                                                                    <img src={link} alt="" />
+                                                                </OverlayTrigger>
+                                                            </div>
+                                                            <div>
+                                                                <OverlayTrigger
+                                                                    placement="bottom"
+                                                                    overlay={
+                                                                        <Tooltip id="share">Share</Tooltip>
+                                                                    }
+                                                                >
+                                                                    <img src={share} alt="" />
+                                                                </OverlayTrigger>
+                                                            </div>
+                                                            <div>
+                                                                <OverlayTrigger
+                                                                    placement="bottom"
+                                                                    overlay={
+                                                                        <Tooltip id="delete">Delete</Tooltip>
+                                                                    }
+                                                                >
+                                                                    <img onClick={() => showDelModal(house._id)} src={del} alt="" />
+                                                                </OverlayTrigger>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))
+                                        }
+                                    </div>
+                                )
+                        }
+
+                        {!spin && houses.length > 6 && !empty && <p className="loadMore">Load more...</p>}
+
+                    </div>}
 
                     {
-                        empty ?
-                            (
-                                <div className="emptyDiv">
-                                    <img src={fHouses.length < 1 ? building : emp} alt="" />
-                                    <h6>{fHouses.length < 1 ? "You haven’t added any properties yet" : "We couldn’t find any results."}</h6>
-                                    <p style={fHouses.length < 1 ? { backgroundColor: "white" } : {}} onClick={clearSearch}>{fHouses.length < 1 ? "Add a new property" : "Clear Search"}</p>
-                                </div>
-                            ) :
-                            (
-                                <div className="mainContent">
-                                    {
-                                        houses.map((house, i) => (
-                                            <div key={i} onMouseEnter={() => showIcon(house._id)} onMouseLeave={() => hideIcon(house._id)} className="inConDiv">
-                                                <div onClick={() => getHouseByID(house)} className="inCon">
-                                                    <img className="inMain" src={house.mainImage?.url} alt="" />
-                                                    <p className="inTitle">{house.title}</p>
-                                                    <p className="inAdd"><img src={locate} alt="" />{house.aptUnit} {house.address} {house.city} {house.state}</p>
-                                                    <h6>₦{house.price}{house.pricePer}</h6>
-                                                    <div className="hPurpose">
-                                                        <p style={{ color: house.purpose === "rent" ? "#306584" : "#BF5E65" }}>{house.purpose}</p>
-                                                    </div>
-                                                </div>
-                                                <div style={{ display: "none" }} id={house._id}>
-                                                    <div className="hoverIcon">
-                                                        <div>
-                                                            <OverlayTrigger
-                                                                placement="bottom"
-                                                                overlay={
-                                                                    <Tooltip
-                                                                        id="activity">Promote</Tooltip>
-                                                                }
-                                                            >
-                                                                <img onClick={showPromote} src={activity} alt="" />
-                                                            </OverlayTrigger>
-                                                        </div>
-                                                        <div onClick={() => copyLink(house._id)}>
-                                                            <OverlayTrigger
-                                                                placement="bottom"
-                                                                overlay={
-                                                                    <Tooltip id="copy">Copy link</Tooltip>
-                                                                }
-                                                            >
-                                                                <img src={link} alt="" />
-                                                            </OverlayTrigger>
-                                                        </div>
-                                                        <div>
-                                                            <OverlayTrigger
-                                                                placement="bottom"
-                                                                overlay={
-                                                                    <Tooltip id="share">Share</Tooltip>
-                                                                }
-                                                            >
-                                                                <img src={share} alt="" />
-                                                            </OverlayTrigger>
-                                                        </div>
-                                                        <div>
-                                                            <OverlayTrigger
-                                                                placement="bottom"
-                                                                overlay={
-                                                                    <Tooltip id="delete">Delete</Tooltip>
-                                                                }
-                                                            >
-                                                                <img onClick={() => showDelModal(house._id)} src={del} alt="" />
-                                                            </OverlayTrigger>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        ))
-                                    }
-                                </div>
-                            )
+                        active === "draft" && <div className="draftDiv">
+                            <Draft />
+                        </div>
                     }
-
-                    {!spin && houses.length > 6 && !empty && <p className="loadMore">Load more...</p>}
 
                 </div>
 

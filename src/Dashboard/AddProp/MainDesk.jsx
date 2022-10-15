@@ -10,7 +10,7 @@ import pen from "../../img/Edit.svg"
 import settingWhite from "../../img/SettingWhite.svg"
 import cancel from "../../img/cancel.svg"
 import check from "../../img/speech-bubble.svg"
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from "react"
 import { Toast, ProgressBar, Offcanvas, Spinner, OffcanvasBody } from "react-bootstrap"
 import axios from 'axios';
@@ -53,7 +53,10 @@ const MainDesk = () => {
     const [state, setState] = useState(NaijaStates.states()[24])
     const [city, setCity] = useState(NaijaStates.lgas(state).lgas[0])
     const [showDraft, setShowDraft] = useState(false)
+    const [draft, setDraft] = useState({})
+    const [keys, setKey] = useState("")
     const navigate = useNavigate()
+    const loc = useLocation()
 
     const logOut = () => {
         document.cookie = "token=;expires=" + new Date(0).toUTCString()
@@ -81,6 +84,15 @@ const MainDesk = () => {
                 setUser(result)
                 setSpin(false)
             })()
+            if (loc.state) {
+                const { draftPro, key } = loc.state
+                setDraft(draftPro)
+                setKey(key)
+                setState(draftPro.state)
+                setCity(draftPro.city)
+                setPurpose(draftPro.purpose)
+                setPropType(draftPro.propertyType)
+            }
         }
     }, [])
 
@@ -181,11 +193,15 @@ const MainDesk = () => {
             mainImage: elements.mainImage.files[0],
             otherImages: imageArray
         }
-        let num = 0
-        while (localStorage.getItem(String(num)) !== null) {
-            num++
+        if (keys) {
+            localStorage.setItem(String(keys), JSON.stringify(theProp))
+        } else {
+            let num = 0
+            while (localStorage.getItem(String(num)) !== null) {
+                num++
+            }
+            localStorage.setItem(String(num), JSON.stringify(theProp))
         }
-        localStorage.setItem(String(num), JSON.stringify(theProp))
         const draftModal = document.getElementById("draftModal")
         const mainDashDiv = document.getElementById("dimDiv")
         draftModal.style.display = "block"
@@ -469,16 +485,16 @@ const MainDesk = () => {
                         <div className="deskAddTitle">
                             <label htmlFor="title">Title</label>
                             <br />
-                            <input placeholder="Name your property E.g “Five Bedroom Luxury Semi Detached Duplex" type="text" name="title" id="title" />
+                            <input defaultValue={draft.title} placeholder="Name your property E.g “Five Bedroom Luxury Semi Detached Duplex" type="text" name="title" id="title" />
                         </div>
                         <div className="puporseDivDesk">
                             <div>
                                 <p className="purposePara">Address</p>
-                                <input name="address" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="Enter the property address" className='locationDesk' type="text" />
+                                <input defaultValue={draft.address} name="address" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="Enter the property address" className='locationDesk' type="text" />
                             </div>
                             <div>
                                 <p className="purposePara" style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", width: "19.5vw" }}>Apt/Unit <span className="aptSpan">optional</span></p>
-                                <input name="apt" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="000" className='locationDesk' type="number" />
+                                <input defaultValue={draft.aptUnit} name="apt" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="000" className='locationDesk' type="number" />
                             </div>
                             <div>
                                 <p className="purposePara">Country</p>
@@ -517,7 +533,7 @@ const MainDesk = () => {
                             </div>
                             <div>
                                 <p className="purposePara">Postal code</p>
-                                <input name="postalCode" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="******" className='locationDesk' type="text" />
+                                <input defaultValue={draft.postalCode} name="postalCode" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="******" className='locationDesk' type="text" />
                             </div>
                         </div>
 
@@ -578,7 +594,7 @@ const MainDesk = () => {
                                 <p className="purposePara">Property price</p>
                                 <div style={{ paddingTop: "0px", paddingRight: "0px", cursor: "unset" }} className='locationDesk'>
                                     <p>₦</p>
-                                    <input id="price" name="price" placeholder="150,000" type="number" />
+                                    <input defaultValue={draft.price?.replace(',', '')} id="price" name="price" placeholder="150,000" type="number" />
                                 </div>
                             </div>
                         </div>
@@ -587,28 +603,28 @@ const MainDesk = () => {
                         <div className="puporseDivDesk">
                             <div>
                                 <p className="purposePara">Bedroom</p>
-                                <input onChange={roundUp} name="bedroom" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Bedrooms" className='locationDesk' type="number" />
+                                <input defaultValue={draft.noOfBedroom} onChange={roundUp} name="bedroom" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Bedrooms" className='locationDesk' type="number" />
                             </div>
                             <div>
                                 <p className="purposePara">Bathroom</p>
-                                <input onChange={roundUp} name="bathroom" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Bathrooms" className='locationDesk' type="number" />
+                                <input defaultValue={draft.noOfBathroom} onChange={roundUp} name="bathroom" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Bathrooms" className='locationDesk' type="number" />
                             </div>
                             <div>
                                 <p className="purposePara">Toilet</p>
-                                <input onChange={roundUp} name="toilet" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Toilets" className='locationDesk' type="number" />
+                                <input defaultValue={draft.noOfToilet} onChange={roundUp} name="toilet" style={{ margin: "0px", paddingTop: "0px", outline: "none", cursor: "unset" }} placeholder="No of Toilets" className='locationDesk' type="number" />
                             </div>
                         </div>
 
 
                         <div className="addTextAreaDiv">
                             <p className="purposePara">Description</p>
-                            <textarea id="desc" name="description" placeholder="Tell us everything about the property..."></textarea>
+                            <textarea defaultValue={draft.description} id="desc" name="description" placeholder="Tell us everything about the property..."></textarea>
                         </div>
 
                         <div className="checkBoxSelect">
-                            <label htmlFor="furnished"><input type="checkbox" name="furnished" id="furnished" value="Furnished" />Furnished</label>
-                            <label htmlFor="serviced"><input type="checkbox" name="serviced" id="serviced" value="Serviced" />Serviced</label>
-                            <label htmlFor="newlybuilt"><input type="checkbox" name="newlybuilt" id="newlybuilt" value="Newly built" />Newly-built</label>
+                            <label htmlFor="furnished"><input defaultChecked={draft.stateOfBuilding?.includes("Furnished") ? true : false} type="checkbox" name="furnished" id="furnished" value="Furnished" />Furnished</label>
+                            <label htmlFor="serviced"><input defaultChecked={draft.stateOfBuilding?.includes("Serviced") ? true : false} type="checkbox" name="serviced" id="serviced" value="Serviced" />Serviced</label>
+                            <label htmlFor="newlybuilt"><input defaultChecked={draft.stateOfBuilding?.includes("Newly built") ? true : false} type="checkbox" name="newlybuilt" id="newlybuilt" value="Newly built" />Newly-built</label>
                         </div>
 
                     </div>
@@ -629,7 +645,7 @@ const MainDesk = () => {
 
                         <div className="additionFeat">
                             <p className="purposePara">Additional Features</p>
-                            <input name="features" placeholder="Add features" type="text" />
+                            <input defaultValue={draft.additionalFeatures?.join()} name="features" placeholder="Add features" type="text" />
                             <h6>Suggested: <span>Balcony, Family Lounge, Swimming Pool, CCTV, Jacuzzi, Adequate car space, Security</span></h6>
                         </div>
                         <div className="addHouseImages">
@@ -705,9 +721,7 @@ const MainDesk = () => {
                     </div>
                 </OffcanvasBody>
             </Offcanvas>
-            <div id="dimDiv">
 
-            </div>
         </div>
     )
 }

@@ -1,3 +1,16 @@
  .hiddenHead {
      display: none;
  }
+
+ html {
+     min-height: 100%;
+     position: relative;
+ }
+
+ body {
+     height: 100%;
+ }
+
+ #dimDiv {
+     min-height: 100%;
+ }

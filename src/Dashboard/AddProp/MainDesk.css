@@ -494,8 +494,8 @@ input[type="checkbox"] {
     position: absolute;
     width: 351px;
     height: 130px;
-    left: 45%;
-    bottom: 8%;
+    left: 40%;
+    top: 60%;
     background: #FFFFFF;
     border-radius: 8px;
     padding: 10px;
