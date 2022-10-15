@@ -117,3 +117,14 @@
     margin-right: auto;
     cursor: pointer;
 }
+
+@media screen and (max-width: 800px) {
+    .draftFirst {
+        width: 95%;
+    }
+
+    .emptyDraft {
+        margin: 0 auto;
+        width: 100%;
+    }
+}

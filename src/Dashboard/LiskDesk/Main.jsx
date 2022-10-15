@@ -18,15 +18,26 @@ import room from '../../img/blackbed.svg'
 import bathroom from '../../img/blackbath.svg'
 import toilet from '../../img/blacktoilet.svg'
 import cancel from "../../img/canc.svg"
-import call from "../../img/Call.svg"
 import emp from "../../img/empty.svg"
 import building from "../../img/building.svg"
 import bigDel from "../../img/bigdel.svg"
 import bigCopy from "../../img/bigcopy.svg"
 import canc from "../../img/cancel.svg"
+import dashboard from "../../img/Category-blue.svg"
+import dashBlue from "../../img/DashBlue.svg"
+import combined from "../../img/combined.svg"
+import setting from "../../img/Setting.svg"
+import listing from "../../img/Listing.svg"
+import listingBlue from "../../img/ListingBlue.svg"
+import request from "../../img/Request.svg"
+import requestBlue from "../../img/RequestBlue.svg"
+import analytics from "../../img/Analytics.svg"
+import analyticsBlue from "../../img/AnalyticsBlue.svg"
+import logout from "../../img/Logout.svg"
+import logo from "../../img/logo_blue.svg"
 import "../../Homepage/DescMob/Main.css"
 import { Offcanvas, Spinner, Tooltip, OverlayTrigger } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from "axios"
 import url from '../../url';
 import Promote from "./Promote"
@@ -43,10 +54,9 @@ for (let i = 0; i < document.cookie?.split(" ").length; i++) {
     }
 }
 
-const Main = () => {
+const Main = ({ showTop, handleTopClose }) => {
     const [active, setActive] = useState("all")
     const [fAct, setFAct] = useState("Recent")
-    const [showTop, setShowTop] = useState(false)
     const [spin, setSpin] = useState(false)
     const [singleHouse, setSingleHouse] = useState({})
     const [num, setNum] = useState(0)
@@ -56,7 +66,21 @@ const Main = () => {
     const [fHouses, setFHouses] = useState([])
     const [delID, setDelID] = useState("")
     const [user, setUser] = useState({})
-    const navigate = useNavigate()
+    const nav = useNavigate()
+    const { pathname } = useLocation()
+
+    const navigate = (path) => {
+        handleTopClose()
+        setTimeout(() => {
+            nav(path)
+        }, 500)
+    }
+
+    const logOut = () => {
+        document.cookie = "token=;expires=" + new Date(0).toUTCString()
+        document.cookie = "id=;expires=" + new Date(0).toUTCString()
+        navigate("/")
+    }
 
     useEffect(() => {
         if (!id) {
@@ -96,22 +120,17 @@ const Main = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const handleTopClose = () => {
-        setShowTop(false)
-    }
-
     const getHouseByID = async (house) => {
         setSpin(true)
         setSingleHouse(house)
         setImages([house.mainImage.url, ...house.otherImages.url])
-        document.getElementById("theModal").classList.toggle("shown")
+        document.getElementById("theModal").classList.toggle("shownX")
         document.getElementById("darkList").style.display = "block"
         setSpin(false)
-        setShowTop(true)
     }
 
     const closeModal = () => {
-        document.getElementById("theModal").classList.toggle("shown")
+        document.getElementById("theModal").classList.toggle("shownX")
         document.getElementById("darkList").style.display = "none"
         setNum(0)
     }
@@ -124,7 +143,7 @@ const Main = () => {
 
     const closeDelModal = () => {
         document.getElementById("delModal").style.display = "none"
-        if (!document.getElementById("theModal").classList.contains("shown")) {
+        if (!document.getElementById("theModal").classList.contains("shownX")) {
             document.getElementById("darkList").style.display = "none"
         }
     }
@@ -243,10 +262,10 @@ const Main = () => {
             document.getElementById("darkList").style.display = "block"
             setTimeout(() => {
                 document.getElementById("copyModal").style.display = "none"
-                if (!document.getElementById("theModal").classList.contains("shown")) {
+                if (!document.getElementById("theModal").classList.contains("shownX")) {
                     document.getElementById("darkList").style.display = "none"
                 }
-            }, 2500)
+            }, 3000)
         })
     }
 
@@ -273,6 +292,7 @@ const Main = () => {
                         <h6>Your Listing</h6>
                         <p>All the properties you’ve listed on your agency</p>
                     </div>
+                    <img className="mobileTopImg" src={user.image?.url ? user.image?.url : dp} alt="" />
                     <div id="theListIcon">
                         <img src={noti} alt="" />
                         <img src={settingWhite} alt="" />
@@ -293,7 +313,7 @@ const Main = () => {
                             <p onClick={() => getActive("active")} className={active === "active" ? "activeList" : ""}>Active<span>122</span></p>
                             <p onClick={() => getActive("draft")} className={active === "draft" ? "activeList" : ""}>Draft<span>{Object.keys(localStorage).filter((key) => !isNaN(key)).length}</span></p>
                         </div>
-                        <div>
+                        <div className="mobileListDiv">
                             <div style={{ backgroundColor: active === 'draft' ? 'white' : '' }} className="listSearch"><img src={search} alt="" /><input style={{ backgroundColor: active === 'draft' ? 'white' : '' }} onChange={searchHouse} placeholder={active === "all" ? "apartment" : "Search"} type="text" id="searchInput" /></div>
 
                             <div className="filterDivList">
@@ -306,7 +326,10 @@ const Main = () => {
                                     <li onClick={() => sortHouse("aD")} style={{ color: fAct === "Alphabetical (desc)" && "#2E7DD7" }}>Alphabetical (desc)</li>
                                 </ul>
                             </div>
-                            <p className="listPro">Promote Properties</p>
+                            <div className="listPro">
+                                <p>Promote Properties</p>
+                                <img src={activity} alt="" />
+                            </div>
                         </div>
                     </div>
 
@@ -469,7 +492,6 @@ const Main = () => {
                             </div>
                         </div>
                         <p className="singleDesc">{singleHouse.description}</p>
-                        <p className="singleContact"><img src={call} alt="" />Contact Agent</p>
                         <p className="singleFeat">Features</p>
                         <ul className="singleAdd">
                             {
@@ -486,7 +508,7 @@ const Main = () => {
                 <img src={images[num]} alt="" id="fullScreen" />
                 {num > 0 && <img onClick={decrease} className="moveleft" id="moveleft" src={moveleft} alt="" />}
                 {num < images.length - 1 && <img onClick={increase} className="moveright" id="moveright" src={moveright} alt="" />}
-                <img onClick={hideScreen} id="cancel" className="expand" src={cancel} alt="" />
+                <img onClick={hideScreen} id="cancel" className="cancel" src={cancel} alt="" />
                 <p id="count" className="count">{num + 1}/{images.length}</p>
             </div>
 
@@ -511,6 +533,31 @@ const Main = () => {
                 </div>
             </div>
             <Promote />
+
+            <Offcanvas style={{ width: "80%" }} className="topCanvas" show={showTop} onHide={handleTopClose} placement="start">
+                <Offcanvas.Header className="startHead" closeButton>
+                    <Offcanvas.Title><p className="startLogo"><img src={logo} alt="" />Haven</p></Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                    <div>
+                        <p style={pathname === "/post" ? { background: "#17457A" } : {}} onClick={() => navigate("/post")} className="dashNewProp"><img src={combined} alt="" />New Property</p>
+
+                        <p onClick={() => navigate("/home")} className={pathname === "/home" ? "dashDash jCenter" : "dashDis jCenter"}><img src={pathname === "/home" ? dashBlue : dashboard} alt="" /><span className="toBeHidden">Dashboard</span></p>
+
+                        <p onClick={() => navigate("/analytics")} className={pathname === "/analytics" ? "dashDash jCenter" : "dashDis jCenter"}><img src={pathname === "analytics" ? analyticsBlue : analytics} alt="" /><span className="toBeHidden">Analytics</span></p>
+
+
+                        <p onClick={() => navigate("/request")} id="dashReq" className={pathname === "/request" ? "dashDash jCenter" : "dashDis jCenter"}><img src={pathname === "request" ? requestBlue : request} alt="" /><span className="toBeHidden">Requests</span></p>
+
+
+                        <p onClick={() => navigate("/listing")} className={pathname === "/listing" ? "dashDash jCenter" : "dashDis jCenter"}><img src={pathname === "/listing" ? listingBlue : listing} alt="" /><span className="toBeHidden">Listings</span></p>
+
+                        <p onClick={() => navigate("/setting")} className={pathname === "/setting" ? "dashDash jCenter" : "dashDis jCenter"}><img src={pathname === "/setting" ? setting : settingWhite} alt="" /><span className="toBeHidden">Settings</span></p>
+
+                        <p onClick={logOut} style={{ marginTop: "6rem" }} className="dashDis"><img src={logout} alt="" />LOGOUT</p>
+                    </div>
+                </Offcanvas.Body>
+            </Offcanvas>
         </div>
     )
 }

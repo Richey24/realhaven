@@ -531,6 +531,11 @@ input[type="checkbox"] {
 }
 
 @media screen and (max-width: 800px) {
+    .draftModal {
+        left: 7%;
+        top: 50%;
+    }
+
     .proBarDiv h4 {
         font-size: 14px;
     }

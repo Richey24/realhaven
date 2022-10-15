@@ -33,7 +33,15 @@ const Main = ({ showTop, handleTopClose }) => {
     const [houses, setHouses] = useState([])
     const [spin, setSpin] = useState(false)
     const { pathname } = useLocation()
-    const navigate = useNavigate()
+    const nav = useNavigate()
+
+    const navigate = (path) => {
+        handleTopClose()
+        setTimeout(() => {
+            nav(path)
+        }, 500)
+    }
+
     const logOut = () => {
         document.cookie = "token=;expires=" + new Date(0).toUTCString()
         document.cookie = "id=;expires=" + new Date(0).toUTCString()

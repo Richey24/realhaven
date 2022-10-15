@@ -21,4 +21,15 @@
     .deskDashMain {
         display: block;
     }
+
+    .startLogo {
+        display: flex;
+        align-items: baseline;
+        gap: 5px;
+        margin-top: 10px;
+        margin-left: 10px;
+        font-weight: 700;
+        font-size: 18px;
+        color: #2E7DD7;
+    }
 }

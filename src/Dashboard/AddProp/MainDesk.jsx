@@ -153,6 +153,7 @@ const MainDesk = () => {
     }
 
     const saveDraft = () => {
+        setShowDraft(false)
         const elements = document.getElementsByTagName("input")
         const desc = document.getElementById("desc")
 

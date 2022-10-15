@@ -19,7 +19,7 @@ const Promote = () => {
     const hidePromote = () => {
         setPro(0)
         document.getElementById("promoteDiv").style.display = "none"
-        if (!document.getElementById("theModal").classList.contains("shown")) {
+        if (!document.getElementById("theModal").classList.contains("shownX")) {
             document.getElementById("darkList").style.display = "none"
         }
     }
@@ -216,7 +216,8 @@ const Promote = () => {
                 </div>
                 <div className="secondButton">
                     <p onClick={() => setPro(1)}>Prev</p>
-                    <p onClick={() => setPro(3)} style={{ background: "#2E7DD7", color: "white" }}>Complete promotion</p>
+                    <p className="comPro" onClick={() => setPro(3)} style={{ background: "#2E7DD7", color: "white" }}>Complete promotion</p>
+                    <p className="comProMob" onClick={() => setPro(3)} style={{ background: "#2E7DD7", color: "white" }}>Complete</p>
                 </div>
             </div>}
             {pro === 3 && <div className="promoteFourth">

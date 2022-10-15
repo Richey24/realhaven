@@ -280,3 +280,23 @@ input[type=number] {
 .promoteFourth .promoteCancel {
     margin-left: 85%;
 }
+
+.comProMob {
+    display: none !important;
+}
+
+@media screen and (max-width: 800px) {
+    .promoteDiv {
+        left: 5%;
+        width: 90%;
+        top: 10%;
+    }
+
+    .comProMob {
+        display: flex !important;
+    }
+
+    .comPro {
+        display: none !important;
+    }
+}
