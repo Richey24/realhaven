@@ -19,9 +19,7 @@ const Promote = () => {
     const hidePromote = () => {
         setPro(0)
         document.getElementById("promoteDiv").style.display = "none"
-        if (!document.getElementById("theModal").classList.contains("shownX")) {
-            document.getElementById("darkList").style.display = "none"
-        }
+        document.getElementById("darkList").style.display = "none"
     }
 
     const getCCNum = (event) => {

@@ -92,8 +92,8 @@
 }
 
 .listP>p {
-    padding-bottom: 34px;
     padding-top: 34px;
+    height: 78px;
 }
 
 .activeList {
@@ -325,6 +325,8 @@
     padding-left: 20px;
     padding-right: 20px;
     border-bottom: 1px solid #E5E7EB;
+    width: 93%;
+    margin-left: 3.5%;
 }
 
 .modeHead>p>img {
@@ -353,12 +355,11 @@
     height: 550px;
     margin-top: 2rem;
     position: relative;
-    overflow: scroll;
 }
 
 .mainBodyImg {
     width: 90%;
-    height: 450px;
+    height: 560px;
     margin-left: 5%;
     border-radius: 6px
 }
@@ -399,7 +400,7 @@
 }
 
 .moveleft {
-    top: 40%;
+    top: 50%;
     left: 8%;
     border-radius: 100px;
     width: 54px;
@@ -408,7 +409,7 @@
 }
 
 .moveright {
-    top: 40%;
+    top: 50%;
     right: 8%;
     width: 54px;
     border-radius: 100px;
@@ -419,10 +420,10 @@
 .count {
     background: #FFFFFF;
     backdrop-filter: blur(30px);
-    border-radius: 4px;
+    border-radius: 100px;
     position: absolute;
     right: 7%;
-    bottom: 19%;
+    bottom: 1%;
     width: 58px;
     height: 36px;
     display: flex;
@@ -456,7 +457,7 @@
 
 .otherImg>img {
     width: 22.5%;
-    height: 110px;
+    height: 140px;
     border-radius: 6px;
     cursor: pointer;
 }
@@ -468,7 +469,7 @@
 .singleTitle {
     display: flex;
     justify-content: space-between;
-    margin: 2% 5% 1% 5%;
+    margin: 40px 5% 1% 5%;
     text-transform: capitalize;
 }
 
@@ -499,11 +500,11 @@
 .singleLoc {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
     flex-wrap: wrap;
     margin-left: 5%;
     margin-right: 5%;
-    margin-bottom: 2%;
+    margin-top: 30px;
 }
 
 .singleLoc>p {
@@ -573,7 +574,13 @@
 }
 
 .singleAdd {
-    margin-left: 5%;
+    margin-left: 4%;
+    display: flex;
+    justify-content: flex-start;
+    width: 30%;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-bottom: 50px;
 }
 
 .emptyDiv {
@@ -661,11 +668,11 @@
     background: #FFFFFF;
     position: absolute;
     top: 50%;
-    left: 40%;
+    right: 38%;
     box-shadow: 0px 20px 24px -4px rgba(16, 24, 40, 0.1), 0px 8px 8px -4px rgba(16, 24, 40, 0.04);
     border-radius: 12px;
     padding: 20px;
-    z-index: 3;
+    z-index: 4;
     display: none;
 }
 
@@ -727,9 +734,9 @@
     padding: 20px;
     gap: 15px;
     position: absolute;
-    top: 5%;
-    left: 40%;
-    z-index: 4;
+    top: 50%;
+    right: 38%;
+    z-index: 3;
     display: none;
 }
 
@@ -767,17 +774,8 @@
         margin-bottom: 120px;
     }
 
-    .resultAmt {
-        display: none;
-    }
-
     .listSearch {
         width: 40vw;
-        background-color: white;
-    }
-
-    .listSearch>input {
-        background-color: white;
     }
 
     .filterDivList {
@@ -785,7 +783,9 @@
     }
 
     .listSelect {
-        width: 30vw;
+        width: 50vw;
+        right: 0px;
+        top: 60px;
     }
 
     .listFilter {
@@ -850,16 +850,16 @@
 
     .moveleft,
     .moveright {
-        top: 15%;
+        top: 17%;
         width: 30px;
         height: 30px;
     }
 
     .expand {
-        width: 24px;
-        height: 24px;
-        top: 3%;
-        left: 12%;
+        width: 20px;
+        height: 20px;
+        top: 4%;
+        left: 10%;
     }
 
     .count {
@@ -900,5 +900,21 @@
     .fullScreenDiv>.cancel {
         left: 85% !important;
         background: none;
+    }
+
+    .singleAdd {
+        width: 90%;
+        display: block;
+    }
+
+    .listFilterDiv {
+        gap: 20px;
+    }
+
+    .listFilterDiv>.listP {
+        font-weight: 300;
+        font-size: 14px;
+        justify-content: space-between;
+        width: 100%;
     }
 }

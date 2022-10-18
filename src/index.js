@@ -14,6 +14,7 @@ const Register = React.lazy(() => import("./Register"));
 const DescMob = React.lazy(() => import("./Homepage/DescMob/DescMob"));
 const Dashboard = React.lazy(() => import("./Dashboard/Dashboard"));
 const Listing = React.lazy(() => import("./Dashboard/Listing"));
+const Description = React.lazy(() => import("./Dashboard/LiskDesk/Description"));
 const AddProp = React.lazy(() => import("./Dashboard/AddProp"));
 const Reset = React.lazy(() => import("./Login/Reset"));
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -216,6 +217,28 @@ root.render(
               }
             >
               <Reset />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="/listing/:listid"
+          element={
+            <React.Suspense
+              fallback={
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100vh",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Spinner animation="border" style={{ color: "#2E7DD7" }} />
+                </div>
+              }
+            >
+              <Description />
             </React.Suspense>
           }
         />

@@ -1,0 +1,57 @@
+.listDesc {
+    display: flex;
+    font-family: 'Switzer';
+}
+
+.listDescMain {
+    width: 100vw;
+    border-left: 1px solid #E5E7EB;
+}
+
+.fullScreenDiv>.count {
+    left: 50%;
+}
+
+.fullScreenDiv>.moveleft,
+.fullScreenDiv>.cancel {
+    left: 3%;
+}
+
+.fullScreenDiv>.moveright {
+    right: 3%;
+}
+
+.listDesc>.delModal {
+    top: 20%;
+    right: 4%;
+}
+
+.listDesc>.copyModal {
+    top: 20%;
+    right: 4%;
+}
+
+@media screen and (max-width: 800px) {
+
+    .fullScreenDiv>.moveleft,
+    .fullScreenDiv>.moveright {
+        top: 50%;
+    }
+
+    .fullScreenDiv>.count {
+        left: 45%;
+    }
+
+    .otherImg {
+        margin-bottom: 40px;
+    }
+
+    .singleLoc {
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .singleFeat {
+        margin-top: 30px;
+    }
+}

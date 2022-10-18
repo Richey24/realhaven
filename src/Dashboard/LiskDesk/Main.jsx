@@ -6,18 +6,10 @@ import down from '../../img/Icon.svg'
 import search from "../../img/Search.svg"
 import { useState, useEffect } from 'react';
 import locate from "../../img/Location.svg"
-import back from "../../img/arrowblack.svg"
 import activity from "../../img/Activity.svg"
 import link from "../../img/Group.svg"
 import share from "../../img/share.svg"
 import del from "../../img/Delete.svg"
-import expand from "../../img/expand.svg"
-import moveleft from "../../img/moveleft.svg"
-import moveright from "../../img/moveright.svg"
-import room from '../../img/blackbed.svg'
-import bathroom from '../../img/blackbath.svg'
-import toilet from '../../img/blacktoilet.svg'
-import cancel from "../../img/canc.svg"
 import emp from "../../img/empty.svg"
 import building from "../../img/building.svg"
 import bigDel from "../../img/bigdel.svg"
@@ -58,9 +50,6 @@ const Main = ({ showTop, handleTopClose }) => {
     const [active, setActive] = useState("all")
     const [fAct, setFAct] = useState("Recent")
     const [spin, setSpin] = useState(false)
-    const [singleHouse, setSingleHouse] = useState({})
-    const [num, setNum] = useState(0)
-    const [images, setImages] = useState([])
     const [empty, setEmpty] = useState(false)
     const [houses, setHouses] = useState([])
     const [fHouses, setFHouses] = useState([])
@@ -86,7 +75,7 @@ const Main = ({ showTop, handleTopClose }) => {
         if (!id) {
             document.cookie = "token=;expires=" + new Date(0).toUTCString()
             document.cookie = "id=;expires=" + new Date(0).toUTCString()
-            navigate("/login")
+            logOut()
         } else {
             (async () => {
                 setSpin(true)
@@ -121,18 +110,7 @@ const Main = ({ showTop, handleTopClose }) => {
     }, [])
 
     const getHouseByID = async (house) => {
-        setSpin(true)
-        setSingleHouse(house)
-        setImages([house.mainImage.url, ...house.otherImages.url])
-        document.getElementById("theModal").classList.toggle("shownX")
-        document.getElementById("darkList").style.display = "block"
-        setSpin(false)
-    }
-
-    const closeModal = () => {
-        document.getElementById("theModal").classList.toggle("shownX")
-        document.getElementById("darkList").style.display = "none"
-        setNum(0)
+        nav(`/listing/${house._id}`)
     }
 
     const showDelModal = (id) => {
@@ -143,9 +121,7 @@ const Main = ({ showTop, handleTopClose }) => {
 
     const closeDelModal = () => {
         document.getElementById("delModal").style.display = "none"
-        if (!document.getElementById("theModal").classList.contains("shownX")) {
-            document.getElementById("darkList").style.display = "none"
-        }
+        document.getElementById("darkList").style.display = "none"
     }
 
     const showPromote = () => {
@@ -175,33 +151,6 @@ const Main = ({ showTop, handleTopClose }) => {
     const getAct = (value) => {
         setFAct(value)
         listSelect()
-    }
-
-    const fullScreen = () => {
-        const fullScreen = document.getElementById("fullScreenDiv")
-        document.getElementById("dashSideMain").style.display = "none"
-        document.getElementById("listDashDiv").style.display = "none"
-        fullScreen.style.display = "block"
-    }
-
-    const increase = () => {
-        if (num >= images.length - 1) return
-        setNum(num + 1)
-    }
-
-    const decrease = () => {
-        if (num <= 0) return
-        setNum(num - 1)
-    }
-
-    const hideScreen = () => {
-        document.getElementById("dashSideMain").style.display = "flex"
-        document.getElementById("listDashDiv").style.display = "block"
-        document.getElementById("fullScreenDiv").style.display = "none"
-    }
-
-    const setActiveImg = (i) => {
-        setNum(i)
     }
 
     const clearSearch = () => {
@@ -262,9 +211,7 @@ const Main = ({ showTop, handleTopClose }) => {
             document.getElementById("darkList").style.display = "block"
             setTimeout(() => {
                 document.getElementById("copyModal").style.display = "none"
-                if (!document.getElementById("theModal").classList.contains("shownX")) {
-                    document.getElementById("darkList").style.display = "none"
-                }
+                document.getElementById("darkList").style.display = "none"
             }, 3000)
         })
     }
@@ -423,94 +370,8 @@ const Main = ({ showTop, handleTopClose }) => {
                     }
 
                 </div>
-
-                <div id="theModal" className="theModal">
-                    <div className="modeHead">
-                        <p onClick={closeModal}><img src={back} alt="" />Back to listings</p>
-                        <div>
-                            <OverlayTrigger
-                                placement="bottom"
-                                overlay={
-                                    <Tooltip id="activity">Promote</Tooltip>
-                                }
-                            >
-                                <img onClick={showPromote} src={activity} alt="" />
-                            </OverlayTrigger>
-                            <OverlayTrigger
-                                placement="bottom"
-                                overlay={
-                                    <Tooltip id="activity">Copy Link</Tooltip>
-                                }
-                            >
-                                <img onClick={() => copyLink(singleHouse._id)} src={link} alt="" />
-                            </OverlayTrigger>
-                            <OverlayTrigger
-                                placement="bottom"
-                                overlay={
-                                    <Tooltip id="activity">Share</Tooltip>
-                                }
-                            >
-                                <img src={share} alt="" />
-                            </OverlayTrigger>
-                            <OverlayTrigger
-                                placement="bottom"
-                                overlay={
-                                    <Tooltip id="activity">Delete</Tooltip>
-                                }
-                            >
-                                <img onClick={() => showDelModal(singleHouse._id)} src={del} alt="" />
-                            </OverlayTrigger>
-                        </div>
-                    </div>
-                    <div className="modeBody">
-                        <img className="mainBodyImg" src={images[num]} alt="" />
-                        <img onClick={fullScreen} className="expand" src={expand} alt="" />
-                        {num > 0 && <img onClick={decrease} className="moveleft" src={moveleft} alt="" />}
-                        {num < images.length - 1 && <img onClick={increase} className="moveright" src={moveright} alt="" />}
-                        <p className="count">{num + 1}/{images.length}</p>
-                        <div className="otherImg">
-                            {
-                                images.map((image, i) => (
-                                    <img onClick={() => setActiveImg(i)} className={num === i ? "activeImg" : ""} key={i} src={image} alt="" />
-                                ))
-                            }
-                        </div>
-                        <div className="singleTitle">
-                            <p>{singleHouse.title}</p>
-                            <span>{singleHouse.purpose}</span>
-                        </div>
-                        <p className="singlePrice">₦{singleHouse.price}{singleHouse.pricePer}</p>
-                        <div className="singleLoc">
-                            <p>
-                                <img src={locate} alt="" />
-                                {singleHouse.aptUnit} {singleHouse.address} {singleHouse.city} {singleHouse.state}
-                            </p>
-                            <div>
-                                <div data-num={singleHouse.noOfBedroom}><img src={room} alt="" /></div>
-                                <div data-num={singleHouse.noOfBedroom}><img src={bathroom} alt="" /></div>
-                                <div data-num={singleHouse.noOfBedroom}><img src={toilet} alt="" /></div>
-                            </div>
-                        </div>
-                        <p className="singleDesc">{singleHouse.description}</p>
-                        <p className="singleFeat">Features</p>
-                        <ul className="singleAdd">
-                            {
-                                singleHouse.additionalFeatures?.map((feat, i) => (
-                                    <li key={i}>{feat}</li>
-                                ))
-                            }
-                        </ul>
-                    </div>
-                </div>
             </div>
 
-            <div id="fullScreenDiv" className="fullScreenDiv">
-                <img src={images[num]} alt="" id="fullScreen" />
-                {num > 0 && <img onClick={decrease} className="moveleft" id="moveleft" src={moveleft} alt="" />}
-                {num < images.length - 1 && <img onClick={increase} className="moveright" id="moveright" src={moveright} alt="" />}
-                <img onClick={hideScreen} id="cancel" className="cancel" src={cancel} alt="" />
-                <p id="count" className="count">{num + 1}/{images.length}</p>
-            </div>
 
             <div id="delModal" className="delModal">
                 <div className="delFirstDiv">
