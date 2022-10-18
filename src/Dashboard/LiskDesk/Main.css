@@ -883,7 +883,7 @@
     }
 
     .fullScreenDiv {
-        padding-top: 80%;
+        padding-top: 50%;
         background: #17457A;
     }
 
@@ -900,6 +900,7 @@
     .fullScreenDiv>.cancel {
         left: 85% !important;
         background: none;
+        top: 2%;
     }
 
     .singleAdd {
