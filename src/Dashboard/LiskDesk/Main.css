@@ -820,6 +820,11 @@
         font-size: 12px;
     }
 
+    .modeHead {
+        width: 100%;
+        margin-left: 0px;
+    }
+
     .mobileTopImg {
         display: block;
         width: 40px;
@@ -883,7 +888,7 @@
     }
 
     .fullScreenDiv {
-        padding-top: 50%;
+        padding-top: 55%;
         background: #17457A;
     }
 
@@ -900,7 +905,7 @@
     .fullScreenDiv>.cancel {
         left: 85% !important;
         background: none;
-        top: 2%;
+        top: 4%;
     }
 
     .singleAdd {

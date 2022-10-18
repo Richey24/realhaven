@@ -120,8 +120,10 @@ const Description = () => {
     const copyLink = (id) => {
         navigator.clipboard.writeText(`${window.location.origin}/listing/${id}`).then(() => {
             document.getElementById("copyModal").style.display = "flex"
+            document.getElementById("darkList").style.display = "block"
             setTimeout(() => {
                 document.getElementById("copyModal").style.display = "none"
+                document.getElementById("darkList").style.display = "none"
             }, 3000)
         })
     }
@@ -134,6 +136,7 @@ const Description = () => {
 
     const closeDelModal = () => {
         document.getElementById("delModal").style.display = "none"
+        document.getElementById("darkList").style.display = "none"
     }
 
     const hideScreen = () => {
@@ -285,6 +288,10 @@ const Description = () => {
                 {num < images.length - 1 && <img onClick={increase} className="moveright" id="moveright" src={moveright} alt="" />}
                 <img onClick={hideScreen} id="cancel" className="cancel" src={cancel} alt="" />
                 <p id="count" className="count">{num + 1}/{images.length}</p>
+            </div>
+
+            <div id="darkList" className="darkList">
+
             </div>
 
         </div>
