@@ -76,6 +76,14 @@ function App() {
     lastScroll = currentScroll <= 0 ? 0 : currentScroll
   })
 
+  if (window.location.hostname.split('.')[0] !== "www" && window.location.hostname.split('.')[0] !== "localhost") {
+    return (
+      <div>
+        Agent Custom Landing Page WIP
+      </div>
+    )
+  }
+
   return (
     spin ?
       <div
