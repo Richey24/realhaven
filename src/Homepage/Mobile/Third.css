@@ -5,7 +5,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    overflow: scroll;
+    overflow-x: scroll;
+    overflow-y: hidden;
     scrollbar-width: none;
     gap: 20px;
     position: relative;
