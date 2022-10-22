@@ -1,0 +1,73 @@
+.aFourthMain {
+    width: 100%;
+    background: #F9FAFB;
+    padding: 64px 108px 86px 124px;
+}
+
+.aFourthMain>h1 {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2.5vw;
+    color: #374151;
+}
+
+.aFourthMain>h2 {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 2.5vw;
+    color: #374151;
+}
+
+.aFourthMain>div {
+    display: flex;
+    gap: 64px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 84px;
+}
+
+.aFourthMain>div>div {
+    width: 27%;
+    box-shadow: 1px 1px 4px rgba(17, 17, 17, 0.11);
+}
+
+.aFourthMain>div>div>img {
+    width: 100%;
+}
+
+.aFourthMain>div>div>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0px;
+    margin: 30px 24px 0px 24px;
+}
+
+.aFourthMain>div>div>div img {
+    width: 1.6vw;
+    height: 1.6vw;
+    cursor: pointer;
+}
+
+.aFourthMain>div>div>div>p {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.5vw;
+    color: #374151;
+    line-height: 0px;
+}
+
+.aFourthMain>div>div>p {
+    margin-left: 24px;
+    width: 53%;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.15vw;
+    color: #6B7280;
+    margin-top: 23px;
+}

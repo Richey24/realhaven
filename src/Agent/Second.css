@@ -1,0 +1,115 @@
+.aSecondDiv {
+    width: 100%;
+    border-bottom: 0.5px solid #9CA3AF;
+    padding-left: 106px;
+    padding-top: 64px;
+    padding-bottom: 102px;
+}
+
+.aSecondDiv>h1 {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2.7vw;
+    color: #374151;
+    margin-left: 22px;
+}
+
+.aFeatDiv {
+    display: flex;
+    gap: 32px;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: 535px;
+    margin-top: 124px;
+}
+
+.aFeatDiv>div {
+    padding: 24px;
+    height: fit-content;
+    max-height: 490px;
+    background: #FFFFFF;
+    box-shadow: 1px 1px 4px rgba(17, 17, 17, 0.11);
+    width: 27%;
+    flex-shrink: 0;
+}
+
+.aFeatDiv>div:first-child {
+    box-shadow: -32px -32px 48px rgba(17, 17, 17, 0.11), 32px 32px 48px rgba(17, 17, 17, 0.06);
+}
+
+.aFeatDiv>div>img {
+    width: 100%;
+}
+
+.aFeatTitle {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.6vw;
+    margin-top: 24px;
+    color: #374151;
+}
+
+.aFeatAdd {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.1vw;
+    line-height: 16px;
+    color: #4B5563;
+}
+
+.aImageDiv {
+    width: 61.25px;
+    aspect-ratio: 1/1;
+    background: #306584;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aInnerDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.aInnerDiv>h6 {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.8vw;
+    color: #306584;
+    line-height: 72px;
+}
+
+.aNavigateDiv {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 120px;
+    margin-top: 45px;
+}
+
+.leftArrow {
+    transform: rotate(180deg);
+}
+
+.aNavigateDiv>p {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    color: #306584;
+    cursor: pointer;
+}
+
+.aNavigateDiv>p>img {
+    margin-left: 10px;
+}
+
+.aNavigateDiv>div>img {
+    cursor: pointer;
+}

@@ -1,5 +1,6 @@
 import "./App.css";
 import MobileMain from "./Homepage/Mobile/MobileMain";
+import Agent from "./Agent/Agent"
 import { useEffect, useState } from 'react';
 import DesktopMain from "./Homepage/Desktop/DesktopMain";
 import { Spinner } from "react-bootstrap";
@@ -14,39 +15,41 @@ function App() {
   const [recommend, setRecommend] = useState([])
 
   useEffect(() => {
-    if (window.innerWidth >= 800) {
-      setLarge(true)
-    } else {
-      setLarge(false)
-    }
-    (async () => {
-      const house = await axios.get(`${url}/v1/property/find`)
-      const result = await house.data
-      setProp(result.properties)
-      window.navigator.geolocation.getCurrentPosition(async (position) => {
-        const { latitude, longitude } = position.coords;
-        const res = await axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=a06ee162a5a1476a87cdbec1d7c4f197`)
-        const loc = await res.data
-        const state = loc.results[0].components.state === "Federal Capital Territory" ? loc.results[0].components.state : loc.results[0].components.state.split(" ")[0]
-        const city = loc.results[0].components.county
-        sessionStorage.setItem("state", state)
-        sessionStorage.setItem("city", city)
-        const recCity = await axios.get(`${url}/v1/property/find?state=${state}&city=${city}`)
-        const recoCity = await recCity.data
-        if (recoCity.noOfProperties < 1) {
-          const rec = await axios.get(`${url}/v1/property/find?state=${state}`)
-          const reco = await rec.data
-          if (reco.noOfProperties < 1) {
-            setRecommend(result.properties)
+    if (window.location.hostname.split('.')[0] === "www" || window.location.hostname.split('.')[0] === "localhost") {
+      if (window.innerWidth >= 800) {
+        setLarge(true)
+      } else {
+        setLarge(false)
+      }
+      (async () => {
+        const house = await axios.get(`${url}/v1/property/find`)
+        const result = await house.data
+        setProp(result.properties)
+        window.navigator.geolocation.getCurrentPosition(async (position) => {
+          const { latitude, longitude } = position.coords;
+          const res = await axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=a06ee162a5a1476a87cdbec1d7c4f197`)
+          const loc = await res.data
+          const state = loc.results[0].components.state === "Federal Capital Territory" ? loc.results[0].components.state : loc.results[0].components.state.split(" ")[0]
+          const city = loc.results[0].components.county
+          sessionStorage.setItem("state", state)
+          sessionStorage.setItem("city", city)
+          const recCity = await axios.get(`${url}/v1/property/find?state=${state}&city=${city}`)
+          const recoCity = await recCity.data
+          if (recoCity.noOfProperties < 1) {
+            const rec = await axios.get(`${url}/v1/property/find?state=${state}`)
+            const reco = await rec.data
+            if (reco.noOfProperties < 1) {
+              setRecommend(result.properties)
+            } else {
+              setRecommend(reco.properties)
+            }
           } else {
-            setRecommend(reco.properties)
+            setRecommend(recoCity.properties)
           }
-        } else {
-          setRecommend(recoCity.properties)
-        }
-      }, console.log("sad"))
-    })()
-    setSpin(false)
+        }, console.log("sad"))
+      })()
+      setSpin(false)
+    }
   }, [size])
 
   window.addEventListener("resize", () => {
@@ -79,7 +82,7 @@ function App() {
   if (window.location.hostname.split('.')[0] !== "www" && window.location.hostname.split('.')[0] !== "localhost") {
     return (
       <div>
-        Agent Custom Landing Page WIP
+        <Agent />
       </div>
     )
   }

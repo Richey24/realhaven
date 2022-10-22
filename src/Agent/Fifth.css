@@ -1,0 +1,40 @@
+.aFifthMain {
+    width: 100%;
+    background-image: url('../img/agent-banner.png');
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.aFifthMain>h1 {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 6vw;
+    line-height: 121px;
+    text-align: center;
+    color: #F9FAFB;
+    width: 80%;
+    margin-bottom: 40px;
+}
+
+.aFifthMain>p {
+    height: 69.94px;
+    background: #39789C;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.4vw;
+    color: #F9FAFB;
+    cursor: pointer;
+    margin-top: 40px;
+}
