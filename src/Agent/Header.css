@@ -37,6 +37,56 @@
     color: #FFFFFF;
 }
 
+.aCatDiv {
+    width: 100%;
+    height: 134px;
+    background: #FFFFFF;
+    border: 0.5px solid #E5E7EB;
+    box-shadow: 0px 0px 16px rgba(17, 17, 17, 0.06);
+    border-radius: 4px;
+    padding-left: 0px;
+    padding-right: 5px;
+    display: none;
+    overflow: scroll;
+}
+
+.aCatDiv>li {
+    list-style-type: none;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.1vw;
+    line-height: 18px;
+    color: #374151;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+.aCatDiv>li:hover {
+    background: #F3F4F6;
+}
+
+#rangeDiv {
+    padding: 10px 20px;
+    position: relative;
+    height: 150px;
+}
+
+#rangeDiv>p {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #374151;
+    padding-bottom: 13px;
+    border-bottom: 0.5px solid #E5E7EB;
+}
+
 .aNavDiv>p {
     background: #306584;
     min-width: 15%;
@@ -51,6 +101,21 @@
     font-size: 16px;
     color: #FFFFFF;
     cursor: pointer;
+}
+
+.theRangeDiv {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.theRangeDiv p {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 160%;
+    color: #374151;
 }
 
 .aHeaderDiv>h6 {
@@ -184,4 +249,8 @@
     font-size: 1.1vw;
     line-height: 11px;
     color: #FFFFFF;
+}
+
+.show {
+    display: block;
 }

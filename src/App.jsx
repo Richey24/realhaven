@@ -63,7 +63,9 @@ function App() {
       const script = document.createElement("script")
       script.src = "//code.tidio.co/shcjw82xbopd8qzdqjscd7vuirxnjm0p.js"
       script.async = true
-      document.body.appendChild(script)
+      if (document.getElementById("app") !== null) {
+        document.getElementById("app").appendChild(script)
+      }
     }
     if (!document.getElementById("fixedNav")) {
       return
@@ -101,7 +103,7 @@ function App() {
         <Spinner animation="border" style={{ color: "#2E7DD7" }} />
       </div>
       :
-      <div className="App">
+      <div id="app" className="App">
         {large ?
           (<DesktopMain recommend={recommend} properties={properties} />) :
           (<MobileMain recommend={recommend} properties={properties} />)}
