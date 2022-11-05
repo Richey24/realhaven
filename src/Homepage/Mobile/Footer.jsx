@@ -4,13 +4,13 @@ import twitter from '../../img/Vector (2).svg'
 import facebook from '../../img/Vector (1).svg'
 import instagram from '../../img/Vector.svg'
 
-const Footer = () => {
+const Footer = ({ agent }) => {
     return (
-        <div>
+        <div style={{ backgroundColor: agent ? "#F9FAFB" : "" }}>
             <div className='footerMain'>
                 <div className='footDiv' style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div className='inFootDiv' style={{ width: '300px' }}>
-                        <p className='logo'><img src={logo} alt="" />Haven</p>
+                        {agent ? <p style={{ color: "#306584", fontWeight: "400", fontFamily: "Potta One" }} className='logo'>{agent}</p> : <p className='logo'><img src={logo} alt="" />Haven</p>}
                         <p style={{ marginTop: '30px' }} className='naviP'>For Sale</p>
                         <p className='naviP'>For Rent</p>
                         <p className='naviP'>Short Let</p>
@@ -38,10 +38,8 @@ const Footer = () => {
                         <p className='naviP'>Socials</p>
                     </div>
                 </div>
-                <center>
-                    <p className='logo2'><img src={logo} alt="" />Haven</p>
-                    <p className='copyRight'>Copyright © 2022 Real Haven Ltd . All rights reserved.</p>
-                </center>
+                {agent ? <p style={{ color: "#306584", fontWeight: "400", fontFamily: "Potta One" }} className='logo2'>{agent}</p> : <p className='logo2'><img src={logo} alt="" />Haven</p>}
+                <p className='copyRight'>Copyright © 2022 Real Haven Ltd . All rights reserved.</p>
                 <div className='footerSocial'>
                     <img src={twitter} alt="" />
                     <img src={facebook} alt="" />

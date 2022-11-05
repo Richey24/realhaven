@@ -38,3 +38,19 @@
     cursor: pointer;
     margin-top: 40px;
 }
+
+@media screen and (max-width: 800px) {
+    .aFifthMain {
+        height: 235px;
+    }
+
+    .aFifthMain>h1 {
+        line-height: 30px;
+        margin-bottom: 10px
+    }
+
+    .aFifthMain>p {
+        width: 55%;
+        height: 50px;
+    }
+}

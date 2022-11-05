@@ -17,6 +17,7 @@
 
 .aFeatDiv {
     display: flex;
+    flex-wrap: wrap;
     gap: 32px;
     width: 100%;
     overflow-x: scroll;
@@ -112,4 +113,61 @@
 
 .aNavigateDiv>div>img {
     cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+    .aFeatDiv>div {
+        width: 100%;
+        box-shadow: 1px 1px 4px rgba(17, 17, 17, 0.11);
+    }
+
+    .aFeatDiv {
+        height: auto;
+    }
+
+    .aSecondDiv {
+        padding-left: 38px;
+        padding-right: 38px;
+    }
+
+    .aSecondDiv>h1 {
+        margin-top: 100px;
+        margin-bottom: -100px;
+        font-size: 5vw;
+        margin-left: -10px;
+    }
+
+    .aFeatAdd,
+    .aFeatTitle {
+        font-size: 3.5vw;
+    }
+
+    .aInnerDiv>h6 {
+        font-size: 5vw;
+    }
+
+    .aNavigateDiv>div {
+        display: none;
+    }
+
+    .aNavigateDiv {
+        width: 100%;
+        margin-top: 70px;
+        margin-bottom: -30px;
+    }
+
+    .aNavigateDiv>p {
+        width: 100%;
+        border-bottom: 0.5px solid #9CA3AF;
+        border-top: 0.5px solid #9CA3AF;
+        display: flex;
+        justify-content: center;
+        height: 80px;
+        align-items: center;
+    }
+
+    .aNavigateDiv>p>img {
+        width: 20px;
+        height: 20px;
+    }
 }
