@@ -94,3 +94,29 @@
     color: #F9FAFB;
     gap: 20px;
 }
+
+@media screen and (max-width: 800px) {
+    .aSixMainDiv>form>div {
+        flex-wrap: wrap;
+    }
+
+    .aSixMainDiv {
+        padding: 64px 45px 95px 32px;
+    }
+
+    .aSixMainDiv>h1 {
+        font-size: 5.5vw
+    }
+
+    .aSixMainDiv>h2 {
+        font-size: 4.5vw;
+    }
+
+    .aSixMainDiv textarea {
+        height: 168px;
+    }
+
+    .aSixMainDiv button {
+        width: 100%;
+    }
+}

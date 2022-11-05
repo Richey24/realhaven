@@ -64,3 +64,44 @@
     font-size: 1.3vw;
     color: #4B5563;
 }
+
+@media screen and (max-width: 800px) {
+    .aThirdMain {
+        flex-direction: column;
+        padding: 90px 30px;
+        row-gap: 30px;
+    }
+
+    .thirdInnerDiv {
+        width: 100%;
+    }
+
+    .aThirdMain>img {
+        width: 100%;
+    }
+
+    .thirdInnerDiv>h1 {
+        font-size: 6vw;
+    }
+
+    .thirdInnerDiv>h2 {
+        font-size: 5vw;
+    }
+
+    .thirdInnerDiv>p {
+        font-size: 3.5vw;
+    }
+
+    .thirdInnerDiv>h4 {
+        font-size: 4.5vw;
+    }
+
+    .thirdInnerDiv>div>img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .thirdInnerDiv>div>p {
+        font-size: 3.5vw;
+    }
+}

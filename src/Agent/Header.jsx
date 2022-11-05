@@ -1,5 +1,6 @@
 import "./Header.css"
 import down from '../img/Icon.svg'
+import ham from "../img/ham.svg"
 import { useState } from "react"
 import { Slider } from "@mui/material"
 
@@ -70,6 +71,7 @@ const Header = () => {
                     <li>Services</li>
                 </ul>
                 <p>Contact us</p>
+                <img src={ham} alt="" />
             </div>
             <h6>Find your Home, Your safe Haven</h6>
             <div className="headFilter">

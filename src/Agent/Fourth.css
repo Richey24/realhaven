@@ -71,3 +71,34 @@
     color: #6B7280;
     margin-top: 23px;
 }
+
+@media screen and (max-width: 800px) {
+    .aFourthMain {
+        padding: 64px 27px 86px 28px;
+    }
+
+    .aFourthMain>h1 {
+        font-size: 5vw;
+    }
+
+    .aFourthMain>h2 {
+        font-size: 4.5vw;
+    }
+
+    .aFourthMain>div>div {
+        width: 100%;
+    }
+
+    .aFourthMain>div>div>div>p {
+        font-size: 4vw;
+    }
+
+    .aFourthMain>div>div>p {
+        font-size: 3.5vw;
+    }
+
+    .aFourthMain>div>div>div img {
+        width: 5vw;
+        height: 5vw;
+    }
+}
