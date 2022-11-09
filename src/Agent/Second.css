@@ -17,7 +17,6 @@
 
 .aFeatDiv {
     display: flex;
-    flex-wrap: wrap;
     gap: 32px;
     width: 100%;
     overflow-x: scroll;
@@ -123,6 +122,7 @@
 
     .aFeatDiv {
         height: auto;
+        flex-wrap: wrap;
     }
 
     .aSecondDiv {

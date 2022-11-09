@@ -3,6 +3,7 @@ import down from '../img/Icon.svg'
 import ham from "../img/ham.svg"
 import { useState } from "react"
 import { Slider } from "@mui/material"
+import Canvas from "./Canvas"
 
 function valuetext(value) {
     return `${value}°C`;
@@ -15,6 +16,15 @@ const Header = () => {
     const [catAct, setCatAct] = useState("sale")
     const [prop, setProp] = useState("Semi detached duplex")
     const [value2, setValue2] = useState([5, 37]);
+    const [show, setShow] = useState(false)
+
+    const hideShow = () => {
+        setShow(false)
+    }
+
+    const showEnd = () => {
+        setShow(true)
+    }
 
     const handleChange2 = (event, newValue, activeThumb) => {
         if (!Array.isArray(newValue)) {
@@ -71,7 +81,7 @@ const Header = () => {
                     <li>Services</li>
                 </ul>
                 <p>Contact us</p>
-                <img src={ham} alt="" />
+                <img onClick={showEnd} src={ham} alt="" />
             </div>
             <h6>Find your Home, Your safe Haven</h6>
             <div className="headFilter">
@@ -175,6 +185,7 @@ const Header = () => {
                     <span>Properties sold</span>
                 </div>
             </div>
+            <Canvas hideShow={hideShow} show={show} />
         </div>
     )
 }

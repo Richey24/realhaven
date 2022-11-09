@@ -1,0 +1,33 @@
+.canMain :is(p, button) {
+    margin: 20px 10px;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 4vw;
+}
+
+.canMain p {
+    height: 52px;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.activeCan {
+    background-color: #F3F4F6;
+}
+
+.canMain button {
+    width: 60%;
+    height: 56px;
+    background: #306584;
+    color: white;
+}
+
+.canMain img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 20px;
+    height: 20px;
+}
