@@ -32,6 +32,7 @@
 
 .aSixMainDiv>form>div>div {
     width: 100%;
+    position: relative;
 }
 
 .aSixMainDiv label,
@@ -59,6 +60,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
 }
 
 .aSixMainDiv textarea {
@@ -95,6 +97,69 @@
     gap: 20px;
 }
 
+.sixthDiv {
+    width: 100%;
+    height: 134px;
+    background: #FFFFFF;
+    border: 0.5px solid #E5E7EB;
+    box-shadow: 0px 0px 16px rgba(17, 17, 17, 0.06);
+    border-radius: 4px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    display: none;
+    overflow: scroll;
+    position: absolute;
+    z-index: 1;
+}
+
+.sixthDiv>li {
+    list-style-type: none;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.1vw;
+    line-height: 18px;
+    color: #374151;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+#rangeDivSixth {
+    padding-top: 10px;
+    height: 160px;
+}
+
+#rangeDivSixth>span {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #374151;
+    padding-bottom: 13px;
+    margin-top: 10px;
+}
+
+.theRangeDiv {
+    margin-top: 20px;
+}
+
+.theRangeDiv>span {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #374151;
+    padding-bottom: 13px;
+    margin-top: 10px;
+}
+
 @media screen and (max-width: 800px) {
     .aSixMainDiv>form>div {
         flex-wrap: wrap;
@@ -119,4 +184,12 @@
     .aSixMainDiv button {
         width: 100%;
     }
+
+    .sixthDiv>li {
+        font-size: 3.5vw;
+    }
+}
+
+.show {
+    display: block;
 }
