@@ -1,0 +1,38 @@
+.generalDiv {
+    padding: 40px;
+}
+
+.generalDiv>.firstDiv {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.generalDiv>div {
+    font-family: 'Switzer';
+    font-style: normal;
+}
+
+.generalDiv h1 {
+    font-weight: 500;
+    font-size: 20px;
+    color: #374151;
+}
+
+.generalDiv h3 {
+    font-weight: 400;
+    font-size: 16px;
+    color: #6B7280;
+}
+
+.generalDiv p {
+    width: 169px;
+    height: 46px;
+    background: #2E7DD7;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+}
