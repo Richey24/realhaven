@@ -13,7 +13,7 @@ const Register = React.lazy(() => import("./Register"));
 const DescMob = React.lazy(() => import("./Homepage/DescMob/DescMob"));
 const Dashboard = React.lazy(() => import("./Dashboard/Dashboard"));
 const Listing = React.lazy(() => import("./Dashboard/Listing"));
-const Settings = React.lazy(() => import("./Dashboard/Settings"));
+const Settings = React.lazy(() => import("./Dashboard/Settings/Settings"));
 const Description = React.lazy(() => import("./Dashboard/LiskDesk/Description"));
 const AddProp = React.lazy(() => import("./Dashboard/AddProp"));
 const Reset = React.lazy(() => import("./Login/Reset"));

@@ -1,0 +1,93 @@
+.setSideBar {
+    width: 20vw;
+    min-height: 100vh;
+    background: #FFFFFF;
+    padding: 30px 20px 0px 24px;
+    border-right: 1px solid #E5E7EB;
+}
+
+.dashDash {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #2E7DD7;
+    margin-top: 2rem;
+    cursor: pointer;
+    background: #F3F4F6;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.dashProfile,
+.dashReq,
+.dashMess,
+.dashDis,
+.dashNotify {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #6B7280;
+    margin-top: 2rem;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.arrowUp {
+    transform: rotate(180deg);
+}
+
+.agencyLogo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 70px;
+}
+
+.agencyFirstDiv {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.agencyFirstDiv>h4>p {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.agencyFirstDiv>h4 {
+    font-family: 'Rubik';
+    font-weight: 600;
+    font-size: 14px;
+    color: #374151;
+}
+
+.agencyFirstDiv>img {
+    margin-bottom: 20px;
+}
+
+.agencySecondDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.agencySecondDiv>img {
+    width: 9px;
+}
+
+.bottomImage {
+    width: 32px;
+    border-radius: 15px;
+}

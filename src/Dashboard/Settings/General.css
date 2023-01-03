@@ -6,26 +6,25 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-}
-
-.generalDiv>div {
     font-family: 'Switzer';
     font-style: normal;
+    border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 20px;
 }
 
-.generalDiv h1 {
+.firstDiv h1 {
     font-weight: 500;
     font-size: 20px;
     color: #374151;
 }
 
-.generalDiv h3 {
+.firstDiv h3 {
     font-weight: 400;
     font-size: 16px;
     color: #6B7280;
 }
 
-.generalDiv p {
+.firstDiv p {
     width: 169px;
     height: 46px;
     background: #2E7DD7;
@@ -35,4 +34,154 @@
     align-items: center;
     color: white;
     cursor: pointer;
+}
+
+.secondDiv {
+    width: 100%;
+    display: flex;
+}
+
+.secondDiv>div {
+    width: 50%;
+}
+
+.agencyName {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #374151;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.agencyName~input {
+    width: 100%;
+    padding: 16px;
+    height: 49px;
+    border: 1px solid #E5E7EB;
+    border-radius: 4px;
+    outline: none;
+}
+
+.agencyName~input::placeholder,
+.agencyName~div>input::placeholder {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #4B5563;
+}
+
+.agencyName~div {
+    width: 100%;
+    padding: 0px 16px 0px 2px;
+    height: 49px;
+    border: 1px solid #E5E7EB;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.agencyName~div>input {
+    height: 47px;
+    width: 80%;
+    border: none;
+    outline: none;
+    padding: 14px;
+}
+
+.secondSec {
+    padding: 20px 64px;
+}
+
+.secondSec>h4 {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #374151;
+}
+
+.secondSec>p {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: #6B7280;
+}
+
+.secondSec>div {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.secondSec>div>img {
+    width: 64px;
+    height: 64px;
+    border-radius: 30px;
+}
+
+.secondSec>div>label {
+    width: 58px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #F3F4F6;
+    border-radius: 4px;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: #374151;
+    cursor: pointer;
+}
+
+.savedAgentDiv {
+    display: flex;
+    padding: 24px;
+    position: absolute;
+    width: 502px;
+    height: 100px;
+    right: 50px;
+    bottom: 30px;
+    background: #FFFFFF;
+    border: 1px solid #F3F4F6;
+    box-shadow: 48px 0px 84px rgba(17, 17, 17, 0.11);
+    border-radius: 8px;
+    justify-content: space-between;
+    align-items: flex-start;
+    display: none;
+}
+
+.savedAgentDiv>img {
+    width: 15px;
+    cursor: pointer;
+}
+
+.savedAgentDiv>div {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.savedAgentDiv>div p {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #4B5563;
+}
+
+.savedAgentDiv h5 {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #374151;
 }

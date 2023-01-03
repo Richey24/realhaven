@@ -83,7 +83,7 @@ const Main = () => {
 
     useEffect(() => {
         if (!token) {
-            logOut()
+            // logOut()
         } else {
             (async () => {
                 const res = await axios.get(`${url}/v1/user/${id}`, {
@@ -163,7 +163,7 @@ const Main = () => {
                     </div>
                     <div className="rowDiv">
                         <img src={search} alt="" />
-                        <p onClick={() => navigate("/post")}>New property +</p>
+                        <p onClick={() => navigate("/post")}>New property <span>+</span></p>
                     </div>
                 </div>
                 <div className="secondSet">
