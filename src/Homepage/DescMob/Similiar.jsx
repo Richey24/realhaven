@@ -1,4 +1,4 @@
-import arrow from '../../img/arrowGrey.svg'
+import arrow from '../../img/arrowgrey.svg'
 import { useEffect, useState } from 'react';
 import url from './../../url';
 import axios from 'axios'

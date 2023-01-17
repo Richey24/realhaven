@@ -3,8 +3,8 @@ import buy from "../../img/buy.png"
 import sell from "../../img/sell.png"
 import agent from "../../img/agent.png"
 import blue from "../../img/blueArrow.svg"
-import pink from "../../img/arrowPink.svg"
-import grey from "../../img/arrowGrey.svg"
+import pink from "../../img/arrowpink.svg"
+import grey from "../../img/arrowgrey.svg"
 
 const Second = () => {
     return (

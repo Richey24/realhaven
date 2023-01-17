@@ -1,5 +1,5 @@
 import "./Third.css"
-import black from "../../img/arrowBlack.svg"
+import black from "../../img/arrowblack.svg"
 import img1 from "../../img/trend.png"
 import img2 from "../../img/image 5 (2).png"
 import img3 from "../../img/image 5 (3).png"
