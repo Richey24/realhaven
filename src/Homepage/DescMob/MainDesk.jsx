@@ -1,7 +1,7 @@
 import blueLogo from '../../img/logo_blue.svg'
 import searchImage from '../../img/Search.svg'
 import { useNavigate } from 'react-router-dom';
-import "../Desktop/Header.css"
+import "../Hero/Header.css"
 import "./MainDesk.css"
 import { useEffect, useState } from 'react'
 import call from '../../img/Call.svg'
@@ -15,8 +15,8 @@ import moveleft from "../../img/moveleft.svg"
 import moveright from "../../img/moveright.svg"
 import cancel from "../../img/canc.svg"
 import Similar from './Similiar';
-import Seventh from './../Desktop/Seventh';
-import Footer from "../Mobile/Footer"
+// import Seventh from './../Desktop/Seventh';
+// import Footer from "../Mobile/Footer"
 
 
 let id = ""
@@ -131,10 +131,10 @@ const MainDesk = ({ property }) => {
                 <div style={{ marginLeft: "3%" }}>
                     <Similar property={property} />
                 </div>
-                <div style={{ textAlign: "center" }}>
+                {/* <div style={{ textAlign: "center" }}>
                     <Seventh />
                 </div>
-                <Footer />
+                <Footer /> */}
             </div>
             <div id='descFull' className='descFull'>
                 <img className='descFullImg' src={images[num]} alt="" />

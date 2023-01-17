@@ -1,6 +1,6 @@
 import "./Second.css"
 import slant from '../img/slantarrow.svg'
-import arrow from '../img/arrowgrey.svg'
+import arrow from '../img/arrowGrey.svg'
 import one from "../img/image 5 (1).png"
 import two from "../img/image 5 (2).png"
 import three from "../img/image 5 (3).png"
