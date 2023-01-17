@@ -1,6 +1,6 @@
 import "./Settings.css"
 import { useState } from 'react';
-import Sidebar from './../DeskDash/Sidebar';
+import SideBar from './SideBar';
 import { Offcanvas } from 'react-bootstrap';
 import logo from "../../img/logo_blue.svg"
 import dashboard from "../../img/Category-blue.svg"
@@ -41,7 +41,7 @@ const Settings = () => {
         <div>
             <div className="deskDashMain">
                 <Header handleTopShow={handleTopShow} />
-                <Sidebar handleTopClose={handleTopClose} />
+                <SideBar handleTopClose={handleTopClose} />
                 <Main />
             </div>
             <Offcanvas style={{ width: "80%" }} className="topCanvas" show={showTop} onHide={handleTopClose} placement="start">

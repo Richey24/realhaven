@@ -1,0 +1,64 @@
+.mainSecond {
+    width: 100%;
+    min-height: 100vh;
+    padding: 64px;
+    padding-bottom: 280px;
+}
+
+.mainSecond>h1 {
+    text-align: left;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    color: #374151;
+}
+
+.mainSecond>p {
+    text-align: left;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    color: #6B7280;
+}
+
+.secondInner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Switzer';
+    font-style: normal;
+    margin-top: 58px;
+    text-align: left;
+}
+
+.secondInner>div {
+    width: 400px;
+    height: 291.55px;
+}
+
+.secondInner>div>h2 {
+    margin-top: 24px;
+    font-weight: 500;
+    font-size: 24px;
+    color: #374151;
+}
+
+.secondInner>div>p {
+    font-weight: 400;
+    font-size: 16px;
+    color: #6B7280;
+}
+
+.secondInner>div>h4 {
+    font-weight: 400;
+    font-size: 20px;
+    color: #2E7DD7;
+    margin-top: 24px;
+    cursor: pointer;
+}
+
+.secondInner>div>h4>img {
+    margin-left: 10px;
+}

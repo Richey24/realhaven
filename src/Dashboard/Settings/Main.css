@@ -1,294 +1,90 @@
 .mainDiv {
     width: 100vw;
     min-height: 100vh;
-    background: #F9FAFB;
+    background: #FFFFFF;
     font-family: 'Sora';
     font-style: normal;
 }
 
-.dashTop {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.dashTopSet {
     width: 100%;
-    padding-top: 10px;
-    padding-left: 64px;
-    padding-right: 64px;
-    height: 86px;
+    padding-top: 25px;
+    padding-left: 40px;
+    padding-right: 40px;
+    height: 136px !important;
     background: #FFFFFF;
     border-bottom: 1px solid #E5E7EB;
 }
 
-.dashTop>div>p {
-    font-family: 'Sora';
+.dashTopDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.colDiv {
+    font-family: 'Switzer';
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 20px;
     color: #374151;
-    position: relative;
 }
 
-.colDiv>span {
-    font-family: 'Sora';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    color: #6B7280;
-}
-
-.dashTop>div>img {
+.dashTopDiv>div>img {
     width: 16px;
-    height: 16px;
-}
-
-.dashTopImg {
-    width: 16px;
-    height: 16px;
-    border-radius: 6px;
-}
-
-.dashTop>div>div>p {
-    font-family: 'Sora';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 16px;
-    color: #334155;
+    height: 30px;
 }
 
 .rowDiv {
     display: flex;
-    align-items: baseline;
-    gap: 10px;
+    align-items: flex-start;
+    gap: 20px;
 }
 
-.dashTop>div>div {
-    display: flex;
-    padding: 4px 10px 4px 4px;
-    gap: 4px;
-    min-width: 93px;
-    max-width: auto;
-    height: 24px;
-    background: #F1F5F9;
-    border-radius: 100px;
-}
-
-.colDiv {
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-}
-
-.coverImage {
-    width: 100%;
-    height: 250px;
-    display: flex;
-    justify-content: flex-end;
-    padding-top: 3rem;
-    padding-right: 4rem;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.coverImage>label {
-    width: 142px;
-    height: 34px;
-    background: rgba(255, 255, 255, 0.33);
-    backdrop-filter: blur(80px);
+.rowDiv>p {
+    width: 114px;
+    height: 30px;
+    background: #2E7DD7;
     border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;
-    font-family: 'Sora';
+    font-family: 'Switzer';
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 12px;
     color: #FFFFFF;
     cursor: pointer;
 }
 
-.mainSection {
-    width: 100%;
-    padding-left: 5%;
-    margin-top: -4rem;
-    display: flex;
-    gap: 40px;
+.rowDiv>p>span {
+    font-size: 20px;
+    margin-left: 5px;
 }
 
-.firstSection {
-    background: #FFFFFF;
-    border-radius: 4px;
-    height: 696px;
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 15px;
-    margin-bottom: 10px;
-}
-
-.firstSectImg {
-    border-radius: 128px;
-    width: 128px;
-    height: 128px;
-}
-
-.profileImg {
-    display: flex;
-    align-items: center;
-}
-
-.profileImg>label {
-    width: 29px;
-    height: 29px;
-    background: #6DA4E3;
-    border-radius: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: -1.2rem;
-    margin-top: 3.7rem;
-    cursor: pointer;
-}
-
-.firstSection>h6 {
-    font-size: 18px;
-    font-weight: 700;
-    margin-top: 1rem;
-}
-
-.firstSection>p {
-    font-size: 16px;
-}
-
-.firstSection>span {
-    font-size: 14px;
-    margin-top: 1rem;
-}
-
-.spanDesc {
-    border-top: 1px solid #F3F4F6;
-    border-bottom: 1px solid #F3F4F6;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.middlePart {
-    margin-top: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    border-bottom: 1px solid #F3F4F6;
-    padding-bottom: 1.5rem;
-}
-
-.landPage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-    height: 44px;
-    border: 1px solid #E5E7EB;
-    border-radius: 8px;
-    color: #6B7280;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.userLink {
-    border: 1px solid #E5E7EB;
-    border-radius: 8px;
-    width: 90%;
-    height: 44px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #2E7DD7;
-    font-size: 12px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.userLink a {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.userLink>img {
-    border-left: 1px solid #E5E7EB;
-    height: 100%;
-    width: 30px;
-    padding-left: 10px;
-    margin-left: 10px;
-    cursor: pointer;
-}
-
-.lastPart {
-    margin-top: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-}
-
-.lastPart p {
-    font-size: 12px;
-    font-weight: 600;
-}
-
-.lastPart label {
-    width: 90%;
-    height: 96px;
-    background: #F3F4F6;
-    border: 0.5px dashed #6B7280;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 10px;
-    cursor: pointer;
-}
-
-.secondSect {
-    border-radius: 4px;
-    background-color: #FFFFFF;
-    height: fit-content;
-    max-height: 696px;
-    width: 60%;
-    overflow: scroll;
-}
-
-.secondSect>ul {
+.secondSet {
     display: flex;
     justify-content: space-between;
-    padding-left: 10px;
-    padding-right: 10px;
-    height: 40px;
-    padding-top: 10px;
-    border-bottom: 2px solid #E5E7EB;
+    margin-top: 20px;
 }
 
-.secondSect>ul>li {
-    list-style-type: none;
-    font-weight: 300;
-    font-size: 0.78em;
+.secondSet>div {
+    display: flex;
+    gap: 25px;
+}
+
+.secondSet p {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
     color: #6B7280;
+    padding-bottom: 20px;
     cursor: pointer;
 }
 
-.activeSect {
-    height: 100%;
+.active {
+    color: #2E7DD7 !important;
     border-bottom: 2px solid #2E7DD7;
 }

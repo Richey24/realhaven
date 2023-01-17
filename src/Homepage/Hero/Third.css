@@ -1,0 +1,161 @@
+.mainThird {
+    width: 100%;
+    min-height: 100vh;
+    padding: 64px;
+}
+
+.mainThird .thirdInner {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    text-align: left;
+}
+
+.thirdInner>div>h1 {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    color: #374151;
+}
+
+
+.thirdInner>div>p {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    color: #6B7280;
+}
+
+.thirdInner>p {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    color: #374151;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.thirdImages {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 90px;
+}
+
+.firstImgDiv {
+    width: 60%;
+    position: relative;
+}
+
+.firstImgDiv p {
+    position: absolute;
+    bottom: 7px;
+    left: 24px;
+    color: white;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.secondImgDiv p,
+.thirdImgDiv p {
+    position: absolute;
+    bottom: -5px;
+    left: 16px;
+    color: white;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.secondImgDiv,
+.thirdImgDiv {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.secondImgDiv>div,
+.thirdImgDiv>div {
+    position: relative;
+}
+
+.firstImgDiv>img {
+    width: 100%;
+    height: 624px;
+    border-radius: 24px;
+}
+
+.secondImgDiv img,
+.thirdImgDiv img {
+    width: 100%;
+    height: 300px;
+    border-radius: 16px;
+}
+
+.firstHover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background: linear-gradient(0deg, rgba(46, 125, 215, 0.6), rgba(46, 125, 215, 0.6));
+    border-radius: 24px;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.secondHover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(0deg, rgba(46, 125, 215, 0.6), rgba(46, 125, 215, 0.6));
+    border-radius: 16px;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.firstHover h6 {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+
+.firstHover span {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.secondHover h6 {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.secondHover span {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #FFFFFF;
+    cursor: pointer;
+}

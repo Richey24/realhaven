@@ -4,7 +4,7 @@ import url from './../../url';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
 import settingWhite from "../../img/SettingWhite.svg"
-import noti from "../../img/notiwhite.svg"
+import search from "../../img/Search.svg"
 import dp from "../../img/largedp.svg"
 import camera from "../../img/camera.svg"
 import copy from "../../img/copy.svg"
@@ -18,6 +18,7 @@ import Subscription from './Subscription';
 import Billing from './Billing';
 import Notification from './Notification';
 import Integration from './Integration';
+import General from "./General";
 
 let token = ""
 let id = ""
@@ -32,7 +33,7 @@ for (let i = 0; i < document.cookie?.split(" ").length; i++) {
 
 const Main = () => {
     const [user, setUser] = useState({})
-    const [active, setActive] = useState("profile")
+    const [active, setActive] = useState("general")
     const navigate = useNavigate()
 
     const imageType = ['png', 'jpg', 'jpeg', 'gif']
@@ -82,7 +83,7 @@ const Main = () => {
 
     useEffect(() => {
         if (!token) {
-            navigate("/login")
+            // logOut()
         } else {
             (async () => {
                 const res = await axios.get(`${url}/v1/user/${id}`, {
@@ -155,92 +156,35 @@ const Main = () => {
 
     return (
         <div className="mainDiv">
-            <div className="dashTop">
-                <div>
-                    <p className="colDiv">Settings <span>Manage your personal and organization settings</span></p>
-                </div>
-                <div className="rowDiv">
-                    <img src={noti} alt="" />
-                    <img src={settingWhite} alt="" />
+            <div className="dashTopSet">
+                <div className="dashTopDiv">
                     <div>
-                        <img className="dashTopImg" src={user.image?.url ? user.image?.url : dp} alt="" />
-                        <p>{user.firstName}</p>
+                        <p className="colDiv">Settings</p>
+                    </div>
+                    <div className="rowDiv">
+                        <img src={search} alt="" />
+                        <p onClick={() => navigate("/post")}>New property <span>+</span></p>
+                    </div>
+                </div>
+                <div className="secondSet">
+                    <div>
+                        <p onClick={() => setActive("general")} className={active === "general" ? "active" : ""}>General</p>
+                        <p onClick={() => setActive("member")} className={active === "member" ? "active" : ""}>Members</p>
+                        <p onClick={() => setActive("permission")} className={active === "permission" ? "active" : ""}>Permissions</p>
+                        <p onClick={() => setActive("plan")} className={active === "plan" ? "active" : ""}>Plans</p>
+                        <p onClick={() => setActive("billing")} className={active === "billing" ? "active" : ""}>Billing</p>
+                        <p onClick={() => setActive("app")} className={active === "app" ? "active" : ""}>Connected apps</p>
+                    </div>
+                    <div>
+                        <p onClick={() => setActive("profile")} className={active === "profile" ? "active" : ""}>Profile</p>
+                        <p>General</p>
+                        <p>General</p>
                     </div>
                 </div>
             </div>
-            <div style={{ backgroundImage: user.coverPhoto?.url ? `url(${user.coverPhoto?.url})` : `url(${background})` }} className="coverImage">
-                <input onChange={uploadCover} type="file" id="cover" hidden />
-                <label htmlFor="cover"><img src={camera} alt="" />Change cover</label>
-            </div>
 
-            <div className="mainSection">
-                <div className="firstSection">
-                    <div className="profileImg">
-                        <img className="firstSectImg" src={user.image?.url ? user.image?.url : dp} alt="" />
-                        <input onChange={uploadDP} type="file" id="profile" hidden />
-                        <label htmlFor="profile"><img src={camera} alt="" /></label>
-                    </div>
-                    <h6>{user.firstName} {user.lastName}</h6>
-                    <p>Real Estate Manager</p>
-                    <span className="spanDesc">“I am a real estate agent that gets things done faster and gets happy clients as a bonus... jk, the happy clients part comes first”</span>
-                    <div className="middlePart">
-                        <p className="landPage">View landing page</p>
-                        <div className="userLink"><a href="h">https://www.haven.com/john... </a><img onClick={() => copyLink("https://www.haven.com/john")} src={copy} alt="" /></div>
-                    </div>
-                    <div className="lastPart">
-                        <p>Upload Business Logo</p>
-                        <input type="file" id="business" hidden />
-                        <label onDrop={dropFile} onDragOver={dragOver} htmlFor="business">
-                            <img src={upload} alt="" />
-                            <p>Browse files or drag and drop</p>
-                            <p> (PNG, JPG, GIF) </p>
-                        </label>
-                    </div>
-                </div>
-                <div className="secondSect">
-                    <ul>
-                        <li className={active === "profile" ? "activeSect" : ""} style={{ color: active === "profile" ? "#2E7DD7" : "" }} onClick={() => getActive("profile")}>Profile</li>
+            {active === "general" && <General />}
 
-                        <li className={active === "Compliance" ? "activeSect" : ""} style={{ color: active === "Compliance" ? "#2E7DD7" : "" }} onClick={() => getActive("Compliance")}>Compliance</li>
-
-                        <li className={active === "team" ? "activeSect" : ""} style={{ color: active === "team" ? "#2E7DD7" : "" }} onClick={() => getActive("team")}>Team</li>
-
-                        <li className={active === "permission" ? "activeSect" : ""} style={{ color: active === "permission" ? "#2E7DD7" : "" }} onClick={() => getActive("permission")}>Permission</li>
-
-                        <li className={active === "subscription" ? "activeSect" : ""} style={{ color: active === "subscription" ? "#2E7DD7" : "" }} onClick={() => getActive("subscription")}>Subscriptions</li>
-
-                        <li className={active === "billing" ? "activeSect" : ""} style={{ color: active === "billing" ? "#2E7DD7" : "" }} onClick={() => getActive("billing")}>Billing</li>
-
-                        <li className={active === "notification" ? "activeSect" : ""} style={{ color: active === "notification" ? "#2E7DD7" : "" }} onClick={() => getActive("notification")}>Notification</li>
-
-                        <li className={active === "integration" ? "activeSect" : ""} style={{ color: active === "integration" ? "#2E7DD7" : "" }} onClick={() => getActive("integration")}>Integration</li>
-                    </ul>
-                    <div style={{ display: active === "profile" ? "" : "none" }}>
-                        <Profile />
-                    </div>
-                    <div style={{ display: active === "Compliance" ? "" : "none" }}>
-                        <Compliance />
-                    </div>
-                    <div style={{ display: active === "team" ? "" : "none" }}>
-                        <Team />
-                    </div>
-                    <div style={{ display: active === "permission" ? "" : "none" }}>
-                        <Permission />
-                    </div>
-                    <div style={{ display: active === "subscription" ? "" : "none" }}>
-                        <Subscription />
-                    </div>
-                    <div style={{ display: active === "billing" ? "" : "none" }}>
-                        <Billing />
-                    </div>
-                    <div style={{ display: active === "notification" ? "" : "none" }}>
-                        <Notification />
-                    </div>
-                    <div style={{ display: active === "integration" ? "" : "none" }}>
-                        <Integration />
-                    </div>
-                </div>
-            </div>
         </div>
     )
 }

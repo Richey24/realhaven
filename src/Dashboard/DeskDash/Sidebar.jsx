@@ -13,7 +13,7 @@ import request from "../../img/Request.svg"
 import requestBlue from "../../img/RequestBlue.svg"
 import analytics from "../../img/Analytics.svg"
 import analyticsBlue from "../../img/AnalyticsBlue.svg"
-import activity from "../../img/Activity.svg"
+// import activity from "../../img/Activity.svg"
 // import dp from "../../img/dp.png"
 // import collapse from "../../img/Collpase.svg"
 import logout from "../../img/Logout.svg"
@@ -72,8 +72,8 @@ const Sidebar = ({ handleTopClose }) => {
 
                 <p onClick={() => navigate("/request")} id="dashReq" className={pathname === "/request" ? "dashDash jCenter" : "dashDis jCenter"}><img src={pathname === "request" ? requestBlue : request} alt="" /><span className="toBeHidden">Requests</span></p>
 
-
-                <p onClick={() => navigate("/activity")} id="dashReq" className={pathname === "/activity" ? "dashDash jCenter" : "dashDis jCenter"}><img src={pathname === "activity" ? requestBlue : activity} alt="" /><span className="toBeHidden">Activity</span></p>
+                {/* 
+                <p onClick={() => navigate("/activity")} id="dashReq" className={pathname === "/activity" ? "dashDash jCenter" : "dashDis jCenter"}><img src={pathname === "activity" ? requestBlue : activity} alt="" /><span className="toBeHidden">Activity</span></p> */}
 
 
                 <p onClick={() => navigate("/setting")} className={pathname === "/setting" ? "dashDash jCenter" : "dashDis jCenter"}><img src={pathname === "/setting" ? setting : settingWhite} alt="" /><span className="toBeHidden">Settings</span></p>

@@ -1,26 +1,18 @@
 import "./App.css";
-import MobileMain from "./Homepage/Mobile/MobileMain";
 import Agent from "./Agent/Agent"
 import { useEffect, useState } from 'react';
-import DesktopMain from "./Homepage/Desktop/DesktopMain";
+import Main from "./Homepage/Hero/Main";
 import { Spinner } from "react-bootstrap";
 import axios from "axios";
 import url from "./url";
 
 function App() {
-  const [large, setLarge] = useState(false)
-  const [size, setSize] = useState(window.innerWidth)
   const [spin, setSpin] = useState(true)
   const [properties, setProp] = useState([])
   const [recommend, setRecommend] = useState([])
 
   useEffect(() => {
     if (window.location.hostname.split('.')[0] === "www" || window.location.hostname.split('.')[0] === "localhost") {
-      if (window.innerWidth >= 800) {
-        setLarge(true)
-      } else {
-        setLarge(false)
-      }
       (async () => {
         const house = await axios.get(`${url}/v1/property/find`)
         const result = await house.data
@@ -50,12 +42,7 @@ function App() {
       })()
       setSpin(false)
     }
-  }, [size])
-
-  window.addEventListener("resize", () => {
-    window.innerWidth >= 1200 && setSize(window.innerWidth)
-    window.innerWidth < 800 && window.innerWidth > 780 && setSize(window.innerWidth)
-  })
+  }, [])
 
   let lastScroll = window.scrollY || document.documentElement.scrollTop
   window.addEventListener("scroll", () => {
@@ -89,8 +76,8 @@ function App() {
     )
   }
 
-  return (
-    spin ?
+  if (spin) {
+    return (
       <div
         style={{
           width: "100%",
@@ -102,12 +89,13 @@ function App() {
       >
         <Spinner animation="border" style={{ color: "#2E7DD7" }} />
       </div>
-      :
-      <div id="app" className="App">
-        {large ?
-          (<DesktopMain recommend={recommend} properties={properties} />) :
-          (<MobileMain recommend={recommend} properties={properties} />)}
-      </div>
+    )
+  }
+
+  return (
+    <div id="app" className="App">
+      <Main recommend={recommend} properties={properties} />
+    </div>
   )
 }
 

@@ -1,5 +1,3 @@
-import '../Mobile/Fourth.css'
-import '../Mobile/Third.css'
 import arrow from '../../img/arrowgrey.svg'
 import { useEffect, useState } from 'react';
 import url from './../../url';

@@ -1,12 +1,12 @@
 import "./Main.css"
-import "../Mobile/Header.css"
-import "../Mobile/Result.css"
+// import "../Mobile/Header.css"
+// import "../Mobile/Result.css"
 import logo from '../../img/logo_blue.svg'
 import topToggle from '../../img/MenuAlt4Outline.svg'
 import { useState } from 'react';
 import { Offcanvas } from 'react-bootstrap';
-import Footer from "../Mobile/Footer"
-import Seventh from "../Mobile/Seventh"
+// import Footer from "../Mobile/Footer"
+// import Seventh from "../Mobile/Seventh"
 import Similar from "./Similiar"
 import shield from '../../img/Shield-Fail.svg'
 import { useNavigate } from 'react-router-dom';
@@ -158,8 +158,8 @@ const Main = ({ property }) => {
                     </Offcanvas.Body>
                 </Offcanvas>
                 <Similar property={property} />
-                <Seventh />
-                <Footer />
+                {/* <Seventh />
+                <Footer /> */}
             </div>
             <div id="descFullMob" className="descFullMOb">
                 <img className="descFullImgMob" src={images[num]} alt="" />

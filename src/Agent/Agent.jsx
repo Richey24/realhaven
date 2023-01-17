@@ -4,7 +4,7 @@ import Header from "./Header"
 import Second from "./Second"
 import Sixth from "./Sixth"
 import Third from "./Third"
-import Footer from '../Homepage/Mobile/Footer'
+// import Footer from '../Homepage/Mobile/Footer'
 import { Helmet } from "react-helmet"
 
 const Agent = () => {
@@ -21,7 +21,7 @@ const Agent = () => {
             <Fourth />
             <Fifth />
             <Sixth />
-            <Footer agent={`Capital Agency`} />
+            {/* <Footer agent={`Capital Agency`} /> */}
         </div>
     )
 }
