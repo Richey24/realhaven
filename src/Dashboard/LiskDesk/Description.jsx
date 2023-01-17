@@ -10,7 +10,7 @@ import dp from "../../img/dp.png"
 import settingWhite from "../../img/SettingWhite.svg"
 import bathroom from '../../img/blackbath.svg'
 import toilet from '../../img/blacktoilet.svg'
-import back from "../../img/arrowBlack.svg"
+// import back from "../../img/arrowBlack.svg"
 import moveleft from "../../img/moveleft.svg"
 import moveright from "../../img/moveright.svg"
 import expand from "../../img/expand.svg"
@@ -181,7 +181,7 @@ const Description = () => {
                         </div>
                     </div>
                     <div className="modeHead">
-                        <p onClick={() => nav("/listing")}><img src={back} alt="" />Back to listings</p>
+                        {/* <p onClick={() => nav("/listing")}><img src={back} alt="" />Back to listings</p> */}
                         <div>
                             <OverlayTrigger
                                 placement="bottom"
