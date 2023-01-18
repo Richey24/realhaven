@@ -1,3 +1,4 @@
+import Fourth from "./Fourth"
 import Header from "./Header"
 import Second from "./Second"
 import Third from "./Third"
@@ -8,6 +9,7 @@ const Main = () => {
             <Header />
             <Second />
             <Third />
+            <Fourth />
         </div>
     )
 }
