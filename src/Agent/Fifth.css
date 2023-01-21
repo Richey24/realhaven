@@ -52,5 +52,6 @@
     .aFifthMain>p {
         width: 55%;
         height: 50px;
+        font-size: 3vw;
     }
 }

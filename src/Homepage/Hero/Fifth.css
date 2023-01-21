@@ -1,0 +1,84 @@
+.heroFifth {
+    width: 100%;
+    height: 100vh;
+    padding: 64px;
+    font-family: 'Switzer';
+    font-style: normal;
+}
+
+.heroFifth>h1 {
+    font-weight: 700;
+    font-size: 40px;
+    color: #374151;
+}
+
+.heroFifth>p {
+    font-size: 20px;
+    color: #4B5563;
+}
+
+.heroFifthInner {
+    display: flex;
+    margin-top: 80px;
+    gap: 64px;
+}
+
+.heroFifthInner>div>p {
+    font-weight: 300;
+    font-size: 32px;
+    color: #374151;
+    text-align: left;
+}
+
+.heroFifthName {
+    margin-top: 64px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 32px;
+    color: #374151;
+}
+
+.heroFifthName>div {
+    width: 48px;
+    height: 0px;
+    border: 1px solid #9CA3AF;
+}
+
+.fifthPaginate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 125px;
+}
+
+.greyPaginate {
+    width: 48px;
+    height: 3px;
+    background: #E5E7EB;
+    border-radius: 0.5px;
+}
+
+.bluePaginate {
+    width: 48px;
+    height: 3px;
+    background: #2E7DD7;
+    border-radius: 0.5px;
+}
+
+.fifthPaginateDiv {
+    display: flex;
+    gap: 8px;
+}
+
+.leftFifth {
+    rotate: 180deg;
+}
+
+.fifthPageImg {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}

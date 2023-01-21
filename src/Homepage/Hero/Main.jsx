@@ -1,3 +1,4 @@
+import Fifth from "./Fifth"
 import Fourth from "./Fourth"
 import Header from "./Header"
 import Second from "./Second"
@@ -10,6 +11,7 @@ const Main = () => {
             <Second />
             <Third />
             <Fourth />
+            <Fifth />
         </div>
     )
 }
