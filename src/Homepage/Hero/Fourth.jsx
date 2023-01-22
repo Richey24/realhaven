@@ -24,8 +24,8 @@ const Fourth = () => {
             </div>
             <div id="fourthSec" className="fourthSec">
                 {
-                    arr.map((ar) => (
-                        <div>
+                    arr.map((ar, i) => (
+                        <div key={i}>
                             <div className="fourthImg">
                                 <img src={theImg} alt="" />
                                 <span>Rent</span>

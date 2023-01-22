@@ -46,7 +46,7 @@ const Fifth = () => {
                 return
             }
             setNum(num + 1)
-        }, 3000)
+        }, 5000)
         return () => {
             clearInterval(interval)
         }
