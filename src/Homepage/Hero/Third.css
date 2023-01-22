@@ -160,3 +160,45 @@
     color: #FFFFFF;
     cursor: pointer;
 }
+
+@media (max-width: 700px) {
+    .thirdInner>div>h1 {
+        font-size: 24px;
+    }
+
+    .thirdInner>div>p {
+        font-size: 16px;
+    }
+
+    .thirdInner>p {
+        display: none;
+    }
+
+    .mainThird {
+        padding: 24px;
+    }
+
+    .thirdImages {
+        flex-wrap: wrap;
+        margin-top: 40px;
+    }
+
+    .thirdImages img {
+        width: 100%;
+    }
+
+    .secondImgDiv,
+    .thirdImgDiv,
+    .firstImgDiv {
+        width: 100%;
+        border-radius: 12px;
+    }
+
+    .firstImgDiv img {
+        height: 300px;
+    }
+
+    .firstImgDiv p {
+        font-size: 16px;
+    }
+}
