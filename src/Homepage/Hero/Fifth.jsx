@@ -60,7 +60,7 @@ const Fifth = () => {
                 <img src={arr[num].img} alt="" />
                 <div>
                     <p>{arr[num].speech}</p>
-                    <div className="heroFifthName"><div></div> {arr[num].name}</div>
+                    <div className="heroFifthName"><div></div> {arr[num].name} <div className="secondDivLine"></div></div>
                     <div className="fifthPaginate">
                         <div className="fifthPaginateDiv">
                             <div className={num === 2 ? "bluePaginate" : "greyPaginate"}></div>

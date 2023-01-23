@@ -75,10 +75,61 @@
 
 .leftFifth {
     rotate: 180deg;
+    margin-top: 5px;
 }
 
 .fifthPageImg {
     display: flex;
     align-items: center;
     gap: 60px;
+}
+
+.secondDivLine {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .heroFifth {
+        padding: 64px 0px;
+        height: auto;
+    }
+
+    .heroFifth>h1 {
+        font-size: 24px;
+    }
+
+    .heroFifth>p {
+        font-size: 16px;
+    }
+
+    .heroFifthInner {
+        display: block;
+    }
+
+    .heroFifthInner>img {
+        width: 100%;
+    }
+
+    .heroFifthInner>div>p {
+        font-size: 16px;
+        margin: 32px 24px;
+        text-align: center;
+    }
+
+    .heroFifthName {
+        font-size: 20px;
+        justify-content: center;
+    }
+
+    .secondDivLine {
+        display: block;
+    }
+
+    .fifthPageImg {
+        display: none;
+    }
+
+    .fifthPaginate {
+        justify-content: center;
+    }
 }
