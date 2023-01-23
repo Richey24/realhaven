@@ -52,6 +52,7 @@
     font-weight: 400;
     font-size: 16px;
     color: #6B7280;
+    margin-top: 16px;
 }
 
 .faqQuestions div {
@@ -74,4 +75,36 @@
 
 .hide {
     display: none;
+}
+
+@media (max-width: 700px) {
+    .heroSixth {
+        padding: 64px 24px;
+        height: auto;
+    }
+
+    .heroSixthInner {
+        display: block;
+    }
+
+    .faqQuestions {
+        margin-top: 64px;
+        margin-bottom: 150px;
+    }
+
+    .heroSixthInner>div>h1 {
+        font-size: 24px;
+    }
+
+    .innerHeroSixth>p {
+        font-size: 16px;
+    }
+
+    .innerHeroSixth>img {
+        width: 100%;
+    }
+
+    .faqQuestions p {
+        font-size: 14px;
+    }
 }

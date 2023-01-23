@@ -161,6 +161,10 @@
     cursor: pointer;
 }
 
+.thirdSeeAll {
+    display: none;
+}
+
 @media (max-width: 700px) {
     .thirdInner>div>h1 {
         font-size: 24px;
@@ -200,5 +204,30 @@
 
     .firstImgDiv p {
         font-size: 16px;
+    }
+
+    .thirdSeeAll {
+        display: block;
+        width: 205px;
+        height: 54px;
+        background: #FFFFFF;
+        margin: 0 auto;
+        margin-top: 80px;
+        margin-bottom: 80px;
+        border: 1px solid #2E7DD7;
+        border-radius: 8px;
+        font-family: 'Switzer';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        color: #2E7DD7;
+    }
+
+    .thirdSeeAll img {
+        margin-left: 10px;
+    }
+
+    .mainThird {
+        background-color: #F9FAFB;
     }
 }

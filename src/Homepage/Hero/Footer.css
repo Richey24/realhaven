@@ -144,3 +144,61 @@
 .finalFooterDiv div:last-child {
     gap: 56px;
 }
+
+@media (max-width: 700px) {
+    .heroFooter {
+        padding: 0px 36px;
+        padding-top: 1px;
+        height: auto;
+    }
+
+    .heroCrossDiv {
+        padding: 32px 18px;
+        height: 300px;
+        margin-top: -150px;
+        border-radius: 8px;
+    }
+
+    .heroCrossDiv>h1 {
+        font-size: 24px;
+    }
+
+    .heroCrossDiv>p {
+        width: auto;
+        font-size: 16px;
+        margin-top: 24px;
+    }
+
+    .heroCrossDiv>button {
+        width: 100%;
+        margin-top: 24px;
+    }
+
+    .hiddenP {
+        display: none;
+    }
+
+    .theMainFooterDiv {
+        flex-wrap: wrap;
+        row-gap: 64px;
+        margin-left: -12px;
+    }
+
+    .lastFooterDiv>p {
+        width: 90%;
+    }
+
+    .lastFooterDiv>div {
+        width: 100%;
+        margin-top: 24px;
+    }
+
+    .finalFooterDiv {
+        flex-wrap: wrap;
+        row-gap: 46px;
+    }
+
+    .finalFooterDiv>div>p {
+        font-size: 12px;
+    }
+}

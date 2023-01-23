@@ -1,3 +1,5 @@
 .heroMain {
     background-color: white;
+    width: 100%;
+    overflow: hidden;
 }

@@ -5,6 +5,7 @@ import img2 from "../../img/image 5 (2).png"
 import img3 from "../../img/image 5 (3).png"
 import img4 from "../../img/image 5 (4).png"
 import img5 from "../../img/image 5 (5).png"
+import blue from "../../img/blueArrow.svg"
 
 const Third = () => {
 
@@ -83,6 +84,7 @@ const Third = () => {
                     </div>
                 </div>
             </div>
+            <button className="thirdSeeAll">See all <img src={blue} alt="" /></button>
         </div>
     )
 }
