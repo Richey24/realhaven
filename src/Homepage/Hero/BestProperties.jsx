@@ -1,4 +1,4 @@
-import "./Second.css"
+import "./BestProperties.css"
 import buy from "../../img/buy.png"
 import sell from "../../img/sell.png"
 import agent from "../../img/agent.png"
@@ -6,7 +6,7 @@ import blue from "../../img/blueArrow.svg"
 import pink from "../../img/arrowpink.svg"
 import grey from "../../img/arrowgrey.svg"
 
-const Second = () => {
+const BestProperties = () => {
     return (
         <div className="mainSecond">
             <h1>Best properties for sale</h1>
@@ -35,4 +35,4 @@ const Second = () => {
     )
 }
 
-export default Second
+export default BestProperties

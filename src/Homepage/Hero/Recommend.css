@@ -166,6 +166,11 @@
         margin-top: 64px;
         flex-wrap: wrap;
         overflow-x: hidden;
+        padding-right: 28px;
+    }
+
+    .fourthSec>div {
+        width: 100%;
     }
 
     .fourthLast {

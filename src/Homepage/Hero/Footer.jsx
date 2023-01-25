@@ -45,7 +45,7 @@ const Footer = () => {
                     <img src={facebook} alt="" />
                     <img src={insta} alt="" />
                 </div>
-                <div>
+                <div className="theFinalCopy">
                     <p>Copyright © Haven 2022.</p>
                     <p>Privacy Policy | Cookie</p>
                 </div>

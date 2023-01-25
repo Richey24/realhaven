@@ -1,4 +1,4 @@
-import "./Fifth.css"
+import "./Testimony.css"
 import bakare from "../../img/bakare.jpg"
 import adeyemi from "../../img/adeyemi.jpg"
 import james from "../../img/james.jpg"
@@ -23,7 +23,7 @@ const arr = [
     },
 ]
 
-const Fifth = () => {
+const Testimony = () => {
     const [num, setNum] = useState(0)
 
     const moveRight = () => {
@@ -78,4 +78,4 @@ const Fifth = () => {
     )
 }
 
-export default Fifth
+export default Testimony
