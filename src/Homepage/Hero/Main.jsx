@@ -1,21 +1,21 @@
-import Fifth from "./Fifth"
-import Fourth from "./Fourth"
 import Header from "./Header"
-import Second from "./Second"
-import Sixth from "./Sixth"
-import Third from "./Third"
 import "./Main.css"
 import Footer from "./Footer"
+import BestProperties from "./BestProperties"
+import Trending from "./Trending"
+import Recommend from "./Recommend"
+import Testimony from "./Testimony"
+import Faq from "./Faq"
 
 const Main = () => {
     return (
         <div className="heroMain">
             <Header />
-            <Second />
-            <Third />
-            <Fourth />
-            <Fifth />
-            <Sixth />
+            <BestProperties />
+            <Trending />
+            <Recommend />
+            <Testimony />
+            <Faq />
             <Footer />
         </div>
     )

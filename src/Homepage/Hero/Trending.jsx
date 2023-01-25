@@ -1,4 +1,4 @@
-import "./Third.css"
+import "./Trending.css"
 import black from "../../img/arrowblack.svg"
 import img1 from "../../img/trend.png"
 import img2 from "../../img/image 5 (2).png"
@@ -7,7 +7,7 @@ import img4 from "../../img/image 5 (4).png"
 import img5 from "../../img/image 5 (5).png"
 import blue from "../../img/blueArrow.svg"
 
-const Third = () => {
+const Trending = () => {
 
     const mouseEnter = (val1, val2) => {
         document.getElementById(val1).style.display = "flex"
@@ -89,4 +89,4 @@ const Third = () => {
     )
 }
 
-export default Third
+export default Trending

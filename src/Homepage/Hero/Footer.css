@@ -201,4 +201,9 @@
     .finalFooterDiv>div>p {
         font-size: 12px;
     }
+
+    .theFinalCopy {
+        justify-content: center;
+        width: 100%;
+    }
 }

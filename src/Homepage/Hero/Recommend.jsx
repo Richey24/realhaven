@@ -1,10 +1,10 @@
-import "./Fourth.css"
+import "./Recommend.css"
 import black from "../../img/arrowblack.svg"
 import theImg from "../../img/image.png"
 import addressImg from "../../img/Location.svg"
 import blue from "../../img/blueArrow.svg"
 
-const Fourth = () => {
+const Recommend = () => {
     const arr = ['a', 'b', 'c', 's', 'f', 'g']
 
     const moveRight = () => {
@@ -48,4 +48,4 @@ const Fourth = () => {
     )
 }
 
-export default Fourth
+export default Recommend

@@ -1,8 +1,8 @@
-import "./Sixth.css"
+import "./Faq.css"
 import faq from "../../img/faq.svg"
 import down from "../../img/Icon.svg"
 
-const Sixth = () => {
+const Faq = () => {
 
     const toggleFaq = (val) => {
         if (val === "firstFaq") {
@@ -47,4 +47,4 @@ const Sixth = () => {
     )
 }
 
-export default Sixth
+export default Faq
