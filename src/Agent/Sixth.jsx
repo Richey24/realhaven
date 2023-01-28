@@ -3,6 +3,7 @@ import down from '../img/Icon.svg'
 import slant from "../img/slant-right.svg"
 import { useState } from "react"
 import { Slider } from "@mui/material";
+import { propList } from "../utils/propertyList";
 
 function valuetext(value) {
     return `${value}°C`;
@@ -67,33 +68,11 @@ const Sixth = () => {
                         <label htmlFor="name">What type of property are you interested in?</label>
                         <p onClick={showProp}>{prop}<img src={down} alt="" /></p>
                         <ul style={{ height: "202px" }} id="propDivSixth" className="sixthDiv">
-                            <li style={{ color: prop === "Duplex" ? "#2E7DD7" : "" }} onClick={() => closeProp("Duplex")}>Duplex</li>
-                            <li style={{ color: prop === "Detached Bungalow" ? "#2E7DD7" : "" }} onClick={() => closeProp("Detached Bungalow")}>Detached Bungalow</li>
-                            <li style={{ color: prop === "Shop" ? "#2E7DD7" : "" }} onClick={() => closeProp("Shop")}>Shop</li>
-                            <li style={{ color: prop === "Office Space" ? "#2E7DD7" : "" }} onClick={() => closeProp("Office Space")}>Office Space</li>
-                            <li style={{ color: prop === "Penthouse" ? "#2E7DD7" : "" }} onClick={() => closeProp("Penthouse")}>Penthouse</li>
-                            <li style={{ color: prop === "Apartments" ? "#2E7DD7" : "" }} onClick={() => closeProp("Apartments")}>Apartments</li>
-                            <li style={{ color: prop === "Semi detached duplex" ? "#2E7DD7" : "" }} onClick={() => closeProp("Semi detached duplex")}>Semi detached duplex </li>
-                            <li style={{ color: prop === "Cottage" ? "#2E7DD7" : "" }} onClick={() => closeProp("Cottage")}>Cottage</li>
-                            <li style={{ color: prop === "Townhouse" ? "#2E7DD7" : "" }} onClick={() => closeProp("Townhouse")}>Townhouse</li>
-                            <li style={{ color: prop === "Mansion" ? "#2E7DD7" : "" }} onClick={() => closeProp("Mansion")}>Mansion</li>
-                            <li style={{ color: prop === "Ranch-style house" ? "#2E7DD7" : "" }} onClick={() => closeProp("Ranch-style house")}>Ranch-style house</li>
-                            <li style={{ color: prop === "Condominium" ? "#2E7DD7" : "" }} onClick={() => closeProp("Condominium")}>Condominium</li>
-                            <li style={{ color: prop === "Terraced house" ? "#2E7DD7" : "" }} onClick={() => closeProp("Terraced house")}>Terraced house</li>
-                            <li style={{ color: prop === "Villa" ? "#2E7DD7" : "" }} onClick={() => closeProp("Villa")}>Villa</li>
-                            <li style={{ color: prop === "Mobile home" ? "#2E7DD7" : "" }} onClick={() => closeProp("Mobile home")}>Mobile home</li>
-                            <li style={{ color: prop === "Farmhouse" ? "#2E7DD7" : "" }} onClick={() => closeProp("Farmhouse")}>Farmhouse</li>
-                            <li style={{ color: prop === "Single-family home" ? "#2E7DD7" : "" }} onClick={() => closeProp("Single-family home")}>Single-family home</li>
-                            <li style={{ color: prop === "Tiny house movement" ? "#2E7DD7" : "" }} onClick={() => closeProp("Tiny house movement")}>Tiny house movement</li>
-                            <li style={{ color: prop === "Tree house" ? "#2E7DD7" : "" }} onClick={() => closeProp("Tree house")}>Tree house</li>
-                            <li style={{ color: prop === "American Craftsman" ? "#2E7DD7" : "" }} onClick={() => closeProp("American Craftsman")}>American Craftsman</li>
-                            <li style={{ color: prop === "Colonial architecture" ? "#2E7DD7" : "" }} onClick={() => closeProp("Colonial architecture")}>Colonial architecture</li>
-                            <li style={{ color: prop === "Hut" ? "#2E7DD7" : "" }} onClick={() => closeProp("Hut")}>Hut</li>
-                            <li style={{ color: prop === "Victorian architecture" ? "#2E7DD7" : "" }} onClick={() => closeProp("Victorian architecture")}>Victorian architecture</li>
-                            <li style={{ color: prop === "Tudor architecture" ? "#2E7DD7" : "" }} onClick={() => closeProp("Tudor architecture")}>Tudor architecture</li>
-                            <li style={{ color: prop === "Castle" ? "#2E7DD7" : "" }} onClick={() => closeProp("Castle")}>Castle</li>
-                            <li style={{ color: prop === "Contemporary architecture" ? "#2E7DD7" : "" }} onClick={() => closeProp("Contemporary architecture")}>Contemporary architecture</li>
-                            <li style={{ color: prop === "Log cabin" ? "#2E7DD7" : "" }} onClick={() => closeProp("Log cabin")}>Log cabin</li>
+                            {
+                                propList.map((pro) => (
+                                    <li style={{ color: prop === pro ? "#2E7DD7" : "" }} onClick={() => closeProp(pro)}>{pro}</li>
+                                ))
+                            }
                         </ul>
                     </div>
                     <div>

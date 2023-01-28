@@ -1,4 +1,4 @@
-import Header from "./Header"
+import Hero from "./Hero"
 import "./Main.css"
 import Footer from "./Footer"
 import BestProperties from "./BestProperties"
@@ -10,7 +10,7 @@ import Faq from "./Faq"
 const Main = () => {
     return (
         <div className="heroMain">
-            <Header />
+            <Hero />
             <BestProperties />
             <Trending />
             <Recommend />

@@ -1,0 +1,377 @@
+.mainHero {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #C0D8F3 0%, #6DA4E3 100%);
+    padding: 24px 64px;
+    padding-bottom: 0px;
+}
+
+.heroSearch {
+    position: absolute;
+    width: 792px;
+    height: 176px;
+    left: 25%;
+    top: 388px;
+    background: #FFFFFF;
+    border: 1px solid #F3F4F6;
+    box-shadow: 64px 0px 86px rgba(109, 164, 227, 0.22);
+    border-radius: 4px;
+    isolation: isolate;
+    padding: 32px;
+}
+
+.heroSearch .heroInput {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.heroSearch .heroInput input {
+    width: 100%;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #374151;
+    border: none;
+    outline: none;
+}
+
+.heroSearch .heroSearchButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 41px;
+}
+
+.heroSearch .heroSearchButton p {
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 16px;
+    width: auto;
+    height: 48px;
+    background: #FFFFFF;
+    border: 1px solid #F3F4F6;
+    border-radius: 4px;
+    font-family: 'Switzer';
+    color: #374151;
+    cursor: pointer;
+}
+
+.heroSearch .heroSearchButton button {
+    width: 148px;
+    height: 45px;
+    background: #2E7DD7;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    font-family: 'Switzer';
+    color: #FFFFFF;
+}
+
+.homeLocationSearch,
+.homePropertySearch,
+.homePriceRange {
+    position: relative;
+}
+
+.homeLocationSearch>div {
+    position: absolute;
+    width: 220px;
+    height: 267px;
+    left: 0px;
+    top: 70px;
+    background: #FFFFFF;
+    filter: drop-shadow(0px 16px 32px rgba(17, 17, 17, 0.11));
+    border-radius: 8px;
+
+}
+
+.homeLocationSearch h5,
+.homePriceRange h5,
+.homePropertySearch h5 {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #374151;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.homeLocationSearch>div>div,
+.homePriceRange div div,
+.homePropertySearch div div {
+    border-bottom: 0.5px solid #E5E7EB;
+    padding: 16px;
+    padding-bottom: 10px;
+}
+
+.homeLocationSearch>div>div>div {
+    display: flex;
+    width: 100%;
+    border: 0.5px solid #E5E7EB;
+    border-radius: 4px;
+    align-items: center;
+    padding-left: 9px;
+    height: 28px;
+}
+
+.homeLocationSearch>div>div>div>input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    color: #6B7280;
+}
+
+.homeLocationSearch>div>div>div>img {
+    width: 12px;
+    height: 12px;
+}
+
+.homeLocationSearch h5 span,
+.homePriceRange h5 span,
+.homePropertySearch h5 span {
+    font-weight: 400;
+    font-size: 12px;
+    color: #9CA3AF;
+    cursor: pointer;
+}
+
+.homeLocationSearch ul {
+    text-align: left;
+    padding-left: 12px;
+    padding-right: 24px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-top: 10px;
+    height: 170px;
+}
+
+.homePropertySearch ul {
+    text-align: left;
+    margin-top: 5px;
+    padding-left: 12px;
+    padding-right: 24px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 174px;
+}
+
+.homeLocationSearch ul::-webkit-scrollbar,
+.homePropertySearch ul::-webkit-scrollbar {
+    width: 8px;
+}
+
+.homeLocationSearch ul::-webkit-scrollbar-track,
+.homePropertySearch ul::-webkit-scrollbar-track {
+    background-color: #F9FAFB;
+}
+
+.homeLocationSearch ul::-webkit-scrollbar-thumb,
+.homePropertySearch ul::-webkit-scrollbar-thumb {
+    background-color: #D1D5DB;
+    height: 28px;
+    border-radius: 22px;
+}
+
+.homePropertySearch li {
+    list-style-type: none;
+    padding-bottom: 6px;
+    display: flex;
+    align-items: center;
+    height: 32px;
+}
+
+.homePropertySearch input,
+.homeLocationSearch ul input {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+}
+
+.homePropertySearch label,
+.homeLocationSearch label {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: #4B5563;
+    cursor: pointer;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.homeLocationSearch li {
+    list-style-type: none;
+    width: 100%;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: #4B5563;
+    cursor: pointer;
+    display: flex;
+    height: 32px;
+    align-items: center;
+}
+
+.homeLocationSearch .activeLocation {
+    background: #2E7DD7;
+    color: white;
+}
+
+
+.homePropertySearch>div {
+    position: absolute;
+    width: 220px;
+    height: 239px;
+    left: 65px;
+    top: 70px;
+    background: #FFFFFF;
+    filter: drop-shadow(0px 16px 32px rgba(17, 17, 17, 0.11));
+    border-radius: 8px;
+}
+
+.homePriceRange>div {
+    position: absolute;
+    width: 220px;
+    height: 204px;
+    left: 95px;
+    top: 70px;
+    background: #FFFFFF;
+    filter: drop-shadow(0px 16px 32px rgba(17, 17, 17, 0.11));
+    border-radius: 8px;
+}
+
+.mobileHero {
+    display: none;
+}
+
+.navham {
+    display: none;
+}
+
+.mobileHeroSearch {
+    display: none;
+}
+
+@media (max-width: 700px) {
+
+    .heroNav .navSecond,
+    .heroNav .navThird {
+        display: none;
+    }
+
+    .mainHero {
+        padding: 24px;
+        min-height: 30vh;
+    }
+
+    .heroSearch {
+        display: none;
+    }
+
+    .heroImage {
+        display: none;
+    }
+
+    .heroSecond>p {
+        width: 100%;
+        font-size: 16px;
+        margin-bottom: 50px;
+    }
+
+    .heroSecond>h1 {
+        font-size: 40px;
+    }
+
+    .mobileHero {
+        display: block;
+        margin-left: -24px;
+        width: 100vw;
+        margin-bottom: -50px;
+    }
+
+    .navham {
+        display: block;
+        filter: invert(100%);
+        padding-bottom: 5px;
+    }
+
+    .mainHero .heroNav {
+        align-items: baseline;
+    }
+
+    .mobileHeroSearch {
+        display: block;
+        width: 90%;
+        height: 333px;
+        background: #FFFFFF;
+        box-shadow: 8px -8px 16px rgba(17, 17, 17, 0.06), -8px 8px 16px rgba(17, 17, 17, 0.06);
+        border-radius: 4px;
+        left: 5%;
+        padding: 24px;
+        margin-top: -30px;
+        position: absolute;
+        z-index: 2;
+    }
+
+    .theMainHero {
+        min-height: 107vh;
+    }
+
+    .heroInputMobile {
+        width: 100%;
+    }
+
+    .heroInputMobile input {
+        width: 90%;
+        height: 50px;
+        border: none;
+        outline: none;
+        padding-left: 20px;
+        font-family: 'Switzer';
+        font-style: normal;
+    }
+
+    .mobileHeroSearch>p {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 6px;
+        font-family: 'Switzer';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        color: #374151;
+        border-bottom: 1px solid #F3F4F6;
+    }
+
+    .mobileHeroSearch>p:first-child {
+        margin-top: 12px;
+    }
+
+    .mobileHeroSearch>button {
+        width: 100%;
+        height: 45px;
+        background: #2E7DD7;
+        border-radius: 2px;
+        border: none;
+        outline: none;
+        font-family: 'Switzer';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        color: #FFFFFF;
+        margin-top: 10px;
+    }
+}
