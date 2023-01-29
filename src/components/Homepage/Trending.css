@@ -127,6 +127,14 @@
     display: none;
 }
 
+.firstHover>div,
+.secondHover>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .firstHover h6 {
     font-family: 'Switzer';
     font-style: normal;
