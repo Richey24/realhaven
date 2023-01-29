@@ -1,10 +1,10 @@
 // search location on homepage location dropdown
-const filterLocations = (e) => {
-    const val = document.getElementById("locationList").children
+const filterLocations = (e, value) => {
+    const val = document.getElementById(value).children
     const arr = Array.from(val).filter((list) => list.className.includes(e.target.value.toLowerCase()))
     if (arr[0]) {
         const offSet = arr[0].offsetTop
-        document.getElementById("locationList").scrollTop = offSet - 100
+        document.getElementById(value).scrollTop = offSet - 100
     }
 }
 

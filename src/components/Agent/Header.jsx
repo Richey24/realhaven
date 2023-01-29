@@ -4,7 +4,7 @@ import ham from "../../img/ham.svg"
 import { useState } from "react"
 import { Slider } from "@mui/material"
 import Canvas from "./Canvas"
-import { propList } from "../../utils/propertyList"
+import { propList } from "../../data/propertyList"
 import { handleSlide, valueText } from "../../utils/functions"
 
 const Header = () => {

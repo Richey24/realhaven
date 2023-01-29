@@ -419,7 +419,33 @@
         width: 100%;
         height: 267px;
         left: 0px;
-        top: 70px;
+        top: 45px;
+        background: #FFFFFF;
+        filter: drop-shadow(0px 16px 32px rgba(17, 17, 17, 0.11));
+        border-radius: 8px;
+        display: none;
+        z-index: 3;
+    }
+
+    .homePropertySearchMobile {
+        position: absolute;
+        width: 100%;
+        height: 267px;
+        left: 0px;
+        top: 50px;
+        background: #FFFFFF;
+        filter: drop-shadow(0px 16px 32px rgba(17, 17, 17, 0.11));
+        border-radius: 8px;
+        display: none;
+        z-index: 2;
+    }
+
+    .homePriceRangeMobile {
+        position: absolute;
+        width: 100%;
+        height: 207px;
+        left: 0px;
+        top: 50px;
         background: #FFFFFF;
         filter: drop-shadow(0px 16px 32px rgba(17, 17, 17, 0.11));
         border-radius: 8px;
@@ -436,7 +462,18 @@
         height: 170px;
     }
 
-    .mobileLocationSearch li {
+    .homePropertySearchMobile>ul {
+        text-align: left;
+        padding-left: 12px;
+        padding-right: 24px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        margin-top: 10px;
+        height: 178px;
+    }
+
+    .mobileLocationSearch li,
+    .homePropertySearchMobile li {
         list-style-type: none;
         width: 100%;
         font-family: 'Switzer';
@@ -450,7 +487,8 @@
         align-items: center;
     }
 
-    .mobileLocationSearch label {
+    .mobileLocationSearch label,
+    .homePropertySearchMobile label {
         font-family: 'Switzer';
         font-style: normal;
         font-weight: 400;
@@ -461,6 +499,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        margin-left: 10px;
     }
 
     .mobileLocationSearchDiv>div>div>div {
@@ -469,8 +508,9 @@
         border: 0.5px solid #E5E7EB;
         border-radius: 4px;
         align-items: center;
-        padding-left: 9px;
         height: 28px;
+        margin-bottom: -10px;
+        margin-top: 20px;
     }
 
     .mobileLocationSearchDiv>div>div>div>input {
@@ -489,14 +529,18 @@
         height: 12px;
     }
 
-    .mobileLocationSearch h5 span {
+    .mobileLocationSearch h5 span,
+    .homePropertySearchMobile h5 span,
+    .homePriceRangeMobile h5 span {
         font-weight: 400;
         font-size: 12px;
         color: #9CA3AF;
         cursor: pointer;
     }
 
-    .mobileLocationSearch h5 {
+    .mobileLocationSearch h5,
+    .homePropertySearchMobile h5,
+    .homePriceRangeMobile h5 {
         font-family: 'Switzer';
         font-style: normal;
         font-weight: 600;
@@ -507,7 +551,13 @@
         width: 100%;
     }
 
-    .mobileLocationSearch>div {
-        padding: 10px;
+    .mobileLocationSearch>div,
+    .homePropertySearchMobile>div,
+    .homePriceRangeMobile>div {
+        padding: 20px;
+    }
+
+    .priceValue {
+        margin-top: 20px;
     }
 }

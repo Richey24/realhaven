@@ -7,7 +7,7 @@ import down from '../../img/Stroke-1.svg'
 import { useState } from "react"
 import { useEffect } from "react"
 import axios from "axios"
-import timezone from '../../utils/timezone';
+import timezone from '../../data/timezone';
 
 const Profile = () => {
     const [con, setCon] = useState([])
