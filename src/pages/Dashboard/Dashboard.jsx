@@ -1,4 +1,4 @@
-import DashMain from "./DashMain"
+import DashMain from "../../components/Dashboard/DashMain"
 
 const Dashboard = () => {
     return (

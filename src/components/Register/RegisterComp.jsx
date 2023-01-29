@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios'
 import { Spinner } from 'react-bootstrap';
-import url from '../../url'
+import url from '../../utils/url'
 
 const RegisterComp = () => {
 

@@ -1,6 +1,6 @@
 import "./Main.css"
 import { useState, useEffect } from 'react';
-import url from './../../url';
+import url from '../../utils/url';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
 import settingWhite from "../../img/SettingWhite.svg"

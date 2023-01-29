@@ -1,8 +1,8 @@
 import "./Description.css"
-import "./Main.css"
+import "../../components/Listings/Main.css"
 import { useParams, useNavigate } from "react-router-dom"
 import { useState, useEffect } from 'react'
-import url from "../../url"
+import url from "../../utils/url"
 import axios from "axios"
 import room from '../../img/blackbed.svg'
 import noti from "../../img/noti.svg"
@@ -24,8 +24,8 @@ import locate from "../../img/Location.svg"
 import share from "../../img/share.svg"
 import del from "../../img/Delete.svg"
 import { Spinner, OverlayTrigger, Tooltip } from "react-bootstrap"
-import Promote from "./Promote"
-import Sidebar from "../Dashboard/Sidebar"
+import Promote from "../../components/Listings/Promote"
+import Sidebar from "../../components/Dashboard/Sidebar"
 
 let token = ""
 let id = ""

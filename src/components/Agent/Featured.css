@@ -23,6 +23,11 @@
     overflow-y: hidden;
     height: 535px;
     margin-top: 124px;
+    scrollbar-width: none;
+}
+
+.aFeatDiv::-webkit-scrollbar {
+    display: none;
 }
 
 .aFeatDiv>div {

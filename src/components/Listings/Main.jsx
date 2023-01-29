@@ -30,7 +30,7 @@ import logo from "../../img/logo_blue.svg"
 import { Offcanvas, Spinner, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from "axios"
-import url from '../../url';
+import url from '../../utils/url';
 import Promote from "./Promote"
 import Draft from "./Draft"
 

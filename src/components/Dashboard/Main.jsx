@@ -25,7 +25,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from "react"
 import { useState } from "react"
 import axios from "axios"
-import url from '../../url';
+import url from '../../utils/url';
 import { Spinner, Offcanvas } from 'react-bootstrap';
 
 const Main = ({ showTop, handleTopClose }) => {

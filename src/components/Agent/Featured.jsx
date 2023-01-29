@@ -1,4 +1,4 @@
-import "./Second.css"
+import "./Featured.css"
 import slant from '../../img/slantarrow.svg'
 import arrow from '../../img/arrowgrey.svg'
 import one from "../../img/image 5 (1).png"
@@ -9,7 +9,7 @@ import five from "../../img/image 5 (5).png"
 import six from "../../img/image 5 (6).png"
 
 const images = [one, two, three, four, five, six]
-const Second = () => {
+const Featured = () => {
     const increment = () => {
         const img = document.getElementById("aFeatDiv")
         img.scrollLeft += 320
@@ -50,4 +50,4 @@ const Second = () => {
     )
 }
 
-export default Second
+export default Featured

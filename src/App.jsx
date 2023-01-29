@@ -1,8 +1,8 @@
 import React from "react";
-import { Spinner } from "react-bootstrap";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import routes from "./routes/routes";
+import Fallback from "./utils/Fallback";
 
 function App() {
 
@@ -18,17 +18,7 @@ function App() {
                 element={
                   <React.Suspense
                     fallback={
-                      <div
-                        style={{
-                          width: "100%",
-                          height: "100vh",
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
-                      >
-                        <Spinner animation="border" style={{ color: "#2E7DD7" }} />
-                      </div>
+                      <Fallback />
                     }
                   >
                     {route.element}

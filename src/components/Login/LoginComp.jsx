@@ -10,7 +10,7 @@ import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 import { Spinner } from 'react-bootstrap';
 import { useGoogleLogin } from '@react-oauth/google';
-import url from '../../url'
+import url from '../../utils/url'
 
 const LoginComp = () => {
 

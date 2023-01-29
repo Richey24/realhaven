@@ -1,6 +1,6 @@
 import "./Settings.css"
 import { useState } from 'react';
-import SideBar from './SideBar';
+import SideBar from '../../components/Settings/SideBar';
 import { Offcanvas } from 'react-bootstrap';
 import logo from "../../img/logo_blue.svg"
 import dashboard from "../../img/Category-blue.svg"
@@ -16,8 +16,8 @@ import analytics from "../../img/Analytics.svg"
 import analyticsBlue from "../../img/AnalyticsBlue.svg"
 import logout from "../../img/Logout.svg"
 import { useNavigate, useLocation } from 'react-router-dom';
-import Main from "./Main";
-import Header from "../Dashboard/Header";
+import Main from "../../components/Settings/Main";
+import Header from "../../components/Dashboard/Header";
 
 const Settings = () => {
     const [showTop, setShowTop] = useState(false)

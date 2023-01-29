@@ -1,7 +1,7 @@
-import "./Fifth.css"
+import "./Explore.css"
 import slant from "../../img/slant-right.svg"
 
-const Fifth = () => {
+const Explore = () => {
     return (
         <div className="aFifthMain">
             <h1>Find properties In your city now</h1>
@@ -10,4 +10,4 @@ const Fifth = () => {
     )
 }
 
-export default Fifth
+export default Explore

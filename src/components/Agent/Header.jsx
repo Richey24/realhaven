@@ -5,13 +5,7 @@ import { useState } from "react"
 import { Slider } from "@mui/material"
 import Canvas from "./Canvas"
 import { propList } from "../../utils/propertyList"
-
-function valuetext(value) {
-    return `${value}°C`;
-}
-
-const minDistance = 10;
-
+import { handleSlide, valueText } from "../../utils/functions"
 
 const Header = () => {
     const [catAct, setCatAct] = useState("sale")
@@ -28,21 +22,7 @@ const Header = () => {
     }
 
     const handleChange2 = (event, newValue, activeThumb) => {
-        if (!Array.isArray(newValue)) {
-            return;
-        }
-
-        if (newValue[1] - newValue[0] < minDistance) {
-            if (activeThumb === 0) {
-                const clamped = Math.min(newValue[0], 100 - minDistance);
-                setValue2([clamped, clamped + minDistance]);
-            } else {
-                const clamped = Math.max(newValue[1], minDistance);
-                setValue2([clamped - minDistance, clamped]);
-            }
-        } else {
-            setValue2(newValue);
-        }
+        handleSlide(event, newValue, activeThumb, setValue2)
     };
 
 
@@ -137,7 +117,7 @@ const Header = () => {
                             value={value2}
                             onChange={handleChange2}
                             valueLabelDisplay="auto"
-                            getAriaValueText={valuetext}
+                            getAriaValueText={valueText}
                             disableSwap
                             sx={{
                                 width: '100%',

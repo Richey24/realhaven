@@ -10,8 +10,7 @@ const Footer = () => {
         <div className="heroFooter">
             <div className="heroCrossDiv">
                 <h1>Get started for free in 10 minutes</h1>
-                <p>Get all the best financial products for your business growth for free.
-                    <p className="hiddenP"> Open the last current account you will ever need for your business</p></p>
+                <p>Get all the best Real Estate management tools your agency’s growth need </p>
                 <button>Get started in minutes</button>
             </div>
             <div className="theMainFooterDiv">

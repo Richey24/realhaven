@@ -6,18 +6,9 @@ import img3 from "../../img/image 5 (3).png"
 import img4 from "../../img/image 5 (4).png"
 import img5 from "../../img/image 5 (5).png"
 import blue from "../../img/blueArrow.svg"
+import { mouseEnter, mouseLeave } from "../../utils/functions"
 
 const Trending = () => {
-
-    const mouseEnter = (val1, val2) => {
-        document.getElementById(val1).style.display = "flex"
-        document.getElementById(val2).style.display = "none"
-    }
-
-    const mouseLeave = (val1, val2) => {
-        document.getElementById(val1).style.display = "none"
-        document.getElementById(val2).style.display = "block"
-    }
 
     return (
         <div className="mainThird">
