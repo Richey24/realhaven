@@ -1,12 +1,12 @@
 import React from "react"
-const Main = React.lazy(() => import("../components/Homepage/Main"))
-const Login = React.lazy(() => import("../components/Login/Login"));
-const Register = React.lazy(() => import("../components/Register/Register"));
-const Dashboard = React.lazy(() => import("../components/Dashboard/Dashboard"));
-const Listing = React.lazy(() => import("../components/Listings/Listing"));
-const Settings = React.lazy(() => import("../components/Settings/Settings"));
-const Description = React.lazy(() => import("../components/Listings/Description"));
-const Reset = React.lazy(() => import("../components/Login/Reset"));
+const Main = React.lazy(() => import("../pages/Homepage/Main"))
+const Login = React.lazy(() => import("../pages/Login/Login"));
+const Register = React.lazy(() => import("../pages/Register/Register"));
+const Dashboard = React.lazy(() => import("../pages/Dashboard/Dashboard"));
+const Listing = React.lazy(() => import("../pages/Listing/Listing"));
+const Settings = React.lazy(() => import("../pages/Setting/Settings"));
+const Description = React.lazy(() => import("../pages/Listing/Description"));
+const Reset = React.lazy(() => import("../pages/Reset/Reset"));
 
 const routes = [
     {

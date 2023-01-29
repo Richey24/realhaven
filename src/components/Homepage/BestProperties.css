@@ -1,8 +1,7 @@
 .mainSecond {
     width: 100%;
-    min-height: 100vh;
+    min-height: auto;
     padding: 64px;
-    padding-bottom: 280px;
 }
 
 .mainSecond>h1 {
@@ -35,7 +34,7 @@
 
 .secondInner>div {
     width: 400px;
-    height: 291.55px;
+    height: auto;
 }
 
 .secondInner>div>h2 {
@@ -74,12 +73,12 @@
 
     .mainSecond {
         padding: 24px;
-        min-height: 192vh;
+        padding-bottom: 64px;
     }
 
     .secondInner {
         flex-wrap: wrap;
-        gap: 180px;
+        gap: 72px;
     }
 
     .secondInnerImg {

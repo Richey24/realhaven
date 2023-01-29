@@ -100,7 +100,8 @@
 
 .homeLocationSearch,
 .homePropertySearch,
-.homePriceRange {
+.homePriceRange,
+.mobileLocationSearchDiv {
     position: relative;
 }
 
@@ -303,10 +304,6 @@
     display: none;
 }
 
-.navham {
-    display: none;
-}
-
 .mobileHeroSearch {
     display: none;
 }
@@ -316,11 +313,6 @@
 }
 
 @media (max-width: 700px) {
-
-    .heroNav .navSecond,
-    .heroNav .navThird {
-        display: none;
-    }
 
     .mainHero {
         padding: 24px;
@@ -352,12 +344,6 @@
         margin-bottom: -50px;
     }
 
-    .navham {
-        display: block;
-        filter: invert(100%);
-        padding-bottom: 5px;
-    }
-
     .mainHero .heroNav {
         align-items: baseline;
     }
@@ -372,12 +358,14 @@
         left: 5%;
         padding: 24px;
         margin-top: -30px;
-        position: absolute;
+        margin-bottom: 40px;
+        float: top;
+        position: relative;
         z-index: 2;
     }
 
     .theMainHero {
-        min-height: 107vh;
+        min-height: auto;
     }
 
     .heroInputMobile {
@@ -394,7 +382,7 @@
         font-style: normal;
     }
 
-    .mobileHeroSearch>p {
+    .mobileHeroSearch>div>p {
         width: 100%;
         display: flex;
         justify-content: space-between;
@@ -424,5 +412,102 @@
         font-size: 16px;
         color: #FFFFFF;
         margin-top: 10px;
+    }
+
+    .mobileLocationSearch {
+        position: absolute;
+        width: 100%;
+        height: 267px;
+        left: 0px;
+        top: 70px;
+        background: #FFFFFF;
+        filter: drop-shadow(0px 16px 32px rgba(17, 17, 17, 0.11));
+        border-radius: 8px;
+        display: none;
+    }
+
+    .mobileLocationSearch>ul {
+        text-align: left;
+        padding-left: 12px;
+        padding-right: 24px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        margin-top: 10px;
+        height: 170px;
+    }
+
+    .mobileLocationSearch li {
+        list-style-type: none;
+        width: 100%;
+        font-family: 'Switzer';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        color: #4B5563;
+        cursor: pointer;
+        display: flex;
+        height: 32px;
+        align-items: center;
+    }
+
+    .mobileLocationSearch label {
+        font-family: 'Switzer';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        color: #4B5563;
+        cursor: pointer;
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .mobileLocationSearchDiv>div>div>div {
+        display: flex;
+        width: 100%;
+        border: 0.5px solid #E5E7EB;
+        border-radius: 4px;
+        align-items: center;
+        padding-left: 9px;
+        height: 28px;
+    }
+
+    .mobileLocationSearchDiv>div>div>div>input {
+        width: 100%;
+        border: none;
+        outline: none;
+        font-family: 'Switzer';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 10px;
+        color: #6B7280;
+    }
+
+    .mobileLocationSearchDiv>div>div>div>img {
+        width: 12px;
+        height: 12px;
+    }
+
+    .mobileLocationSearch h5 span {
+        font-weight: 400;
+        font-size: 12px;
+        color: #9CA3AF;
+        cursor: pointer;
+    }
+
+    .mobileLocationSearch h5 {
+        font-family: 'Switzer';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        color: #374151;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .mobileLocationSearch>div {
+        padding: 10px;
     }
 }

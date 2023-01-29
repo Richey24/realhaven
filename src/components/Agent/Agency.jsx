@@ -1,10 +1,10 @@
-import "./Third.css"
+import "./Agency.css"
 import bordered from "../../img/bordered.png"
 import person1 from "../../img/person1.png"
 import person2 from "../../img/person2.png"
 import person3 from "../../img/person3.png"
 import person4 from "../../img/person4.png"
-const Third = () => {
+const Agency = () => {
     return (
         <div className="aThirdMain">
             <div className="thirdInnerDiv">
@@ -25,4 +25,4 @@ const Third = () => {
     )
 }
 
-export default Third
+export default Agency

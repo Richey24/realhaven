@@ -6,7 +6,7 @@
     font-style: normal;
 }
 
-.heroNav .navFirst {
+.navFirst {
     display: flex;
     align-items: baseline;
     gap: 5px;
@@ -56,4 +56,68 @@
 .heroNav .navThird {
     gap: 24px;
     align-items: baseline;
+}
+
+.navham {
+    display: none;
+}
+
+
+@media (max-width: 700px) {
+
+    .heroNav .navSecond,
+    .heroNav .navThird {
+        display: none;
+    }
+
+    .navham {
+        display: block;
+        filter: invert(100%);
+        padding-bottom: 5px;
+    }
+
+    .homeCanvasCancel {
+        width: 20px;
+        height: 20px;
+    }
+
+    .homeCanvas {
+        padding: 12px 24px;
+        font-family: 'Switzer';
+        font-style: normal;
+        height: 600px;
+    }
+
+    .homeCanvasFirstDiv {
+        margin-top: 44px;
+    }
+
+    .homeCanvas hr {
+        margin-top: 64px;
+        margin-bottom: 48px;
+        color: #2E7DD7;
+    }
+
+    .homeCanvasFirstDiv>p,
+    .homeCanvasSecondDiv>p {
+        font-weight: 400;
+        font-size: 18px;
+        color: #374151;
+        margin-top: 26px;
+    }
+
+    .homeCanvasSecondDiv>p:first-child {
+        color: #2E7DD7;
+    }
+
+    .homeCanvasSecondDiv>button {
+        width: 242px;
+        height: 56px;
+        border: none;
+        outline: none;
+        background: #2E7DD7;
+        border-radius: 4px;
+        margin-top: 16px;
+        color: white;
+    }
 }

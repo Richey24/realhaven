@@ -1,4 +1,4 @@
-import ListDesk from "./ListDesk"
+import ListDesk from "../../components/Listings/ListDesk"
 
 const Listing = () => {
     return (

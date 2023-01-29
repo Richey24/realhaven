@@ -1,4 +1,4 @@
-import "./Sixth.css"
+import "./Footer.css"
 import down from '../../img/Icon.svg'
 import slant from "../../img/slant-right.svg"
 import { useState } from "react"
@@ -11,7 +11,7 @@ function valuetext(value) {
 
 const minDistance = 10;
 
-const Sixth = () => {
+const Footer = () => {
     const [prop, setProp] = useState("Semi detached duplex")
     const [value2, setValue2] = useState([5, 37]);
 
@@ -115,4 +115,4 @@ const Sixth = () => {
     )
 }
 
-export default Sixth
+export default Footer

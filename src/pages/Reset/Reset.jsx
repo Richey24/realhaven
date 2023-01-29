@@ -4,10 +4,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 import eye from '../../img/Show.svg'
 import logo from '../../img/logo.svg'
 import bg from '../../img/Frame 1.png'
-import './Login.css'
+import '../../components/Login/Login.css'
 import axios from "axios"
 import { useEffect, useState } from "react"
-import url from '../../url';
+import url from '../../utils/url';
 
 const Reset = () => {
     const [spin, setSpin] = useState(false)
