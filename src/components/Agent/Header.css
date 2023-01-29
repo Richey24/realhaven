@@ -1,0 +1,339 @@
+.aHeaderDiv {
+    width: 100%;
+    min-height: 100%;
+    padding: 24px 64px;
+    padding-bottom: 0px;
+    background-image: url("../../img/agent-landing.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.aNavDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.aNavDiv>ul {
+    display: flex;
+    gap: 20px;
+}
+
+.aNavDiv>ul>li {
+    list-style-type: none;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.2vw;
+    color: #F9FAFB;
+    cursor: pointer;
+}
+
+.aNavDiv>h6 {
+    font-family: 'Potta One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
+.aCatDiv {
+    width: 100%;
+    height: 134px;
+    background: #FFFFFF;
+    border: 0.5px solid #E5E7EB;
+    box-shadow: 0px 0px 16px rgba(17, 17, 17, 0.06);
+    border-radius: 4px;
+    padding-left: 0px;
+    padding-right: 5px;
+    display: none;
+    overflow: scroll;
+    position: absolute;
+    z-index: 1;
+}
+
+.aCatDiv>li {
+    list-style-type: none;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.1vw;
+    line-height: 18px;
+    color: #374151;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+.aCatDiv>li:hover {
+    background: #F3F4F6;
+}
+
+#rangeDiv {
+    padding: 10px 20px;
+    position: relative;
+    height: 150px;
+}
+
+#rangeDiv>p {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #374151;
+    padding-bottom: 13px;
+    border-bottom: 0.5px solid #E5E7EB;
+}
+
+.aNavDiv>p {
+    background: #306584;
+    min-width: 15%;
+    height: 64px;
+    max-width: 18%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.theRangeDiv {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.theRangeDiv p {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 160%;
+    color: #374151;
+}
+
+.aHeaderDiv>h6 {
+    width: 45%;
+    font-family: 'Averia Serif Libre';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 4.7vw;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0 auto;
+    margin-top: 180px;
+}
+
+.headFilter {
+    background: #FFFFFF;
+    box-shadow: -1px -1px 4px rgba(17, 17, 17, 0.06), 2px 2px 2px rgba(17, 17, 17, 0.06);
+    backdrop-filter: blur(22px);
+    height: 132px;
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 32px 0 40px;
+}
+
+.headSearch {
+    height: 24px;
+    min-width: 13%;
+    width: 18%;
+    max-width: 22%;
+    outline: none;
+    border: none;
+    padding-bottom: 5px;
+    border-bottom: 0.5px solid #E5E7EB;
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.1vw;
+    color: #6B7280;
+}
+
+.headFilter>div {
+    height: 54px;
+    min-width: 13%;
+    width: 18%;
+    max-width: 22%;
+    position: relative;
+}
+
+.headFilter>.theBod {
+    border-right: 1px solid #E5E7EB;
+}
+
+.headFilter>div>span {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.1vw;
+    line-height: 21px;
+    color: #6B7280;
+}
+
+.headFilter>div>p {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1vw;
+    line-height: 28px;
+    color: #374151;
+    cursor: pointer;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.headFilter>p {
+    min-width: 13%;
+    width: 18%;
+    max-width: 22%;
+    height: 68px;
+    background: #306584;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5vw;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin-top: 16px;
+}
+
+.blurryDiv {
+    width: 60%;
+    min-width: 50%;
+    max-width: 70%;
+    height: 180px;
+    background: rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin: 200px auto 0 auto;
+    border-radius: 22px 22px 0px 0px;
+    padding: 0 41px;
+}
+
+.blurryDiv>div {
+    width: fit-content;
+    /* max-width: 33%; */
+    /* min-width: 25%; */
+}
+
+.blurryDiv>div>p {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 4.2vw;
+    line-height: 71px;
+    color: #FFFFFF;
+}
+
+.blurryDiv>div>span {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.1vw;
+    line-height: 11px;
+    color: #FFFFFF;
+}
+
+.show {
+    display: block;
+}
+
+.aNavDiv>img {
+    display: none;
+}
+
+@media screen and (max-width: 800px) {
+
+    .aNavDiv>ul,
+    .aNavDiv>p {
+        display: none;
+    }
+
+    .aHeaderDiv {
+        padding: 24px 13px;
+    }
+
+    .aNavDiv>h6 {
+        margin-left: 24px;
+    }
+
+    .aNavDiv>img {
+        margin-right: 24px;
+    }
+
+    .aNavDiv>img {
+        display: block;
+    }
+
+    .aHeaderDiv>h6 {
+        font-size: 8vw;
+        margin-top: 150px;
+        width: 80%;
+    }
+
+    .headFilter {
+        flex-wrap: wrap;
+        height: 284px;
+        margin-top: 200px;
+        margin-bottom: -120px;
+        width: 100%;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .headSearch {
+        width: 100%;
+        max-width: 100%;
+        font-size: 3vw;
+    }
+
+    .headFilter>div {
+        width: 48%;
+        max-width: 48%;
+    }
+
+    .headFilter>p {
+        width: 48%;
+        max-width: 48%;
+        height: 49px;
+        font-size: 3vw
+    }
+
+    .headFilter>div>span,
+    .headFilter>div>p {
+        font-size: 3vw;
+    }
+
+    .headFilter>.theBod {
+        border: none;
+    }
+
+    .aCatDiv>li {
+        font-size: 3vw;
+    }
+
+    .blurryDiv {
+        display: none;
+    }
+
+}
