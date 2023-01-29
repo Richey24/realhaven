@@ -85,7 +85,7 @@
         padding: 12px 24px;
         font-family: 'Switzer';
         font-style: normal;
-        height: 600px;
+        width: 100%;
     }
 
     .homeCanvasFirstDiv {
