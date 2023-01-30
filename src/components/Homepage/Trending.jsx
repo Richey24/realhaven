@@ -21,7 +21,7 @@ const Trending = () => {
             </div>
             <div className="thirdImages">
                 <div onMouseEnter={() => mouseEnter("firstHover", "modern")} onMouseLeave={() => mouseLeave("firstHover", "modern")} className="firstImgDiv">
-                    <img src={img1} alt="" />
+                    <img loading="lazy" src={img1} alt="" />
                     <p id="modern">Modern residential apartments</p>
                     <div className="firstHover" id="firstHover">
                         <div>
@@ -32,7 +32,7 @@ const Trending = () => {
                 </div>
                 <div className="secondImgDiv">
                     <div onMouseEnter={() => mouseEnter("secondHover", "short")} onMouseLeave={() => mouseLeave("secondHover", "short")}>
-                        <img src={img2} alt="" />
+                        <img loading="lazy" src={img2} alt="" />
                         <p id="short">Shortlet apartments</p>
                         <div className="secondHover" id="secondHover">
                             <div>
@@ -42,7 +42,7 @@ const Trending = () => {
                         </div>
                     </div>
                     <div onMouseEnter={() => mouseEnter("thirdHover", "real")} onMouseLeave={() => mouseLeave("thirdHover", "real")}>
-                        <img src={img3} alt="" />
+                        <img loading="lazy" src={img3} alt="" />
                         <p id="real">Real estate resort</p>
                         <div className="secondHover" id="thirdHover">
                             <div>
@@ -54,7 +54,7 @@ const Trending = () => {
                 </div>
                 <div className="thirdImgDiv">
                     <div onMouseEnter={() => mouseEnter("fourthHover", "office")} onMouseLeave={() => mouseLeave("fourthHover", "office")}>
-                        <img src={img4} alt="" />
+                        <img loading="lazy" src={img4} alt="" />
                         <p id="office">Office spaces</p>
                         <div className="secondHover" id="fourthHover">
                             <div>
@@ -64,7 +64,7 @@ const Trending = () => {
                         </div>
                     </div>
                     <div onMouseEnter={() => mouseEnter("fifthHover", "apart")} onMouseLeave={() => mouseLeave("fifthHover", "apart")}>
-                        <img src={img5} alt="" />
+                        <img loading="lazy" src={img5} alt="" />
                         <p id="apart">Apartments Collections</p>
                         <div className="secondHover" id="fifthHover">
                             <div>

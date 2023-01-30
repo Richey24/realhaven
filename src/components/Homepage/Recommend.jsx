@@ -28,7 +28,7 @@ const Recommend = () => {
                     arr.map((ar, i) => (
                         <div key={i}>
                             <div className="fourthImg">
-                                <img src={theImg} alt="" />
+                                <img loading="lazy" src={theImg} alt="" />
                                 <span>Rent</span>
                             </div>
                             <h6>A stunning two bedroom two bathroom apartment close to Angel and Old Street Stations</h6>

@@ -18,7 +18,7 @@ const Faq = () => {
                 <div className="innerHeroSixth">
                     <h1>Some of the things you may want to know</h1>
                     <p>We answered questions so you don’t have to ask them.</p>
-                    <img src={faq} alt="" />
+                    <img loading="lazy" src={faq} alt="" />
                 </div>
                 <div className="faqQuestions">
                     <div>

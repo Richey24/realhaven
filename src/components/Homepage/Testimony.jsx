@@ -38,7 +38,7 @@ const Testimony = () => {
             <h1>Don’t just take our word for it</h1>
             <p>Hear what our clients says about us</p>
             <div className="heroFifthInner">
-                <img src={testimony[num].img} alt="" />
+                <img loading="lazy" src={testimony[num].img} alt="" />
                 <div>
                     <p>{testimony[num].speech}</p>
                     <div className="heroFifthName"><div></div> {testimony[num].name} <div className="secondDivLine"></div></div>
