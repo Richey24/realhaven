@@ -111,6 +111,17 @@
     cursor: pointer;
 }
 
+.aNavigateDiv>div {
+    display: flex;
+    gap: 20px;
+    align-items: baseline;
+}
+
+.aNavigateDiv>div>img {
+    width: 20px;
+    height: 20px;
+}
+
 .aNavigateDiv>p>img {
     margin-left: 10px;
 }

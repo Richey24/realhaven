@@ -1,9 +1,9 @@
-import "./Canvas.css"
+import "./Navbar.css"
 import { Offcanvas } from "react-bootstrap"
 import cancel from "../../img/cancel.svg"
 import { useLocation } from "react-router-dom"
 
-const Canvas = ({ hideShow, show }) => {
+const Navbar = ({ hideShow, show }) => {
     const { pathname } = useLocation()
     return (
         <div>
@@ -25,4 +25,4 @@ const Canvas = ({ hideShow, show }) => {
     )
 }
 
-export default Canvas
+export default Navbar

@@ -3,16 +3,10 @@ import black from "../../img/arrowblack.svg"
 import theImg from "../../img/image.png"
 import addressImg from "../../img/Location.svg"
 import blue from "../../img/blueArrow.svg"
+import { decrement, increment } from "../../utils/functions"
 
 const Recommend = () => {
     const arr = ['a', 'b', 'c', 's', 'f', 'g']
-
-    const moveRight = () => {
-        document.getElementById("fourthSec").scrollLeft += 500
-    }
-    const moveLeft = () => {
-        document.getElementById("fourthSec").scrollLeft -= 500
-    }
 
     return (
         <div className="mainFourth">
@@ -39,8 +33,8 @@ const Recommend = () => {
                 }
             </div>
             <div className="fourthLast">
-                <img onClick={moveRight} src={black} className="fourthLeft" alt="" />
-                <img onClick={moveLeft} src={black} className="fourthRight" alt="" />
+                <img onClick={() => increment("fourthSec")} src={black} className="fourthLeft" alt="" />
+                <img onClick={() => decrement("fourthSec")} src={black} className="fourthRight" alt="" />
             </div>
             <button className="fourthSeeAll">See all <img src={blue} alt="" /></button>
 

@@ -56,6 +56,20 @@ const mouseLeave = (val1, val2) => {
     document.getElementById(val2).style.display = "block"
 }
 
+// toggle dropdown 
+const showProp = (id) => {
+    document.getElementById(id).classList.toggle("show")
+}
+
+const increment = (id) => {
+    const img = document.getElementById(id)
+    img.scrollLeft += 500
+}
+
+const decrement = (id) => {
+    const img = document.getElementById(id)
+    img.scrollLeft -= 500
+}
 
 export {
     filterLocations,
@@ -64,5 +78,8 @@ export {
     handleSlide,
     valueText,
     mouseEnter,
-    mouseLeave
+    mouseLeave,
+    showProp,
+    increment,
+    decrement
 }
