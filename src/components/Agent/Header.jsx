@@ -3,7 +3,7 @@ import down from '../../img/Icon.svg'
 import ham from "../../img/ham.svg"
 import { useState } from "react"
 import { Slider } from "@mui/material"
-import Canvas from "./Canvas"
+import Navbar from "./Navbar"
 import { propList } from "../../data/propertyList"
 import { handleSlide, showProp, valueText } from "../../utils/functions"
 
@@ -128,7 +128,7 @@ const Header = () => {
                     <span>Properties sold</span>
                 </div>
             </div>
-            <Canvas hideShow={hideShow} show={show} />
+            <Navbar hideShow={hideShow} show={show} />
         </div>
     )
 }
