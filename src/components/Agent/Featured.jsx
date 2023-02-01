@@ -7,18 +7,11 @@ import three from "../../img/image 5 (3).png"
 import four from "../../img/image 5 (4).png"
 import five from "../../img/image 5 (5).png"
 import six from "../../img/image 5 (6).png"
+import { decrement, increment } from "../../utils/functions"
 
 const images = [one, two, three, four, five, six]
 const Featured = () => {
-    const increment = () => {
-        const img = document.getElementById("aFeatDiv")
-        img.scrollLeft += 320
-    }
 
-    const decrement = () => {
-        const img = document.getElementById("aFeatDiv")
-        img.scrollLeft -= 320
-    }
     return (
         <div className="aSecondDiv">
             <h1>Featured Properties</h1>
@@ -42,8 +35,8 @@ const Featured = () => {
             <div className="aNavigateDiv">
                 <p>See all <img src={arrow} alt="" /></p>
                 <div>
-                    <img onClick={decrement} src={arrow} className="leftArrow" alt="" />
-                    <img onClick={increment} src={arrow} alt="" />
+                    <img onClick={() => decrement("aFeatDiv")} src={arrow} className="leftArrow" alt="" />
+                    <img onClick={() => increment("aFeatDiv")} src={arrow} alt="" />
                 </div>
             </div>
         </div>

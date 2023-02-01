@@ -5,7 +5,7 @@ import { useState } from "react"
 import { Slider } from "@mui/material"
 import Canvas from "./Canvas"
 import { propList } from "../../data/propertyList"
-import { handleSlide, valueText } from "../../utils/functions"
+import { handleSlide, showProp, valueText } from "../../utils/functions"
 
 const Header = () => {
     const [catAct, setCatAct] = useState("sale")
@@ -21,31 +21,15 @@ const Header = () => {
         setShow(true)
     }
 
-    const handleChange2 = (event, newValue, activeThumb) => {
-        handleSlide(event, newValue, activeThumb, setValue2)
-    };
-
 
     const closeCat = (value) => {
         setCatAct(value)
-        document.getElementById("catDiv").classList.toggle("show")
-    }
-
-    const showCat = () => {
-        document.getElementById("catDiv").classList.toggle("show")
-    }
-
-    const showProp = () => {
-        document.getElementById("propDiv").classList.toggle("show")
+        showProp("catDiv")
     }
 
     const closeProp = (value) => {
         setProp(value)
-        document.getElementById("propDiv").classList.toggle("show")
-    }
-
-    const showRange = () => {
-        document.getElementById("rangeDiv").classList.toggle("show")
+        showProp("propDiv")
     }
 
 
@@ -69,7 +53,7 @@ const Header = () => {
                 <input type="text" className="headSearch" placeholder="Search by location" />
                 <div className="theBod">
                     <span>Category</span>
-                    <p onClick={showCat}>For {catAct} <img src={down} alt="" /></p>
+                    <p onClick={() => showProp("catDiv")}>For {catAct} <img src={down} alt="" /></p>
                     <ul id="catDiv" className="aCatDiv">
                         <li onClick={() => closeCat("sale")} style={{ color: catAct === "sale" ? "#2E7DD7" : "" }}>For sale</li>
                         <li onClick={() => closeCat("rent")} style={{ color: catAct === "rent" ? "#2E7DD7" : "" }}>For rent</li>
@@ -78,7 +62,7 @@ const Header = () => {
                 </div>
                 <div className="theBod">
                     <span>Property type</span>
-                    <p onClick={showProp}>{prop}<img src={down} alt="" /></p>
+                    <p onClick={() => showProp("propDiv")}>{prop}<img src={down} alt="" /></p>
                     <ul style={{ height: "202px" }} id="propDiv" className="aCatDiv">
                         {
                             propList.map((pro) => (
@@ -91,9 +75,9 @@ const Header = () => {
                     <span>Price range</span>
                     {
                         catAct === "sale" ?
-                            (<p onClick={showRange}>₦{value2[0]}m-₦{value2[1]}m <img src={down} alt="" /></p>) :
+                            (<p onClick={() => showProp("rangeDiv")}>₦{value2[0]}m-₦{value2[1]}m <img src={down} alt="" /></p>) :
                             (
-                                <p onClick={showRange}>₦{value2[0]}0k-{value2[1] === 100 ? `1M` : `${value2[1]}0k`} <img src={down} alt="" /></p>
+                                <p onClick={() => showProp("rangeDiv")}>₦{value2[0]}0k-{value2[1] === 100 ? `1M` : `${value2[1]}0k`} <img src={down} alt="" /></p>
                             )
 
                     }
@@ -115,7 +99,7 @@ const Header = () => {
                         <Slider
                             getAriaLabel={() => 'Minimum distance shift'}
                             value={value2}
-                            onChange={handleChange2}
+                            onChange={(event, newValue, activeThumb) => handleSlide(event, newValue, activeThumb, setValue2)}
                             valueLabelDisplay="auto"
                             getAriaValueText={valueText}
                             disableSwap

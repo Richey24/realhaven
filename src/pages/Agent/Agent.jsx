@@ -2,9 +2,10 @@ import Explore from "../../components/Agent/Explore"
 import Members from "../../components/Agent/Members"
 import Header from "../../components/Agent/Header"
 import Featured from "../../components/Agent/Featured"
-import Footer from "../../components/Agent/Footer"
+import Contact from "../../components/Agent/Contact"
 import Agency from "../../components/Agent/Agency"
 import { Helmet } from "react-helmet"
+import Footer from "../../components/Agent/Footer"
 
 const Agent = () => {
     return (
@@ -19,6 +20,7 @@ const Agent = () => {
             <Agency />
             <Members />
             <Explore />
+            <Contact />
             <Footer />
         </div>
     )

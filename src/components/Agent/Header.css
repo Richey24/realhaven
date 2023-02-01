@@ -50,6 +50,11 @@
     overflow: scroll;
     position: absolute;
     z-index: 1;
+    scrollbar-width: none;
+}
+
+.aCatDiv::-webkit-scrollbar {
+    display: none;
 }
 
 .aCatDiv>li {
