@@ -1,0 +1,113 @@
+.registerCompDiv {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.registerCompDiv>div>img {
+    width: 96px;
+    height: 80.84px;
+}
+
+.registerCompDiv>div>h1 {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    color: #374151;
+    margin-top: 32px
+}
+
+.registerCompDiv>div>button,
+.registerCompDiv>div>form>button {
+    width: 350px;
+    height: 50px;
+    background: #2E7DD7;
+    border-radius: 4px;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    border: none;
+    color: #FFFFFF;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    outline: none;
+}
+
+.registerCompDiv>div>button>img {
+    width: 16px;
+    height: 16px;
+}
+
+.registerCompDiv>div>form>.continueEmail {
+    margin-top: 16px;
+    border: 1px solid #E5E7EB;
+    border-radius: 4px;
+    background-color: white;
+    color: #374151;
+}
+
+.registerCompDiv>div>p {
+    margin-top: 16px;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #6B7280;
+}
+
+.registerCompDiv>div>p>span {
+    color: #2E7DD7;
+    cursor: pointer;
+}
+
+.registerCompDiv>div>h6 {
+    width: 350px;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #6B7280;
+    margin-top: 40px
+}
+
+.regInputDiv {
+    width: 350px;
+    border-top: 1px solid #E5E7EB;
+    margin-top: 24px;
+    padding-top: 24px;
+    text-align: left;
+}
+
+.regInputDiv>label {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #374151;
+}
+
+.regInputDiv>input {
+    width: 350px;
+    height: 48px;
+    padding-left: 16px;
+    border: 1px solid #E5E7EB;
+    border-radius: 4px;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #6B7280;
+    outline: none;
+}
+
+.show {
+    display: block;
+}
