@@ -2,14 +2,17 @@ import "./StepOne.css"
 import logo from "../../img/logo_blue.svg"
 import googleLogo from "../../img/google_white.svg"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const StepOne = () => {
     const [hide, setHide] = useState(true)
+    const navigate = useNavigate()
 
     const continueEmail = (e) => {
         e.preventDefault()
+        const mail = e.target.email.value
         if (!hide) {
-
+            navigate("/register/two", { state: { mail: mail } })
         } else {
             setHide(false)
         }

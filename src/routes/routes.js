@@ -1,7 +1,10 @@
 import React from "react"
 const Main = React.lazy(() => import("../pages/Homepage/Main"))
 const Login = React.lazy(() => import("../pages/Login/Login"));
-const Register = React.lazy(() => import("../pages/Register/Register"));
+const RegisterPageOne = React.lazy(() => import("../pages/Register/RegisterPageOne"));
+const RegisterPageTwo = React.lazy(() => import("../pages/Register/RegisterPageTwo"));
+const RegisterPageThree = React.lazy(() => import("../pages/Register/RegisterPageThree"));
+const RegisterPageFour = React.lazy(() => import("../pages/Register/RegisterPageFour"));
 const Dashboard = React.lazy(() => import("../pages/Dashboard/Dashboard"));
 const Listing = React.lazy(() => import("../pages/Listing/Listing"));
 const Settings = React.lazy(() => import("../pages/Setting/Settings"));
@@ -19,7 +22,19 @@ const routes = [
     },
     {
         path: "/register",
-        element: <Register />
+        element: <RegisterPageOne />
+    },
+    {
+        path: "/register/two",
+        element: <RegisterPageTwo />
+    },
+    {
+        path: "/register/three",
+        element: <RegisterPageThree />
+    },
+    {
+        path: "/register/four",
+        element: <RegisterPageFour />
     },
     {
         path: "/dashboard",

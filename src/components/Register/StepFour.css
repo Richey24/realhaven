@@ -1,0 +1,44 @@
+.stepFourMain {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stepFourMain>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Switzer';
+    font-style: normal;
+}
+
+.stepFourMain>div>img {
+    width: 96px;
+    height: 80.84px;
+}
+
+.stepFourMain>div>h1 {
+    font-weight: 700;
+    font-size: 48px;
+    color: #374151;
+    margin-top: 40px;
+}
+
+.stepFourMain>div>p {
+    width: 423px;
+    text-align: center;
+}
+
+.stepFourMain>div>button {
+    width: 423px;
+    height: 47px;
+    margin-top: 40px;
+    border: none;
+    color: white;
+    outline: none;
+    background: #438ADB;
+    border-radius: 4px;
+}

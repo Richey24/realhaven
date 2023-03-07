@@ -1,0 +1,97 @@
+.stepTwoDiv {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.stepTwoDiv>div>img {
+    width: 96px;
+    height: 80.84px;
+}
+
+.stepTwoDiv>div>h1 {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    color: #374151;
+    margin-top: 32px
+}
+
+.sentMail {
+    width: 350px;
+}
+
+.stepTwoDiv>div>form>button {
+    width: 350px;
+    height: 50px;
+    background: #2E7DD7;
+    border-radius: 4px;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    border: none;
+    color: #FFFFFF;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    margin-bottom: 32px;
+}
+
+.stepTwoDiv>div>p {
+    margin-top: 16px;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #6B7280;
+}
+
+.stepTwoDiv>div>p>span {
+    color: #2E7DD7;
+    cursor: pointer;
+}
+
+.stepTwoDiv>div>h6 {
+    width: 350px;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #6B7280;
+    margin-top: 40px
+}
+
+.stepTwoForm {
+    text-align: left;
+    margin-top: 32px;
+}
+
+.stepTwoForm>label {
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #374151;
+}
+
+.stepTwoForm>input {
+    width: 350px;
+    height: 48px;
+    padding-left: 16px;
+    border: 1px solid #E5E7EB;
+    border-radius: 4px;
+    font-family: 'Switzer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #6B7280;
+    margin-top: 8px;
+    outline: none;
+}
