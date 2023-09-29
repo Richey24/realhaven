@@ -22,13 +22,13 @@ const Main = () => {
         }
     })
 
-    if (window.location.hostname.split('.')[0] !== "www" && window.location.hostname.split('.')[0] !== "localhost") {
-        return (
-            <div>
-                <Agent />
-            </div>
-        )
-    }
+    // if (window.location.hostname.split('.')[0] !== "www" && window.location.hostname.split('.')[0] !== "localhost") {
+    //     return (
+    //         <div>
+    //             <Agent />
+    //         </div>
+    //     )
+    // }
 
     return (
         <div id="heroMain" className="heroMain">
