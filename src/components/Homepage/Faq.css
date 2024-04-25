@@ -6,7 +6,7 @@
     font-family: 'Switzer';
     font-style: normal;
     text-align: left;
-    margin-bottom: 34px;
+    margin: 200px 0px 134px 0px;
 }
 
 .heroSixthInner {
@@ -59,6 +59,10 @@
     border-bottom: #6B7280 1px solid;
     margin-top: 34px;
     padding-bottom: 24px;
+}
+
+.faqQuestions div:last-child {
+    border: none;
 }
 
 .faqQuestions div:first-child {

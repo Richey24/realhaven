@@ -29,7 +29,7 @@ const StepTwo = () => {
                 <form className="stepTwoForm" onSubmit={checkCode}>
                     <label htmlFor="email">Enter code</label>
                     <br />
-                    <input required placeholder="Enter code" type="text" name="email" id="email" />
+                    <input required placeholder="Enter code" type="text" name="code" id="code" />
                     <button>Continue with Email</button>
                 </form>
                 <p>Already have an account? <span>Login</span></p>

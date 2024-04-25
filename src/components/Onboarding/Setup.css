@@ -1,0 +1,138 @@
+.onboardSetup {
+    font-family: "Switzer";
+}
+
+.onboardSetupHeader {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #6B7280;
+    padding: 12px;
+}
+
+.onboardSetupHeader>div:first-child {
+    padding: 10px;
+    background-color: #F9FAFB;
+    border-radius: 4px;
+}
+
+.onboardSetupHeader>div>span {
+    color: #374151;
+}
+
+.onboardSetupHeader>div:last-child {
+    color: #2E7DD7;
+    cursor: pointer;
+}
+
+.onboardSetupMainDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.onboardSetupFirstDiv {
+    width: 45%;
+    flex-shrink: 0;
+    padding: 40px 90px;
+}
+
+.onboardSetupFirstDiv>p {
+    font-weight: 300;
+    color: #6B7280;
+    margin-bottom: 44px;
+}
+
+.onboardSetupFirstDiv>h4 {
+    font-weight: 500;
+    color: #374151;
+}
+
+.onboardSetupSecondDiv {
+    background-color: #F3F4F6;
+    padding-top: 100px;
+    padding-left: 40px;
+}
+
+.onboardSetupSecondDiv>img {
+    width: 100%;
+}
+
+.onboardSetupFirstDiv>div>input {
+    width: 400px;
+    height: 48px;
+    padding: 0px 12px;
+    border-radius: 4px;
+    border: 1px solid #E5E7EB;
+    color: #6B7280;
+}
+
+.onboardSetupFirstDiv>div>input:focus {
+    border: 1px solid rgba(46, 125, 215, 1);
+    outline: none;
+}
+
+.onboardSetupFirstDiv>div>div {
+    width: 400px;
+    height: 48px;
+    border-radius: 4px;
+    padding-left: 2px;
+    border: 1px solid #E5E7EB;
+    color: #6B7280;
+    font-size: 14px;
+}
+
+.onboardSetupFirstDiv>div>div>input {
+    height: 46px;
+    width: 270px;
+    padding: 0px 10px;
+    color: #6B7280;
+    border: none;
+    outline: none;
+}
+
+.onboardSetupFirstDiv>div>label {
+    color: #374151;
+    font-weight: 400;
+    margin-bottom: 8px;
+    margin-top: 17px;
+}
+
+.onboardSetupFirstDiv>button {
+    width: 400px;
+    height: 48px;
+    background-color: #2E7DD7;
+    color: white;
+    border-radius: 4px;
+    margin-top: 80px;
+    border: none;
+    outline: none;
+}
+
+.onboardSetupLoad {
+    width: 100%;
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.onboardSetupLoad>div {
+    font-family: "Switzer";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #374151;
+    font-weight: 400;
+}
+
+.onboardSetupLoad>div>img {
+    width: 96px;
+    height: 81px;
+    margin-bottom: 10px;
+}

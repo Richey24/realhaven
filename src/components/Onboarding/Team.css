@@ -1,0 +1,131 @@
+.onboardTeam {
+    font-family: "Switzer";
+    width: 100%;
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.onboardTeamInner>h4 {
+    font-weight: 500;
+    color: #374151;
+    text-align: center;
+}
+
+.onboardTeamInner>p {
+    font-weight: 400;
+    color: #6B7280;
+    text-align: center;
+}
+
+.onboardTeamInner>div {
+    width: 600px;
+    height: 214px;
+    border-radius: 8px;
+    padding: 26px 32px;
+    box-shadow: 0px 0px 16px 9px #1111110F;
+    margin-top: 30px;
+}
+
+.onboardInviteDiv {
+    width: 100%;
+    height: 48px;
+    border-radius: 4px;
+    padding: 0px 10px;
+    border: 1px solid #E5E7EB;
+    outline: #2E7DD7;
+    color: #6B7280;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.onboardInviteDiv>input {
+    width: 70%;
+    height: 46px;
+    color: #6B7280;
+    border: none;
+    outline: none;
+}
+
+.onboardInviteDiv>p {
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+.onboardInviteDiv>p>img {
+    margin-left: 4px;
+}
+
+.onboardTeamInner>div>label {
+    color: rgba(75, 85, 99, 1);
+    font-weight: 400;
+    margin-bottom: 4px;
+}
+
+.onboardTeamInner>div>button {
+    width: 150px;
+    height: 46px;
+    background-color: rgba(46, 125, 215, 1);
+    color: white;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    margin-top: 25px;
+    display: block;
+    margin-left: auto;
+    opacity: 50%;
+}
+
+.onboardTeamInner>button {
+    width: 423px;
+    height: 47px;
+    background-color: white;
+    border: 1px solid rgba(229, 231, 235, 1);
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 50px;
+    color: rgba(55, 65, 81, 1);
+}
+
+.teamRoleDiv {
+    width: 310px;
+    height: 231px;
+    padding: 4px 6px 4px 6px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 16px 9px #1111110F;
+    position: absolute;
+    right: 50px;
+    top: 40%;
+    display: none;
+}
+
+.teamRoleDiv>p {
+    padding: 8px 16px 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    margin: 0px;
+}
+
+.teamRoleDiv>p>div {
+    width: 20px;
+    height: 10px;
+}
+
+.teamRoleActive {
+    background-color: rgba(243, 244, 246, 1);
+}
+
+.show {
+    display: block;
+}
+
+.validBtn {
+    opacity: 1 !important;
+}

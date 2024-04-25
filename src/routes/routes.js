@@ -1,4 +1,6 @@
 import React from "react"
+import OnboardOne from "../pages/Onboarding/OnboardOne";
+import OnboardTwo from "../pages/Onboarding/OnboardTwo";
 const Main = React.lazy(() => import("../pages/Homepage/Main"))
 const Login = React.lazy(() => import("../pages/Login/Login"));
 const RegisterPageOne = React.lazy(() => import("../pages/Register/RegisterPageOne"));
@@ -35,6 +37,14 @@ const routes = [
     {
         path: "/register/four",
         element: <RegisterPageFour />
+    },
+    {
+        path: "/onboarding/setup",
+        element: <OnboardOne />
+    },
+    {
+        path: "/onboarding/team",
+        element: <OnboardTwo />
     },
     {
         path: "/dashboard",
