@@ -1,0 +1,40 @@
+.proMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: "Switzer";
+    position: relative;
+    padding-top: 40px;
+    height: 97vh;
+}
+
+.proMain>h2 {
+    font-weight: 500;
+    color: rgba(55, 65, 81, 1);
+    font-size: 24px;
+    margin: 0px;
+}
+
+.proMain>p {
+    color: rgba(107, 114, 128, 1);
+    font-size: 16px;
+    font-weight: 400;
+    margin: 10px 0px 20px 0px;
+}
+
+.proMain>img {
+    width: 800px;
+    height: 330px;
+}
+
+.proMain>button {
+    width: 300px;
+    height: 47px;
+    border-radius: 4px;
+    background-color: rgba(46, 125, 215, 1);
+    color: white;
+    border: none;
+    outline: none;
+    margin-top: 50px;
+}

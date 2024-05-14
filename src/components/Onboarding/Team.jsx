@@ -6,9 +6,10 @@ import { useState } from "react"
 import { showDropDown } from "../../utils/functions"
 import { validateEmail } from "../../utils/registerFunctions"
 import Progress from "./Progress"
+import { useNavigate } from "react-router-dom"
 
 const Team = () => {
-
+    const navigate = useNavigate()
     const [role, setRole] = useState("owner")
     const [email, setEmail] = useState("")
     const [valid, setValid] = useState(false)
@@ -44,7 +45,7 @@ const Team = () => {
                         <p onClick={() => getRole("prefer not to say")} className={role === "prefer not to say" ? "teamRoleActive" : ""}><div><img src={role === "prefer not to say" ? good : ""} alt="" /></div> Prefer not to say</p>
                     </div>
                 </div>
-                <button>Continue</button>
+                <button onClick={() => navigate("/onboarding/analytics")}>Continue</button>
             </div>
             <Progress position={1} />
         </div>

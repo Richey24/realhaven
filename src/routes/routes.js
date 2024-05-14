@@ -1,6 +1,8 @@
 import React from "react"
-import OnboardOne from "../pages/Onboarding/OnboardOne";
-import OnboardTwo from "../pages/Onboarding/OnboardTwo";
+const OnboardOne = React.lazy(() => import("../pages/Onboarding/OnboardOne"))
+const OnboardTwo = React.lazy(() => import("../pages/Onboarding/OnboardTwo"))
+const OnboardThree = React.lazy(() => import("../pages/Onboarding/OnboardThree"))
+const OnboardFour = React.lazy(() => import("../pages/Onboarding/OnboardFour"))
 const Main = React.lazy(() => import("../pages/Homepage/Main"))
 const Login = React.lazy(() => import("../pages/Login/Login"));
 const RegisterPageOne = React.lazy(() => import("../pages/Register/RegisterPageOne"));
@@ -45,6 +47,14 @@ const routes = [
     {
         path: "/onboarding/team",
         element: <OnboardTwo />
+    },
+    {
+        path: "/onboarding/analytics",
+        element: <OnboardThree />
+    },
+    {
+        path: "/onboarding/promote",
+        element: <OnboardFour />
     },
     {
         path: "/dashboard",

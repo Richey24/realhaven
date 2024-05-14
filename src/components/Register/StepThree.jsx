@@ -34,7 +34,7 @@ const StepThree = () => {
                     <label className="passwordLabel" htmlFor="password">Password</label>
                     <div className="thePassword">
                         <input required placeholder="Password" type="password" id="password" name="password" />
-                        <img onClick={switchPass} src={eye} alt="" />
+                        <img onClick={() => switchPass("password")} src={eye} alt="" />
                     </div>
                     <div className="termsAndCon">
                         <input required type="checkbox" id="terms" name="terms" />

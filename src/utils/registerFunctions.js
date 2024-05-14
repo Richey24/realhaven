@@ -1,5 +1,5 @@
-const switchPass = () => {
-    const pass = document.getElementById("password")
+const switchPass = (id) => {
+    const pass = document.getElementById(id)
     pass.type === "password" ? pass.type = "text" : pass.type = "password"
 }
 
