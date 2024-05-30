@@ -1,10 +1,10 @@
 import "./Setup.css"
-import logoutArrow from "../../img/logout-blue.svg"
 import setupImage from "../../img/setupimage.png"
 import logo from "../../img/logo_blue.svg"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { changeBorderColorOnFocus } from "../../utils/styleFunc"
+import Header from "./Header"
 
 const Setup = () => {
     const [loading, setLoading] = useState(false)
@@ -30,13 +30,7 @@ const Setup = () => {
     }
     return (
         <div className="onboardSetup">
-            <div className="onboardSetupHeader">
-                <div>Logged in as <span>uahomorejoice@gmail.com</span></div>
-                <div>
-                    Log out
-                    <img src={logoutArrow} alt="" />
-                </div>
-            </div>
+            <Header />
             <div className="onboardSetupMainDiv">
                 <form onSubmit={continueSetup} className="onboardSetupFirstDiv">
                     <h4>Setup your Agency</h4>

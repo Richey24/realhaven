@@ -2,31 +2,6 @@
     font-family: "Switzer";
 }
 
-.onboardSetupHeader {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
-    color: #6B7280;
-    padding: 12px;
-}
-
-.onboardSetupHeader>div:first-child {
-    padding: 10px;
-    background-color: #F9FAFB;
-    border-radius: 4px;
-}
-
-.onboardSetupHeader>div>span {
-    color: #374151;
-}
-
-.onboardSetupHeader>div:last-child {
-    color: #2E7DD7;
-    cursor: pointer;
-}
-
 .onboardSetupMainDiv {
     display: flex;
     justify-content: space-between;
@@ -135,4 +110,44 @@
     width: 96px;
     height: 81px;
     margin-bottom: 10px;
+}
+
+@media (max-width: 800px) {
+    .onboardSetupMainDiv {
+        flex-direction: column-reverse;
+    }
+
+    .onboardSetupFirstDiv {
+        width: 100%;
+        flex-shrink: 0;
+        padding: 40px 20px;
+    }
+
+    .onboardSetupFirstDiv>p,
+    .onboardSetupFirstDiv>h4 {
+        text-align: center;
+    }
+
+    .onboardSetupFirstDiv>div>div {
+        display: flex;
+        align-items: center;
+    }
+
+    .onboardSetupFirstDiv>div>div>input {
+        width: 64%;
+    }
+
+    .onboardSetupFirstDiv>button,
+    .onboardSetupFirstDiv>div>div,
+    .onboardSetupFirstDiv>div>input {
+        width: 100%;
+    }
+
+    .onboardSetupFirstDiv>p {
+        margin-bottom: 20px;
+    }
+
+    .onboardSetupSecondDiv {
+        padding-top: 30px;
+    }
 }

@@ -1,0 +1,25 @@
+.onboardSetupHeader {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #6B7280;
+    padding: 12px;
+    font-family: "Switzer";
+}
+
+.onboardSetupHeader>div:first-child {
+    padding: 10px;
+    background-color: #F9FAFB;
+    border-radius: 4px;
+}
+
+.onboardSetupHeader>div>span {
+    color: #374151;
+}
+
+.onboardSetupHeader>div:last-child {
+    color: #2E7DD7;
+    cursor: pointer;
+}
