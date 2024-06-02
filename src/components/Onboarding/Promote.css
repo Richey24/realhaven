@@ -5,8 +5,7 @@
     align-items: center;
     font-family: "Switzer";
     position: relative;
-    padding-top: 40px;
-    height: 97vh;
+    height: 87vh;
 }
 
 .proMain>h2 {
@@ -25,7 +24,7 @@
 
 .proMain>img {
     width: 800px;
-    height: 330px;
+    height: 300px;
 }
 
 .proMain>button {
@@ -37,4 +36,20 @@
     border: none;
     outline: none;
     margin-top: 50px;
+}
+
+@media (max-width: 800px) {
+    .proMain>img {
+        width: 90vw;
+        height: 200px;
+    }
+
+    .proMain {
+        height: 90vh;
+        padding: 100px 20px 0px 20px;
+    }
+
+    .proMain>p {
+        text-align: center;
+    }
 }

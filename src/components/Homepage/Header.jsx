@@ -38,8 +38,8 @@ const Header = () => {
           </div>
           <hr />
           <div className='homeCanvasSecondDiv'>
-            <p>Sign up</p>
-            <p>Sign in</p>
+            <p onClick={() => navigate("register")}>Sign up</p>
+            <p onClick={() => navigate("login")}>Sign in</p>
             <button>Post a property</button>
           </div>
         </OffcanvasBody>

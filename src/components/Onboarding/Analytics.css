@@ -5,8 +5,7 @@
     align-items: center;
     font-family: "Switzer";
     position: relative;
-    padding-top: 40px;
-    height: 97vh;
+    height: 87vh;
 }
 
 .analyMain>h2 {
@@ -25,7 +24,7 @@
 
 .analyMain>img {
     width: 800px;
-    height: 330px;
+    height: 300px;
 }
 
 .analyMain>button {
@@ -36,4 +35,20 @@
     background-color: white;
     margin-top: 50px;
     outline: none;
+}
+
+@media (max-width: 800px) {
+    .analyMain>img {
+        width: 90vw;
+        height: 200px;
+    }
+
+    .analyMain {
+        height: 90vh;
+        padding: 100px 20px 0px 20px;
+    }
+
+    .analyMain>p {
+        text-align: center;
+    }
 }
