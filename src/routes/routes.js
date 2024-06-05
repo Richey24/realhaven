@@ -65,7 +65,7 @@ const routes = [
         element: <Listing />
     },
     {
-        path: "/listing/listID",
+        path: "/listing/:listID",
         element: <Description />
     },
     {
@@ -73,7 +73,7 @@ const routes = [
         element: <Settings />
     },
     {
-        path: "/reset/password/:token",
+        path: "/password/reset",
         element: <Reset />
     },
 ]

@@ -32,7 +32,7 @@ const StepOne = () => {
                     </div>
                     <button className="continueEmail">Continue with Email</button>
                 </form>
-                <p>Already have an account? <span>Login</span></p>
+                <p>Already have an account? <span onClick={() => navigate("/login")}>Login</span></p>
                 <h6>By signing up, you agree to the Terms of Service and Data Processing Agreement</h6>
             </div>
         </div>

@@ -14,7 +14,7 @@ const StepThree = () => {
 
     return (
         <div className="stepThreeMain">
-            <p><img src={logo} alt="" />Haven</p>
+            <p onClick={() => navigate("/")}><img src={logo} alt="" />Haven</p>
             <div className="stepThreeInner">
                 <form onSubmit={submitForm} className="stepThreeDiv">
                     <h2>Complete sign up</h2>
@@ -41,7 +41,7 @@ const StepThree = () => {
                         <label htmlFor="terms">I agree to Haven’s <span>Terms & Conditions</span>  and  <span>Privacy Policy</span></label>
                     </div>
                     <button type="submit">Continue</button>
-                    <h6>Already have an account? <span>Login</span></h6>
+                    <h6>Already have an account? <span onClick={() => navigate("/login")}>Login</span></h6>
                     <h5>
                         <p>Help</p>
                         <span>|</span>

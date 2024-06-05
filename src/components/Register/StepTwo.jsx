@@ -32,7 +32,7 @@ const StepTwo = () => {
                     <input required placeholder="Enter code" type="text" name="code" id="code" />
                     <button>Continue with Email</button>
                 </form>
-                <p>Already have an account? <span>Login</span></p>
+                <p>Already have an account? <span onClick={() => navigate("/login")}>Login</span></p>
             </div>
         </div>
     )
