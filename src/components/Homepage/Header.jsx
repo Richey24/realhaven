@@ -13,11 +13,11 @@ const Header = () => {
     <div>
       <div className='heroNav'>
         <p className='navFirst'><img src={logo} alt="" /> Haven</p>
-        <div className='navSecond'>
+{/*         <div className='navSecond'>
           <p>All properties</p>
           <p>For Agents</p>
           <p>Blogs</p>
-        </div>
+        </div> */}
         <div className='navThird'>
           <p onClick={() => navigate("register")} className='navSignUp'>Sign up</p>
           <p onClick={() => navigate("login")} className='navSignIn'>Sign in</p>
